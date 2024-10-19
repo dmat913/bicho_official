@@ -10,8 +10,6 @@ import DHorizontalLine from "@/components/elements/DHorizontalLine";
 import { ImageData } from "@/types/image";
 
 const ImageUpload: React.FC = () => {
-  // upload image data
-  // const [uploadImage, setUploadImage] = useState<string>("");
   // 画像一覧 data
   const [images, setImages] = useState<ImageData[]>([]);
 
@@ -33,42 +31,6 @@ const ImageUpload: React.FC = () => {
     fetchImages();
   }, []);
 
-  // アップロードボタン押下時
-  // const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   if (!uploadImage) {
-  //     alert("画像が選択されていません");
-  //     return;
-  //   }
-  //   // Api 呼び出し
-  //   const response = await fetch("/api/image", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ uploadImage }),
-  //   });
-  //   if (response.ok) {
-  //     alert("画像がアップロードされました");
-  //     setUploadImage("");
-  //     fetchImages();
-  //   } else {
-  //     alert("アップロードに失敗しました");
-  //   }
-  // };
-
-  // // file選択時,base64に変換
-  // const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const file = e.target.files?.[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       setUploadImage(reader.result as string);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
-
   return (
     <div>
       <Header />
@@ -87,7 +49,7 @@ const ImageUpload: React.FC = () => {
             <img
               src={image.data}
               alt="Top Image"
-              className="max-h-[600px] object-cover w-full"
+              className="lg:h-[500px] md:h-[400px] h-[300px] object-cover w-full"
             />
           </SwiperSlide>
         ))}
