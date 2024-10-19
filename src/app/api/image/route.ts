@@ -6,6 +6,18 @@ export async function POST(request: NextRequest) {
   try {
     // DB接続
     await connectDb();
+
+    // imagesコレクションのドキュメント数を取得
+    const imageCount = await ImageModel.countDocuments();
+
+    // 画像が10個以上ある場合、エラーを返す
+    if (imageCount >= 10) {
+      return NextResponse.json(
+        { message: "画像は10個未満でアップロードしてください" },
+        { status: 400 }
+      );
+    }
+
     const { uploadImage } = await request.json();
 
     // fileが存在しない場合,error
