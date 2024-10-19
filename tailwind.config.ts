@@ -11,6 +11,13 @@ const config: Config = {
       colors: {
         green: {
           1: "#006036",
+          2: "#007A4D",
+        },
+        white: {
+          1: "#FFF8E7",
+        },
+        line: {
+          1: "#1A1A1A",
         },
       },
     },
