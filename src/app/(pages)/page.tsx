@@ -5,12 +5,9 @@ import "swiper/css";
 import { Autoplay, Pagination } from "swiper/modules";
 import Header from "@/components/header/Header";
 import "swiper/swiper-bundle.css";
-
-interface ImageData {
-  _id: string;
-  contentType: string;
-  data: string;
-}
+import NavBar from "@/components/nav/NavBar";
+import DHorizontalLine from "@/components/elements/DHorizontalLine";
+import { ImageData } from "@/types/image";
 
 const ImageUpload: React.FC = () => {
   // upload image data
@@ -75,8 +72,10 @@ const ImageUpload: React.FC = () => {
   return (
     <div>
       <Header />
+      <DHorizontalLine />
+      <NavBar />
       <Swiper
-        spaceBetween={20}
+        spaceBetween={1}
         slidesPerView={1}
         modules={[Autoplay, Pagination]} // 追記
         autoplay={{ delay: 3000 }}
