@@ -15,6 +15,7 @@ const config: Config = {
         },
         white: {
           1: "#FFF8E7",
+          2: "#FFFFFF",
         },
         line: {
           1: "#1A1A1A",

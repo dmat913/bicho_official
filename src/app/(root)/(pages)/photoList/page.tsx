@@ -6,6 +6,7 @@ import UploadImage from "@/components/pages/photoList/UploadImage";
 import { fetchImages } from "@/utils/image";
 import { useRecoilState } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
+import DLoading from "@/components/elements/DLoading";
 
 const PhotoList = () => {
   // 画像一覧
@@ -13,10 +14,13 @@ const PhotoList = () => {
   // モーダル表示のための状態
   const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  // ローディング状態
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // 画像削除処理
   const handleDelete = async () => {
     if (!selectedImage) return;
+    setIsLoading(true);
     try {
       const response = await fetch(`/api/image?id=${selectedImage._id}`, {
         method: "DELETE",
@@ -27,13 +31,15 @@ const PhotoList = () => {
         throw new Error(errorData.message || "画像の削除に失敗しました");
       }
       alert("画像が削除されました");
+      handleCloseModal();
       // 画像を再取得して更新
       const updatedImages = await fetchImages();
       setImages(updatedImages);
       // モーダルを閉じる
-      handleCloseModal();
     } catch (error) {
       alert(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -64,6 +70,8 @@ const PhotoList = () => {
           />
         ))}
       </div>
+      {/* ローディング表示 */}
+      {isLoading && <DLoading />}
 
       {/* モーダル */}
       {isModalOpen && selectedImage && (
