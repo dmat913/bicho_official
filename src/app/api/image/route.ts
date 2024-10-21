@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDb } from "@/utils/database";
 import { ImageModel } from "@/models/image";
 
+// 追加処理
 export async function POST(request: NextRequest) {
   try {
     // DB接続
@@ -51,6 +52,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
+// 取得処理
 export async function GET() {
   try {
     // DB接続
@@ -66,6 +68,7 @@ export async function GET() {
   }
 }
 
+// 削除処理
 export async function DELETE(request: NextRequest) {
   try {
     // DB接続
@@ -79,6 +82,17 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json(
         { message: "画像IDが不足しています" },
         { status: 400 }
+      );
+    }
+
+    // 画像の数を取得
+    const imageCount = await ImageModel.countDocuments();
+
+    // 画像が1枚だけの場合、削除を拒否
+    if (imageCount <= 1) {
+      return NextResponse.json(
+        { message: "画像が1枚しかないため、削除できません" },
+        { status: 403 }
       );
     }
 

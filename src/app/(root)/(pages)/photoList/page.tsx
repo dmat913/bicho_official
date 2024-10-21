@@ -1,31 +1,18 @@
 "use client";
 import Header from "@/components/header/Header";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ImageData } from "@/types/image";
 import UploadImage from "@/components/pages/photoList/UploadImage";
 import { fetchImages } from "@/utils/image";
+import { useRecoilState } from "recoil";
+import { imagesState } from "@/recoil/atom/image";
 
 const PhotoList = () => {
   // 画像一覧
-  const [images, setImages] = useState<ImageData[]>([]);
+  const [images, setImages] = useRecoilState(imagesState);
   // モーダル表示のための状態
   const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  // 画像取得API呼び出し
-  useEffect(() => {
-    const loadImages = async () => {
-      try {
-        const data = await fetchImages();
-        setImages(data);
-      } catch (error) {
-        alert("画像取得中にエラーが発生しました:");
-        console.log(error);
-      }
-    };
-    loadImages();
-    // eslint-disable-next-line
-  }, []);
 
   // 画像削除処理
   const handleDelete = async () => {
