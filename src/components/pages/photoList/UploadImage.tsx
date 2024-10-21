@@ -1,8 +1,9 @@
 "use client";
+import { fetchImages } from "@/utils/image";
 import { ChangeEvent, useRef, useState } from "react";
 import { IoCloudUploadOutline } from "react-icons/io5";
 
-const UploadImage = ({ fetchImages }: { fetchImages: () => Promise<void> }) => {
+const UploadImage = () => {
   // upload 対象 base64画像
   const [uploadImage, setUploadImage] = useState<string>("");
   // modal open flag
@@ -81,7 +82,7 @@ const UploadImage = ({ fetchImages }: { fetchImages: () => Promise<void> }) => {
       <button
         type="button"
         onClick={handleButtonClick}
-        className="w-full flex items-center justify-center p-4 bg-white shadow-lg transition-all duration-300 hover:shadow-xl mb-4"
+        className="w-full flex items-center justify-center p-4 bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
       >
         <span className="text-lg font-semibold text-green-1 mr-2">Upload</span>
         <IoCloudUploadOutline className="text-green-1 text-2xl" />
