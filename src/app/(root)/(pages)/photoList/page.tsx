@@ -86,7 +86,8 @@ const PhotoList = () => {
             <div className="flex justify-between">
               <button
                 onClick={handleDelete}
-                className="p-2 bg-green-1 text-white-1 rounded w-[45%] transition duration-300 active:bg-green-2"
+                className="p-2 bg-green-1 text-white-1 rounded w-[45%] transition duration-300 active:bg-green-2 disabled:opacity-30"
+                disabled={isLoading}
               >
                 削除
               </button>
