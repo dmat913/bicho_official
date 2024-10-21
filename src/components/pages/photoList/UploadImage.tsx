@@ -1,7 +1,9 @@
 "use client";
+import { imagesState } from "@/recoil/atom/image";
 import { fetchImages } from "@/utils/image";
 import { ChangeEvent, useRef, useState } from "react";
 import { IoCloudUploadOutline } from "react-icons/io5";
+import { useSetRecoilState } from "recoil";
 
 const UploadImage = () => {
   // upload 対象 base64画像
@@ -11,6 +13,9 @@ const UploadImage = () => {
   // loading判定
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  // 画像一覧
+  const setImages = useSetRecoilState(imagesState);
 
   // Upload Button押下時
   const handleButtonClick = () => {
@@ -29,6 +34,19 @@ const UploadImage = () => {
         setIsModalOpen(true);
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  // 画像一覧取得
+  const loadImages = async () => {
+    try {
+      const data = await fetchImages();
+      setImages(data);
+      setIsLoading(false);
+    } catch (error) {
+      alert("画像取得中にエラーが発生しました:");
+      console.log(error);
+      setIsLoading(false);
     }
   };
 
@@ -54,9 +72,8 @@ const UploadImage = () => {
         const errorData = await response.json();
         throw new Error(errorData.message || "アップロードに失敗しました");
       }
-
       alert("画像がアップロードされました");
-      await fetchImages();
+      loadImages();
       handleReset();
     } catch (error) {
       alert(error);
