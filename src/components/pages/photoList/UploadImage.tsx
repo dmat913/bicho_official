@@ -116,7 +116,8 @@ const UploadImage = () => {
             />
             <button
               onClick={handleUpload}
-              className="w-full p-2 bg-green-1 text-white-1 rounded transition duration-300 active:bg-green-2"
+              className="w-full p-2 bg-green-1 text-white-1 rounded transition duration-300 active:bg-green-2 disabled:opacity-30"
+              disabled={isLoading}
             >
               画像をアップロード
             </button>
