@@ -65,3 +65,47 @@ export async function GET() {
     );
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  try {
+    // DB接続
+    await connectDb();
+
+    // リクエストから削除する画像のIDを取得
+    const { searchParams } = new URL(request.url);
+    const imageId = searchParams.get("id");
+
+    if (!imageId) {
+      return NextResponse.json(
+        { message: "画像IDが不足しています" },
+        { status: 400 }
+      );
+    }
+
+    // 画像を検索
+    const image = await ImageModel.findById(imageId);
+    if (!image) {
+      return NextResponse.json(
+        { message: "指定された画像が見つかりません" },
+        { status: 404 }
+      );
+    }
+
+    // 画像を削除
+    await ImageModel.findByIdAndDelete(imageId);
+
+    return NextResponse.json(
+      { message: "画像が削除されました" },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("画像削除エラー:", error);
+    return NextResponse.json(
+      {
+        message: "画像の削除に失敗しました",
+        error: error || "Unknown error",
+      },
+      { status: 500 }
+    );
+  }
+}

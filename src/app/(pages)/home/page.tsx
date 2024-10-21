@@ -21,7 +21,7 @@ const ImageUpload: React.FC = () => {
         const data = await fetchImages();
         setImages(data);
       } catch (_error) {
-        alert("画像取得中にエラーが発生しました:");
+        alert("画像取得中にエラーが発生しました");
       }
     };
     loadImages();
