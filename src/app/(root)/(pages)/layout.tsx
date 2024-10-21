@@ -20,7 +20,7 @@ const Layout = ({
     }
   }, [images, router]);
 
-  return <>{children}</>;
+  return <>{images.length > 0 && children}</>;
 };
 
 export default Layout;
