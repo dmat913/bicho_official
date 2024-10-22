@@ -8,6 +8,7 @@ import NavBar from "@/components/nav/NavBar";
 import DHorizontalLine from "@/components/elements/DHorizontalLine";
 import { useRecoilValue } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
+import VideoList from "@/components/pages/home/VideoList";
 
 const ImageUpload: React.FC = () => {
   // 画像一覧 data
@@ -21,7 +22,7 @@ const ImageUpload: React.FC = () => {
       <Swiper
         spaceBetween={1}
         slidesPerView={1}
-        modules={[Autoplay, Pagination]} // 追記
+        modules={[Autoplay, Pagination]}
         autoplay={{ delay: 3000 }}
         pagination={{ clickable: true }}
         loop={true}
@@ -31,11 +32,12 @@ const ImageUpload: React.FC = () => {
             <img
               src={image.data}
               alt="Top Image"
-              className="lg:h-[500px] md:h-[400px] h-[300px] object-cover w-full"
+              className="lg:h-[500px] md:h-[400px] h-[250px] object-cover w-full"
             />
           </SwiperSlide>
         ))}
       </Swiper>
+      <VideoList />
     </div>
   );
 };

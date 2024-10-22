@@ -10,9 +10,7 @@ const Header = () => {
       className="flex items-center justify-center gap-1 bg-green-1 py-2 border-b border-slate-600"
     >
       <Image src={BichoLogo} alt="Logo" width={40} height={40} />
-      <span className="text-white-1 text-lg lg:text-2xl font-bold">
-        BICHO OFFICIAL
-      </span>
+      <span className="text-white-1 text-lg lg:text-2xl font-bold">BICHO</span>
     </Link>
   );
 };

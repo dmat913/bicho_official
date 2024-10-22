@@ -12,6 +12,7 @@ const config: Config = {
         green: {
           1: "#006036",
           2: "#007A4D",
+          3: "#003320",
         },
         white: {
           1: "#FFF8E7",
