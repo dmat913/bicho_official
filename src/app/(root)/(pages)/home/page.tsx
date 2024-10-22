@@ -9,6 +9,7 @@ import DHorizontalLine from "@/components/elements/DHorizontalLine";
 import { useRecoilValue } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
 import VideoList from "@/components/pages/home/VideoList";
+import MatchCard from "@/components/pages/home/MatchCard";
 
 const ImageUpload: React.FC = () => {
   // 画像一覧 data
@@ -37,6 +38,21 @@ const ImageUpload: React.FC = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <div className="py-10 px-4 bg-green-3">
+        <Swiper
+          spaceBetween={1}
+          slidesPerView={1}
+          modules={[Autoplay]}
+          autoplay={{ delay: 3000 }}
+          pagination={{ clickable: true }}
+          loop={true}
+        >
+          <SwiperSlide>
+            <MatchCard />
+          </SwiperSlide>
+        </Swiper>
+      </div>
       <VideoList />
     </div>
   );
