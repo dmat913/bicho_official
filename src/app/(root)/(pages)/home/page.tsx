@@ -40,6 +40,10 @@ const ImageUpload: React.FC = () => {
       </Swiper>
 
       <div className="py-10 px-4 bg-green-3">
+        <div className="flex flex-col items-center mb-4">
+          <span className="text-white-1 font-bold text-2xl">GAME SCHEDULE</span>
+          <span className="text-white-1 font-semibold">試合日程</span>
+        </div>
         <Swiper
           spaceBetween={1}
           slidesPerView={1}
