@@ -1,5 +1,4 @@
 import React from "react";
-import { IoMdPhotos } from "react-icons/io";
 import Link from "next/link";
 import { CiCalendarDate } from "react-icons/ci";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
