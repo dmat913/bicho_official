@@ -11,13 +11,15 @@ import MatchCard from "@/components/pages/home/MatchCard";
 import { useState } from "react";
 import Footer from "@/components/footer/Footer";
 import DPagination from "@/components/elements/DPagination";
+import { scheduleState } from "@/recoil/atom/schedule";
 
 const ImageUpload: React.FC = () => {
   // 表示中slideIndex
   const [currentPage, setCurrentPage] = useState<number>(1);
   // 画像一覧 data
   const images = useRecoilValue(imagesState);
-
+  // 日程一覧
+  const schedules = useRecoilValue(scheduleState);
   return (
     <div>
       <Header />
@@ -51,16 +53,18 @@ const ImageUpload: React.FC = () => {
           <span className="text-white-1 font-semibold">試合日程</span>
         </div>
         <Swiper
-          spaceBetween={1}
+          spaceBetween={20}
           slidesPerView={1}
           modules={[Autoplay]}
           autoplay={{ delay: 3000 }}
           pagination={{ clickable: true }}
           loop={true}
         >
-          <SwiperSlide>
-            <MatchCard />
-          </SwiperSlide>
+          {schedules.map((schedule) => (
+            <SwiperSlide>
+              <MatchCard schedule={schedule} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
       <VideoList />
