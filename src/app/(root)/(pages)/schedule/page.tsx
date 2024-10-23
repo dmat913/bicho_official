@@ -61,6 +61,7 @@ const SchedulePage = () => {
       }
       await loadSchedules();
     } catch (error) {
+      console.log(error);
       alert("試合日程の作成に失敗しました");
     }
   };
