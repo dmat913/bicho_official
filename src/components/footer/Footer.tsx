@@ -37,6 +37,8 @@ const Footer = () => {
           aria-label="Instagram"
           onMouseDown={() => setInstagramActive(true)}
           onMouseUp={() => setInstagramActive(false)}
+          onTouchStart={() => setInstagramActive(true)}
+          onTouchEnd={() => setInstagramActive(false)}
         >
           <FaInstagram
             size={24}
@@ -58,6 +60,8 @@ const Footer = () => {
 active:bg-green-3"
           onMouseDown={() => setYoutubeActive(true)}
           onMouseUp={() => setYoutubeActive(false)}
+          onTouchStart={() => setYoutubeActive(true)}
+          onTouchEnd={() => setYoutubeActive(false)}
           aria-label="YouTube"
         >
           {isYoutubeActive ? (
