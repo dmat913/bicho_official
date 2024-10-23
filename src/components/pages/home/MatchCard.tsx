@@ -52,8 +52,10 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
                 <span>得点者</span>
               </div>
               <div className="flex flex-col pl-4">
-                {schedule.scorer.map((row) => (
-                  <span className="text-sm text-gray-500">{row}</span>
+                {schedule.scorer.map((row, index) => (
+                  <span key={index} className="text-sm text-gray-500">
+                    {row}
+                  </span>
                 ))}
               </div>
             </div>

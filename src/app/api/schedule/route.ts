@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(_: NextRequest) {
+export async function GET() {
   try {
     // データベース接続を確立
     await connectDb();

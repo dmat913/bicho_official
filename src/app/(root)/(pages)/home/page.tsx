@@ -61,7 +61,7 @@ const ImageUpload: React.FC = () => {
           loop={true}
         >
           {schedules.map((schedule) => (
-            <SwiperSlide>
+            <SwiperSlide key={schedule._id}>
               <MatchCard schedule={schedule} />
             </SwiperSlide>
           ))}
