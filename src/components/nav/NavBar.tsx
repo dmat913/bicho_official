@@ -1,29 +1,11 @@
-import Image from "next/image";
 import React from "react";
-import InstagramLogo from "@/public/instagram.webp";
 import { IoMdPhotos } from "react-icons/io";
 import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <nav className="bg-green-1  shadow-lg">
+    <nav className="bg-green-1 shadow-lg">
       <ul className="flex">
-        <li className="flex flex-1 items-center justify-center focus:bg-green-2 active:bg-green-2 transition-colors duration-200 py-2">
-          <a
-            href="https://www.instagram.com/fc_bicho"
-            target="_blank"
-            className="flex flex-col items-center justify-center"
-          >
-            <Image
-              src={InstagramLogo}
-              alt="InstagramLogo"
-              width={24}
-              height={24}
-            />
-            <span className="text-white-1">Instagram</span>
-          </a>
-        </li>
-
         <li className="flex flex-1 items-center justify-center focus:bg-green-2 active:bg-green-2 transition-colors duration-200 py-2">
           <Link
             href="/photoList"

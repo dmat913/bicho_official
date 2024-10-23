@@ -10,16 +10,17 @@ const config: Config = {
     extend: {
       colors: {
         green: {
-          1: "#006036",
+          1: "#003320",
           2: "#007A4D",
-          3: "#003320",
+          3: "#006036",
+          4: "#002911",
         },
         white: {
           1: "#FFF8E7",
           2: "#FFFFFF",
         },
         line: {
-          1: "#1A1A1A",
+          1: "#6b756b",
         },
       },
       animation: {

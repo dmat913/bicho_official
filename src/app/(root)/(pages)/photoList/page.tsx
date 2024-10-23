@@ -7,6 +7,7 @@ import { fetchImages } from "@/utils/image";
 import { useRecoilState } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
 import DLoading from "@/components/elements/DLoading";
+import Footer from "@/components/footer/Footer";
 
 const PhotoList = () => {
   // 画像一覧
@@ -59,7 +60,7 @@ const PhotoList = () => {
     <div>
       <Header />
       <UploadImage />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-3 bg-white-1">
         {images.map((image) => (
           <img
             src={image.data}
@@ -101,6 +102,7 @@ const PhotoList = () => {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };
