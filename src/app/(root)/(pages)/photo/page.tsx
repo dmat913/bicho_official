@@ -2,7 +2,7 @@
 import Header from "@/components/header/Header";
 import React, { useState } from "react";
 import { ImageData } from "@/types/image";
-import UploadImage from "@/components/pages/photoList/UploadImage";
+import UploadImage from "@/components/pages/photo/UploadImage";
 import { fetchImages } from "@/utils/image";
 import { useRecoilState } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
