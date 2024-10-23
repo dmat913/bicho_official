@@ -40,7 +40,7 @@ const ImageUpload: React.FC = () => {
   }, [isLoading, router]);
 
   return (
-    <div className="w-[100vw] h-[100svh] bg-green-1 flex items-center justify-center">
+    <div className="w-[100vw] h-[100svh] bg-green-3 flex items-center justify-center">
       <Image
         src={BichoLogo}
         alt=""

@@ -7,6 +7,7 @@ import {
 } from "react-icons/io";
 import YoutubeLogo from "@/public/youtube.png";
 import Image from "next/image";
+import DPagination from "@/components/elements/DPagination";
 
 const VideoList = () => {
   // Youtube video is List
@@ -31,7 +32,7 @@ const VideoList = () => {
     );
   };
   return (
-    <div className="flex flex-col justify-between w-full px-4 py-10 bg-green-3">
+    <div className="flex flex-col justify-between w-full px-4 py-10 bg-green-1">
       <div className="flex justify-center gap-2 pb-4">
         <Image src={YoutubeLogo} alt="Youtube logo" width={32} height={32} />
         <span className="text-white-1 font-bold text-2xl">YOUTUBE</span>
@@ -60,14 +61,7 @@ const VideoList = () => {
       </div>
       {/* ページインジケーター */}
       <div className="flex justify-center mt-4 space-x-2">
-        {videoIds.map((_, index) => (
-          <div
-            key={index}
-            className={`h-1 w-8 ${
-              currentIndex === index ? "bg-green-2" : "bg-white-1"
-            }`}
-          />
-        ))}
+        <DPagination data={videoIds} currentPage={currentIndex} />
       </div>
     </div>
   );
