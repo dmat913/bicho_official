@@ -1,4 +1,5 @@
 import { ImageData } from "@/types/image";
+import { ScheduleData } from "@/types/schedule";
 
 export const fetchImages = async (): Promise<ImageData[]> => {
   try {
@@ -8,6 +9,21 @@ export const fetchImages = async (): Promise<ImageData[]> => {
     }
 
     const data: ImageData[] = await response.json();
+    return data;
+  } catch (error) {
+    console.error("画像の取得エラー:", error);
+    throw error;
+  }
+};
+
+export const fetchSchedules = async (): Promise<ScheduleData[]> => {
+  try {
+    const response = await fetch("/api/schedule");
+    if (!response.ok) {
+      throw new Error("試合日程の取得に失敗しました");
+    }
+
+    const data: ScheduleData[] = await response.json();
     return data;
   } catch (error) {
     console.error("画像の取得エラー:", error);
