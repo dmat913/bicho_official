@@ -23,8 +23,9 @@ export const fetchSchedules = async (): Promise<ScheduleData[]> => {
       throw new Error("試合日程の取得に失敗しました");
     }
 
-    const data: ScheduleData[] = await response.json();
-    return data;
+    const data: { message: string; schedules: ScheduleData[] } =
+      await response.json();
+    return data.schedules;
   } catch (error) {
     console.error("画像の取得エラー:", error);
     throw error;
