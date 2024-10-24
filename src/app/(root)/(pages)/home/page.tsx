@@ -27,7 +27,7 @@ const ImageUpload: React.FC = () => {
         spaceBetween={1}
         slidesPerView={1}
         modules={[Autoplay, Pagination]}
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 4000 }}
         pagination={{ clickable: true }}
         loop={true}
         onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
