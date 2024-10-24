@@ -71,6 +71,17 @@ const SchedulePage = () => {
     try {
       const data = await fetchSchedules();
       setSchedules(data);
+      setFormData({
+        date: "",
+        title: "",
+        description: "",
+        teamName: "",
+        thumbnail: "",
+        location: "",
+        scorer: [""],
+        result: "",
+        kickoffTime: "",
+      });
     } catch (error) {
       alert("画像の取得に失敗しました:");
       console.log(error);
