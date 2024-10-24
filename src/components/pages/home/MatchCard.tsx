@@ -23,25 +23,25 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
       </div>
       <div className="bg-white-2 p-4 flex flex-1 flex-col items-center justify-center rounded-b-lg">
         <div className="flex items-center justify-center gap-4">
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2 w-[80px]">
             <Image src={BichoLogo} alt="" height={64} width={64} />
-            <span className="text-gray-600">Bicho</span>
+            <span className="text-md text-gray-600">Bicho</span>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center gap-1">
             {schedule.result ? (
-              <span className="text-green-1 font-bold text-3xl">
+              <span className="text-green-1 font-bold text-5xl">
                 {schedule.result}
               </span>
             ) : (
-              <span className="text-3xl">VS</span>
+              <span className="text-4xl text-green-1 font-bold">VS</span>
             )}
             <span className="text-xs text-gray-500">
               {schedule.kickoffTime}/{schedule.location}
             </span>
           </div>
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2 w-[80px]">
             <div className="w-[64px] h-[64px] rounded-full bg-gray-300" />
-            <span className="text-gray-600">{schedule.teamName}</span>
+            <span className="text-gray-600 text-sm">{schedule.teamName}</span>
           </div>
         </div>
         {new Date(schedule.date) < new Date() && schedule.scorer.length > 0 && (

@@ -5,14 +5,30 @@ import { useRecoilValue } from "recoil";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MatchCard from "./MatchCard";
 import DPagination from "@/components/elements/DPagination";
-import { useState } from "react";
-import { Autoplay } from "swiper/modules";
+import { useState, useEffect } from "react";
 
 const GameSchedule = () => {
   // 日程一覧
   const schedules = useRecoilValue(scheduleState);
   // 表示中slideIndex
   const [currentPage, setCurrentPage] = useState<number>(1);
+  // Swiperの再レンダリング用のキー
+  const [swiperKey, setSwiperKey] = useState(0);
+
+  useEffect(() => {
+    // 今日の日付を取得
+    const today = new Date();
+
+    const closestIndex = schedules.findIndex((schedule) => {
+      const scheduleDate = new Date(schedule.date);
+      return scheduleDate >= today;
+    });
+
+    if (closestIndex !== -1) {
+      setCurrentPage(closestIndex + 1);
+      setSwiperKey((prevKey) => prevKey + 1);
+    }
+  }, [schedules]);
 
   return (
     <div className="py-10 px-4 bg-green-4">
@@ -21,11 +37,11 @@ const GameSchedule = () => {
         <span className="text-white-1 font-semibold">試合日程</span>
       </div>
       <Swiper
+        key={swiperKey}
         spaceBetween={20}
         slidesPerView={1}
         onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
-        modules={[Autoplay]}
-        autoplay={{ delay: 5000 }}
+        initialSlide={currentPage - 1}
       >
         {schedules.map((schedule) => (
           <SwiperSlide key={schedule._id}>
