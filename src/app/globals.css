@@ -18,3 +18,70 @@ body {
     @apply bg-green-1 opacity-100;
   }
 }
+
+.bg-noise-green-1 {
+  background: #003320;
+  background-image: url("https://www.transparenttextures.com/patterns/noisy-net.png");
+}
+
+.bg-noise-green-3 {
+  background: #006036;
+  background-image: url("https://www.transparenttextures.com/patterns/noisy-net.png");
+}
+
+.bg-noise-green-4 {
+  background: #002911;
+  background-image: url("https://www.transparenttextures.com/patterns/noisy-net.png");
+}
+
+.bg-diagonal-lines {
+  background: linear-gradient(135deg, #003320 25%, transparent 25%) -50px 0,
+    linear-gradient(225deg, #003320 25%, transparent 25%) -50px 0,
+    linear-gradient(315deg, #003320 25%, transparent 25%),
+    linear-gradient(45deg, #003320 25%, transparent 25%);
+  background-size: 100px 100px;
+  background-color: #002911;
+}
+
+/* globals.css */
+@keyframes particleAnimation {
+  from {
+    transform: translateY(0) translateX(0);
+  }
+  to {
+    transform: translateY(100vh) translateX(100vw);
+  }
+}
+
+/* CSS */
+@keyframes particleAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(100px, -50px);
+  }
+  50% {
+    transform: translate(-100px, 50px);
+  }
+  75% {
+    transform: translate(50px, 100px);
+  }
+  100% {
+    transform: translate(-50px, -100px);
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #d3d3d3;
+  border-radius: 50%;
+  animation: particleAnimation 20s linear infinite;
+}
+
+.particle:nth-child(odd) {
+  background-color: yellow;
+  animation-duration: 25s;
+}

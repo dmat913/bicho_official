@@ -32,7 +32,7 @@ const VideoList = () => {
     );
   };
   return (
-    <div className="flex flex-col justify-between w-full px-4 py-10 bg-green-1">
+    <div className="flex flex-col justify-between w-full px-4 py-10 bg-diagonal-lines">
       <div className="flex justify-center gap-2 pb-4">
         <Image src={YoutubeLogo} alt="Youtube logo" width={32} height={32} />
         <span className="text-white-1 font-bold text-2xl">YOUTUBE</span>

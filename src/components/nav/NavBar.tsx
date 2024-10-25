@@ -5,7 +5,7 @@ import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 
 const NavBar = () => {
   return (
-    <nav className="bg-green-1 shadow-lg">
+    <nav className="bg-noise-green-3 shadow-lg">
       <ul className="flex">
         <li className="flex flex-1 items-center justify-center focus:bg-green-2 active:bg-green-2 transition-colors duration-200 py-2">
           <Link

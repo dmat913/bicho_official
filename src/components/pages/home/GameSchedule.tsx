@@ -31,7 +31,7 @@ const GameSchedule = () => {
   }, [schedules]);
 
   return (
-    <div className="py-10 px-4 bg-green-4">
+    <div className="py-10 px-4 bg-noise-green-4">
       <div className="flex flex-col items-center mb-4">
         <span className="text-white-1 font-bold text-2xl">GAME SCHEDULE</span>
         <span className="text-white-1 font-semibold">試合日程</span>
@@ -49,7 +49,7 @@ const GameSchedule = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="flex gap-1 bg-green-4 justify-center py-3">
+      <div className="flex gap-1 justify-center py-3">
         <DPagination data={schedules} currentPage={currentPage - 1} />
       </div>
     </div>
