@@ -40,7 +40,17 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
             </span>
           </div>
           <div className="flex flex-col items-center gap-2 w-[80px]">
-            <div className="w-[64px] h-[64px] rounded-full bg-gray-300" />
+            {schedule.thumbnail ? (
+              <Image
+                src={schedule.thumbnail}
+                alt=""
+                width={64}
+                height={64}
+                className=""
+              />
+            ) : (
+              <div className="w-[64px] h-[64px] rounded-full bg-gray-300" />
+            )}
             <span className="text-gray-600 text-sm">{schedule.teamName}</span>
           </div>
         </div>
