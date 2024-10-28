@@ -5,8 +5,9 @@ import { useRecoilValue } from "recoil";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MatchCard from "./MatchCard";
 import DPagination from "@/components/elements/DPagination";
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, useMemo } from "react";
 import DMoreButton from "@/components/elements/DMoreButton";
+import { ScheduleData } from "@/types/schedule";
 
 const GameSchedule = () => {
   // 日程一覧
@@ -16,11 +17,16 @@ const GameSchedule = () => {
   // Swiperの再レンダリング用のキー
   const [swiperKey, setSwiperKey] = useState(0);
 
+  // 5つ切り抜き
+  const displaySchedules: ScheduleData[] = useMemo(() => {
+    return schedules.slice(-5);
+  }, [schedules]);
+
   useEffect(() => {
     // 今日の日付を取得
     const today = new Date();
 
-    const closestIndex = schedules.findIndex((schedule) => {
+    const closestIndex = displaySchedules.findIndex((schedule) => {
       const scheduleDate = new Date(schedule.date);
       return scheduleDate >= today;
     });
@@ -29,7 +35,7 @@ const GameSchedule = () => {
       setCurrentPage(closestIndex + 1);
       setSwiperKey((prevKey) => prevKey + 1);
     }
-  }, [schedules]);
+  }, [displaySchedules]);
 
   return (
     <div className="py-10 px-4 bg-noise-green-4">
@@ -44,14 +50,14 @@ const GameSchedule = () => {
         onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
         initialSlide={currentPage - 1}
       >
-        {schedules.slice(-5).map((schedule) => (
+        {displaySchedules.map((schedule) => (
           <SwiperSlide key={schedule._id}>
             <MatchCard schedule={schedule} />
           </SwiperSlide>
         ))}
       </Swiper>
       <div className="flex gap-1 justify-center py-3">
-        <DPagination data={schedules.slice(-5)} currentPage={currentPage - 1} />
+        <DPagination data={displaySchedules} currentPage={currentPage - 1} />
       </div>
       <div className="w-full px-4 mt-4">
         <DMoreButton path="/schedule" />
