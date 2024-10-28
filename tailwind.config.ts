@@ -22,6 +22,9 @@ const config: Config = {
         line: {
           1: "#6b756b",
         },
+        text: {
+          1: "#333333",
+        },
       },
       animation: {
         bounceSlow: "bounceSlow 1s infinite",

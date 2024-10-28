@@ -21,7 +21,7 @@ const ImageUpload: React.FC = () => {
   return (
     <div>
       <Header />
-      <NavBar />
+      {/* <NavBar /> */}
       {/* ページインジケーター */}
       <Swiper
         spaceBetween={1}
