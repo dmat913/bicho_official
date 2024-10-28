@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 interface DPaginationProps<T> {
   data: T[];
   currentPage: number;
@@ -18,4 +20,4 @@ const DPagination = <T,>({ data, currentPage }: DPaginationProps<T>) => {
   );
 };
 
-export default DPagination;
+export default memo(DPagination);

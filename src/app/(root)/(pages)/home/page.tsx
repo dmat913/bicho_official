@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Pagination } from "swiper/modules";
 import Header from "@/components/header/Header";
-import NavBar from "@/components/nav/NavBar";
+// import NavBar from "@/components/nav/NavBar";
 import { useRecoilValue } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
 import VideoList from "@/components/pages/home/VideoList";
@@ -21,7 +21,7 @@ const ImageUpload: React.FC = () => {
   return (
     <div>
       <Header />
-      <NavBar />
+      {/* <NavBar /> */}
       {/* ページインジケーター */}
       <Swiper
         spaceBetween={1}

@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import MatchCard from "./MatchCard";
 import DPagination from "@/components/elements/DPagination";
 import { useState, useEffect } from "react";
+import DMoreButton from "@/components/elements/DMoreButton";
 
 const GameSchedule = () => {
   // 日程一覧
@@ -51,6 +52,9 @@ const GameSchedule = () => {
       </Swiper>
       <div className="flex gap-1 justify-center py-3">
         <DPagination data={schedules} currentPage={currentPage - 1} />
+      </div>
+      <div className="w-full px-4 mt-4">
+        <DMoreButton path="/schedule" />
       </div>
     </div>
   );
