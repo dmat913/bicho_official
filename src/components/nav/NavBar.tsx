@@ -9,7 +9,7 @@ const NavBar = () => {
       <ul className="flex">
         <li className="flex flex-1 items-center justify-center focus:bg-green-2 active:bg-green-2 transition-colors duration-200 py-2">
           <Link
-            href="/schedule"
+            href="/admin/schedule"
             className="flex flex-col items-center justify-center"
           >
             <CiCalendarDate color="white" className="w-[28px] h-[28px]" />
