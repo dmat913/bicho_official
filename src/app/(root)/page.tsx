@@ -41,16 +41,6 @@ const ImageUpload: React.FC = () => {
 
   return (
     <div className="w-[100vw] h-[100svh] bg-noise-green-3 flex items-center justify-center">
-      {[...Array(50)].map((_, i) => (
-        <div
-          key={i}
-          className="particle"
-          style={{
-            top: `${Math.random() * 100}vh`,
-            left: `${Math.random() * 100}vw`,
-          }}
-        />
-      ))}
       <Image
         src={BichoLogo}
         alt=""
