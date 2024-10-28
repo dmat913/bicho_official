@@ -75,10 +75,11 @@ const SchedulePage = () => {
                         <div className="bg-gray-400 text-xs flex items-center justify-center text-white-1 w-[60px]">
                           <span>得点者</span>
                         </div>
-                        <div className="flex flex-col pl-4">
+                        <div className="flex pl-4">
                           {schedule.scorer.map((row, index) => (
                             <span key={index} className="text-sm text-gray-500">
                               {row}
+                              {schedule.scorer.length - 1 !== index && ","}
                             </span>
                           ))}
                         </div>
