@@ -18,7 +18,7 @@ const NavBar = () => {
         </li>
         <li className="flex flex-1 items-center justify-center focus:bg-green-2 active:bg-green-2 transition-colors duration-200 py-2">
           <Link
-            href="/photo"
+            href="/admin/photo"
             className="flex flex-col items-center justify-center"
           >
             <MdOutlineAddPhotoAlternate

@@ -5,7 +5,7 @@ import { scheduleState } from "@/recoil/atom/schedule";
 import React, { useMemo } from "react";
 import { useRecoilValue } from "recoil";
 import BichoLogo from "@/public/bicho-icon.png";
-import { formatDate } from "@/utils/date";
+import { formatDate, getLogo } from "@/utils/date";
 import DHorizontalLine from "@/components/elements/DHorizontalLine";
 import Image from "next/image";
 
@@ -64,9 +64,9 @@ const SchedulePage = () => {
                   {schedule.result !== "" ? schedule.result : "VS"}
                 </span>
                 <div className="flex items-center gap-1 mt-2 w-[100px]">
-                  {schedule.thumbnail ? (
+                  {getLogo(schedule.teamName) !== "" ? (
                     <Image
-                      src={schedule.thumbnail}
+                      src={getLogo(schedule.teamName)}
                       alt=""
                       width={40}
                       height={40}

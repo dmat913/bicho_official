@@ -148,18 +148,6 @@ const SchedulePage = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block font-medium">
-            サムネイルURL (オプション)
-          </label>
-          <input
-            type="text"
-            name="thumbnail"
-            value={formData.thumbnail}
-            onChange={handleChange}
-            className="border p-2 w-full"
-          />
-        </div>
-        <div className="mb-4">
           <label className="block font-medium">場所</label>
           <input
             type="text"
