@@ -14,6 +14,8 @@ import { useRef } from "react";
 const GameSchedule = () => {
   const schedules = useRecoilValue(scheduleState);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  // Swiperの再レンダリング用のキー
+  const [swiperKey, setSwiperKey] = useState(0);
 
   // 画面に入ったかどうかを監視するための参照
   const ref = useRef(null);
@@ -24,6 +26,7 @@ const GameSchedule = () => {
   }, [schedules]);
 
   useEffect(() => {
+    // 今日の日付を取得
     const today = new Date();
 
     const closestIndex = displaySchedules.findIndex((schedule) => {
@@ -33,6 +36,9 @@ const GameSchedule = () => {
 
     if (closestIndex !== -1) {
       setCurrentPage(closestIndex + 1);
+      setSwiperKey((prevKey) => prevKey + 1);
+    } else {
+      setCurrentPage(1); // デフォルトのスライドを1に設定
     }
   }, [displaySchedules]);
 
@@ -63,6 +69,7 @@ const GameSchedule = () => {
         slidesPerView={1}
         onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
         initialSlide={currentPage - 1}
+        key={swiperKey}
       >
         {displaySchedules.map((schedule) => (
           <SwiperSlide key={schedule._id}>
