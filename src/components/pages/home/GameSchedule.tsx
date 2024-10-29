@@ -8,22 +8,22 @@ import DPagination from "@/components/elements/DPagination";
 import { useState, useEffect, memo, useMemo } from "react";
 import DMoreButton from "@/components/elements/DMoreButton";
 import { ScheduleData } from "@/types/schedule";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const GameSchedule = () => {
-  // 日程一覧
   const schedules = useRecoilValue(scheduleState);
-  // 表示中slideIndex
   const [currentPage, setCurrentPage] = useState<number>(1);
-  // Swiperの再レンダリング用のキー
-  const [swiperKey, setSwiperKey] = useState(0);
 
-  // 5つ切り抜き
+  // 画面に入ったかどうかを監視するための参照
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   const displaySchedules: ScheduleData[] = useMemo(() => {
     return schedules.slice(-5);
   }, [schedules]);
 
   useEffect(() => {
-    // 今日の日付を取得
     const today = new Date();
 
     const closestIndex = displaySchedules.findIndex((schedule) => {
@@ -33,18 +33,32 @@ const GameSchedule = () => {
 
     if (closestIndex !== -1) {
       setCurrentPage(closestIndex + 1);
-      setSwiperKey((prevKey) => prevKey + 1);
     }
   }, [displaySchedules]);
 
   return (
     <div className="py-10 px-4 bg-noise-green-4">
       <div className="flex flex-col items-center mb-4">
-        <span className="text-white-1 font-bold text-2xl">GAME SCHEDULE</span>
-        <span className="text-white-1 font-semibold">試合日程</span>
+        {/* アニメーションを適用する要素 */}
+        <motion.span
+          ref={ref}
+          className="text-white-1 font-bold text-2xl"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          GAME SCHEDULE
+        </motion.span>
+        <motion.span
+          className="text-white-1 font-semibold"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          試合日程
+        </motion.span>
       </div>
       <Swiper
-        key={swiperKey}
         spaceBetween={20}
         slidesPerView={1}
         onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
