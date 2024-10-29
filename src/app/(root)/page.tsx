@@ -15,8 +15,11 @@ import GameSchedule from "@/components/pages/home/GameSchedule";
 import HomeLoading from "@/components/pages/home/HomeLoading";
 
 const HomePage: React.FC = () => {
+  // 表示中の画像index
   const [currentPage, setCurrentPage] = useState<number>(1);
+  // 画像一覧
   const images = useRecoilValue(imagesState);
+  // loading表示
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
