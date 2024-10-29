@@ -12,6 +12,7 @@ const layout = ({ children }: { children: ReactNode }) => {
     if (images.length === 0) {
       router.push("/");
     }
+    // eslint-disable-next-line
   }, [images]);
   return <div className="w-full h-full">{images.length > 0 && children}</div>;
 };

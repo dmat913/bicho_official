@@ -1,7 +1,7 @@
 "use client";
 import BichoLogo from "@/public/bicho-icon.png";
 import Image from "next/image";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { fetchImages } from "@/utils/image";
 import { useRecoilState } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
@@ -69,4 +69,4 @@ const HomeLoading = ({
   );
 };
 
-export default HomeLoading;
+export default memo(HomeLoading);
