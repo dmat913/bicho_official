@@ -1,6 +1,7 @@
 import DHorizontalLine from "@/components/elements/DHorizontalLine";
 import BichoLogo from "@/public/bicho-icon.png";
 import { ScheduleData } from "@/types/schedule";
+import { getLogo } from "@/utils/date";
 import Image from "next/image";
 
 const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
@@ -40,9 +41,9 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
             </span>
           </div>
           <div className="flex flex-col items-center gap-2 w-[80px]">
-            {schedule.thumbnail ? (
+            {getLogo(schedule.teamName) !== "" ? (
               <Image
-                src={schedule.thumbnail}
+                src={getLogo(schedule.teamName)}
                 alt=""
                 width={64}
                 height={64}

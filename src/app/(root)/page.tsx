@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -13,14 +13,58 @@ import Footer from "@/components/footer/Footer";
 import DPagination from "@/components/elements/DPagination";
 import GameSchedule from "@/components/pages/home/GameSchedule";
 import HomeLoading from "@/components/pages/home/HomeLoading";
+import { fetchImages } from "@/utils/image";
+import { scheduleState } from "@/recoil/atom/schedule";
 
 const HomePage: React.FC = () => {
   // 表示中の画像index
   const [currentPage, setCurrentPage] = useState<number>(1);
   // 画像一覧
-  const images = useRecoilValue(imagesState);
+  const [images, setImages] = useRecoilState(imagesState);
+  // 試合日程一覧
+  const [schedules, setSchedules] = useRecoilState(scheduleState);
   // loading表示
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  // API呼び出し
+  useEffect(() => {
+    const loadImages = async () => {
+      try {
+        const data = await fetchImages();
+        setImages(data);
+        setIsLoading(false);
+      } catch (error) {
+        alert("画像取得中にエラーが発生しました:");
+        console.log(error);
+        setIsLoading(false);
+      }
+    };
+    if (images.length === 0) {
+      loadImages();
+    } else {
+      setIsLoading(false);
+    }
+    // eslint-disable-next-line
+  }, [setImages, setIsLoading]);
+
+  useEffect(() => {
+    const fetchSchedules = async () => {
+      try {
+        const response = await fetch("/api/schedule", { method: "GET" });
+
+        if (!response.ok) throw new Error("データ取得に失敗しました");
+
+        const data = await response.json();
+        setSchedules(data.schedules);
+      } catch (err) {
+        console.log("日程取得エラー:", err);
+      }
+    };
+    if (schedules.length === 0) {
+      fetchSchedules();
+    }
+    // eslint-disable-next-line
+  }, [setSchedules]);
 
   return (
     <div
@@ -71,7 +115,7 @@ const HomePage: React.FC = () => {
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.8 }}
           >
-            <HomeLoading setIsLoading={setIsLoading} />
+            <HomeLoading />
           </motion.div>
         )}
       </AnimatePresence>
