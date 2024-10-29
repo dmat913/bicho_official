@@ -3,7 +3,7 @@ import BichoLogo from "@/public/bicho-icon.png";
 import Image from "next/image";
 import { useEffect } from "react";
 import { fetchImages } from "@/utils/image";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
 import { scheduleState } from "@/recoil/atom/schedule";
 
@@ -12,8 +12,8 @@ const HomeLoading = ({
 }: {
   setIsLoading: (isLoading: boolean) => void;
 }) => {
-  const setImages = useSetRecoilState(imagesState);
-  const setSchedules = useSetRecoilState(scheduleState);
+  const [images, setImages] = useRecoilState(imagesState);
+  const [schedules, setSchedules] = useRecoilState(scheduleState);
 
   // API呼び出し
   useEffect(() => {
@@ -28,7 +28,12 @@ const HomeLoading = ({
         setIsLoading(false);
       }
     };
-    loadImages();
+    if (images.length === 0) {
+      loadImages();
+    } else {
+      setIsLoading(false);
+    }
+    // eslint-disable-next-line
   }, [setImages, setIsLoading]);
 
   useEffect(() => {
@@ -44,7 +49,10 @@ const HomeLoading = ({
         console.log("日程取得エラー:", err);
       }
     };
-    fetchSchedules();
+    if (schedules.length === 0) {
+      fetchSchedules();
+    }
+    // eslint-disable-next-line
   }, [setSchedules]);
 
   return (
