@@ -87,10 +87,14 @@ const HomePage: React.FC = () => {
         >
           {images.map((image) => (
             <SwiperSlide key={image._id} className="md:h-[200px]">
-              <img
+              <motion.img
                 src={image.data}
                 alt="Top Image"
                 className="lg:h-[500px] md:h-[400px] h-[250px] object-cover w-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
               />
             </SwiperSlide>
           ))}
