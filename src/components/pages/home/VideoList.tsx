@@ -41,7 +41,7 @@ const VideoList = () => {
         className="flex justify-center gap-2 pb-4"
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
       >
         <Image src={YoutubeLogo} alt="Youtube logo" width={32} height={32} />
         <span className="text-white-1 font-bold text-2xl">YOUTUBE</span>
