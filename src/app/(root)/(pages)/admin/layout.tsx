@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import Image from "next/image";
 import BichoLogo from "@/public/bicho-icon.png";
 
-const layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
   // 入力password
   const [password, setPassword] = useState<string>("");
   // 認証flag
@@ -51,4 +51,4 @@ const layout = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default layout;
+export default Layout;
