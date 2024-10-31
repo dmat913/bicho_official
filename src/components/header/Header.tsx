@@ -78,7 +78,13 @@ const Header = () => {
                   href="/schedule"
                   className="block w-full text-center p-4 bg-green-2 rounded-lg active:bg-slate-600 transition duration-200"
                 >
-                  試合日程一覧
+                  試合日程
+                </Link>
+                <Link
+                  href="/profile"
+                  className="block w-full text-center p-4 bg-green-2 rounded-lg active:bg-slate-600 transition duration-200"
+                >
+                  選手
                 </Link>
                 <Link
                   href="/admin/photo"

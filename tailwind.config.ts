@@ -41,6 +41,14 @@ const config: Config = {
           },
         },
       },
+      backgroundImage: {
+        "custom-gradient":
+          "linear-gradient(135deg, rgba(0, 51, 32, 1) 0%, rgba(0, 122, 77, 1) 50%, rgba(0, 51, 32, 1) 50%, rgba(0, 51, 32, 1) 100%)",
+      },
+      width: {
+        "profile-width-default": "calc(50% - 8px)",
+        "lg-profile-width": "calc(33% - 8px)",
+      },
     },
   },
   plugins: [],
