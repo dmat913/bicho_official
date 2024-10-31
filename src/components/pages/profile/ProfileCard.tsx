@@ -20,7 +20,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
       <span className="absolute top-2 left-2 font-bold text-3xl">
         {profile.number}
       </span>
-      <Image src={profile.img} alt="" className="h-[45svh] object-cover" fill />
+      <Image src={profile.img} alt="" className="h-[45svh] object-cover" />
       <div className="absolute bottom-0 left-0 pl-2 pb-2 flex flex-col font-bold w-full">
         <span className="text-md">{profile.name}</span>
         <span className="text-sm">{profile.englishName}</span>
