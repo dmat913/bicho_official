@@ -19,6 +19,10 @@ const config: Config = {
           1: "#FFF8E7",
           2: "#FFFFFF",
         },
+        black: {
+          1: "#333333",
+          2: "#4A4A4A",
+        },
         line: {
           1: "#6b756b",
         },

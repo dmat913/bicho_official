@@ -15,6 +15,7 @@ import GameSchedule from "@/components/pages/home/GameSchedule";
 import HomeLoading from "@/components/pages/home/HomeLoading";
 import { fetchImages } from "@/utils/image";
 import { scheduleState } from "@/recoil/atom/schedule";
+import LeagueTable from "@/components/pages/home/LeagueTable";
 
 const HomePage: React.FC = () => {
   // 表示中の画像index
@@ -99,11 +100,13 @@ const HomePage: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="flex gap-1 bg-noise-green-1 justify-center py-3">
+        <div className="flex gap-1 bg-noise-green-1 justify-center py-3 border-b-[1px] border-line-1">
           <DPagination data={images} currentPage={currentPage - 1} />
         </div>
         {/** 試合日程 */}
         <GameSchedule />
+        {/* リーグ表 */}
+        <LeagueTable />
         {/** Youtube */}
         <VideoList />
         <Footer />

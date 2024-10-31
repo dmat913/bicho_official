@@ -43,7 +43,7 @@ const GameSchedule = () => {
   }, [displaySchedules]);
 
   return (
-    <div className="py-10 px-4 bg-noise-green-4">
+    <div className="py-10 px-4 bg-noise-green-1 border-b-[1px] border-line-1">
       <div className="flex flex-col items-center mb-4">
         {/* アニメーションを適用する要素 */}
         <motion.span
