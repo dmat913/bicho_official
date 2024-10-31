@@ -28,13 +28,13 @@ const LeagueTable = () => {
       {/* リーグ戦結果の表 */}
       <motion.table
         ref={tableRef}
-        className="w-full mt-6 bg-white-1 rounded-sm overflow-hidden"
+        className="w-full mt-6 bg-white-2 rounded-sm overflow-hidden"
         initial={{ opacity: 0, y: 50 }}
         animate={tableInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <thead>
-          <tr className="bg-gray-300 uppercase tracking-wider text-black-1 text-sm">
+          <tr className="bg-gray-200 uppercase tracking-wider text-black-1 text-sm border-b-[1px]">
             <th className="p-2">順位</th>
             <th className="p-2">チーム名</th>
             <th className="p-2">勝ち点</th>
@@ -50,7 +50,7 @@ const LeagueTable = () => {
           {league2024.map((row, index) => (
             <motion.tr
               key={index}
-              className={`border-b border-white-1 text-center text-sm ${
+              className={`border-b-[1px] border-gray-200 text-center text-sm ${
                 row.team === "FC.BICHO" && "text-white-1 bg-green-2"
               }`}
               initial={{ opacity: 0, y: 20 }}
