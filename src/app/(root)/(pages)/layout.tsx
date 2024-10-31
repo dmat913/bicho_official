@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (images.length === 0) {
-      router.push("/");
+      // router.push("/");
     }
     // eslint-disable-next-line
   }, [images]);
