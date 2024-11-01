@@ -1,5 +1,6 @@
 import { Profile } from "@/types/profile";
 import UnknownImage from "@/public/profile/unknown.png";
+import DAIKIYAMAGUCHIIMG from "@/public/profile/daikiyamaguchi.png";
 
 // GKデータ
 export const goalkeepers: Profile[] = [
@@ -111,7 +112,7 @@ export const midfielders: Profile[] = [
     number: "17",
     name: "山口大貴",
     englishName: "DAIKI YAMAGUCHI",
-    img: UnknownImage,
+    img: DAIKIYAMAGUCHIIMG,
   },
   {
     number: "19",
