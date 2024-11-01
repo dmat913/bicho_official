@@ -28,21 +28,25 @@ const LeagueTable = () => {
       {/* リーグ戦結果の表 */}
       <motion.table
         ref={tableRef}
-        className="w-full mt-6 bg-white-2 rounded-sm overflow-hidden"
+        className="w-full mt-6 bg-white-2 rounded-sm overflow-hidden border border-gray-300"
         initial={{ opacity: 0, y: 50 }}
         animate={tableInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <thead>
-          <tr className="bg-gray-200 uppercase tracking-wider text-black-1 text-sm border-b-[1px]">
-            <th className="p-2">順位</th>
-            <th className="p-2">チーム名</th>
-            <th className="p-2">勝ち点</th>
-            <th className="p-2">勝</th>
-            <th className="p-2">負</th>
-            <th className="p-2">分</th>
-            <th className="p-2 hidden md:table-cell">得点</th>
-            <th className="p-2 hidden md:table-cell">失点</th>
+          <tr className="bg-gray-200 uppercase tracking-wider text-black-1 text-sm border-b border-gray-300">
+            <th className="p-2 border-r border-gray-300">順位</th>
+            <th className="p-2 border-r border-gray-300">チーム名</th>
+            <th className="p-2 border-r border-gray-300">勝ち点</th>
+            <th className="p-2 border-r border-gray-300">勝</th>
+            <th className="p-2 border-r border-gray-300">負</th>
+            <th className="p-2 border-r border-gray-300">分</th>
+            <th className="p-2 hidden md:table-cell border-r border-gray-300">
+              得点
+            </th>
+            <th className="p-2 hidden md:table-cell border-r border-gray-300">
+              失点
+            </th>
             <th className="p-2 hidden md:table-cell">得失点</th>
           </tr>
         </thead>
@@ -50,21 +54,25 @@ const LeagueTable = () => {
           {league2024.map((row, index) => (
             <motion.tr
               key={index}
-              className={`border-b-[1px] border-gray-200 text-center text-sm ${
-                row.team === "FC.BICHO" && "text-white-1 bg-green-2"
+              className={`border-b border-gray-300 text-center text-sm ${
+                row.team === "FC.BICHO" ? "text-white-1 bg-green-2" : ""
               }`}
               initial={{ opacity: 0, y: 20 }}
               animate={tableInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.3, delay: 0.1 * index }}
             >
-              <td className="p-2">{index + 1}</td>
-              <td className="p-2">{row.team}</td>
-              <td className="p-2">{row.points}</td>
-              <td className="p-2">{row.wins}</td>
-              <td className="p-2">{row.losses}</td>
-              <td className="p-2">{row.draws}</td>
-              <td className="p-2 hidden md:table-cell">{row.goalsFor}</td>
-              <td className="p-2 hidden md:table-cell">{row.goalsAgainst}</td>
+              <td className="p-2 border-r border-gray-300">{index + 1}</td>
+              <td className="p-2 border-r border-gray-300">{row.team}</td>
+              <td className="p-2 border-r border-gray-300">{row.points}</td>
+              <td className="p-2 border-r border-gray-300">{row.wins}</td>
+              <td className="p-2 border-r border-gray-300">{row.losses}</td>
+              <td className="p-2 border-r border-gray-300">{row.draws}</td>
+              <td className="p-2 hidden md:table-cell border-r border-gray-300">
+                {row.goalsFor}
+              </td>
+              <td className="p-2 hidden md:table-cell border-r border-gray-300">
+                {row.goalsAgainst}
+              </td>
               <td className="p-2 hidden md:table-cell">{row.goalDifference}</td>
             </motion.tr>
           ))}
