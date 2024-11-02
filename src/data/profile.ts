@@ -1,6 +1,9 @@
 import { Profile } from "@/types/profile";
 import UnknownImage from "@/public/profile/unknown.png";
-import DAIKIYAMAGUCHIIMG from "@/public/profile/daikiyamaguchi.png";
+import DAIKIYAMAGUCHI_IMG from "@/public/profile/daikiyamaguchi.png";
+import YUUKITANI_IMG from "@/public/profile/YUUKITANI.png";
+import RIKUOONO_IMG from "@/public/profile/RIKUOONO.png";
+import HIKARUIWASE_IMG from "@/public/profile/HIKARUIWASE.png";
 
 // GKデータ
 export const goalkeepers: Profile[] = [
@@ -66,7 +69,7 @@ export const defenders: Profile[] = [
     number: "26",
     name: "大野莉久",
     englishName: "RIKU OONO",
-    img: UnknownImage,
+    img: RIKUOONO_IMG,
   },
   {
     number: "33",
@@ -100,7 +103,7 @@ export const midfielders: Profile[] = [
     number: "15",
     name: "谷侑樹",
     englishName: "YUUKI TANI",
-    img: UnknownImage,
+    img: YUUKITANI_IMG,
   },
   {
     number: "16",
@@ -112,13 +115,13 @@ export const midfielders: Profile[] = [
     number: "17",
     name: "山口大貴",
     englishName: "DAIKI YAMAGUCHI",
-    img: DAIKIYAMAGUCHIIMG,
+    img: DAIKIYAMAGUCHI_IMG,
   },
   {
     number: "19",
     name: "岩瀬輝",
     englishName: "HIKARU IWASE",
-    img: UnknownImage,
+    img: HIKARUIWASE_IMG,
   },
   {
     number: "25",
