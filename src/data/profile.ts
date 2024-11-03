@@ -155,13 +155,13 @@ export const forwards: Profile[] = [
     number: "11",
     name: "榎本歩夢",
     englishName: "AYUMU ENOMOTO",
-    img: UnknownImage,
+    img: AYUMUENOMOTO_IMG,
   },
   {
     number: "12",
     name: "多田未来",
     englishName: "TADA MIKURU",
-    img: AYUMUENOMOTO_IMG,
+    img: UnknownImage,
   },
   {
     number: "18",
