@@ -1,9 +1,15 @@
 import { Profile } from "@/types/profile";
 import UnknownImage from "@/public/profile/unknown.png";
-import DAIKIYAMAGUCHI_IMG from "@/public/profile/daikiyamaguchi.png";
+import DAIKIYAMAGUCHI_IMG from "@/public/profile/DAIKIYAMAGUCHI.png";
 import YUUKITANI_IMG from "@/public/profile/YUUKITANI.png";
 import RIKUOONO_IMG from "@/public/profile/RIKUOONO.png";
 import HIKARUIWASE_IMG from "@/public/profile/HIKARUIWASE.png";
+import YUUTOKAGAWA_IMG from "@/public/profile/YUUTOKAGAWA.png";
+import RYOUISHIKAWA_IMG from "@/public/profile/RYOUISHIKAWA.png";
+import YUDAINAKATA_IMG from "@/public/profile/YUDAINAKATA.png";
+import SATHUKITAKISHIMA_IMG from "@/public/profile/SATHUKITAKISHIMA.png";
+import SATOSHITAKANAYAGI_IMG from "@/public/profile/SATOSHITAKAYANAGI.png";
+import AYUMUENOMOTO_IMG from "@/public/profile/AYUMUENOMOTO.png";
 
 // GKデータ
 export const goalkeepers: Profile[] = [
@@ -23,7 +29,7 @@ export const goalkeepers: Profile[] = [
     number: "28",
     name: "滝島皐",
     englishName: "SATHUKI TAKISHIMA",
-    img: UnknownImage,
+    img: SATHUKITAKISHIMA_IMG,
   },
   {
     number: "30",
@@ -45,7 +51,7 @@ export const defenders: Profile[] = [
     number: "4",
     name: "賀川優斗",
     englishName: "YUUTO KAGAWA",
-    img: UnknownImage,
+    img: YUUTOKAGAWA_IMG,
   },
   {
     number: "5",
@@ -63,7 +69,7 @@ export const defenders: Profile[] = [
     number: "22",
     name: "高柳智",
     englishName: "SATOSHI TAKAYANAGI",
-    img: UnknownImage,
+    img: SATOSHITAKANAYAGI_IMG,
   },
   {
     number: "26",
@@ -85,7 +91,7 @@ export const midfielders: Profile[] = [
     number: "8",
     name: "中田湧大",
     englishName: "YUUDAI NAKATA",
-    img: UnknownImage,
+    img: YUDAINAKATA_IMG,
   },
   {
     number: "9",
@@ -155,13 +161,13 @@ export const forwards: Profile[] = [
     number: "12",
     name: "多田未来",
     englishName: "TADA MIKURU",
-    img: UnknownImage,
+    img: AYUMUENOMOTO_IMG,
   },
   {
     number: "18",
     name: "石川諒",
     englishName: "RYOU ISHIKAWA",
-    img: UnknownImage,
+    img: RYOUISHIKAWA_IMG,
   },
   {
     number: "20",
