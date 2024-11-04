@@ -34,6 +34,11 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/noisy-net.png");
 }
 
+.bg-noise-white-1 {
+  background: #fff8e7;
+  background-image: url("https://www.transparenttextures.com/patterns/noisy-net.png");
+}
+
 .bg-diagonal-lines {
   background: linear-gradient(135deg, #003320 25%, transparent 25%) -50px 0,
     linear-gradient(225deg, #003320 25%, transparent 25%) -50px 0,
