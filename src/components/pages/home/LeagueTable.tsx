@@ -55,7 +55,7 @@ const LeagueTable = () => {
             <motion.tr
               key={index}
               className={`border-b border-gray-300 text-center text-sm ${
-                row.team === "FC.BICHO" ? "text-white-1 bg-green-2" : ""
+                row.team === "FC.BICHO" ? "text-white-1 bg-green-3" : ""
               }`}
               initial={{ opacity: 0, y: 20 }}
               animate={tableInView ? { opacity: 1, y: 0 } : {}}
