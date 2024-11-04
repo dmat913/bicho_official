@@ -73,7 +73,7 @@ const Tournament = () => {
               key={team.id}
               className={`border h-10 w-full flex items-center justify-center gap-1 rounded-md ${
                 team.id === "3"
-                  ? "bg-green-2 border-green-2"
+                  ? "bg-green-3 border-green-2"
                   : "border-gray-300"
               }`}
             >
