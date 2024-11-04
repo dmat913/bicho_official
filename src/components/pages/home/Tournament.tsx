@@ -328,8 +328,12 @@ const Tournament = () => {
             <div className="relative flex flex-1">
               <motion.span
                 initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 4 }}
+                animate={
+                  tournamentInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: -10 }
+                }
+                transition={{ duration: 0.5, delay: tournamentInView ? 3 : 0 }}
                 className="absolute right-0 top-[-16px] text-gray-300"
               >
                 0
@@ -354,8 +358,12 @@ const Tournament = () => {
             <div className="relative flex flex-1">
               <motion.span
                 initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 4 }}
+                animate={
+                  tournamentInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: 10 }
+                }
+                transition={{ duration: 0.5, delay: tournamentInView ? 3 : 0 }}
                 className="absolute right-0 bottom-[-16px] text-red-600"
               >
                 1
@@ -384,8 +392,12 @@ const Tournament = () => {
             <div className="relative flex flex-1">
               <motion.span
                 initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 4 }}
+                animate={
+                  tournamentInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: -10 }
+                }
+                transition={{ duration: 0.5, delay: tournamentInView ? 3 : 0 }}
                 className="absolute right-0 top-[-16px] text-gray-300"
               >
                 0PK4
@@ -410,8 +422,12 @@ const Tournament = () => {
             <div className="relative flex flex-1">
               <motion.span
                 initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 4 }}
+                animate={
+                  tournamentInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: 10 }
+                }
+                transition={{ duration: 0.5, delay: tournamentInView ? 3 : 0 }}
                 className="absolute right-0 bottom-[-16px] text-red-600"
               >
                 0PK5
