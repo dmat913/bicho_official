@@ -13,7 +13,7 @@ import Footer from "@/components/footer/Footer";
 import DPagination from "@/components/elements/DPagination";
 import GameSchedule from "@/components/pages/home/GameSchedule";
 import HomeLoading from "@/components/pages/home/HomeLoading";
-import { fetchImages } from "@/utils/image";
+import { fetchFirstImage, fetchImages } from "@/utils/image";
 import { scheduleState } from "@/recoil/atom/schedule";
 import LeagueTable from "@/components/pages/home/LeagueTable";
 import Tournament from "@/components/pages/home/Tournament";
@@ -32,9 +32,11 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const loadImages = async () => {
       try {
+        const firstData = await fetchFirstImage();
+        setImages(firstData);
+        setIsLoading(false);
         const data = await fetchImages();
         setImages(data);
-        setIsLoading(false);
       } catch (error) {
         alert("画像取得中にエラーが発生しました:");
         console.log(error);

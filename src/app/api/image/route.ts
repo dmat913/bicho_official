@@ -57,7 +57,7 @@ export async function GET() {
   try {
     // DB接続
     await connectDb();
-    const images = await ImageModel.find().sort({ createdAt: -1 }); // 新しい順に取得
+    const images = await ImageModel.find().sort({ createdAt: -1 });
     return NextResponse.json(images);
   } catch (error) {
     console.error("画像取得エラー:", error);
