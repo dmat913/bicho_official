@@ -16,6 +16,7 @@ import HomeLoading from "@/components/pages/home/HomeLoading";
 import { fetchImages } from "@/utils/image";
 import { scheduleState } from "@/recoil/atom/schedule";
 import LeagueTable from "@/components/pages/home/LeagueTable";
+import Tournament from "@/components/pages/home/Tournament";
 
 const HomePage: React.FC = () => {
   // 表示中の画像index
@@ -107,6 +108,8 @@ const HomePage: React.FC = () => {
         <GameSchedule />
         {/* リーグ表 */}
         <LeagueTable />
+        {/* トーナメント表 */}
+        <Tournament />
         {/** Youtube */}
         <VideoList />
         <Footer />
