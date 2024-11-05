@@ -31,6 +31,7 @@ const config: Config = {
         },
         gray: {
           1: "#e5e7eb",
+          2: "#6B7280",
         },
       },
       animation: {

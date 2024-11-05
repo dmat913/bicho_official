@@ -72,9 +72,7 @@ const Tournament = () => {
             <motion.div
               key={team.id}
               className={`border h-10 w-full flex items-center justify-center gap-1 rounded-md z-10 ${
-                team.id === "3"
-                  ? `bg-green-3 border-green-2`
-                  : "border-gray-300"
+                team.id === "3" ? `bg-green-3 border-green-2` : "border-gray-2"
               }`}
               initial={{ opacity: 0, x: -50 }}
               animate={tournamentInView ? { opacity: 1, x: 0 } : {}}
@@ -95,7 +93,7 @@ const Tournament = () => {
         </div>
         <div className="flex flex-col flex-1 justify-around text-xs">
           <div className="h-11 w-full flex flex-col relative">
-            <div className="relative flex flex-1">
+            <div className="relative flex flex-1 border-r-gray-2">
               <motion.span
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -111,7 +109,6 @@ const Tournament = () => {
                 transition={{ duration: 1 }}
                 className="absolute top-0 left-0 h-full border-t-[3px] border-red-600"
               />
-
               {/* 右側のボーダーアニメーション */}
               <motion.div
                 initial={{ height: "0%" }}
@@ -127,7 +124,7 @@ const Tournament = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 2 }}
-                className="absolute right-0 bottom-[-16px] text-gray-300"
+                className="absolute right-0 bottom-[-16px] text-gray-2"
               >
                 1PK2
               </motion.span>
@@ -136,7 +133,7 @@ const Tournament = () => {
                 initial={{ width: "0%" }}
                 animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
                 transition={{ duration: 1 }}
-                className="absolute top-0 left-0 h-full border-b"
+                className="absolute top-0 left-0 h-full border-b  border-gray-2"
               />
               {/* 右側のボーダーアニメーション - 下から上に表示 */}
               <motion.div
@@ -147,7 +144,7 @@ const Tournament = () => {
                     : { height: "0%", bottom: "0" }
                 }
                 transition={{ duration: 1, delay: 1 }}
-                className="absolute right-0 w-[3px] border-r"
+                className="absolute right-0 w-[3px] border-r border-gray-2"
               />
             </div>
           </div>
@@ -184,7 +181,7 @@ const Tournament = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 2 }}
-                className="absolute right-0 bottom-[-16px] text-gray-300"
+                className="absolute right-0 bottom-[-16px] text-gray-2"
               >
                 1PK1
               </motion.span>
@@ -193,7 +190,7 @@ const Tournament = () => {
                 initial={{ width: "0%" }}
                 animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
                 transition={{ duration: 1 }}
-                className="absolute top-0 left-0 h-full border-b"
+                className="absolute top-0 left-0 h-full border-b border-gray-2"
               />
               {/* 右側のボーダーアニメーション - 下から上に表示 */}
               <motion.div
@@ -204,7 +201,7 @@ const Tournament = () => {
                     : { height: "0%", bottom: "0" }
                 }
                 transition={{ duration: 1, delay: 1 }}
-                className="absolute right-0 w-[3px] border-r"
+                className="absolute right-0 w-[3px] border-r border-gray-2"
               />
             </div>
           </div>
@@ -214,7 +211,7 @@ const Tournament = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 2 }}
-                className="absolute right-0 top-[-16px] text-gray-300"
+                className="absolute right-0 top-[-16px] text-gray-2"
               >
                 0
               </motion.span>
@@ -223,7 +220,7 @@ const Tournament = () => {
                 initial={{ width: "0%" }}
                 animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
                 transition={{ duration: 1 }}
-                className="absolute top-0 left-0 h-full border-t"
+                className="absolute top-0 left-0 h-full border-t border-gray-2"
               />
 
               {/* 右側のボーダーアニメーション */}
@@ -233,7 +230,7 @@ const Tournament = () => {
                   tournamentInView ? { height: "100%" } : { height: "0%" }
                 }
                 transition={{ duration: 1, delay: 1 }}
-                className="absolute top-0 right-0 w-[3px] border-r"
+                className="absolute top-0 right-0 w-[3px] border-r border-gray-2"
               />
             </div>
             <div className="relative flex flex-1">
@@ -298,7 +295,7 @@ const Tournament = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 2 }}
-                className="absolute right-0 bottom-[-16px] text-gray-300"
+                className="absolute right-0 bottom-[-16px] text-gray-2"
               >
                 0
               </motion.span>
@@ -307,7 +304,7 @@ const Tournament = () => {
                 initial={{ width: "0%" }}
                 animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
                 transition={{ duration: 1 }}
-                className="absolute top-0 left-0 h-full border-b"
+                className="absolute top-0 left-0 h-full border-b border-gray-2"
               />
               {/* 右側のボーダーアニメーション - 下から上に表示 */}
               <motion.div
@@ -318,7 +315,7 @@ const Tournament = () => {
                     : { height: "0%", bottom: "0" }
                 }
                 transition={{ duration: 1, delay: 1 }}
-                className="absolute right-0 w-[3px] border-r"
+                className="absolute right-0 w-[3px] border-r border-gray-2"
               />
             </div>
           </div>
@@ -334,7 +331,7 @@ const Tournament = () => {
                     : { opacity: 0, y: -10 }
                 }
                 transition={{ duration: 0.5, delay: tournamentInView ? 3 : 0 }}
-                className="absolute right-0 top-[-16px] text-gray-300"
+                className="absolute right-0 top-[-16px] text-gray-2"
               >
                 0
               </motion.span>
@@ -352,7 +349,7 @@ const Tournament = () => {
                   tournamentInView ? { height: "100%" } : { height: "0%" }
                 }
                 transition={{ duration: 1, delay: 3 }}
-                className="absolute top-0 right-0 w-[3px] border-r"
+                className="absolute top-0 right-0 w-[3px] border-r border-gray-2"
               />
             </div>
             <div className="relative flex flex-1">
@@ -398,7 +395,7 @@ const Tournament = () => {
                     : { opacity: 0, y: -10 }
                 }
                 transition={{ duration: 0.5, delay: tournamentInView ? 3 : 0 }}
-                className="absolute right-0 top-[-16px] text-gray-300"
+                className="absolute right-0 top-[-16px] text-gray-2 "
               >
                 0PK4
               </motion.span>
@@ -416,7 +413,7 @@ const Tournament = () => {
                   tournamentInView ? { height: "100%" } : { height: "0%" }
                 }
                 transition={{ duration: 1, delay: 3 }}
-                className="absolute top-0 right-0 w-[3px] border-r"
+                className="absolute top-0 right-0 w-[3px] border-r border-gray-2"
               />
             </div>
             <div className="relative flex flex-1">
@@ -470,7 +467,7 @@ const Tournament = () => {
                   tournamentInView ? { height: "100%" } : { height: "0%" }
                 }
                 transition={{ duration: 1, delay: 5 }}
-                className="absolute top-0 right-0 w-[3px] border-r"
+                className="absolute top-0 right-0 w-[3px] border-r border-gray-2"
               />
             </div>
             <div className="flex flex-1 relative">
@@ -489,7 +486,7 @@ const Tournament = () => {
                     : { height: "0%", bottom: "0" }
                 }
                 transition={{ duration: 1, delay: 5 }}
-                className="absolute right-0 w-[3px] border-r"
+                className="absolute right-0 w-[3px] border-r border-gray-2"
               />
             </div>
           </div>
@@ -499,7 +496,7 @@ const Tournament = () => {
             initial={{ width: "0%" }}
             animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
             transition={{ duration: 1, delay: 6 }}
-            className="border-b"
+            className="border-b border-gray-2"
           />
         </div>
       </motion.div>
