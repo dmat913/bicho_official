@@ -36,7 +36,6 @@ const config: Config = {
       },
       animation: {
         bounceSlow: "bounceSlow 1s infinite",
-        // movePattern: "movePattern 8s ease-in-out forwards",
       },
       keyframes: {
         bounceSlow: {
@@ -49,14 +48,6 @@ const config: Config = {
             animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
           },
         },
-        // movePattern: {
-        //   "0%": { transform: "translate(0, 0)" },
-        //   "20%": { transform: "translate(120px, 0)" },
-        //   "40%": { transform: "translate(120px, 20px)" },
-        //   "60%": { transform: "translate(170px, 20px)" },
-        //   "80%": { transform: "translate(170px, -14px)" },
-        //   "100%": { transform: "translate(210px, -14px)" },
-        // },
       },
       backgroundImage: {
         "custom-gradient":
