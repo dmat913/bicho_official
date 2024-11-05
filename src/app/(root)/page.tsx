@@ -6,7 +6,6 @@ import "swiper/css";
 import { Autoplay, Pagination } from "swiper/modules";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/header/Header";
-// import NavBar from "@/components/nav/NavBar";
 import { imagesState } from "@/recoil/atom/image";
 import VideoList from "@/components/pages/home/VideoList";
 import Footer from "@/components/footer/Footer";
@@ -82,7 +81,6 @@ const HomePage: React.FC = () => {
       {/* メインコンテンツ */}
       <div className="w-full h-full">
         <Header />
-        {/* <NavBar /> */}
         <Swiper
           spaceBetween={1}
           slidesPerView={1}

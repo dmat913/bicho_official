@@ -21,7 +21,7 @@ const LeagueTable = () => {
         transition={{ duration: 0.5, delay: 0.1 }}
       >
         <span className="text-white-1 font-bold text-2xl">
-          2024リーグ戦結果
+          2024年度川口市リーグ戦結果
         </span>
       </motion.div>
 
