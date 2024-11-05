@@ -54,12 +54,15 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchSchedules = async () => {
       try {
-        const response = await fetch("/api/schedule", { method: "GET" });
-
+        const response = await fetch("/api/schedule/next", { method: "GET" });
         if (!response.ok) throw new Error("データ取得に失敗しました");
-
-        const data = await response.json();
-        setSchedules(data.schedules);
+        const nextDate = await response.json();
+        setSchedules(nextDate.schedule);
+        const listResponse = await fetch("/api/schedule", {
+          method: "GET",
+        });
+        const dates = await listResponse.json();
+        setSchedules(dates.schedules);
       } catch (err) {
         console.log("日程取得エラー:", err);
       }
