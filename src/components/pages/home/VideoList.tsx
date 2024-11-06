@@ -12,10 +12,10 @@ import { motion, useInView } from "framer-motion";
 
 const VideoList = () => {
   const videoIds: string[] = [
-    "I59yVeNBLIw",
+    "JK2GkDhKs3E",
     "kBt0J7A0wOY",
+    "I59yVeNBLIw",
     "X-SujX9H3tk",
-    "pEyZI-mwutw",
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
