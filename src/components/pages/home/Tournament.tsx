@@ -4,6 +4,10 @@ import { motion, useInView } from "framer-motion";
 import React, { memo, useRef } from "react";
 import BICHOLOGO from "@/public/bicho-icon.png";
 import Image from "next/image";
+import TopBorder from "./tournament/TopBorder";
+import RightBorderTopToBottom from "./tournament/RightBorderTopToBottom";
+import BottomBorder from "./tournament/BottomBorder";
+import RightBorderBottomToTop from "./tournament/RightBorderBottomToTop";
 
 const teams = [
   {
@@ -104,22 +108,8 @@ const Tournament = () => {
               >
                 1PK4
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-0 left-0 h-full border-t-[3px] border-red-600"
-              />
-              {/* 右側のボーダーアニメーション */}
-              <motion.div
-                initial={{ height: "0%" }}
-                animate={
-                  tournamentInView ? { height: "100%" } : { height: "0%" }
-                }
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="absolute top-0 right-0 w-[3px] border-r-[3px] border-red-600"
-              />
+              <TopBorder inView={tournamentInView} />
+              <RightBorderTopToBottom inView={tournamentInView} isWin />
             </div>
             <div className="relative flex flex-1">
               <motion.span
@@ -130,24 +120,8 @@ const Tournament = () => {
               >
                 1PK2
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-0 left-0 h-full border-b  border-gray-2"
-              />
-              {/* 右側のボーダーアニメーション - 下から上に表示 */}
-              <motion.div
-                initial={{ height: "0%", bottom: "0" }}
-                animate={
-                  tournamentInView
-                    ? { height: "100%", bottom: "0" }
-                    : { height: "0%", bottom: "0" }
-                }
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="absolute right-0 w-[3px] border-r border-gray-2"
-              />
+              <BottomBorder inView={tournamentInView} />
+              <RightBorderBottomToTop inView={tournamentInView} />
             </div>
           </div>
           <div className="h-11 w-full flex flex-col relative">
@@ -160,23 +134,8 @@ const Tournament = () => {
               >
                 1PK4
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-0 left-0 h-full border-t-[3px] border-red-600"
-              />
-
-              {/* 右側のボーダーアニメーション */}
-              <motion.div
-                initial={{ height: "0%" }}
-                animate={
-                  tournamentInView ? { height: "100%" } : { height: "0%" }
-                }
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="absolute top-0 right-0 w-[3px] border-r-[3px] border-red-600"
-              />
+              <TopBorder inView={tournamentInView} />
+              <RightBorderTopToBottom inView={tournamentInView} isWin />
             </div>
             <div className="relative flex flex-1">
               <motion.span
@@ -187,24 +146,8 @@ const Tournament = () => {
               >
                 1PK1
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-0 left-0 h-full border-b border-gray-2"
-              />
-              {/* 右側のボーダーアニメーション - 下から上に表示 */}
-              <motion.div
-                initial={{ height: "0%", bottom: "0" }}
-                animate={
-                  tournamentInView
-                    ? { height: "100%", bottom: "0" }
-                    : { height: "0%", bottom: "0" }
-                }
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="absolute right-0 w-[3px] border-r border-gray-2"
-              />
+              <BottomBorder inView={tournamentInView} />
+              <RightBorderBottomToTop inView={tournamentInView} />
             </div>
           </div>
           <div className="h-11 w-full flex flex-col relative">
@@ -217,23 +160,8 @@ const Tournament = () => {
               >
                 0
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-0 left-0 h-full border-t border-gray-2"
-              />
-
-              {/* 右側のボーダーアニメーション */}
-              <motion.div
-                initial={{ height: "0%" }}
-                animate={
-                  tournamentInView ? { height: "100%" } : { height: "0%" }
-                }
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="absolute top-0 right-0 w-[3px] border-r border-gray-2"
-              />
+              <TopBorder inView={tournamentInView} isWin={false} />
+              <RightBorderTopToBottom inView={tournamentInView} />
             </div>
             <div className="relative flex flex-1">
               <motion.span
@@ -244,24 +172,8 @@ const Tournament = () => {
               >
                 3
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-0 left-0 h-full border-b-[3px] border-red-600"
-              />
-              {/* 右側のボーダーアニメーション - 下から上に表示 */}
-              <motion.div
-                initial={{ height: "0%", bottom: "0" }}
-                animate={
-                  tournamentInView
-                    ? { height: "100%", bottom: "0" }
-                    : { height: "0%", bottom: "0" }
-                }
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="absolute right-0 w-[3px] border-r-[3px] border-red-600"
-              />
+              <BottomBorder inView={tournamentInView} isWin />
+              <RightBorderBottomToTop inView={tournamentInView} isWin />
             </div>
           </div>
           <div className="h-11 w-full flex flex-col relative">
@@ -274,23 +186,8 @@ const Tournament = () => {
               >
                 3
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-0 left-0 h-full border-t-[3px] border-red-600"
-              />
-
-              {/* 右側のボーダーアニメーション */}
-              <motion.div
-                initial={{ height: "0%" }}
-                animate={
-                  tournamentInView ? { height: "100%" } : { height: "0%" }
-                }
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="absolute top-0 right-0 w-[3px] border-r-[3px] border-red-600"
-              />
+              <TopBorder inView={tournamentInView} isWin />
+              <RightBorderTopToBottom inView={tournamentInView} isWin />
             </div>
             <div className="relative flex flex-1">
               <motion.span
@@ -301,24 +198,9 @@ const Tournament = () => {
               >
                 0
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-0 left-0 h-full border-b border-gray-2"
-              />
-              {/* 右側のボーダーアニメーション - 下から上に表示 */}
-              <motion.div
-                initial={{ height: "0%", bottom: "0" }}
-                animate={
-                  tournamentInView
-                    ? { height: "100%", bottom: "0" }
-                    : { height: "0%", bottom: "0" }
-                }
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="absolute right-0 w-[3px] border-r border-gray-2"
-              />
+              <BottomBorder inView={tournamentInView} />
+
+              <RightBorderBottomToTop inView={tournamentInView} />
             </div>
           </div>
         </div>
@@ -340,22 +222,8 @@ const Tournament = () => {
               >
                 0
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5, delay: 1 }}
-                className="absolute top-0 left-0 h-full border-t-[3px] border-red-600"
-              />
-              {/* 右側のボーダーアニメーション */}
-              <motion.div
-                initial={{ height: "0%" }}
-                animate={
-                  tournamentInView ? { height: "100%" } : { height: "0%" }
-                }
-                transition={{ duration: 0.5, delay: 1.5 }}
-                className="absolute top-0 right-0 w-[3px] border-r border-gray-2"
-              />
+              <TopBorder inView={tournamentInView} isWin delay={1} />
+              <RightBorderTopToBottom inView={tournamentInView} delay={1.5} />
             </div>
             <div className="relative flex flex-1">
               <motion.span
@@ -373,23 +241,11 @@ const Tournament = () => {
               >
                 1
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5, delay: 1 }}
-                className="absolute top-0 left-0 h-full border-b-[3px] border-red-600"
-              />
-              {/* 右側のボーダーアニメーション - 下から上に表示 */}
-              <motion.div
-                initial={{ height: "0%", bottom: "0" }}
-                animate={
-                  tournamentInView
-                    ? { height: "100%", bottom: "0" }
-                    : { height: "0%", bottom: "0" }
-                }
-                transition={{ duration: 0.5, delay: 1.5 }}
-                className="absolute right-0 w-[3px] border-r-[3px] border-red-600"
+              <BottomBorder inView={tournamentInView} isWin delay={1} />
+              <RightBorderBottomToTop
+                inView={tournamentInView}
+                isWin
+                delay={1.5}
               />
             </div>
           </div>
@@ -410,22 +266,8 @@ const Tournament = () => {
               >
                 0PK4
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5, delay: 1 }}
-                className="absolute top-0 left-0 h-full border-t-[3px] border-red-600"
-              />
-              {/* 右側のボーダーアニメーション */}
-              <motion.div
-                initial={{ height: "0%" }}
-                animate={
-                  tournamentInView ? { height: "100%" } : { height: "0%" }
-                }
-                transition={{ duration: 0.5, delay: 1.5 }}
-                className="absolute top-0 right-0 w-[3px] border-r border-gray-2"
-              />
+              <TopBorder inView={tournamentInView} isWin delay={1} />
+              <RightBorderTopToBottom inView={tournamentInView} delay={1.5} />
             </div>
             <div className="relative flex flex-1">
               <motion.span
@@ -443,23 +285,11 @@ const Tournament = () => {
               >
                 0PK5
               </motion.span>
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5, delay: 1 }}
-                className="absolute top-0 left-0 h-full border-b-[3px] border-red-600"
-              />
-              {/* 右側のボーダーアニメーション - 下から上に表示 */}
-              <motion.div
-                initial={{ height: "0%", bottom: "0" }}
-                animate={
-                  tournamentInView
-                    ? { height: "100%", bottom: "0" }
-                    : { height: "0%", bottom: "0" }
-                }
-                transition={{ duration: 0.5, delay: 1.5 }}
-                className="absolute right-0 w-[3px] border-r-[3px] border-red-600"
+              <BottomBorder inView={tournamentInView} isWin delay={1} />
+              <RightBorderBottomToTop
+                inView={tournamentInView}
+                isWin
+                delay={1.5}
               />
             </div>
           </div>
@@ -467,41 +297,12 @@ const Tournament = () => {
         <div className="flex flex-1 items-center relative left-[-6px]">
           <div className="h-[176px] w-full flex flex-col">
             <div className="flex flex-1  relative">
-              {/* 上部のボーダーアニメーション */}
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5, delay: 2 }}
-                className="absolute top-0 left-0 h-full border-t-[3px] border-red-600"
-              />
-              {/* 右側のボーダーアニメーション */}
-              <motion.div
-                initial={{ height: "0%" }}
-                animate={
-                  tournamentInView ? { height: "100%" } : { height: "0%" }
-                }
-                transition={{ duration: 0.5, delay: 2.5 }}
-                className="absolute top-0 right-0 w-[3px] border-r border-gray-2"
-              />
+              <TopBorder inView={tournamentInView} isWin delay={2} />
+              <RightBorderTopToBottom inView={tournamentInView} delay={2.5} />
             </div>
             <div className="flex flex-1 relative">
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-                transition={{ duration: 0.5, delay: 2 }}
-                className="absolute top-0 left-0 h-full border-b-[3px] border-red-600"
-              />
-              {/* 右側のボーダーアニメーション - 下から上に表示 */}
-              <motion.div
-                initial={{ height: "0%", bottom: "0" }}
-                animate={
-                  tournamentInView
-                    ? { height: "100%", bottom: "0" }
-                    : { height: "0%", bottom: "0" }
-                }
-                transition={{ duration: 0.5, delay: 2.5 }}
-                className="absolute right-0 w-[3px] border-r border-gray-2"
-              />
+              <BottomBorder inView={tournamentInView} isWin delay={2} />
+              <RightBorderBottomToTop inView={tournamentInView} delay={2.5} />
             </div>
           </div>
         </div>
