@@ -60,9 +60,14 @@ const SchedulePage = () => {
                   <span>Bicho</span>
                   <Image src={BichoLogo} alt="" width={48} height={48} />
                 </div>
-                <span className="text-3xl font-bold">
-                  {schedule.result !== "" ? schedule.result : "VS"}
-                </span>
+                <div className="flex flex-col text-green-1">
+                  <span className="text-3xl font-bold">
+                    {schedule.result !== "" ? schedule.result : "VS"}
+                  </span>
+                  {schedule.pk && schedule.pk !== "" && (
+                    <span className="text-xs">Pk: {schedule.pk}</span>
+                  )}
+                </div>
                 <div className="flex items-center gap-1 mt-2 w-[100px]">
                   {getLogo(schedule.teamName) !== "" ? (
                     <Image

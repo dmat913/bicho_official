@@ -7,6 +7,7 @@ export interface ScheduleData {
   thumbnail: string;
   location: string;
   result: string;
+  pk: string;
   kickoffTime: string;
   scorer: string[];
 }
