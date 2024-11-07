@@ -8,6 +8,7 @@ const scheduleSchema = new mongoose.Schema({
   thumbnail: { type: String, required: false },
   location: { type: String, required: true },
   result: { type: String, required: false },
+  pk: { type: String, required: false },
   kickoffTime: { type: String, required: true },
   scorer: { type: [String], required: false },
 });

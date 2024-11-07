@@ -19,6 +19,7 @@ const SchedulePage = () => {
     location: "",
     scorer: [""],
     result: "",
+    pk: "",
     kickoffTime: "",
   });
 
@@ -80,6 +81,7 @@ const SchedulePage = () => {
         location: "",
         scorer: [""],
         result: "",
+        pk: "",
         kickoffTime: "",
       });
     } catch (error) {
@@ -91,10 +93,17 @@ const SchedulePage = () => {
   return (
     <div className="w-full">
       <Header />
-      <h1 className="text-2xl font-bold mb-4 pt-4 pl-4">試合日程追加</h1>
+      <div className="pl-4 mt-4 flex items-center gap-2">
+        <span className="text-2xl font-bold">試合日程追加</span>
+        <span className="text-xs">
+          <span className="text-red-600">*</span>必須項目
+        </span>
+      </div>
       <form onSubmit={handleSubmit} className="p-4">
         <div className="mb-4">
-          <label className="block font-medium">日付</label>
+          <label className="block font-medium">
+            <span className="text-red-600">*</span>日付
+          </label>
           <input
             type="date"
             name="date"
@@ -105,7 +114,9 @@ const SchedulePage = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block font-medium">キックオフ時間</label>
+          <label className="block font-medium">
+            <span className="text-red-600">*</span>キックオフ時間
+          </label>
           <input
             type="time"
             name="kickoffTime"
@@ -116,7 +127,9 @@ const SchedulePage = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block font-medium">大会名</label>
+          <label className="block font-medium">
+            <span className="text-red-600">*</span>大会名
+          </label>
           <input
             type="text"
             name="title"
@@ -127,9 +140,12 @@ const SchedulePage = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block font-medium">説明</label>
+          <label className="block font-medium">
+            <span className="text-red-600">*</span>ラウンド・節
+          </label>
           <input
             name="description"
+            placeholder="一回戦/第1節"
             value={formData.description}
             onChange={handleChange}
             className="border p-2 w-full"
@@ -137,7 +153,9 @@ const SchedulePage = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block font-medium">対戦相手名</label>
+          <label className="block font-medium">
+            <span className="text-red-600">*</span>対戦相手名
+          </label>
           <input
             type="text"
             name="teamName"
@@ -148,7 +166,9 @@ const SchedulePage = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block font-medium">場所</label>
+          <label className="block font-medium">
+            <span className="text-red-600">*</span>場所
+          </label>
           <input
             type="text"
             name="location"
@@ -160,11 +180,22 @@ const SchedulePage = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block font-medium">結果 (オプション)</label>
+          <label className="block font-medium">結果</label>
           <input
             type="text"
             name="result"
             value={formData.result}
+            onChange={handleChange}
+            className="border p-2 w-full"
+            placeholder="2-1"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block font-medium">PK</label>
+          <input
+            type="text"
+            name="pk"
+            value={formData.pk}
             onChange={handleChange}
             className="border p-2 w-full"
             placeholder="2-1"

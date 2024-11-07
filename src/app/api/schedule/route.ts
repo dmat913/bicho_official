@@ -16,6 +16,7 @@ export async function POST(request: NextRequest) {
       location,
       scorer,
       result,
+      pk,
       kickoffTime,
     } = await request.json();
 
@@ -36,6 +37,7 @@ export async function POST(request: NextRequest) {
       location,
       scorer: scorer.filter((row: string) => row !== ""),
       result,
+      pk,
       kickoffTime,
     });
 

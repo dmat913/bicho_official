@@ -28,14 +28,19 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
             <Image src={BichoLogo} alt="" height={64} width={64} />
             <span className="text-md text-gray-600">Bicho</span>
           </div>
-          <div className="flex flex-col items-center gap-1">
-            {schedule.result ? (
-              <span className="text-green-1 font-bold text-5xl">
-                {schedule.result}
-              </span>
-            ) : (
-              <span className="text-4xl text-green-1 font-bold">VS</span>
-            )}
+          <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center">
+              {schedule.result ? (
+                <span className="text-green-1 font-bold text-5xl">
+                  {schedule.result}
+                </span>
+              ) : (
+                <span className="text-4xl text-green-1 font-bold">VS</span>
+              )}
+              {schedule.pk && schedule.pk !== "" && (
+                <span className="text-sm text-green-1">PK:{schedule.pk}</span>
+              )}
+            </div>
             <span className="text-xs text-gray-500">
               {schedule.kickoffTime}/{schedule.location}
             </span>
