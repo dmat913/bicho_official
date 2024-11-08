@@ -1,8 +1,13 @@
 "use client";
-import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
-import ProfileCard from "@/components/pages/profile/ProfileCard";
-import { defenders, forwards, goalkeepers, midfielders } from "@/data/profile";
+import Footer from "@/components/layout/footer/Footer";
+import Header from "@/components/layout/header/Header";
+import {
+  defenders,
+  forwards,
+  goalkeepers,
+  midfielders,
+} from "@/features/profile/data/profile";
+import ProfileCard from "@/features/profile/profile-card/ProfileCard";
 
 const ProfilePage = () => {
   return (

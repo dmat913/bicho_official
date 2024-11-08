@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import BichoLogo from "@/public/bicho-icon.png";
 import Link from "next/link";
 import { FaBars } from "react-icons/fa";
@@ -60,7 +60,7 @@ const Header = () => {
 
             {/* モーダルの内容 */}
             <motion.div
-              className="fixed top-0 right-0 bottom-0 w-64 bg-noise-green-3 opacity-95 text-white-1 shadow-lg z-20"
+              className="fixed top-0 right-0 bottom-0 w-64 bg-noise-green-3 opacity-95 text-white-1 shadow-lg z-50"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -107,4 +107,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

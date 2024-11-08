@@ -1,6 +1,6 @@
 "use client";
-import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
+import Footer from "@/components/layout/footer/Footer";
+import Header from "@/components/layout/header/Header";
 import { scheduleState } from "@/recoil/atom/schedule";
 import React, { useMemo } from "react";
 import { useRecoilValue } from "recoil";

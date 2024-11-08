@@ -2,9 +2,9 @@
 import { FaInstagram, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import BichoLogo from "@/public/bicho-icon.png";
-import DHorizontalLine from "../elements/DHorizontalLine";
 import { useState } from "react";
 import YoutubeLogo from "@/public/youtube.png";
+import DHorizontalLine from "@/components/elements/DHorizontalLine";
 
 const Footer = () => {
   // 一番上までスクロールする関数

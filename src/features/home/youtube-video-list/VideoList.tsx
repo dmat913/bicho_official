@@ -34,7 +34,10 @@ const VideoList = () => {
   const isInView = useInView(textRef, { once: true });
 
   return (
-    <div className="flex flex-col justify-between w-full px-4 py-10 bg-diagonal-lines">
+    <div
+      id="youtube"
+      className="flex flex-col justify-between w-full px-4 py-10 bg-diagonal-lines"
+    >
       {/* アニメーションを適用するロゴとテキスト */}
       <motion.div
         ref={textRef}
