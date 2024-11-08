@@ -3,13 +3,13 @@
 import { scheduleState } from "@/recoil/atom/schedule";
 import { useRecoilValue } from "recoil";
 import { Swiper, SwiperSlide } from "swiper/react";
-import MatchCard from "./MatchCard";
 import DPagination from "@/components/elements/DPagination";
 import { useState, useEffect, memo, useMemo } from "react";
 import DMoreButton from "@/components/elements/DMoreButton";
 import { ScheduleData } from "@/types/schedule";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import MatchCard from "./MatchCard";
 
 const GameSchedule = () => {
   const schedules = useRecoilValue(scheduleState);

@@ -17,6 +17,7 @@ import GameSchedule from "@/features/home/game-schedule/GameSchedule";
 import Tournament from "@/features/home/tournament/Tournament";
 import HomeLoading from "@/features/home/loading/HomeLoading";
 import VideoList from "@/features/home/youtube-video-list/VideoList";
+import AboutBicho from "@/features/home/about-bicho/AboutBicho";
 
 const HomePage: React.FC = () => {
   // 表示中の画像index
@@ -112,6 +113,8 @@ const HomePage: React.FC = () => {
           </div>
           {/** 試合日程 */}
           <GameSchedule />
+          {/* BICHOについて */}
+          <AboutBicho />
           {/* リーグ表 */}
           <LeagueTable />
           {/* トーナメント表 */}
