@@ -23,25 +23,35 @@ const AboutBicho = () => {
     >
       {/* 半透明のオーバーレイ */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
-      <motion.span
-        className="text-green-1 font-bold text-2xl z-10"
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        ABOUT BICHO
-      </motion.span>
-
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.6, delay: 0.3 }}
         className="z-10"
       >
-        <Image src={BICHOLOGO} alt="Bicho Logo" width={80} height={80} />
+        <Image src={BICHOLOGO} alt="Bicho Logo" width={100} height={100} />
       </motion.div>
 
+      <div className="flex flex-col items-center mb-4">
+        {/* アニメーションを適用する要素 */}
+        <motion.span
+          ref={ref}
+          className="text-green-1 font-bold text-2xl"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          ABOUT BICHO
+        </motion.span>
+        <motion.span
+          className="text-green-1 font-semibold"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          BICHOについて
+        </motion.span>
+      </div>
       <motion.span
         className="text-white-1 text-centerd mt-4 z-10"
         initial={{ opacity: 0, y: 20 }}
