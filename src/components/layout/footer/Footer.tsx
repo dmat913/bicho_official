@@ -17,7 +17,7 @@ const Footer = () => {
   const [isYoutubeActive, setYoutubeActive] = useState<boolean>(false);
 
   return (
-    <footer className="bg-green-4 text-white-1">
+    <footer className="bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 text-white-1">
       {/* BichoLogoを表示 */}
       <div
         className="flex items-center w-full py-3 justify-center cursor-pointer active:bg-green-3"
@@ -79,7 +79,7 @@ active:bg-green-3"
       </div>
 
       <DHorizontalLine />
-      <div className="w-full text-center bg-green-4 py-3">
+      <div className="w-full text-center py-3">
         <span className="text-xs">© 2024 Bicho. All rights reserved.</span>
       </div>
     </footer>

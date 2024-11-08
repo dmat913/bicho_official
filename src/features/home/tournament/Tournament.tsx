@@ -56,7 +56,7 @@ const Tournament = () => {
         {/* アニメーションを適用する要素 */}
         <motion.span
           ref={titleRef}
-          className="text-black-1 font-bold text-2xl"
+          className="text-gradient-black font-bold text-2xl"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}

@@ -90,3 +90,55 @@ body {
   background-color: yellow;
   animation-duration: 25s;
 }
+/* globals.css */
+.text-gradient {
+  background: linear-gradient(
+    to right,
+    #a8e6cf,
+    #ffd3b6,
+    #ffaaa5,
+    #ff8b94,
+    #d8d8d8,
+    #ffffff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* globals.css */
+.text-gradient-2 {
+  background: linear-gradient(
+    to right,
+    #a8e6cf,
+    #d0e1d1,
+    #f0e6d6 /* ベージュ */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* globals.css */
+.text-gradient-black {
+  background: linear-gradient(
+    to right,
+    #333333,
+    #555555
+  ); /* 黒っぽいグレーのグラデーション */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* globals.css */
+.text-gradient-3 {
+  background: linear-gradient(to right, #006036, #007a4d, #007a4d, #002911);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}

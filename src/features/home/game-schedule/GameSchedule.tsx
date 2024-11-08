@@ -43,23 +43,21 @@ const GameSchedule = () => {
   }, [displaySchedules]);
 
   return (
-    <div
-      id="game-schedule"
-      className="py-10 px-4 bg-noise-green-1 border-b-[1px] border-line-1"
-    >
+    <div id="game-schedule" className="py-10 px-4 bg-noise-green-3">
       <div className="flex flex-col items-center mb-4">
         {/* アニメーションを適用する要素 */}
         <motion.span
           ref={ref}
-          className="text-white-1 font-bold text-2xl"
+          className="text-gradient font-bold text-2xl"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           GAME SCHEDULE
         </motion.span>
+
         <motion.span
-          className="text-white-1 font-semibold"
+          className="text-gradient font-semibold"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
