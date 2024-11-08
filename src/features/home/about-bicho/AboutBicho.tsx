@@ -12,13 +12,13 @@ const AboutBicho = () => {
   return (
     <div
       ref={ref}
-      className="relative py-10 px-4 flex flex-col items-center  bg-noise-green-1"
+      className="relative py-10 px-4 flex flex-col items-center"
       style={{
         backgroundImage: `url(${backgroundImage.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        opacity: 0.8,
+        opacity: 0.85,
       }}
     >
       {/* 半透明のオーバーレイ */}
@@ -36,7 +36,7 @@ const AboutBicho = () => {
         {/* アニメーションを適用する要素 */}
         <motion.span
           ref={ref}
-          className="text-green-1 font-bold text-2xl"
+          className="text-gradient-3 font-bold text-2xl text-shadow"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -44,7 +44,7 @@ const AboutBicho = () => {
           ABOUT BICHO
         </motion.span>
         <motion.span
-          className="text-green-1 font-semibold"
+          className="text-gradient-3 font-semibold text-shadow"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -53,7 +53,7 @@ const AboutBicho = () => {
         </motion.span>
       </div>
       <motion.span
-        className="text-white-1 text-centerd mt-4 z-10"
+        className="text-white-1 text-centerd mt-4 z-10 text-shadow"
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.5 }}

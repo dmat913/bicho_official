@@ -1,14 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { Autoplay, Pagination } from "swiper/modules";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/layout/header/Header";
 import { imagesState } from "@/recoil/atom/image";
 import Footer from "@/components/layout/footer/Footer";
-import DPagination from "@/components/elements/DPagination";
 import { fetchFirstImage, fetchImages } from "@/utils/image";
 import { scheduleState } from "@/recoil/atom/schedule";
 import LeagueTable from "@/features/home/league-table/LeagueTable";
@@ -18,10 +14,9 @@ import Tournament from "@/features/home/tournament/Tournament";
 import HomeLoading from "@/features/home/loading/HomeLoading";
 import VideoList from "@/features/home/youtube-video-list/VideoList";
 import AboutBicho from "@/features/home/about-bicho/AboutBicho";
+import PhotoSwiper from "@/features/home/photo-swiper/PhotoSwiper";
 
 const HomePage: React.FC = () => {
-  // 表示中の画像index
-  const [currentPage, setCurrentPage] = useState<number>(1);
   // 画像一覧
   const [images, setImages] = useRecoilState(imagesState);
   // 試合日程一覧
@@ -85,46 +80,21 @@ const HomePage: React.FC = () => {
         <div className="w-full h-full relative">
           <Header />
           <NavBar />
-          <Swiper
-            spaceBetween={1}
-            slidesPerView={1}
-            modules={[Autoplay, Pagination]}
-            autoplay={{ delay: 4000 }}
-            pagination={{ clickable: true }}
-            loop={true}
-            onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
-          >
-            {images.map((image) => (
-              <SwiperSlide key={image._id} className="md:h-[200px]">
-                <motion.img
-                  src={image.data}
-                  alt="Top Image"
-                  className="lg:h-[500px] md:h-[400px] h-[250px] object-cover w-full"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <div className="flex gap-1 bg-noise-green-1 justify-center py-3 border-b-[1px] border-line-1">
-            <DPagination data={images} currentPage={currentPage - 1} />
-          </div>
-          {/** 試合日程 */}
-          <GameSchedule />
           {/* BICHOについて */}
           <AboutBicho />
+          {/** 試合日程 */}
+          <GameSchedule />
           {/* リーグ表 */}
           <LeagueTable />
           {/* トーナメント表 */}
           <Tournament />
+          {/* 写真swiper */}
+          <PhotoSwiper />
           {/** Youtube */}
           <VideoList />
           <Footer />
         </div>
       )}
-
       {/* ローディング画面 */}
       <AnimatePresence>
         {isLoading && (

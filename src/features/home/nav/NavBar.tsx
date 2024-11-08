@@ -1,8 +1,7 @@
 import { memo } from "react";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { MdLeaderboard } from "react-icons/md";
+import { MdLeaderboard, MdOutlinePhotoCamera } from "react-icons/md";
 import { FaTrophy } from "react-icons/fa";
-import { FiYoutube } from "react-icons/fi";
 
 // navバー表示アイテム
 const navItems = [
@@ -22,9 +21,9 @@ const navItems = [
     icon: <FaTrophy color="white" className="w-7 h-7" />,
   },
   {
-    id: "youtube",
-    label: "YouTube",
-    icon: <FiYoutube color="white" className="w-7 h-7" />,
+    id: "photo",
+    label: "Photo",
+    icon: <MdOutlinePhotoCamera color="white" className="w-7 h-7" />,
   },
 ];
 
@@ -48,7 +47,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-noise-green-3 shadow-2xl sticky top-0 z-40 h-16">
+    <nav className="bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 shadow-2xl sticky top-0 z-40 h-16">
       <ul className="flex h-full">
         {navItems.map((item) => (
           <li

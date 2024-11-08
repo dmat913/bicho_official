@@ -27,23 +27,25 @@ const Header = () => {
   }, [menuOpen]);
 
   return (
-    <header className="flex items-center justify-between bg-noise-green-3 py-2 px-4 border-b border-slate-400 shadow-lg hover:shadow-xl transition-shadow duration-300">
-      {/* ロゴリンク */}
-      <Link href="/" className="flex items-center gap-1">
-        <Image src={BichoLogo} alt="Logo" width={40} height={40} />
-        <span className="text-white-1 text-lg lg:text-2xl font-bold">
-          BICHO
-        </span>
-      </Link>
+    <>
+      <header className="flex items-center justify-between bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 bg-noise-pattern py-2 px-4 border-b border-line-1 shadow-lg hover:shadow-xl transition-shadow duration-300 relative">
+        {/* ロゴリンク */}
+        <Link href="/" className="flex items-center gap-1">
+          <Image src={BichoLogo} alt="Logo" width={48} height={48} />
+          <span className="text-white-1 text-2xl lg:text-2xl font-bold">
+            BICHO
+          </span>
+        </Link>
 
-      {/* ハンバーガーメニューアイコン */}
-      <button
-        className="text-white-1 text-2xl lg:hidden p-2 rounded-full active:bg-slate-600 transition duration-200"
-        onClick={toggleMenu}
-        aria-label="Toggle menu"
-      >
-        <FaBars />
-      </button>
+        {/* ハンバーガーメニューアイコン */}
+        <button
+          className="text-white-1 text-2xl lg:hidden p-2 rounded-full active:bg-slate-600 transition duration-200"
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <FaBars />
+        </button>
+      </header>
 
       {/* モーダルメニュー */}
       <AnimatePresence>
@@ -103,7 +105,7 @@ const Header = () => {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };
 
