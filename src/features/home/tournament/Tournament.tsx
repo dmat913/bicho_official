@@ -4,10 +4,10 @@ import { motion, useInView } from "framer-motion";
 import React, { memo, useRef } from "react";
 import BICHOLOGO from "@/public/bicho-icon.png";
 import Image from "next/image";
-import TopBorder from "./tournament/TopBorder";
-import RightBorderTopToBottom from "./tournament/RightBorderTopToBottom";
-import BottomBorder from "./tournament/BottomBorder";
-import RightBorderBottomToTop from "./tournament/RightBorderBottomToTop";
+import TopBorder from "./border/TopBorder";
+import RightBorderTopToBottom from "./border/RightBorderTopToBottom";
+import BottomBorder from "./border/BottomBorder";
+import RightBorderBottomToTop from "./border/RightBorderBottomToTop";
 
 const teams = [
   {
@@ -51,7 +51,7 @@ const Tournament = () => {
   const tournamentRef = useRef(null);
   const tournamentInView = useInView(tournamentRef, { once: true });
   return (
-    <div className="px-4 py-10 flex flex-col">
+    <div id="tournament" className="px-4 py-10 flex flex-col">
       <div className="flex flex-col items-center mb-4">
         {/* アニメーションを適用する要素 */}
         <motion.span

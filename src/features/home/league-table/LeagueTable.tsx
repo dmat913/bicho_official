@@ -1,8 +1,8 @@
 "use client";
 
-import { league2024 } from "@/data/league";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { league2024 } from "./data/league";
 
 const LeagueTable = () => {
   const textRef = useRef(null);
@@ -11,7 +11,10 @@ const LeagueTable = () => {
   const tableInView = useInView(tableRef, { once: true });
 
   return (
-    <div className="flex flex-col justify-between w-full px-4 py-10 bg-noise-green-1 border-b-[1px] border-line-1">
+    <div
+      id="league-table"
+      className="flex flex-col justify-between w-full px-4 py-10 bg-noise-green-1 border-b-[1px] border-line-1"
+    >
       {/* タイトル */}
       <motion.div
         ref={textRef}

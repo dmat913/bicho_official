@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+import Header from "@/components/layout/header/Header";
+import Footer from "@/components/layout/footer/Footer";
 import { fetchSchedules } from "@/utils/image";
 import { useSetRecoilState } from "recoil";
 import { scheduleState } from "@/recoil/atom/schedule";

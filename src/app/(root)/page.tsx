@@ -5,17 +5,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Pagination } from "swiper/modules";
 import { motion, AnimatePresence } from "framer-motion";
-import Header from "@/components/header/Header";
+import Header from "@/components/layout/header/Header";
 import { imagesState } from "@/recoil/atom/image";
-import VideoList from "@/components/pages/home/VideoList";
-import Footer from "@/components/footer/Footer";
+import Footer from "@/components/layout/footer/Footer";
 import DPagination from "@/components/elements/DPagination";
-import GameSchedule from "@/components/pages/home/GameSchedule";
-import HomeLoading from "@/components/pages/home/HomeLoading";
 import { fetchFirstImage, fetchImages } from "@/utils/image";
 import { scheduleState } from "@/recoil/atom/schedule";
-import LeagueTable from "@/components/pages/home/LeagueTable";
-import Tournament from "@/components/pages/home/Tournament";
+import LeagueTable from "@/features/home/league-table/LeagueTable";
+import NavBar from "@/features/home/nav/NavBar";
+import GameSchedule from "@/features/home/game-schedule/GameSchedule";
+import Tournament from "@/features/home/tournament/Tournament";
+import HomeLoading from "@/features/home/loading/HomeLoading";
+import VideoList from "@/features/home/youtube-video-list/VideoList";
 
 const HomePage: React.FC = () => {
   // 表示中の画像index
@@ -74,49 +75,52 @@ const HomePage: React.FC = () => {
 
   return (
     <div
-      className={`relative overflow-hidden ${
+      className={`relative ${
         isLoading ? "w-[100vw] h-[100svh]" : "h-full w-full"
       }`}
     >
       {/* メインコンテンツ */}
-      <div className="w-full h-full">
-        <Header />
-        <Swiper
-          spaceBetween={1}
-          slidesPerView={1}
-          modules={[Autoplay, Pagination]}
-          autoplay={{ delay: 4000 }}
-          pagination={{ clickable: true }}
-          loop={true}
-          onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
-        >
-          {images.map((image) => (
-            <SwiperSlide key={image._id} className="md:h-[200px]">
-              <motion.img
-                src={image.data}
-                alt="Top Image"
-                className="lg:h-[500px] md:h-[400px] h-[250px] object-cover w-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div className="flex gap-1 bg-noise-green-1 justify-center py-3 border-b-[1px] border-line-1">
-          <DPagination data={images} currentPage={currentPage - 1} />
+      {!isLoading && (
+        <div className="w-full h-full relative">
+          <Header />
+          <NavBar />
+          <Swiper
+            spaceBetween={1}
+            slidesPerView={1}
+            modules={[Autoplay, Pagination]}
+            autoplay={{ delay: 4000 }}
+            pagination={{ clickable: true }}
+            loop={true}
+            onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
+          >
+            {images.map((image) => (
+              <SwiperSlide key={image._id} className="md:h-[200px]">
+                <motion.img
+                  src={image.data}
+                  alt="Top Image"
+                  className="lg:h-[500px] md:h-[400px] h-[250px] object-cover w-full"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="flex gap-1 bg-noise-green-1 justify-center py-3 border-b-[1px] border-line-1">
+            <DPagination data={images} currentPage={currentPage - 1} />
+          </div>
+          {/** 試合日程 */}
+          <GameSchedule />
+          {/* リーグ表 */}
+          <LeagueTable />
+          {/* トーナメント表 */}
+          <Tournament />
+          {/** Youtube */}
+          <VideoList />
+          <Footer />
         </div>
-        {/** 試合日程 */}
-        <GameSchedule />
-        {/* リーグ表 */}
-        <LeagueTable />
-        {/* トーナメント表 */}
-        <Tournament />
-        {/** Youtube */}
-        <VideoList />
-        <Footer />
-      </div>
+      )}
 
       {/* ローディング画面 */}
       <AnimatePresence>
