@@ -109,36 +109,31 @@ body {
     #d8d8d8,
     #ffffff
   );
-  -webkit-background-clip: text; /* 背景をテキストに適用 */
+  -webkit-background-clip: text;
   background-clip: text;
-  color: transparent; /* テキストの色を透明にする */
-  animation: gradientFlow 3s linear infinite; /* 背景を動かすアニメーション */
-  background-size: 300% 100%; /* 背景のサイズを大きくして動きが目立つようにする */
+  color: transparent;
+  animation: gradientFlow 3s linear infinite;
+  background-size: 300% 100%;
 }
 
 /* globals.css */
 .text-gradient-2 {
-  background: linear-gradient(
-    to right,
-    #a8e6cf,
-    #d0e1d1,
-    #f0e6d6 /* ベージュ */
-  );
+  background: linear-gradient(to right, #a8e6cf, #d0e1d1, #f0e6d6);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: gradientFlow 3s linear infinite;
+  background-size: 300% 100%;
 }
 
 /* globals.css */
 .text-gradient-black {
-  background: linear-gradient(
-    to right,
-    #333333,
-    #555555
-  ); /* 黒っぽいグレーのグラデーション */
+  background: linear-gradient(to right, #333333, #555555);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: gradientFlow 3s linear infinite;
+  background-size: 300% 100%;
 }
 
 /* globals.css */
