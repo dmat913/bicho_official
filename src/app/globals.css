@@ -90,20 +90,30 @@ body {
   background-color: yellow;
   animation-duration: 25s;
 }
-/* globals.css */
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
 .text-gradient {
   background: linear-gradient(
     to right,
     #a8e6cf,
     #ffd3b6,
     #ffaaa5,
-    #ff8b94,
     #d8d8d8,
     #ffffff
   );
-  -webkit-background-clip: text;
+  -webkit-background-clip: text; /* 背景をテキストに適用 */
   background-clip: text;
-  color: transparent;
+  color: transparent; /* テキストの色を透明にする */
+  animation: gradientFlow 3s linear infinite; /* 背景を動かすアニメーション */
+  background-size: 300% 100%; /* 背景のサイズを大きくして動きが目立つようにする */
 }
 
 /* globals.css */
