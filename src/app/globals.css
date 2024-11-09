@@ -138,10 +138,19 @@ body {
 
 /* globals.css */
 .text-gradient-3 {
-  background: linear-gradient(to right, #006036, #007a4d, #007a4d, #002911);
+  background: linear-gradient(
+    to right,
+    #006036,
+    #007a4d,
+    #007a4d,
+    #002911,
+    #006036
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: gradientFlow 3s linear infinite;
+  background-size: 300% 100%;
 }
 
 .text-shadow {
