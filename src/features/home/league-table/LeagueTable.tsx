@@ -13,7 +13,7 @@ const LeagueTable = () => {
   return (
     <div
       id="league-table"
-      className="flex flex-col justify-between w-full px-4 py-10 bg-noise-green-1"
+      className="flex flex-col justify-between w-full px-4 py-10 bg-noise-green-3"
     >
       {/* タイトル */}
       <motion.div

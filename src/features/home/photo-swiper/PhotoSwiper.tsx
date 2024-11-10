@@ -62,7 +62,7 @@ const PhotoSwiper = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="flex gap-1 bg-noise-green-1 justify-center py-3">
+      <div className="flex gap-1 bg-noise-green-1 justify-center py-3 mt-2">
         <DPagination data={images} currentPage={currentPage - 1} />
       </div>
     </div>
