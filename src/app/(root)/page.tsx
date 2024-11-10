@@ -84,12 +84,12 @@ const HomePage: React.FC = () => {
           <AboutBicho />
           {/** 試合日程 */}
           <GameSchedule />
+          {/* 写真swiper */}
+          <PhotoSwiper />
           {/* リーグ表 */}
           <LeagueTable />
           {/* トーナメント表 */}
           <Tournament />
-          {/* 写真swiper */}
-          <PhotoSwiper />
           {/** Youtube */}
           <VideoList />
           <Footer />

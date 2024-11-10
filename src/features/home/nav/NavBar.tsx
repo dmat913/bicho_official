@@ -11,6 +11,11 @@ const navItems = [
     icon: <AiOutlineCalendar color="white" className="w-7 h-7" />,
   },
   {
+    id: "photo",
+    label: "Photo",
+    icon: <MdOutlinePhotoCamera color="white" className="w-7 h-7" />,
+  },
+  {
     id: "league-table",
     label: "League Table",
     icon: <MdLeaderboard color="white" className="w-7 h-7" />,
@@ -19,11 +24,6 @@ const navItems = [
     id: "tournament",
     label: "Tournament",
     icon: <FaTrophy color="white" className="w-7 h-7" />,
-  },
-  {
-    id: "photo",
-    label: "Photo",
-    icon: <MdOutlinePhotoCamera color="white" className="w-7 h-7" />,
   },
 ];
 
