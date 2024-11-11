@@ -53,7 +53,7 @@ const Header = () => {
           <>
             {/* 背景のオーバーレイ */}
             <motion.div
-              className="fixed inset-0 bg-black bg-opacity-50 z-10"
+              className="fixed inset-0 bg-black-1 bg-opacity-50 z-10"
               onClick={toggleMenu}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -62,7 +62,7 @@ const Header = () => {
 
             {/* モーダルの内容 */}
             <motion.div
-              className="fixed top-0 right-0 bottom-0 w-64 bg-noise-green-3 opacity-95 text-white-1 shadow-lg z-50"
+              className="fixed top-0 right-0 bottom-0 w-64 bg-noise-green-3 text-white-1 shadow-lg z-50"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
