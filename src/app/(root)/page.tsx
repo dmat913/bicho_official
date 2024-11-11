@@ -15,6 +15,7 @@ import HomeLoading from "@/features/home/loading/HomeLoading";
 import VideoList from "@/features/home/youtube-video-list/VideoList";
 import AboutBicho from "@/features/home/about-bicho/AboutBicho";
 import PhotoSwiper from "@/features/home/photo-swiper/PhotoSwiper";
+import SoccerGround from "@/features/home/starting-lineup/SoccerGround";
 
 const HomePage: React.FC = () => {
   // 画像一覧
@@ -90,8 +91,10 @@ const HomePage: React.FC = () => {
           <LeagueTable />
           {/* トーナメント表 */}
           <Tournament />
+           {/* スタメン */}
+          <SoccerGround />
           {/** Youtube */}
-          <VideoList />
+          {/* <VideoList /> */}
           <Footer />
         </div>
       )}
