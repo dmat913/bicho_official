@@ -125,7 +125,7 @@ const SoccerGround = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          STARTING 11
+          Starting 11
         </motion.span>
         <motion.span
           className="text-gradient font-semibold"
@@ -133,7 +133,7 @@ const SoccerGround = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          LAST MATCH
+          Last Match
         </motion.span>
       </div>
       <div className={styles.groundWrapper}>
@@ -144,6 +144,7 @@ const SoccerGround = () => {
           <div className={styles.centerLine}></div>
           <div className={styles.centerCircle}></div>
         </div>
+
         {players.map((player, index) => (
           <motion.div
             key={index}
@@ -151,8 +152,8 @@ const SoccerGround = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{
               duration: 1,
-              ease: "easeOut",
-              delay: 0.4 + index * 0.4,
+              ease: "easeIn",
+              delay: 0.4 + index * 0.2,
             }}
           >
             <PlayerCard

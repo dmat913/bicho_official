@@ -26,6 +26,15 @@ const Header = () => {
     // eslint-disable-next-line
   }, [menuOpen]);
 
+  // リスト化されたメニューアイテム
+  const menuItems = [
+    { href: "/schedule", label: "試合日程" },
+    { href: "/profile", label: "選手" },
+    { href: "/data", label: "データ" },
+    { href: "/admin/photo", label: "写真管理" },
+    { href: "/admin/schedule", label: "試合日程管理" },
+  ];
+
   return (
     <>
       <header className="flex items-center justify-between bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 bg-noise-pattern py-2 px-4 border-b border-line-1 shadow-lg hover:shadow-xl transition-shadow duration-300 relative">
@@ -51,9 +60,9 @@ const Header = () => {
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* 背景のオーバーレイ */}
+            {/* 背景のオーバーレイ（ぼかし効果付き） */}
             <motion.div
-              className="fixed inset-0 bg-black-1 bg-opacity-50 z-10"
+              className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-md z-50"
               onClick={toggleMenu}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -62,44 +71,29 @@ const Header = () => {
 
             {/* モーダルの内容 */}
             <motion.div
-              className="fixed top-0 right-0 bottom-0 w-64 bg-noise-green-3 text-white-1 shadow-lg z-50"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              className="fixed top-0 right-0 bottom-0 w-80 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white-1 shadow-xl rounded-l-3xl overflow-hidden transform z-50"
+              initial={{ x: "100%", scale: 0.95 }}
+              animate={{ x: 0, scale: 1 }}
+              exit={{ x: "100%", scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <button
-                className="absolute top-4 right-4 text-white-1 text-2xl w-10 h-10 rounded-full bg-green-2 active:bg-slate-600 transition duration-200"
+                className="absolute top-6 right-6 text-white-1 text-3xl w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 active:bg-gray-600 transition duration-200"
                 onClick={toggleMenu}
                 aria-label="Close menu"
               >
                 ×
               </button>
               <div className="flex flex-col items-center gap-6 p-8 mt-8">
-                <Link
-                  href="/schedule"
-                  className="block w-full text-center p-4 bg-green-2 rounded-lg active:bg-slate-600 transition duration-200"
-                >
-                  試合日程
-                </Link>
-                <Link
-                  href="/profile"
-                  className="block w-full text-center p-4 bg-green-2 rounded-lg active:bg-slate-600 transition duration-200"
-                >
-                  選手
-                </Link>
-                <Link
-                  href="/admin/photo"
-                  className="block w-full text-center p-4 bg-green-2 rounded-lg active:bg-slate-600 transition duration-200"
-                >
-                  写真管理
-                </Link>
-                <Link
-                  href="/admin/schedule"
-                  className="block w-full text-center p-4 bg-green-2 rounded-lg active:bg-slate-600 transition duration-200"
-                >
-                  試合日程管理
-                </Link>
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block w-full text-center p-4 bg-gray-700 text-white-1 border-2 border-transparent hover:border-gray-500 rounded-lg hover:bg-gray-600 active:bg-gray-500 transition duration-200"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
             </motion.div>
           </>
