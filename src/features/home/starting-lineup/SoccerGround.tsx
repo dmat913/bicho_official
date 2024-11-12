@@ -12,10 +12,12 @@ import HIKARUIWASE_IMG from "@/public/profile/HIKARUIWASE.png";
 import DAIKIYAMAGUCHI_IMG from "@/public/profile/DAIKIYAMAGUCHI.png";
 import RYOUISHIKAWA_IMG from "@/public/profile/RYOUISHIKAWA.png";
 import YUDAINAKATA_IMG from "@/public/profile/YUDAINAKATA.png";
+import BackgroundGround from "@/public/backgroundGround.jpg";
+import Image from "next/image";
 
 const players = [
   {
-    name: "滝島皐",
+    name: "SATHUKI",
     number: 28,
     position: "GK",
     imageUrl: SATHUKITAKISHIMA_IMG,
@@ -28,7 +30,7 @@ const players = [
     },
   },
   {
-    name: "賀川優斗",
+    name: "KAGAWA",
     number: 4,
     position: "CB",
     imageUrl: YUUTOKAGAWA_IMG,
@@ -116,7 +118,14 @@ const SoccerGround = () => {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <div className="overflow-hidden bg-noise-green-1 pt-10">
+    <div className="relative overflow-hidden bg-noise-green-1 pt-10">
+      <Image
+        src={BackgroundGround}
+        alt=""
+        layout="fill"
+        objectFit="cover"
+        style={{ position: "absolute", top: 0, opacity: 0.4 }}
+      />
       <div className="flex flex-col items-center">
         <motion.span
           ref={ref}
@@ -158,10 +167,9 @@ const SoccerGround = () => {
           >
             <PlayerCard
               name={player.name}
-              number={player.number}
-              position={player.position}
+              number={String(player.number)}
+              image={player.imageUrl}
               styles={player.styles}
-              imageUrl={player.imageUrl}
             />
           </motion.div>
         ))}
