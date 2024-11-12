@@ -41,7 +41,7 @@ const AboutBicho = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          ABOUT BICHO
+          About BICHO
         </motion.span>
         <motion.span
           className="text-gradient-3 font-semibold text-shadow"

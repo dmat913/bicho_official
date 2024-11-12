@@ -12,7 +12,7 @@ import NavBar from "@/features/home/nav/NavBar";
 import GameSchedule from "@/features/home/game-schedule/GameSchedule";
 import Tournament from "@/features/home/tournament/Tournament";
 import HomeLoading from "@/features/home/loading/HomeLoading";
-// import VideoList from "@/features/home/youtube-video-list/VideoList";
+import VideoList from "@/features/home/youtube-video-list/VideoList";
 import AboutBicho from "@/features/home/about-bicho/AboutBicho";
 import PhotoSwiper from "@/features/home/photo-swiper/PhotoSwiper";
 import SoccerGround from "@/features/home/starting-lineup/SoccerGround";
@@ -94,7 +94,7 @@ const HomePage: React.FC = () => {
           {/* スタメン */}
           <SoccerGround />
           {/** Youtube */}
-          {/* <VideoList /> */}
+          <VideoList />
           <Footer />
         </div>
       )}

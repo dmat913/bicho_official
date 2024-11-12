@@ -28,7 +28,7 @@ const PhotoSwiper = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          THROUGH THE LENS
+          Through The Lens
         </motion.span>
         <motion.span
           className="text-gradient-2 font-semibold"

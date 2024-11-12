@@ -47,7 +47,7 @@ const VideoList = () => {
         transition={{ duration: 0.5, delay: 0.1 }}
       >
         <Image src={YoutubeLogo} alt="Youtube logo" width={32} height={32} />
-        <span className="text-white-1 font-bold text-2xl">YOUTUBE</span>
+        <span className="text-white-1 font-bold text-2xl">YouTube</span>
       </motion.div>
 
       <div className="relative w-full overflow-hidden">
