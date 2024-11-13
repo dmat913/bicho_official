@@ -19,7 +19,7 @@ export default function PlayerCard({
     <div className="absolute" style={styles}>
       <div className="relative w-full h-full">
         {/* Card Background with Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 rounded-2xl transform rotate-[1deg]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 rounded-2xl transform rotate-[1deg] opacity-85" />
 
         {/* Main Card Content */}
         <div className="relative h-full flex flex-col items-center">
