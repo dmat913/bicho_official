@@ -6,12 +6,15 @@ import PlayerCard from "./PlayerCard";
 import YUUTOKAGAWA_IMG from "@/public/profile/YUUTOKAGAWA.png";
 import SATHUKITAKISHIMA_IMG from "@/public/profile/SATHUKITAKISHIMA.png";
 import UnknownImage from "@/public/profile/unknown.png";
-import RIKUOONO_IMG from "@/public/profile/RIKUOONO.png";
 import AYUMUENOMOTO_IMG from "@/public/profile/AYUMUENOMOTO.png";
 import HIKARUIWASE_IMG from "@/public/profile/HIKARUIWASE.png";
 import DAIKIYAMAGUCHI_IMG from "@/public/profile/DAIKIYAMAGUCHI.png";
 import RYOUISHIKAWA_IMG from "@/public/profile/RYOUISHIKAWA.png";
 import YUDAINAKATA_IMG from "@/public/profile/YUDAINAKATA.png";
+import GOUKOIDA_IMG from "@/public/profile/GOUKOIDA.png";
+import TAIGAASAKO_IMG from "@/public/profile/TAIGAASAKO.png";
+import YASUTOISHIKAWA_IMG from "@/public/profile/YASUTOISHIKAWA.png";
+import RIKUOONO_IMG from "@/public/profile/RIKUOONO.png";
 import BackgroundGround from "@/public/backgroundGround.jpg";
 import Image from "next/image";
 
@@ -40,14 +43,14 @@ const players = [
     name: "小飯田豪",
     number: 5,
     position: "CB",
-    imageUrl: UnknownImage,
+    imageUrl: GOUKOIDA_IMG,
     styles: { right: "26%", top: "20%", width: "56px", height: "76px" },
   },
   {
     name: "石川靖人",
     number: 2,
     position: "RB",
-    imageUrl: UnknownImage,
+    imageUrl: YASUTOISHIKAWA_IMG,
     styles: { left: "4%", top: "24%", width: "58px", height: "80px" },
   },
   {
@@ -61,7 +64,7 @@ const players = [
     name: "浅子太我",
     number: 41,
     position: "CDM",
-    imageUrl: UnknownImage,
+    imageUrl: TAIGAASAKO_IMG,
     styles: {
       left: "50%",
       transform: "translateX(-50%)",

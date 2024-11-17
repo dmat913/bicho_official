@@ -29,7 +29,6 @@ export default function PlayerCard({
               {number}.
             </span>
           </div>
-
           {/* Player Image Container */}
           <div className="relative w-full h-full">
             <Image
