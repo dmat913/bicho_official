@@ -5,7 +5,6 @@ import { motion, useInView } from "framer-motion";
 import PlayerCard from "./PlayerCard";
 import YUUTOKAGAWA_IMG from "@/public/profile/YUUTOKAGAWA.png";
 import SATHUKITAKISHIMA_IMG from "@/public/profile/SATHUKITAKISHIMA.png";
-import UnknownImage from "@/public/profile/unknown.png";
 import AYUMUENOMOTO_IMG from "@/public/profile/AYUMUENOMOTO.png";
 import HIKARUIWASE_IMG from "@/public/profile/HIKARUIWASE.png";
 import DAIKIYAMAGUCHI_IMG from "@/public/profile/DAIKIYAMAGUCHI.png";
