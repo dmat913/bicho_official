@@ -1,7 +1,6 @@
 import { Profile } from "@/types/profile";
 import UnknownImage from "@/public/profile/unknown.png";
 import YUUKITANI_IMG from "@/public/profile/YUUKITANI.png";
-import RIKUOONO_IMG from "@/public/profile/RIKUOONO.png";
 import HIKARUIWASE_IMG from "@/public/profile/HIKARUIWASE.png";
 import YUUTOKAGAWA_IMG from "@/public/profile/YUUTOKAGAWA.png";
 import RYOUISHIKAWA_IMG from "@/public/profile/RYOUISHIKAWA.png";
@@ -10,6 +9,14 @@ import SATHUKITAKISHIMA_IMG from "@/public/profile/SATHUKITAKISHIMA.png";
 import SATOSHITAKANAYAGI_IMG from "@/public/profile/SATOSHITAKAYANAGI.png";
 import AYUMUENOMOTO_IMG from "@/public/profile/AYUMUENOMOTO.png";
 import DAIKIYAMAGUCHI_IMG from "@/public/profile/DAIKIYAMAGUCHI.png";
+import YUUKIKIMURA_IMG from "@/public/profile/YUUKIKIMURA.png";
+import GARI_IMG from "@/public/profile/GARI.png";
+import NAONUKUI_IMG from "@/public/profile/NAONUKUI.png";
+import GOUKOIDA_IMG from "@/public/profile/GOUKOIDA.png";
+import TAIGAASAKO_IMG from "@/public/profile/TAIGAASAKO.png";
+import RYOUKOBAYASHI_IMG from "@/public/profile/RYOUKOBAYASHI.png";
+import YASUTOISHIKAWA_IMG from "@/public/profile/YASUTOISHIKAWA.png";
+import RIKUOONO_IMG from "@/public/profile/RIKUOONO.png";
 
 // GKデータ
 export const goalkeepers: Profile[] = [
@@ -23,7 +30,7 @@ export const goalkeepers: Profile[] = [
     number: "27",
     name: "木村有貴",
     englishName: "YUUKI KIMURA",
-    img: UnknownImage,
+    img: YUUKIKIMURA_IMG,
   },
   {
     number: "28",
@@ -45,7 +52,7 @@ export const defenders: Profile[] = [
     number: "2",
     name: "石川靖人",
     englishName: "YASUTO ISHIKAWA",
-    img: UnknownImage,
+    img: YASUTOISHIKAWA_IMG,
   },
   {
     number: "4",
@@ -57,7 +64,7 @@ export const defenders: Profile[] = [
     number: "5",
     name: "小飯田豪",
     englishName: "GOU KOIDA",
-    img: UnknownImage,
+    img: GOUKOIDA_IMG,
   },
   {
     number: "13",
@@ -97,13 +104,13 @@ export const midfielders: Profile[] = [
     number: "9",
     name: "小林凌",
     englishName: "RYOU KOBAYASHI",
-    img: UnknownImage,
+    img: RYOUKOBAYASHI_IMG,
   },
   {
     number: "10",
     name: "横山博一",
     englishName: "HIROKAZU YOKOYAMA",
-    img: UnknownImage,
+    img: GARI_IMG,
   },
   {
     number: "15",
@@ -139,7 +146,7 @@ export const midfielders: Profile[] = [
     number: "41",
     name: "浅子太我",
     englishName: "TAIGA ASAKO",
-    img: UnknownImage,
+    img: TAIGAASAKO_IMG,
   },
 ];
 
@@ -149,7 +156,7 @@ export const forwards: Profile[] = [
     number: "7",
     name: "貫井直",
     englishName: "NAO NUKUI",
-    img: UnknownImage,
+    img: NAONUKUI_IMG,
   },
   {
     number: "11",

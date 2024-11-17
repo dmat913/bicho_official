@@ -297,10 +297,44 @@ const Tournament = () => {
         <div className="flex flex-1 items-center relative left-[-6px]">
           <div className="h-[176px] w-full flex flex-col">
             <div className="flex flex-1  relative">
+              <motion.span
+                initial={{ opacity: 0, y: -10 }}
+                animate={
+                  tournamentInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: -10 }
+                }
+                transition={{
+                  duration: 0.5,
+                  delay: tournamentInView ? 2.5 : 0,
+                }}
+                className="absolute right-0 top-[-16px] text-red-600 text-xs"
+              >
+                0PK5
+              </motion.span>
               <TopBorder inView={tournamentInView} isWin delay={2} />
-              <RightBorderTopToBottom inView={tournamentInView} delay={2.5} />
+              <RightBorderTopToBottom
+                inView={tournamentInView}
+                delay={2.5}
+                isWin
+              />
             </div>
             <div className="flex flex-1 relative">
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                animate={
+                  tournamentInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: 10 }
+                }
+                transition={{
+                  duration: 0.5,
+                  delay: tournamentInView ? 2.5 : 0,
+                }}
+                className="absolute right-0 bottom-[-16px] text-gray-2 text-xs"
+              >
+                0PK3
+              </motion.span>
               <BottomBorder inView={tournamentInView} isWin delay={2} />
               <RightBorderBottomToTop inView={tournamentInView} delay={2.5} />
             </div>
@@ -311,8 +345,17 @@ const Tournament = () => {
             initial={{ width: "0%" }}
             animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
             transition={{ duration: 0.5, delay: 3 }}
-            className="border-b border-gray-2"
+            className="border-b-[3px] border-[#dc2626] relative right-[2px]"
           />
+        </div>
+        <div className="flex items-center">
+          <motion.div
+            initial={{ width: "0%" }}
+            animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
+            transition={{ duration: 0.5, delay: 3.5 }}
+          >
+            <Image src={BICHOLOGO} alt="" width={32} height={32} />
+          </motion.div>
         </div>
       </motion.div>
     </div>
