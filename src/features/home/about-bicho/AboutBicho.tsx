@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import BICHOLOGO from "@/public/bicho-icon.png";
 import Image from "next/image";
 import backgroundImage from "@/public/background.jpeg";
@@ -60,10 +60,12 @@ const AboutBicho = () => {
       >
         FC.BICHOは、2005年に創設され、川口市を拠点に活動している社会人サッカーチームです。
         <br />
-        埼玉県川口市社会人1部リーグに所属しており、県3部リーグへの昇格を目標に活動しています。
+        埼玉県川口市社会人1部リーグでの戦いを経て、県3部リーグへの昇格を決定しました。
+        <br />
+        2025年度からは県3部リーグで新たな挑戦に挑みます。
       </motion.span>
     </div>
   );
 };
 
-export default AboutBicho;
+export default memo(AboutBicho);
