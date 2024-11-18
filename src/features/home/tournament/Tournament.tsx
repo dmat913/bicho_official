@@ -352,9 +352,9 @@ const Tournament = () => {
           <motion.div
             initial={{ width: "0%" }}
             animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
-            transition={{ duration: 0.5, delay: 3.5 }}
+            transition={{ duration: 1, delay: 3.5 }}
           >
-            <Image src={BICHOLOGO} alt="" width={32} height={32} />
+            <Image src={BICHOLOGO} alt="" width={40} height={40} />
           </motion.div>
         </div>
       </motion.div>
