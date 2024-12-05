@@ -37,6 +37,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="password"
               className="p-2 border border-gray-400 rounded"
+              autoFocus
             />
             <button
               type="submit"
