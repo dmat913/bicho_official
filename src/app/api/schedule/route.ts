@@ -83,3 +83,53 @@ export async function GET() {
     );
   }
 }
+
+// 試合日程編集処理
+export async function PATCH(request: NextRequest) {
+  try {
+    await connectDb();
+
+    const { _id, ...updateFields } = await request.json();
+
+    // ID のチェック
+    if (!_id) {
+      return NextResponse.json(
+        { message: "ID が不足しています" },
+        { status: 400 }
+      );
+    }
+
+    // `scorer` の処理: 空文字を除外
+    if (updateFields.scorer) {
+      updateFields.scorer = updateFields.scorer.filter(
+        (row: string) => row !== ""
+      );
+    }
+
+    // データ更新
+    const updatedEvent = await ScheduleModel.findByIdAndUpdate(
+      _id,
+      updateFields,
+      { new: true } // 更新後のデータを取得
+    );
+
+    // 該当ドキュメントがない場合
+    if (!updatedEvent) {
+      return NextResponse.json(
+        { message: "指定された試合日程が見つかりませんでした" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      message: "試合日程が更新されました",
+      event: updatedEvent,
+    });
+  } catch (error) {
+    console.error("試合日程編集エラー:", error);
+    return NextResponse.json(
+      { message: "試合日程の更新に失敗しました" },
+      { status: 500 }
+    );
+  }
+}
