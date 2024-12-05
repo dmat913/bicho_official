@@ -37,8 +37,6 @@ const EditSchedulePage = () => {
 
   useEffect(() => {
     if (updateTargetSchedule) {
-      const date = new Date(updateTargetSchedule.date);
-      const defaultDate = `${date.getFullYear}-${date.getMonth}-${date.getDate}`;
       setFormData({
         _id: updateTargetSchedule._id || "",
         date:
