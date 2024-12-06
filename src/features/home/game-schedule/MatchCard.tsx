@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
   return (
-    <div className="w-full h-[300px] flex flex-col shadow-lg rounded-lg">
+    <div className="w-full max-w-[350px] h-[300px] flex flex-col shadow-lg rounded-lg">
       <div className="flex items-center h-[64px] w-full bg-green-3 rounded-t-lg">
         <div className="flex flex-col justify-center items-center h-full w-[100px] border-r-[1px] border-line-1">
           <span className="text-white-1 font-bold text-2xl">
