@@ -133,3 +133,44 @@ export async function PATCH(request: NextRequest) {
     );
   }
 }
+
+// 試合日程削除処理
+export async function DELETE(request: NextRequest) {
+  try {
+    await connectDb();
+
+    // クエリパラメータからIDを取得
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get("_id");
+
+    // IDのチェック
+    if (!id) {
+      return NextResponse.json(
+        { message: "ID が不足しています" },
+        { status: 400 }
+      );
+    }
+
+    // 該当データを削除
+    const deletedEvent = await ScheduleModel.findByIdAndDelete(id);
+
+    // 該当データが見つからない場合
+    if (!deletedEvent) {
+      return NextResponse.json(
+        { message: "指定された試合日程が見つかりませんでした" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      message: "試合日程が削除されました",
+      deletedEvent,
+    });
+  } catch (error) {
+    console.error("試合日程削除エラー:", error);
+    return NextResponse.json(
+      { message: "試合日程の削除に失敗しました" },
+      { status: 500 }
+    );
+  }
+}
