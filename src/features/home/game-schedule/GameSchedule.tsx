@@ -71,6 +71,17 @@ const GameSchedule = () => {
         onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
         initialSlide={currentPage - 1}
         key={swiperKey}
+        breakpoints={{
+          350: {
+            slidesPerView: 1,
+          },
+          700: {
+            slidesPerView: 2,
+          },
+          1050: {
+            slidesPerView: 3,
+          },
+        }}
       >
         {displaySchedules.map((schedule) => (
           <SwiperSlide key={schedule._id}>
