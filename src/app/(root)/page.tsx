@@ -16,6 +16,7 @@ import HomeLoading from "@/features/home/loading/HomeLoading";
 import AboutBicho from "@/features/home/about-bicho/AboutBicho";
 import PhotoSwiper from "@/features/home/photo-swiper/PhotoSwiper";
 import SoccerGround from "@/features/home/starting-lineup/SoccerGround";
+import Article from "@/features/home/article/Article";
 
 const HomePage: React.FC = () => {
   // 画像一覧
@@ -87,6 +88,8 @@ const HomePage: React.FC = () => {
           <GameSchedule />
           {/* 写真swiper */}
           <PhotoSwiper />
+          {/** 記事 */}
+          <Article />
           {/* リーグ表 */}
           <LeagueTable />
           {/* トーナメント表 */}
