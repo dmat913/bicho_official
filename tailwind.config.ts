@@ -34,6 +34,9 @@ const config: Config = {
           1: "#e5e7eb",
           2: "#6B7280",
         },
+        gold: {
+          1: "#c4ba61",
+        },
       },
       animation: {
         bounceSlow: "bounceSlow 1s infinite",
