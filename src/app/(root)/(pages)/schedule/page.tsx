@@ -68,13 +68,14 @@ const SchedulePage = () => {
                     <span className="text-xs">Pk: {schedule.pk}</span>
                   )}
                 </div>
-                <div className="flex items-center gap-1 mt-2 w-[100px]">
+                <div className="flex items-center gap-2 mt-2 w-[100px]">
                   {getLogo(schedule.teamName) !== "" ? (
                     <Image
                       src={getLogo(schedule.teamName)}
                       alt=""
                       width={40}
                       height={40}
+                      className="w-10 h-10 object-contain"
                     />
                   ) : (
                     <div className="w-[40px] h-[40px] min-w-[40px] min-h-[40px] rounded-full bg-gray-300" />

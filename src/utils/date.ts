@@ -1,6 +1,7 @@
 import PASSPOT_LOGO from "@/public/logo/passpotLogo.png";
 import SHIMOOCHIAI_LOGO from "@/public/logo/simoochiai.png";
 import BEES_EST_LOGO from "@/public/logo/Bees_EST_LOGO.png";
+import REVER_NORTE_LOGO from "@/public/logo/RIVERNORTEFC_IMG.png";
 
 export const formatDate = (dateString: Date, timeString: string) => {
   const date = new Date(dateString);
@@ -21,6 +22,8 @@ export const getLogo = (teamName: string) => {
       return SHIMOOCHIAI_LOGO;
     case "Bees EST":
       return BEES_EST_LOGO;
+    case "RIVER NORTE FC":
+      return REVER_NORTE_LOGO;
     default:
       return "";
   }
