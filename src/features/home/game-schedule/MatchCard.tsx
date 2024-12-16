@@ -52,7 +52,7 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
                 alt=""
                 width={64}
                 height={64}
-                className=""
+                className="w-16 h-16 object-contain"
               />
             ) : (
               <div className="w-[64px] h-[64px] rounded-full bg-gray-300" />
