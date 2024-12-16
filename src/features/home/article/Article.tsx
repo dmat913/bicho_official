@@ -30,23 +30,53 @@ const Article = () => {
           ニュース/お知らせ
         </motion.span>
       </div>
-      <Link href={"/article"} className="flex flex-col gap-2">
-        <Image src={PickUpPhoto} alt="" className="w-full border" />
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-2">
-            <span className="text-xs block p-1 bg-gold-1 text-green-4 rounded-sm">
-              PICK UP
+      <div>
+        <Link href={"/article?no=3"} className="flex flex-col gap-2">
+          <Image src={PickUpPhoto} alt="" className="w-full border" />
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <span className="text-xs block py-1 px-2 bg-gold-1 text-green-4 rounded-sm">
+                PICK UP
+              </span>
+              <span className="text-xs block py-1 px-2 bg-green-2 text-white-1 rounded-sm">
+                NEWS
+              </span>
+              <span className="text-xs text-gray-2">2024年11月17日</span>
+            </div>
+            <span className="text-sm">
+              2024年度埼玉県南部ブロック決勝大会,結果のお知らせ
             </span>
-            <span className="text-xs block p-1 bg-green-2 text-white-1 rounded-sm">
+          </div>
+        </Link>
+      </div>
+      <div className="mt-4 border-t">
+        <Link href={"/article?no=2"} className="flex flex-col py-2 border-b">
+          <div className="flex items-center gap-2">
+            <span className="text-xs block py-1 px-2 bg-green-2 text-white-1 rounded-sm">
               NEWS
             </span>
-            <span className="text-xs text-gray-2">2024年11月17日</span>
+            <span className="text-xs text-gray-2">2024年10月8日</span>
           </div>
-          <span className="text-sm">
-            2024埼玉県南部ブロック決勝大会優勝のお知らせ
-          </span>
-        </div>
-      </Link>
+          <div>
+            <span className="text-sm">
+              2024年度川口市リーグ, 結果のお知らせ
+            </span>
+          </div>
+        </Link>
+        <Link href={"/article?no=1"} className="flex flex-col py-2 border-b">
+          <div className="flex items-center gap-2">
+            <span className="text-xs block py-1 px-2 bg-green-2 text-white-1 rounded-sm">
+              NEWS
+            </span>
+            <span className="text-xs text-gray-2">2024年6月2日</span>
+          </div>
+          <div>
+            <span className="text-sm">
+              2024年度全国クラブチームサッカー選手権,結果のお知らせ
+            </span>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 };
