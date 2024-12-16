@@ -23,6 +23,8 @@ export const getLogo = (teamName: string) => {
     case "Bees EST":
       return BEES_EST_LOGO;
     case "RIVER NORTE FC":
+    case "RIVER NORTE":
+    case "RIVER":
       return REVER_NORTE_LOGO;
     default:
       return "";
