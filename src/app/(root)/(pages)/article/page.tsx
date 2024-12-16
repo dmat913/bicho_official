@@ -24,12 +24,12 @@ const NewsPage = () => {
           <Image src={PickUpPhoto} alt="" className="border" />
           <span>
             2024年11月17日に開催されました「埼玉県南部ブロックリーグ決勝大会
-            決勝戦 BICHO vs ほのぼのクラブ」の試合にて、 0-0(PK5-3)
+            決勝戦 BICHO vs ほのぼのクラブ」<strong>0-0(PK5-3)</strong>
             の結果を持ちまして、2024年度南部ブロック決勝大会を
             <strong className="text-gold-1">優勝</strong>することが出来ました。
           </span>
           <span>
-            この結果を受けまして、2025年度より長年の目標であった県3部リーグへの
+            これにより、2025年度より長年の目標であった県3部リーグへの
             <strong className="text-gold-1">昇格</strong>
             を果たすことが出来ました。
           </span>
@@ -37,7 +37,7 @@ const NewsPage = () => {
             大会を通じて1人1人が全てを出し切り、最後まで諦めず戦い抜くことが出来ました。
           </span>
           <span>
-            来年度は10数年ぶりに、県3部リーグでの挑戦になります。今年度同様、全力を出し切り目標に向かって、全員で戦って行きたいと思います。
+            来年度は10数年ぶりに、県3部リーグでの挑戦になります。今年度同様、全力を出し切り、目標に向かって全員で戦って行きたいと思います。
           </span>
         </div>
         <div className="flex flex-col gap-2 text-xs text-green-1 py-4">
