@@ -15,7 +15,7 @@ import HomeLoading from "@/features/home/loading/HomeLoading";
 // import VideoList from "@/features/home/youtube-video-list/VideoList";
 import AboutBicho from "@/features/home/about-bicho/AboutBicho";
 import PhotoSwiper from "@/features/home/photo-swiper/PhotoSwiper";
-import SoccerGround from "@/features/home/starting-lineup/SoccerGround";
+// import SoccerGround from "@/features/home/starting-lineup/SoccerGround";
 import Article from "@/features/home/article/Article";
 
 const HomePage: React.FC = () => {
@@ -95,7 +95,7 @@ const HomePage: React.FC = () => {
           {/* トーナメント表 */}
           <Tournament />
           {/* スタメン */}
-          <SoccerGround />
+          {/* <SoccerGround /> */}
           {/** Youtube */}
           {/* <VideoList /> */}
           <Footer />

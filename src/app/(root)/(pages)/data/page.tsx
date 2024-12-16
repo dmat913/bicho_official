@@ -1,6 +1,7 @@
 "use client";
 import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
+import SoccerGround from "@/features/home/starting-lineup/SoccerGround";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -129,13 +130,16 @@ export default function DataPage() {
   return (
     <div className="flex flex-col h-screen">
       <Header />
-      <div className="flex flex-col items-center gap-4 p-4">
-        <span className="text-green-1 font-bold">得点 ランキング</span>
-        <Bar options={options} data={scorerData} height={200} />
-        <span className="text-green-1 font-bold block mt-5">
-          アシスト ランキング
-        </span>
-        <Bar options={options} data={assistData} />
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col items-center gap-4 p-4">
+          <span className="text-green-1 font-bold">得点 ランキング</span>
+          <Bar options={options} data={scorerData} height={200} />
+          <span className="text-green-1 font-bold block mt-5">
+            アシスト ランキング
+          </span>
+          <Bar options={options} data={assistData} />
+        </div>
+        <SoccerGround />
       </div>
       <Footer />
     </div>

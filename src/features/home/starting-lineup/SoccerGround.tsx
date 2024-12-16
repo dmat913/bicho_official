@@ -13,7 +13,7 @@ const SoccerGround = () => {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <div className="relative overflow-hidden bg-noise-green-1 pt-10">
+    <div className="relative overflow-hidden bg-noise-green-1 pt-10 w-full">
       <Image
         src={BackgroundGround}
         alt=""
