@@ -44,7 +44,7 @@ const Article = () => {
               <span className="text-xs text-gray-2">2024年11月17日</span>
             </div>
             <span className="text-sm">
-              2024年度埼玉県南部ブロック決勝大会,結果のお知らせ
+              2024年度埼玉県南部ブロック決勝大会優勝のお知らせ
             </span>
           </div>
         </Link>
@@ -58,9 +58,7 @@ const Article = () => {
             <span className="text-xs text-gray-2">2024年10月8日</span>
           </div>
           <div>
-            <span className="text-sm">
-              2024年度川口市リーグ, 結果のお知らせ
-            </span>
+            <span className="text-sm">2024年度川口市リーグ,結果</span>
           </div>
         </Link>
         <Link href={"/article?no=1"} className="flex flex-col py-2 border-b">
@@ -72,7 +70,7 @@ const Article = () => {
           </div>
           <div>
             <span className="text-sm">
-              2024年度全国クラブチームサッカー選手権,結果のお知らせ
+              2024年度全国クラブチームサッカー選手権,結果
             </span>
           </div>
         </Link>
