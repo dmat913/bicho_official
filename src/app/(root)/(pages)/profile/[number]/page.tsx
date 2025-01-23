@@ -34,36 +34,38 @@ const PlayerDetailPage = () => {
           ))}
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4">
-              {profileDetail.detail?.competitionData.map((competition) => (
-                <div>
-                  <span className="text-xs font-bold">
-                    {competition.competition}
-                  </span>
-                  <table className="w-full bg-white-2 rounded-sm">
-                    <thead className="border-b">
-                      <tr className="uppercase tracking-wider text-black-1 text-sm border-b border-gray-300">
-                        <th className="p-2 text-[10px]">年</th>
-                        <th className="p-2 text-[10px]">試合数</th>
-                        <th className="p-2 text-[10px]">得点</th>
-                        <th className="p-2 text-[10px]">アシスト</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {competition.contents.map((row, index) => (
-                        <tr
-                          key={index}
-                          className={`border-b border-gray-300 text-center text-sm`}
-                        >
-                          <td className="p-2 text-[10px]">{row.year}</td>
-                          <td className="p-2 text-[10px]">{row.gameCount}</td>
-                          <td className="p-2 text-[10px]">{row.goal}</td>
-                          <td className="p-2 text-[10px]">{row.assist}</td>
+              {profileDetail.detail?.competitionData.map(
+                (competition, index) => (
+                  <div key={index}>
+                    <span className="text-xs font-bold">
+                      {competition.competition}
+                    </span>
+                    <table className="w-full bg-white-2 rounded-sm">
+                      <thead className="border-b">
+                        <tr className="uppercase tracking-wider text-black-1 text-sm border-b border-gray-300">
+                          <th className="p-2 text-[10px]">年</th>
+                          <th className="p-2 text-[10px]">試合数</th>
+                          <th className="p-2 text-[10px]">得点</th>
+                          <th className="p-2 text-[10px]">アシスト</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ))}
+                      </thead>
+                      <tbody>
+                        {competition.contents.map((row, index) => (
+                          <tr
+                            key={index}
+                            className={`border-b border-gray-300 text-center text-sm`}
+                          >
+                            <td className="p-2 text-[10px]">{row.year}</td>
+                            <td className="p-2 text-[10px]">{row.gameCount}</td>
+                            <td className="p-2 text-[10px]">{row.goal}</td>
+                            <td className="p-2 text-[10px]">{row.assist}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )
+              )}
             </div>
           </div>
         </div>
