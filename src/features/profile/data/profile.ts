@@ -6,7 +6,7 @@ import YUUTOKAGAWA_IMG from "@/public/profile/YUUTOKAGAWA.png";
 import RYOUISHIKAWA_IMG from "@/public/profile/RYOUISHIKAWA.png";
 import YUDAINAKATA_IMG from "@/public/profile/YUDAINAKATA.png";
 import SATHUKITAKISHIMA_IMG from "@/public/profile/SATHUKITAKISHIMA.png";
-import SATOSHITAKANAYAGI_IMG from "@/public/profile/SATOSHITAKAYANAGI.png";
+// import SATOSHITAKANAYAGI_IMG from "@/public/profile/SATOSHITAKAYANAGI.png";
 import AYUMUENOMOTO_IMG from "@/public/profile/AYUMUENOMOTO.png";
 import DAIKIYAMAGUCHI_IMG from "@/public/profile/DAIKIYAMAGUCHI.png";
 import YUUKIKIMURA_IMG from "@/public/profile/YUUKIKIMURA.png";
