@@ -1,6 +1,8 @@
 export interface League {
   // チーム名
   team: string;
+  // 試合数
+  game_count: number;
   // 勝ち点
   points: string;
   // 勝
