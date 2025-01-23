@@ -34,10 +34,10 @@ const LeagueTable = () => {
       >
         <span className="text-white-1 font-bold text-2xl">
           {LEAGUE_DATA.title.split(" ").map((part, index) => (
-            <>
+            <span key={index}>
               {part}
               {index < LEAGUE_DATA.title.split(" ").length - 1 && <br />}
-            </>
+            </span>
           ))}
         </span>
       </motion.div>
