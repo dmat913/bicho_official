@@ -33,12 +33,11 @@ const GameSchedule = () => {
       const scheduleDate = new Date(schedule.date);
       return scheduleDate >= today;
     });
-
     if (closestIndex !== -1) {
       setCurrentPage(closestIndex + 1);
       setSwiperKey((prevKey) => prevKey + 1);
     } else {
-      setCurrentPage(1); // デフォルトのスライドを1に設定
+      setCurrentPage(1);
     }
   }, [displaySchedules]);
 

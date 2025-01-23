@@ -7,11 +7,20 @@ export async function GET() {
     // データベース接続を確立
     await connectDb();
 
-    // 今日以降の未来の日程を1件取得
     const currentDate = new Date();
-    const schedule = await ScheduleModel.findOne({
+    let schedule;
+
+    // 未来の日程が存在する場合は一番先の日程を取得
+    schedule = await ScheduleModel.findOne({
       date: { $gte: currentDate },
-    }).sort({ date: 1 });
+    }).sort({ date: -1 });
+
+    if (!schedule) {
+      // 未来の日程がなければ過去の日程の中で一番新しいものを取得
+      schedule = await ScheduleModel.findOne({
+        date: { $lt: currentDate },
+      }).sort({ date: -1 });
+    }
 
     if (schedule) {
       return NextResponse.json({
