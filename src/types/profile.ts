@@ -5,4 +5,17 @@ export interface Profile {
   name: string;
   englishName: string;
   img: StaticImageData;
+  detail?: { competitionData: Detail[]; images: StaticImageData[] };
+}
+
+export interface Detail {
+  competition: string;
+  contents: Data[];
+}
+
+export interface Data {
+  year: string;
+  gameCount: string;
+  goal: string;
+  assist: string;
 }
