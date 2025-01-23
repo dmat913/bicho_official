@@ -23,6 +23,11 @@ import Ryo1 from "@/public/profile/ryo/ryo1.jpeg";
 import Yama1 from "@/public/profile/yama/Yama1.jpeg";
 import Ayumu1 from "@/public/profile/ayumu/ayumu1.jpeg";
 import Hikaru1 from "@/public/profile/hikaru/hikaru1.jpeg";
+import Kagawa1 from "@/public/profile/kagawa/kagawa1.jpeg";
+import Nao1 from "@/public/profile/nao/nao1.jpeg";
+import Oono1 from "@/public/profile/oono/oono1.jpeg";
+import Yudai1 from "@/public/profile/yudai/yudai1.jpeg";
+import Yasuto1 from "@/public/profile/yasuto/yasuto1.jpeg";
 
 // GKデータ
 export const goalkeepers: Profile[] = [
@@ -59,12 +64,67 @@ export const defenders: Profile[] = [
     name: "石川靖人",
     englishName: "YASUTO ISHIKAWA",
     img: YASUTOISHIKAWA_IMG,
+    detail: {
+      images: [Yasuto1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [{ year: "2024", gameCount: "5", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [{ year: "2024", gameCount: "3", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [{ year: "2024", gameCount: "3", goal: "0", assist: "0" }],
+        },
+      ],
+    },
   },
   {
     number: "4",
     name: "賀川優斗",
     englishName: "YUUTO KAGAWA",
     img: YUUTOKAGAWA_IMG,
+    detail: {
+      images: [Kagawa1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [
+            { year: "2024", gameCount: "5", goal: "1", assist: "0" },
+            { year: "2023", gameCount: "6", goal: "1", assist: "0" },
+            { year: "2022", gameCount: "7", goal: "1", assist: "4" },
+          ],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [
+            { year: "2024", gameCount: "1", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "0", assist: "1" },
+            { year: "2022", gameCount: "1", goal: "1", assist: "0" },
+          ],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "0", assist: "2" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "2" },
+          ],
+        },
+      ],
+    },
   },
   {
     number: "5",
@@ -78,17 +138,51 @@ export const defenders: Profile[] = [
     englishName: "TAKUYA YANAGIDA",
     img: UnknownImage,
   },
-  {
-    number: "22",
-    name: "高柳智",
-    englishName: "SATOSHI TAKAYANAGI",
-    img: SATOSHITAKANAYAGI_IMG,
-  },
+  // {
+  //   number: "22",
+  //   name: "高柳智",
+  //   englishName: "SATOSHI TAKAYANAGI",
+  //   img: SATOSHITAKANAYAGI_IMG,
+  // },
   {
     number: "26",
     name: "大野莉久",
     englishName: "RIKU OONO",
     img: RIKUOONO_IMG,
+    detail: {
+      images: [Oono1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [
+            { year: "2024", gameCount: "5", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "6", goal: "0", assist: "0" },
+            { year: "2022", gameCount: "7", goal: "0", assist: "0" },
+          ],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [
+            { year: "2024", gameCount: "1", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "0", assist: "0" },
+            { year: "2022", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+      ],
+    },
   },
   {
     number: "33",
@@ -105,6 +199,40 @@ export const midfielders: Profile[] = [
     name: "中田湧大",
     englishName: "YUUDAI NAKATA",
     img: YUDAINAKATA_IMG,
+    detail: {
+      images: [Yudai1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [
+            { year: "2024", gameCount: "5", goal: "1", assist: "0" },
+            { year: "2023", gameCount: "6", goal: "0", assist: "0" },
+            { year: "2022", gameCount: "7", goal: "1", assist: "1" },
+          ],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [
+            { year: "2024", gameCount: "1", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "0", assist: "0" },
+            { year: "2022", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+      ],
+    },
   },
   {
     number: "9",
@@ -192,7 +320,7 @@ export const midfielders: Profile[] = [
         },
         {
           competition: "会長杯1次ラウンド兼彩の国カップ",
-          contents: [{ year: "2024", gameCount: "3", goal: "2", assist: "2" }],
+          contents: [{ year: "2024", gameCount: "3", goal: "2", assist: "1" }],
         },
       ],
     },
@@ -218,6 +346,40 @@ export const forwards: Profile[] = [
     name: "貫井直",
     englishName: "NAO NUKUI",
     img: NAONUKUI_IMG,
+    detail: {
+      images: [Nao1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [
+            { year: "2024", gameCount: "5", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "6", goal: "1", assist: "0" },
+            { year: "2022", gameCount: "7", goal: "1", assist: "0" },
+          ],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [
+            { year: "2024", gameCount: "1", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [
+            { year: "2024", gameCount: "2", goal: "0", assist: "0" },
+            { year: "2022", gameCount: "1", goal: "1", assist: "0" },
+          ],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [
+            { year: "2024", gameCount: "2", goal: "2", assist: "3" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+      ],
+    },
   },
   {
     number: "11",
@@ -285,7 +447,7 @@ export const forwards: Profile[] = [
         {
           competition: "会長杯1次ラウンド兼彩の国カップ",
           contents: [
-            { year: "2024", gameCount: "3", goal: "3", assist: "2" },
+            { year: "2024", gameCount: "3", goal: "3", assist: "1" },
             { year: "2023", gameCount: "1", goal: "0", assist: "0" },
           ],
         },
