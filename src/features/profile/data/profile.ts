@@ -18,6 +18,12 @@ import RYOUKOBAYASHI_IMG from "@/public/profile/RYOUKOBAYASHI.png";
 import YASUTOISHIKAWA_IMG from "@/public/profile/YASUTOISHIKAWA.png";
 import RIKUOONO_IMG from "@/public/profile/RIKUOONO.png";
 
+// 選手詳細画像
+import Ryo1 from "@/public/profile/ryo/ryo1.jpeg";
+import Yama1 from "@/public/profile/yama/Yama1.jpeg";
+import Ayumu1 from "@/public/profile/ayumu/ayumu1.jpeg";
+import Hikaru1 from "@/public/profile/hikaru/hikaru1.jpeg";
+
 // GKデータ
 export const goalkeepers: Profile[] = [
   {
@@ -129,12 +135,67 @@ export const midfielders: Profile[] = [
     name: "山口大貴",
     englishName: "DAIKI YAMAGUCHI",
     img: DAIKIYAMAGUCHI_IMG,
+    detail: {
+      images: [Yama1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [
+            { year: "2024", gameCount: "5", goal: "0", assist: "2" },
+            { year: "2023", gameCount: "6", goal: "1", assist: "0" },
+            { year: "2022", gameCount: "7", goal: "2", assist: "4" },
+          ],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [
+            { year: "2024", gameCount: "1", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "1", assist: "0" },
+            { year: "2022", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "1", assist: "0" },
+            { year: "2023", gameCount: "1", goal: "1", assist: "0" },
+          ],
+        },
+      ],
+    },
   },
   {
     number: "19",
     name: "岩瀬輝",
     englishName: "HIKARU IWASE",
     img: HIKARUIWASE_IMG,
+    detail: {
+      images: [Hikaru1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [{ year: "2024", gameCount: "5", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [{ year: "2024", gameCount: "3", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [{ year: "2024", gameCount: "3", goal: "2", assist: "2" }],
+        },
+      ],
+    },
   },
   {
     number: "25",
@@ -163,6 +224,27 @@ export const forwards: Profile[] = [
     name: "榎本歩夢",
     englishName: "AYUMU ENOMOTO",
     img: AYUMUENOMOTO_IMG,
+    detail: {
+      images: [Ayumu1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [{ year: "2024", gameCount: "5", goal: "1", assist: "0" }],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [{ year: "2024", gameCount: "3", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [{ year: "2024", gameCount: "3", goal: "3", assist: "0" }],
+        },
+      ],
+    },
   },
   {
     number: "12",
@@ -175,6 +257,40 @@ export const forwards: Profile[] = [
     name: "石川諒",
     englishName: "RYOU ISHIKAWA",
     img: RYOUISHIKAWA_IMG,
+    detail: {
+      images: [Ryo1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [
+            { year: "2024", gameCount: "5", goal: "3", assist: "0" },
+            { year: "2023", gameCount: "6", goal: "2", assist: "0" },
+            { year: "2022", gameCount: "7", goal: "10", assist: "0" },
+          ],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [
+            { year: "2024", gameCount: "1", goal: "1", assist: "0" },
+            { year: "2023", gameCount: "1", goal: "2", assist: "0" },
+          ],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "1", assist: "0" },
+            { year: "2022", gameCount: "1", goal: "1", assist: "0" },
+          ],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "3", assist: "2" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+      ],
+    },
   },
   {
     number: "20",

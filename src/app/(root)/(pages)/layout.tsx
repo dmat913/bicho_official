@@ -10,11 +10,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (images.length === 0) {
-      router.push("/");
+      // router.push("/");
     }
     // eslint-disable-next-line
   }, [images]);
-  return <div className="w-full h-full">{images.length > 0 && children}</div>;
+  return <div className="w-full h-full">{children}</div>;
 };
 
 export default Layout;

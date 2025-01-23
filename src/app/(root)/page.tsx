@@ -27,49 +27,49 @@ const HomePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // API呼び出し
-  useEffect(() => {
-    const loadImages = async () => {
-      try {
-        const firstData = await fetchFirstImage();
-        setImages(firstData);
-        setIsLoading(false);
-        const data = await fetchImages();
-        setImages(data);
-      } catch (error) {
-        alert("画像取得中にエラーが発生しました:");
-        console.log(error);
-        setIsLoading(false);
-      }
-    };
-    if (images.length === 0) {
-      loadImages();
-    } else {
-      setIsLoading(false);
-    }
-    // eslint-disable-next-line
-  }, [setImages, setIsLoading]);
+  // useEffect(() => {
+  //   const loadImages = async () => {
+  //     try {
+  //       const firstData = await fetchFirstImage();
+  //       setImages(firstData);
+  //       setIsLoading(false);
+  //       const data = await fetchImages();
+  //       setImages(data);
+  //     } catch (error) {
+  //       alert("画像取得中にエラーが発生しました:");
+  //       console.log(error);
+  //       setIsLoading(false);
+  //     }
+  //   };
+  //   if (images.length === 0) {
+  //     loadImages();
+  //   } else {
+  //     setIsLoading(false);
+  //   }
+  //   // eslint-disable-next-line
+  // }, [setImages, setIsLoading]);
 
-  useEffect(() => {
-    const fetchSchedules = async () => {
-      try {
-        const response = await fetch("/api/schedule/next", { method: "GET" });
-        if (!response.ok) throw new Error("データ取得に失敗しました");
-        const nextDate = await response.json();
-        setSchedules(nextDate.schedule);
-        const listResponse = await fetch("/api/schedule", {
-          method: "GET",
-        });
-        const dates = await listResponse.json();
-        setSchedules(dates.schedules);
-      } catch (err) {
-        console.log("日程取得エラー:", err);
-      }
-    };
-    if (schedules.length === 0) {
-      fetchSchedules();
-    }
-    // eslint-disable-next-line
-  }, [setSchedules]);
+  // useEffect(() => {
+  //   const fetchSchedules = async () => {
+  //     try {
+  //       const response = await fetch("/api/schedule/next", { method: "GET" });
+  //       if (!response.ok) throw new Error("データ取得に失敗しました");
+  //       const nextDate = await response.json();
+  //       setSchedules(nextDate.schedule);
+  //       const listResponse = await fetch("/api/schedule", {
+  //         method: "GET",
+  //       });
+  //       const dates = await listResponse.json();
+  //       setSchedules(dates.schedules);
+  //     } catch (err) {
+  //       console.log("日程取得エラー:", err);
+  //     }
+  //   };
+  //   if (schedules.length === 0) {
+  //     fetchSchedules();
+  //   }
+  //   // eslint-disable-next-line
+  // }, [setSchedules]);
 
   return (
     <div
