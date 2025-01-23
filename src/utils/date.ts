@@ -2,6 +2,19 @@ import PASSPOT_LOGO from "@/public/logo/passpotLogo.png";
 import SHIMOOCHIAI_LOGO from "@/public/logo/simoochiai.png";
 import BEES_EST_LOGO from "@/public/logo/Bees_EST_LOGO.png";
 import REVER_NORTE_LOGO from "@/public/logo/RIVERNORTEFC_IMG.png";
+import BICHO_LOGO from "@/public/bicho-icon.png";
+import TACKYS_LOGO from "@/public/logo/TACKY'S_LOGO.png";
+import KEISHIN_LOGO from "@/public/logo/KEISHIN_LOGO.png";
+import ASHAHI_LOGO from "@/public/logo/ASHAHI_LOGO.png";
+import FURUGON_LOGO from "@/public/logo/FURUGON_LOGO.png";
+import OOYABA_LOGO from "@/public/logo/OOYABA_LOGO.png";
+import KAWAGUCHIFC_LOGO from "@/public/logo/KAWAGUCHIFC_LOGO.png";
+import HGC_LOGO from "@/public/logo/HGC_LOGO.png";
+import GRANDE_LOGO from "@/public/logo/GRANDE_LOGO.png";
+import {
+  LEAGUE_2024,
+  LEAGUE_2025,
+} from "@/features/home/league-table/data/league";
 
 export const formatDate = (dateString: Date, timeString: string) => {
   const date = new Date(dateString);
@@ -26,7 +39,36 @@ export const getLogo = (teamName: string) => {
     case "RIVER NORTE":
     case "RIVER":
       return REVER_NORTE_LOGO;
+    case "FC.BICHO":
+      return BICHO_LOGO;
+    case "TACKY'S":
+      return TACKYS_LOGO;
+    case "繋信FC":
+      return KEISHIN_LOGO;
+    case "朝日FC GRAZIE":
+      return ASHAHI_LOGO;
+    case "FCフルゴン":
+      return FURUGON_LOGO;
+    case "Area大谷場":
+      return OOYABA_LOGO;
+    case "川口FCセカンド":
+      return KAWAGUCHIFC_LOGO;
+    case "HGC1990":
+      return HGC_LOGO;
+    case "GRANDE FC":
+      return GRANDE_LOGO;
     default:
       return "";
+  }
+};
+
+export const getLeagueData = (year: string) => {
+  switch (year) {
+    case "2024":
+      return LEAGUE_2024;
+    case "2025":
+      return LEAGUE_2025;
+    default:
+      return LEAGUE_2025;
   }
 };
