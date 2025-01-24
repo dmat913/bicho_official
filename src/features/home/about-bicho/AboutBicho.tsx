@@ -12,7 +12,7 @@ const AboutBicho = () => {
   return (
     <div
       ref={ref}
-      className="relative py-10 px-4 flex flex-col items-center"
+      className="relative py-6 px-4 flex flex-col gap-16 items-center"
       style={{
         backgroundImage: `url(${backgroundImage.src})`,
         backgroundSize: "cover",
@@ -23,16 +23,7 @@ const AboutBicho = () => {
     >
       {/* 半透明のオーバーレイ */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="z-10"
-      >
-        <Image src={BICHOLOGO} alt="Bicho Logo" width={100} height={100} />
-      </motion.div>
-
-      <div className="flex flex-col items-center mb-4">
+      <div className="flex flex-col items-center">
         {/* アニメーションを適用する要素 */}
         <motion.span
           ref={ref}
@@ -43,17 +34,17 @@ const AboutBicho = () => {
         >
           About BICHO
         </motion.span>
-        <motion.span
-          className="text-gradient-3 font-semibold text-shadow"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="z-10"
         >
-          BICHOについて
-        </motion.span>
+          <Image src={BICHOLOGO} alt="Bicho Logo" width={100} height={100} />
+        </motion.div>
       </div>
       <motion.span
-        className="text-white-1 text-centerd mt-4 z-10 text-shadow"
+        className="text-white-1 text-centerd z-10 text-shadow"
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.5 }}

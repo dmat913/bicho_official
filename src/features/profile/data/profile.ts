@@ -22,35 +22,61 @@ import RIKUOONO_IMG from "@/public/profile/RIKUOONO.png";
 import Ryo1 from "@/public/profile/ryo/ryo1.jpeg";
 import Yama1 from "@/public/profile/yama/Yama1.jpeg";
 import Ayumu1 from "@/public/profile/ayumu/ayumu1.jpeg";
+import Ayumu2 from "@/public/profile/ayumu/ayumu2.jpeg";
 import Hikaru1 from "@/public/profile/hikaru/hikaru1.jpeg";
 import Kagawa1 from "@/public/profile/kagawa/kagawa1.jpeg";
+import Kagawa2 from "@/public/profile/kagawa/kagawa2.jpeg";
 import Nao1 from "@/public/profile/nao/nao1.jpeg";
 import Oono1 from "@/public/profile/oono/oono1.jpeg";
 import Yudai1 from "@/public/profile/yudai/yudai1.jpeg";
 import Yasuto1 from "@/public/profile/yasuto/yasuto1.jpeg";
+import Tani1 from "@/public/profile/tani/tani1.jpeg";
+import AT1 from "@/public/profile/AT/AT1.jpeg";
+import Youdai1 from "@/public/profile/youdai/youdai1.jpeg";
 
 // GKデータ
 export const goalkeepers: Profile[] = [
   {
     number: "1",
+    position: "GK",
     name: "深見陽大",
     englishName: "YOUDAI FUKAMI",
     img: UnknownImage,
+    detail: {
+      images: [Youdai1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
+        },
+      ],
+    },
   },
   {
     number: "27",
+    position: "GK",
     name: "木村有貴",
     englishName: "YUUKI KIMURA",
     img: YUUKIKIMURA_IMG,
   },
   {
     number: "28",
+    position: "GK",
     name: "滝島皐",
     englishName: "SATHUKI TAKISHIMA",
     img: SATHUKITAKISHIMA_IMG,
   },
   {
     number: "30",
+    position: "GK",
     name: "和田晃輝",
     englishName: "KOUKI WADA",
     img: UnknownImage,
@@ -62,6 +88,7 @@ export const defenders: Profile[] = [
   {
     number: "2",
     name: "石川靖人",
+    position: "CB/RB",
     englishName: "YASUTO ISHIKAWA",
     img: YASUTOISHIKAWA_IMG,
     detail: {
@@ -89,10 +116,11 @@ export const defenders: Profile[] = [
   {
     number: "4",
     name: "賀川優斗",
+    position: "CB/CDM",
     englishName: "YUUTO KAGAWA",
     img: YUUTOKAGAWA_IMG,
     detail: {
-      images: [Kagawa1],
+      images: [Kagawa1, Kagawa2],
       competitionData: [
         {
           competition: "川口市社会人サッカーリーグ",
@@ -129,12 +157,14 @@ export const defenders: Profile[] = [
   {
     number: "5",
     name: "小飯田豪",
+    position: "CB",
     englishName: "GOU KOIDA",
     img: GOUKOIDA_IMG,
   },
   {
     number: "13",
     name: "柳田卓也",
+    position: "CB",
     englishName: "TAKUYA YANAGIDA",
     img: UnknownImage,
   },
@@ -147,6 +177,7 @@ export const defenders: Profile[] = [
   {
     number: "26",
     name: "大野莉久",
+    position: "LB/RB/CB",
     englishName: "RIKU OONO",
     img: RIKUOONO_IMG,
     detail: {
@@ -187,6 +218,7 @@ export const defenders: Profile[] = [
   {
     number: "33",
     name: "相馬海音",
+    position: "CB",
     englishName: "MION SOUMA",
     img: UnknownImage,
   },
@@ -197,6 +229,7 @@ export const midfielders: Profile[] = [
   {
     number: "8",
     name: "中田湧大",
+    position: "CM",
     englishName: "YUUDAI NAKATA",
     img: YUDAINAKATA_IMG,
     detail: {
@@ -237,23 +270,48 @@ export const midfielders: Profile[] = [
   {
     number: "9",
     name: "小林凌",
+    position: "LW/LB",
     englishName: "RYOU KOBAYASHI",
     img: RYOUKOBAYASHI_IMG,
   },
   {
     number: "10",
+    position: "CM/CDM",
     name: "横山博一",
     englishName: "HIROKAZU YOKOYAMA",
     img: GARI_IMG,
   },
   {
     number: "15",
+    position: "CM/CDM/OMF/CB/LB/RB",
     name: "谷侑樹",
     englishName: "YUUKI TANI",
     img: YUUKITANI_IMG,
+    detail: {
+      images: [Tani1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [{ year: "2024", gameCount: "5", goal: "1", assist: "0" }],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [{ year: "2024", gameCount: "3", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
+        },
+      ],
+    },
   },
   {
     number: "16",
+    position: "CM",
     name: "宮野太郎",
     englishName: "TAROU MIYANO",
     img: UnknownImage,
@@ -261,6 +319,7 @@ export const midfielders: Profile[] = [
   {
     number: "17",
     name: "山口大貴",
+    position: "CM/OMF",
     englishName: "DAIKI YAMAGUCHI",
     img: DAIKIYAMAGUCHI_IMG,
     detail: {
@@ -302,6 +361,7 @@ export const midfielders: Profile[] = [
     number: "19",
     name: "岩瀬輝",
     englishName: "HIKARU IWASE",
+    position: "RW/RB/LW",
     img: HIKARUIWASE_IMG,
     detail: {
       images: [Hikaru1],
@@ -328,14 +388,37 @@ export const midfielders: Profile[] = [
   {
     number: "25",
     name: "荒井克弥",
+    position: "CM",
     englishName: "KATHUYA ARAI",
     img: UnknownImage,
   },
   {
     number: "41",
     name: "浅子太我",
+    position: "CDM",
     englishName: "TAIGA ASAKO",
     img: TAIGAASAKO_IMG,
+    detail: {
+      images: [AT1],
+      competitionData: [
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [{ year: "2024", gameCount: "5", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [{ year: "2024", gameCount: "3", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [{ year: "2024", gameCount: "3", goal: "0", assist: "0" }],
+        },
+      ],
+    },
   },
 ];
 
@@ -344,6 +427,7 @@ export const forwards: Profile[] = [
   {
     number: "7",
     name: "貫井直",
+    position: "CF",
     englishName: "NAO NUKUI",
     img: NAONUKUI_IMG,
     detail: {
@@ -384,10 +468,11 @@ export const forwards: Profile[] = [
   {
     number: "11",
     name: "榎本歩夢",
+    position: "CF/RW",
     englishName: "AYUMU ENOMOTO",
     img: AYUMUENOMOTO_IMG,
     detail: {
-      images: [Ayumu1],
+      images: [Ayumu2, Ayumu1],
       competitionData: [
         {
           competition: "川口市社会人サッカーリーグ",
@@ -411,12 +496,14 @@ export const forwards: Profile[] = [
   {
     number: "12",
     name: "多田未来",
+    position: "CF",
     englishName: "TADA MIKURU",
     img: UnknownImage,
   },
   {
     number: "18",
     name: "石川諒",
+    position: "LW/CF/OMF",
     englishName: "RYOU ISHIKAWA",
     img: RYOUISHIKAWA_IMG,
     detail: {
@@ -457,11 +544,13 @@ export const forwards: Profile[] = [
   {
     number: "20",
     name: "黒岩亮太",
+    position: "CF/RB/LB",
     englishName: "RYOUTA KUROIWA",
     img: UnknownImage,
   },
   {
     number: "23",
+    position: "CF",
     name: "市橋洋大",
     englishName: "YOUDAI ICHIHASHI  vc",
     img: UnknownImage,
