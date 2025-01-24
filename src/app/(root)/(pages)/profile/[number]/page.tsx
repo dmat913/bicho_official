@@ -21,17 +21,23 @@ const PlayerDetailPage = () => {
       <Header />
       {profileDetail ? (
         <div className="flex flex-col p-2 pb-4 gap-4">
-          <span className="text-lg font-bold block mt-4">
-            {profileDetail.name}
-          </span>
-          {profileDetail.detail?.images.map((profile, index) => (
-            <Image
-              key={index}
-              src={profile}
-              alt=""
-              className="w-full h-52 object-cover rounded-md border"
-            />
-          ))}
+          <div className="mt-4 flex items-center gap-4">
+            <div className="flex items-center gap-1">
+              <span className="text-lg">{profileDetail.number}</span>
+              <span className="text-lg">{profileDetail.name}</span>
+            </div>
+            <span className="text-sm">{profileDetail.position}</span>
+          </div>
+          <div className="flex gap-1 items-center overflow-x-auto">
+            {profileDetail.detail?.images.map((profile, index) => (
+              <Image
+                key={index}
+                src={profile}
+                alt=""
+                className="w-full h-52 object-cover rounded-md border"
+              />
+            ))}
+          </div>
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4">
               {profileDetail.detail?.competitionData.map(

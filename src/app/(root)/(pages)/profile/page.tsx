@@ -14,7 +14,7 @@ const ProfilePage = () => {
     <div className="bg-white-2">
       <Header />
       <div className="flex flex-col">
-        <div className="flex flex-col border-2 border-b-green-1 border-dotted pb-4">
+        <div className="flex flex-col border-b-2 border-b-green-1 border-dotted pb-4">
           <div className="flex flex-col gap-2 items-center justify-center py-5">
             <span className="text-green-1 text-4xl font-bold">GK</span>
             <span className="font-semibold text-green-1">ゴールキーパー</span>
@@ -25,7 +25,7 @@ const ProfilePage = () => {
             ))}
           </div>
         </div>
-        <div className="flex flex-col border-2 border-b-green-1 border-dotted pb-4">
+        <div className="flex flex-col border-b-2 border-b-green-1 border-dotted pb-4">
           <div className="flex flex-col gap-2 items-center justify-center py-5">
             <span className="text-green-1 text-4xl font-bold">DF</span>
             <span className="font-semibold text-green-1">ディフェンダー</span>
@@ -36,7 +36,7 @@ const ProfilePage = () => {
             ))}
           </div>
         </div>
-        <div className="flex flex-col border-2 border-b-green-1 border-dotted pb-4">
+        <div className="flex flex-col border-b-2 border-b-green-1 border-dotted pb-4">
           <div className="flex flex-col gap-2 items-center justify-center py-5">
             <span className="text-green-1 text-4xl font-bold">MF</span>
             <span className="font-semibold text-green-1">ミッドフィルダー</span>
