@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Fireworks } from "fireworks-js";
 
 interface DFireworksProps {
@@ -9,7 +9,6 @@ interface DFireworksProps {
 
 const DFireworks = ({ timeoutCount }: DFireworksProps) => {
   const containerRef = useRef(null);
-  const [fireworksState, setFireworksState] = useState<Fireworks | null>(null);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -29,7 +28,6 @@ const DFireworks = ({ timeoutCount }: DFireworksProps) => {
           y: window.innerHeight,
         },
       });
-      setFireworksState(fireworks);
       fireworks.start();
       setTimeout(() => {
         fireworks.stop();
