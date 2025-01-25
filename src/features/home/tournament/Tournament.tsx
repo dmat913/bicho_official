@@ -8,6 +8,7 @@ import TopBorder from "./border/TopBorder";
 import RightBorderTopToBottom from "./border/RightBorderTopToBottom";
 import BottomBorder from "./border/BottomBorder";
 import RightBorderBottomToTop from "./border/RightBorderBottomToTop";
+import DFireworks from "@/components/elements/DFireworks";
 
 const teams = [
   {
@@ -51,7 +52,7 @@ const Tournament = () => {
   const tournamentRef = useRef(null);
   const tournamentInView = useInView(tournamentRef, { once: true });
   return (
-    <div id="tournament" className="px-4 py-10 flex flex-col">
+    <div id="tournament" className="relative px-4 py-10 flex flex-col">
       <div className="flex flex-col items-center mb-4">
         {/* アニメーションを適用する要素 */}
         <motion.span
@@ -357,6 +358,14 @@ const Tournament = () => {
             <Image src={BICHOLOGO} alt="" width={40} height={40} />
           </motion.div>
         </div>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isInView ? 1 : 0 }}
+        transition={{ delay: 3 }}
+        className="absolute h-full w-full top-0 left-0"
+      >
+        {isInView && <DFireworks timeoutCount={12000} />}
       </motion.div>
     </div>
   );
