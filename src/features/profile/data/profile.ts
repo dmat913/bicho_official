@@ -134,6 +134,13 @@ export const defenders: Profile[] = [
     },
   },
   {
+    number: "3",
+    name: "木南海斗",
+    position: "LB",
+    englishName: "KAITO KINAMI",
+    img: null,
+  },
+  {
     number: "4",
     name: "賀川優斗",
     position: "CB/CDM",
