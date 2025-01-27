@@ -5,7 +5,8 @@ import HIKARUIWASE_IMG from "@/public/profile/HIKARUIWASE.png";
 import DAIKIYAMAGUCHI_IMG from "@/public/profile/DAIKIYAMAGUCHI.png";
 import RYOUISHIKAWA_IMG from "@/public/profile/RYOUISHIKAWA.png";
 import YUDAINAKATA_IMG from "@/public/profile/YUDAINAKATA.png";
-import NAONUKUI_IMG from "@/public/profile/NAONUKUI.png";
+// import NAONUKUI_IMG from "@/public/profile/NAONUKUI.png";
+import YUUKITANI_IMG from "@/public/profile/YUUKITANI.png";
 import TAIGAASAKO_IMG from "@/public/profile/TAIGAASAKO.png";
 import YASUTOISHIKAWA_IMG from "@/public/profile/YASUTOISHIKAWA.png";
 import RIKUOONO_IMG from "@/public/profile/RIKUOONO.png";
@@ -81,12 +82,11 @@ export const FOUR_THREE_ONE_TWO = [
     imageUrl: DAIKIYAMAGUCHI_IMG,
     styles: { right: "12%", top: "40%", width: "60px", height: "86px" },
   },
-
   {
-    name: "石川諒",
-    number: 18,
+    name: "谷侑樹",
+    number: 15,
     position: "OMF",
-    imageUrl: RYOUISHIKAWA_IMG,
+    imageUrl: YUUKITANI_IMG,
     styles: {
       left: "50%",
       transform: "translateX(-50%)",
@@ -108,10 +108,10 @@ export const FOUR_THREE_ONE_TWO = [
     },
   },
   {
-    name: "貫井直",
-    number: 7,
-    position: "CF",
-    imageUrl: NAONUKUI_IMG,
+    name: "石川諒",
+    number: 18,
+    position: "OMF",
+    imageUrl: RYOUISHIKAWA_IMG,
     styles: {
       right: "22%",
       top: "66%",
