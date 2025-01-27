@@ -5,7 +5,7 @@ export interface Profile {
   name: string;
   position: string;
   englishName: string;
-  img: StaticImageData;
+  img: StaticImageData | null;
   detail?: {
     competitionData: Detail[];
     images: StaticImageData[];
