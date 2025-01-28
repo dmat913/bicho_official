@@ -4,8 +4,10 @@ import BichoLogo from "@/public/bicho-icon.png";
 import Link from "next/link";
 import { FaBars } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
   // メニューの表示/非表示を切り替える関数
@@ -38,7 +40,11 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex items-center justify-between bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 bg-noise-pattern py-2 px-4 border-b border-line-1 shadow-lg hover:shadow-xl transition-shadow duration-300 relative">
+      <header
+        className={`flex items-center justify-between bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 bg-noise-pattern py-2 px-4 border-b border-line-1 shadow-lg hover:shadow-xl transition-shadow duration-300 relative ${
+          pathname !== "/" && "sticky top-0 z-50"
+        }`}
+      >
         {/* ロゴリンク */}
         <Link href="/" className="flex items-center gap-1">
           <Image src={BichoLogo} alt="Logo" width={48} height={48} />

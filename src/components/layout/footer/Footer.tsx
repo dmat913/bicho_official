@@ -80,7 +80,7 @@ active:bg-green-3"
 
       <DHorizontalLine />
       <div className="w-full text-center py-3">
-        <span className="text-xs">© 2024 Bicho. All rights reserved.</span>
+        <span className="text-xs">© 2025 Bicho. All rights reserved.</span>
       </div>
     </footer>
   );
