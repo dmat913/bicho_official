@@ -6,9 +6,9 @@ const Article1 = () => {
     <div className="flex flex-col p-4 w-full">
       <div className="flex flex-col gap-2 py-2 border-b border-green-1">
         <div className="flex items-center gap-2">
-          <span className="text-xs block p-1 bg-green-2 text-white-1 rounded-sm">
-            NEWS
-          </span>
+          <div className="w-12 h-6 rounded-sm bg-green-2 text-white-1 flex items-center justify-center">
+            <span className="text-sm">News</span>
+          </div>
           <span className="text-xs text-gray-2">2024年6月2日</span>
         </div>
         <span className="text-lg font-bold text-green-1">
@@ -16,11 +16,7 @@ const Article1 = () => {
         </span>
       </div>
       <div className="py-4 flex flex-col gap-2 text-sm text-green-1 border-b border-dashed border-green-1">
-        <Image
-          src={PickUpPhoto}
-          alt=""
-          className="border object-contain h-full"
-        />
+        <Image src={PickUpPhoto} alt="" className="border object-cover h-80 " />
         <span>
           2024年度全国クラブチームサッカー選手権が, 6/2(日)に開催されました。
           大雨によりコイントスでの決着でしたが、残念ながら敗戦となりました。

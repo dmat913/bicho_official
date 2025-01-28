@@ -2,7 +2,7 @@
 import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
 import { scheduleState } from "@/recoil/atom/schedule";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { useRecoilValue } from "recoil";
 import BichoLogo from "@/public/bicho-icon.png";
 import { formatDate, getLogo } from "@/utils/date";
@@ -10,6 +10,8 @@ import DHorizontalLine from "@/components/elements/DHorizontalLine";
 import Image from "next/image";
 
 const SchedulePage = () => {
+  const nextMatchRef = useRef<HTMLDivElement>(null);
+
   // 試合日程取得
   const schedules = useRecoilValue(scheduleState);
   const today = new Date();
@@ -28,6 +30,18 @@ const SchedulePage = () => {
     return closestIndex;
   }, [schedules]);
 
+  // マウント時に次の試合の位置までスクロール
+  useEffect(() => {
+    if (nextMatchRef.current && nextMatchIndex !== -1) {
+      // スムーズスクロールのオプションを設定
+      nextMatchRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+    // eslint-disable-next-line
+  }, [nextMatchIndex]);
+
   return (
     <div>
       <Header />
@@ -35,6 +49,7 @@ const SchedulePage = () => {
         {schedules.map((schedule, index) => (
           <div
             key={schedule._id}
+            ref={index === nextMatchIndex ? nextMatchRef : null}
             className={`w-full py-4 border-t-2 ${
               index === nextMatchIndex ? "bg-blue-100" : "bg-white-2"
             } relative`}

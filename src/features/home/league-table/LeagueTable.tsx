@@ -32,14 +32,14 @@ const LeagueTable = () => {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.1 }}
       >
-        <span className="text-white-1 font-bold text-2xl">
+        <div className="text-white-1 font-bold text-2xl flex justify-center flex-col">
           {LEAGUE_DATA.title.split(" ").map((part, index) => (
             <span key={index}>
               {part}
               {index < LEAGUE_DATA.title.split(" ").length - 1 && <br />}
             </span>
           ))}
-        </span>
+        </div>
       </motion.div>
       {/* リーグ戦結果の表 */}
       <motion.table

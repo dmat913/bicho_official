@@ -6,9 +6,9 @@ const Article2 = () => {
     <div className="flex flex-col p-4 w-full">
       <div className="flex flex-col gap-2 py-2 border-b border-green-1">
         <div className="flex items-center gap-2">
-          <span className="text-xs block p-1 bg-green-2 text-white-1 rounded-sm">
-            NEWS
-          </span>
+          <div className="w-12 h-6 rounded-sm bg-green-2 text-white-1 flex items-center justify-center">
+            <span className="text-sm">News</span>
+          </div>
           <span className="text-xs text-gray-2">2024年10月6日</span>
         </div>
         <span className="text-lg font-bold text-green-1">
