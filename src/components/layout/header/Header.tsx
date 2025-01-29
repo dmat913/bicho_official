@@ -33,7 +33,7 @@ const Header = () => {
     { href: "/", label: "ホーム" },
     { href: "/schedule", label: "試合日程" },
     { href: "/profile", label: "登録選手" },
-    { href: "/data", label: "データ(得点/アシスト)" },
+    { href: "/data", label: "データ" },
     { href: "/admin/photo", label: "写真管理" },
     { href: "/admin/schedule", label: "試合日程管理" },
   ];
