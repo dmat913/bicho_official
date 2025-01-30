@@ -30,6 +30,9 @@ export const goalOptions: ChartOptions<"bar"> = {
     legend: {
       display: false,
     },
+    datalabels: {
+      display: false,
+    },
   },
   scales: {
     y: {
@@ -72,6 +75,9 @@ export const assitOptions: ChartOptions<"bar"> = {
   responsive: true,
   plugins: {
     legend: {
+      display: false,
+    },
+    datalabels: {
       display: false,
     },
   },

@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@next/third-parties": "^15.0.0",
-    "chart.js": "^4.4.6",
+    "chart.js": "^4.4.7",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "fireworks-js": "^2.10.8",
     "framer-motion": "^11.11.10",
     "mongoose": "^8.7.2",

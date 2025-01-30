@@ -15,7 +15,7 @@ const AssistGraph = () => {
       className="relative border-2 border-green-1 rounded-xl p-4 bg-white-2"
     >
       <span className="text-green-1 under pb-[2px] border-b border-green-1">
-        03 Assist King in 2024
+        04 Assist King in 2024
       </span>
       <div className="relative p-4">
         <Bar data={assistData} options={assitOptions} />

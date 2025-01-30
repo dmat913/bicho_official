@@ -2,6 +2,7 @@ import { memo, useRef } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { AgeData, AgeOptions } from "../data/doughnutData";
 import { motion, useInView } from "framer-motion";
+import { GiSoccerBall } from "react-icons/gi";
 
 const AgeGraph = () => {
   const graphRef = useRef(null);
@@ -18,6 +19,10 @@ const AgeGraph = () => {
         01 年齢割合
       </span>
       <div className="relative px-16 py-4">
+        <GiSoccerBall
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          size={40}
+        />
         <Doughnut data={AgeData} options={AgeOptions} />
         <div className="flex flex-col items-center absolute top-2/4 right-4">
           <span className="text-sm">20代</span>
