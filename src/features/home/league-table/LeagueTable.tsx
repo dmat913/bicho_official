@@ -90,7 +90,7 @@ const LeagueTable = () => {
                   {row.team}
                 </span>
               </td>
-              <td className="p-2 text-[10px]">{row.points}</td>
+              <td className="p-2 text-[10px]">{row.game_count}</td>
               <td className="p-2 text-[10px]">{row.points}</td>
               <td className="p-2 text-[10px]">{row.wins}</td>
               <td className="p-2 text-[10px]">{row.losses}</td>

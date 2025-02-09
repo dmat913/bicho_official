@@ -22,6 +22,8 @@ const AssistGraph = () => {
       </div>
       <span className="text-sm text-green-1">
         4番CB賀川のセットプレーから得点を取ることが出来るのが、BICHOの強みとなっています。
+        <br />
+        <span className="text-xs">※公式戦の結果</span>
       </span>
     </motion.div>
   );

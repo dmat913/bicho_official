@@ -4,17 +4,17 @@ export interface League {
   // 試合数
   game_count: number;
   // 勝ち点
-  points: string;
+  points: number;
   // 勝
-  wins: string;
+  wins: number;
   // 負
-  losses: string;
+  losses: number;
   // 分
-  draws: string;
+  draws: number;
   // 得点数
-  goalsFor: string;
+  goalsFor: number;
   // 失点数
-  goalsAgainst: string;
+  goalsAgainst: number;
   // 得失点
-  goalDifference: string;
+  goalDifference: number;
 }

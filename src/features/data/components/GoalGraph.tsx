@@ -22,6 +22,8 @@ const GoalGraph = () => {
       </div>
       <span className="text-sm text-green-1">
         18番石川を中心に得点を重ねています。2025年度はさらに全体の得点数を増やしていきたいです。またいろんな選手が得点できるチームを目指して行きます。
+        <br />
+        <span className="text-xs">※公式戦の結果</span>
       </span>
     </motion.div>
   );
