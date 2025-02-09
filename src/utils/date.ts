@@ -15,6 +15,8 @@ import {
   LEAGUE_2024,
   LEAGUE_2025,
 } from "@/features/home/league-table/data/league";
+import KAWAGUCHI_SC_LOGO from "@/public/logo/KAWAGUCHI_SC_LOGO.png";
+import { League } from "@/types/league";
 
 export const formatDate = (dateString: Date, timeString: string) => {
   const date = new Date(dateString);
@@ -31,6 +33,8 @@ export const getLogo = (teamName: string) => {
   switch (teamName) {
     case "埼玉パスポットFC":
       return PASSPOT_LOGO;
+    case "川口SC":
+      return KAWAGUCHI_SC_LOGO;
     case "下落合FC":
       return SHIMOOCHIAI_LOGO;
     case "Bees EST":
@@ -62,13 +66,27 @@ export const getLogo = (teamName: string) => {
   }
 };
 
-export const getLeagueData = (year: string) => {
+export const getLeagueData = (
+  year: string
+): {
+  league: League[];
+  title: string;
+} => {
   switch (year) {
     case "2024":
-      return LEAGUE_2024;
+      return {
+        title: LEAGUE_2024.title,
+        league: LEAGUE_2024.league.sort((a, b) => b.points - a.points),
+      };
     case "2025":
-      return LEAGUE_2025;
+      return {
+        title: LEAGUE_2025.title,
+        league: LEAGUE_2025.league.sort((a, b) => b.points - a.points),
+      };
     default:
-      return LEAGUE_2025;
+      return {
+        title: LEAGUE_2025.title,
+        league: LEAGUE_2025.league.sort((a, b) => b.points - a.points),
+      };
   }
 };
