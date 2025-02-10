@@ -35,13 +35,13 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
                   {schedule.result}
                 </span>
               ) : (
-                <span className="text-4xl text-green-1 font-bold">VS</span>
+                <span className="text-5xl text-green-1 font-bold">VS</span>
               )}
               {schedule.pk && schedule.pk !== "" && (
                 <span className="text-sm text-green-1">PK:{schedule.pk}</span>
               )}
             </div>
-            <span className="text-xs text-gray-500">
+            <span className="text-sm text-gray-500">
               {schedule.kickoffTime}/{schedule.location}
             </span>
           </div>
