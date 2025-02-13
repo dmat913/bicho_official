@@ -42,6 +42,13 @@ export const goalkeepers: Profile[] = [
   {
     number: "1",
     position: "GK",
+    name: "広瀬空",
+    englishName: "SORA HIROSE",
+    img: null,
+  },
+  {
+    number: "21",
+    position: "GK",
     name: "深見陽大",
     englishName: "YOUDAI FUKAMI",
     img: null,
@@ -628,6 +635,13 @@ export const forwards: Profile[] = [
     position: "CF",
     name: "市橋洋大",
     englishName: "YOUDAI ICHIHASHI  vc",
+    img: null,
+  },
+  {
+    number: "34",
+    name: "吉沢玲音",
+    position: "CF",
+    englishName: "REON YOSHIZAWA",
     img: null,
   },
 ];
