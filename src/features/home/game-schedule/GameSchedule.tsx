@@ -21,14 +21,34 @@ const GameSchedule = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const displaySchedules: ScheduleData[] = useMemo(() => {
-    return schedules.slice(-5);
+  // 今日の日付から一番近い試合日程のindex
+  const closestIndex = useMemo(() => {
+    const today = new Date();
+    if (!schedules) return 0;
+    const index = schedules.findIndex((schedule) => {
+      const scheduleDate = new Date(schedule.date);
+      return scheduleDate >= today;
+    });
+    return index ?? -1;
   }, [schedules]);
 
+  // 表示する5つの日程
+  const displaySchedules: ScheduleData[] = useMemo(() => {
+    if (!schedules) return [];
+    if (schedules.length > closestIndex + 5) {
+      return schedules.slice(closestIndex, closestIndex + 5);
+    }
+    const arr1 = schedules.slice(closestIndex, schedules.length);
+    let arr2 = schedules.slice(0, -arr1.length);
+    arr2 = arr2.splice(arr1.length - 5);
+    return [...arr2, ...arr1];
+    // eslint-disable-next-line
+  }, [closestIndex]);
+
+  // 画面開いた際に一番最初に表示するindexを設定
   useEffect(() => {
     // 今日の日付を取得
     const today = new Date();
-
     const closestIndex = displaySchedules.findIndex((schedule) => {
       const scheduleDate = new Date(schedule.date);
       return scheduleDate >= today;
