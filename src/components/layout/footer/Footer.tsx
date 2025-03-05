@@ -52,7 +52,7 @@ const Footer = () => {
 
         <button
           onClick={() => {
-            window.open("https://www.youtube.com/@MAN-rw5zg", "_blank");
+            window.open("https://www.youtube.com/@ビッチョ", "_blank");
             scrollToTop();
           }}
           className="transition-colors h-full flex items-center gap-2 justify-center flex-1
