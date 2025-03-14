@@ -45,6 +45,7 @@ export const goalkeepers: Profile[] = [
     name: "広瀬空",
     englishName: "SORA HIROSE",
     img: null,
+    isNew: true
   },
   {
     number: "21",
@@ -146,6 +147,7 @@ export const defenders: Profile[] = [
     position: "LB",
     englishName: "KAITO KINAMI",
     img: null,
+    isNew: true
   },
   {
     number: "4",
@@ -475,6 +477,14 @@ export const midfielders: Profile[] = [
     img: null,
   },
   {
+    number: "37",
+    name: "武田康希",
+    position: "CM",
+    englishName: "KOUKI TAKEDA",
+    img: null,
+    isNew: true
+  },
+  {
     number: "41",
     name: "浅子太我",
     position: "CDM",
@@ -643,5 +653,6 @@ export const forwards: Profile[] = [
     position: "CF",
     englishName: "REON YOSHIZAWA",
     img: null,
+    isNew: true
   },
 ];

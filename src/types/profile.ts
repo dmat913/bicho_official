@@ -6,6 +6,7 @@ export interface Profile {
   position: string;
   englishName: string;
   img: StaticImageData | null;
+  isNew?: boolean;
   detail?: {
     competitionData: Detail[];
     images: StaticImageData[];
