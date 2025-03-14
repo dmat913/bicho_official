@@ -29,7 +29,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="relative bg-custom-gradient text-white-1 rounded-md flex items-center justify-center 
-        w-profile-width-default lg:w-lg-profile-width p-4 min-h-80"
+        w-profile-width-default lg:w-lg-profile-width p-4 h-80"
       onClick={handleClickProfile}
     >
       <span className="absolute top-2 left-2 font-bold text-3xl">
@@ -40,6 +40,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
       ) : (
         <span>Now Printing</span>
       )}
+      {profile.isNew && <div className="absolute right-2 top-2 bg-red-600 text-white-1 px-2 rounded-sm">New</div>}
       <div className="absolute bottom-0 left-0 pl-2 pb-2 flex flex-col font-bold w-full">
         <span className="text-md">{profile.name}</span>
         <span className="text-sm">{profile.englishName}</span>

@@ -25,7 +25,7 @@ const AgeGraph = () => {
             className="font-bold text-lg"
             style={{ color: "rgba(255, 99, 132)" }}
           >
-            80%
+            83%
           </span>
         </div>
         <div className="flex flex-col items-center absolute top-1/4 left-4">
@@ -34,7 +34,7 @@ const AgeGraph = () => {
             className="font-bold text-lg"
             style={{ color: "rgba(54, 162, 235)" }}
           >
-            12%
+            10%
           </span>
         </div>
         <div className="flex flex-col items-center absolute top-[-30px] left-2/4 -translate-x-full">
@@ -43,7 +43,7 @@ const AgeGraph = () => {
             className="font-bold text-lg"
             style={{ color: "rgba(255, 206, 86)" }}
           >
-            8%
+            7%
           </span>
         </div>
       </div>
