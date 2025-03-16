@@ -35,15 +35,15 @@ const GameSchedule = () => {
   // 表示する5つの日程
   const displaySchedules: ScheduleData[] = useMemo(() => {
     if (!schedules) return [];
-    if (schedules.length > closestIndex + 5) {
-      return schedules.slice(closestIndex, closestIndex + 5);
-    }
     const arr1 = schedules.slice(closestIndex, schedules.length);
     let arr2 = schedules.slice(0, -arr1.length);
     arr2 = arr2.splice(arr1.length - 5);
-    return [...arr2, ...arr1];
+    if (arr1.length <= 3) {
+      return [...arr2.slice(-5)]
+    }
+    return [...arr2.slice(-2), ...arr1.slice(0,3)];
     // eslint-disable-next-line
-  }, [closestIndex]);
+  }, [schedules]);
 
   // 画面開いた際に一番最初に表示するindexを設定
   useEffect(() => {
