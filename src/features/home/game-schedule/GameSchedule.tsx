@@ -49,9 +49,10 @@ const GameSchedule = () => {
   useEffect(() => {
     // 今日の日付を取得
     const today = new Date();
+    const formattedDate = today.toISOString().split("T")[0];
     const closestIndex = displaySchedules.findIndex((schedule) => {
       const scheduleDate = new Date(schedule.date);
-      return scheduleDate >= today;
+      return scheduleDate.toISOString().split("T")[0] === formattedDate || scheduleDate >= today;
     });
     if (closestIndex !== -1) {
       setCurrentPage(closestIndex + 1);
