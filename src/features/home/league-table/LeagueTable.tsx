@@ -60,7 +60,7 @@ const LeagueTable = () => {
             <th className="p-2 text-[10px]">分</th>
             <th className="p-2 hidden md:table-cell  text-[10px]">得点</th>
             <th className="p-2 hidden md:table-cell  text-[10px]">失点</th>
-            <th className="p-2 hidden md:table-cell text-[10px]">得失点</th>
+            <th className="p-2 md:table-cell text-[10px]">差</th>
           </tr>
         </thead>
         <tbody>
@@ -101,7 +101,7 @@ const LeagueTable = () => {
               <td className="p-2 hidden md:table-cell text-[10px]">
                 {row.goalsAgainst}
               </td>
-              <td className="p-2 hidden md:table-cell text-[10px]">
+              <td className="p-2 md:table-cell text-[10px]">
                 {row.goalDifference}
               </td>
             </motion.tr>

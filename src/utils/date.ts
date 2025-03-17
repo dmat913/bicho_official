@@ -72,21 +72,30 @@ export const getLeagueData = (
   league: League[];
   title: string;
 } => {
+  const sortLeague = (league: League[]): League[] => {
+    return league.sort((a, b) => {
+      if (b.points !== a.points) {
+        return b.points - a.points;
+      }
+      return b.goalDifference - a.goalDifference;
+    });
+  };
+
   switch (year) {
     case "2024":
       return {
         title: LEAGUE_2024.title,
-        league: LEAGUE_2024.league.sort((a, b) => b.points - a.points),
+        league: sortLeague(LEAGUE_2024.league),
       };
     case "2025":
       return {
         title: LEAGUE_2025.title,
-        league: LEAGUE_2025.league.sort((a, b) => b.points - a.points),
+        league: sortLeague(LEAGUE_2025.league),
       };
     default:
       return {
         title: LEAGUE_2025.title,
-        league: LEAGUE_2025.league.sort((a, b) => b.points - a.points),
+        league: sortLeague(LEAGUE_2025.league),
       };
   }
 };
