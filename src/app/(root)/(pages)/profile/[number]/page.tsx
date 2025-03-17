@@ -74,6 +74,12 @@ const PlayerDetailPage = () => {
               )}
             </div>
           </div>
+          <button
+            onClick={handleBackPage}
+            className="bg-green-3 text-white-1 py-2 px-4 rounded active:bg-green-1 transition"
+          >
+            戻る
+          </button>
         </div>
       ) : (
         <div className="flex justify-center items-center flex-col flex-1 gap-6">

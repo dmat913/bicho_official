@@ -52,10 +52,6 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchSchedules = async () => {
       try {
-        const response = await fetch("/api/schedule/next", { method: "GET" });
-        if (!response.ok) throw new Error("データ取得に失敗しました");
-        const nextDate = await response.json();
-        setSchedules(nextDate.schedule);
         const listResponse = await fetch("/api/schedule", {
           method: "GET",
         });
@@ -85,7 +81,7 @@ const HomePage: React.FC = () => {
           {/* BICHOについて */}
           <AboutBicho />
           {/** 試合日程 */}
-          <GameSchedule />
+         {schedules.length > 0 && <GameSchedule />}
           {/* 写真swiper */}
           <PhotoSwiper />
           {/** 記事 */}
