@@ -36,7 +36,7 @@ import Youdai1 from "@/public/profile/youdai/youdai1.jpeg";
 import Takishima1 from "@/public/profile/takishima/takishima1.jpeg";
 import Koida1 from "@/public/profile/koida/koida1.jpeg";
 import Koba1 from "@/public/profile/koba/koba1.jpeg";
-import GARI1 from "@/public/profile/GARI/GARI1.jpeg";
+import GARI1 from "@/public/profile/gari/GARI1.jpeg"
 
 // GKデータ
 export const goalkeepers: Profile[] = [
