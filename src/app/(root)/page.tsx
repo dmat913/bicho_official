@@ -81,15 +81,15 @@ const HomePage: React.FC = () => {
           {/* BICHOについて */}
           <AboutBicho />
           {/** 試合日程 */}
-         {schedules.length > 0 && <GameSchedule />}
+          <GameSchedule />
           {/* 写真swiper */}
           <PhotoSwiper />
-          {/** 記事 */}
-          <Article />
-          {/* リーグ表 */}
-          <LeagueTable />
           {/* トーナメント表 */}
           <Tournament />
+          {/* リーグ表 */}
+          <LeagueTable />
+          {/** 記事 */}
+          <Article />
           {/* スタメン */}
           {/* <SoccerGround /> */}
           {/** Youtube */}

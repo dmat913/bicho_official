@@ -16,14 +16,14 @@ const navItems = [
     icon: <MdOutlinePhotoCamera color="white" className="w-7 h-7" />,
   },
   {
-    id: "league-table",
-    label: "League Table",
-    icon: <MdLeaderboard color="white" className="w-7 h-7" />,
-  },
-  {
     id: "tournament",
     label: "Tournament",
     icon: <FaTrophy color="white" className="w-7 h-7" />,
+  },
+  {
+    id: "league-table",
+    label: "League Table",
+    icon: <MdLeaderboard color="white" className="w-7 h-7" />,
   },
 ];
 
