@@ -62,10 +62,28 @@ const GameSchedule = () => {
     }
   }, [displaySchedules]);
 
+  // schedulesが空の場合のローディング表示
+  if (!schedules || schedules.length === 0) {
+    return (
+      <div id="game-schedule" className="py-10 px-4 bg-noise-green-3">
+        <div className="flex flex-col items-center mb-4">
+          <span className="text-gradient font-bold text-2xl">
+            Game Schedule
+          </span>
+          <span className="text-gradient font-semibold">
+            試合日程
+          </span>
+        </div>
+        <div className="flex justify-center items-center h-64">
+          <span className="text-gray-300">日程を取得中...</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div id="game-schedule" className="py-10 px-4 bg-noise-green-3">
       <div className="flex flex-col items-center mb-4">
-        {/* アニメーションを適用する要素 */}
         <motion.span
           ref={ref}
           className="text-gradient font-bold text-2xl"

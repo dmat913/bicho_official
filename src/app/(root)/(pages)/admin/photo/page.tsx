@@ -8,6 +8,7 @@ import { imagesState } from "@/recoil/atom/image";
 import DLoading from "@/components/elements/DLoading";
 import Footer from "@/components/layout/footer/Footer";
 import UploadImage from "@/features/photo/upload-image/UploadImage";
+import Image from "next/image";
 
 const PhotoList = () => {
   // 画像一覧
@@ -62,12 +63,14 @@ const PhotoList = () => {
       <UploadImage />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-3 bg-white-1">
         {images.map((image) => (
-          <img
+          <Image
             src={image.data}
             alt={`Uploaded image ${image._id}`}
             key={image._id}
-            className="object-cover w-full h-40 rounded-lg shadow-md"
+            className="object-cover !w-full !h-40 rounded-lg shadow-md"
             onClick={() => handleImageClick(image)}
+            width={0}
+            height={0}
           />
         ))}
       </div>
@@ -79,10 +82,12 @@ const PhotoList = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white-1 p-4 rounded shadow-lg w-[90vw] sm:w-[400px]">
             <h2 className="text-lg font-bold mb-2">画像を削除しますか？</h2>
-            <img
+            <Image
               src={selectedImage.data}
               alt={`Selected image ${selectedImage._id}`}
-              className="mb-4 w-full h-40 object-cover rounded"
+              className="mb-4 !w-full !h-40 object-cover rounded"
+              width={0}
+              height={0}
             />
             <div className="flex justify-between">
               <button

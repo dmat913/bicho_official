@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { getLeagueData, getLogo } from "@/utils/date";
 
@@ -11,13 +11,13 @@ const LeagueTable = () => {
   const isInView = useInView(textRef, { once: true });
   const tableInView = useInView(tableRef, { once: true });
 
-  const [selectedYear, setSelectedYear] = useState<string>("2025");
+  // const [selectedYear, setSelectedYear] = useState<string>("2025");
 
-  const LEAGUE_DATA = getLeagueData(selectedYear);
+  const LEAGUE_DATA = getLeagueData("2025");
 
-  const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedYear(e.target.value);
-  };
+  // const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setSelectedYear(e.target.value);
+  // };
 
   return (
     <div
@@ -58,8 +58,8 @@ const LeagueTable = () => {
             <th className="p-2 text-[10px]">勝</th>
             <th className="p-2 text-[10px]">負</th>
             <th className="p-2 text-[10px]">分</th>
-            <th className="p-2 hidden md:table-cell  text-[10px]">得点</th>
-            <th className="p-2 hidden md:table-cell  text-[10px]">失点</th>
+            <th className="p-2 md:table-cell  text-[10px]">得点</th>
+            <th className="p-2 md:table-cell  text-[10px]">失点</th>
             <th className="p-2 md:table-cell text-[10px]">差</th>
           </tr>
         </thead>
@@ -95,10 +95,10 @@ const LeagueTable = () => {
               <td className="p-2 text-[10px]">{row.wins}</td>
               <td className="p-2 text-[10px]">{row.losses}</td>
               <td className="p-2 text-[10px]">{row.draws}</td>
-              <td className="p-2 hidden md:table-cell text-[10px]">
+              <td className="p-2 md:table-cell text-[10px]">
                 {row.goalsFor}
               </td>
-              <td className="p-2 hidden md:table-cell text-[10px]">
+              <td className="p-2 md:table-cell text-[10px]">
                 {row.goalsAgainst}
               </td>
               <td className="p-2 md:table-cell text-[10px]">
@@ -108,14 +108,14 @@ const LeagueTable = () => {
           ))}
         </tbody>
       </motion.table>
-      <select
+      {/* <select
         value={selectedYear}
         onChange={handleYearChange}
         className="px-4 py-2 mt-4 w-[140px] border rounded-sm bg-white-2 text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-green-2 focus:border-transparent cursor-pointer"
       >
         <option value="2024">2024年度</option>
         <option value="2025">2025年度</option>
-      </select>
+      </select> */}
     </div>
   );
 };
