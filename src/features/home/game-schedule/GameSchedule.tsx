@@ -62,25 +62,6 @@ const GameSchedule = () => {
     }
   }, [displaySchedules]);
 
-  // schedulesが空の場合のローディング表示
-  if (!schedules || schedules.length === 0) {
-    return (
-      <div id="game-schedule" className="py-10 px-4 bg-noise-green-3">
-        <div className="flex flex-col items-center mb-4">
-          <span className="text-gradient font-bold text-2xl">
-            Game Schedule
-          </span>
-          <span className="text-gradient font-semibold">
-            試合日程
-          </span>
-        </div>
-        <div className="flex justify-center items-center h-64">
-          <span className="text-gray-300">日程を取得中...</span>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div id="game-schedule" className="py-10 px-4 bg-noise-green-3">
       <div className="flex flex-col items-center mb-4">
@@ -103,36 +84,44 @@ const GameSchedule = () => {
           試合日程
         </motion.span>
       </div>
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={1}
-        onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
-        initialSlide={currentPage - 1}
-        key={swiperKey}
-        breakpoints={{
-          350: {
-            slidesPerView: 1,
-          },
-          700: {
-            slidesPerView: 2,
-          },
-          1050: {
-            slidesPerView: 3,
-          },
-        }}
-      >
-        {displaySchedules.map((schedule) => (
-          <SwiperSlide key={schedule._id}>
-            <MatchCard schedule={schedule} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div className="flex gap-1 justify-center py-3">
-        <DPagination data={displaySchedules} currentPage={currentPage - 1} />
-      </div>
-      <div className="w-full px-4 mt-4">
-        <DMoreButton path="/schedule" />
-      </div>
+      {schedules.length > 0 ? 
+      <>
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
+          initialSlide={currentPage - 1}
+          key={swiperKey}
+          breakpoints={{
+            350: {
+              slidesPerView: 1,
+            },
+            700: {
+              slidesPerView: 2,
+            },
+            1050: {
+              slidesPerView: 3,
+            },
+          }}
+        >
+          {displaySchedules.map((schedule) => (
+            <SwiperSlide key={schedule._id}>
+              <MatchCard schedule={schedule} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="flex gap-1 justify-center py-3">
+          <DPagination data={displaySchedules} currentPage={currentPage - 1} />
+        </div>
+        <div className="w-full px-4 mt-4">
+          <DMoreButton path="/schedule" />
+        </div>
+      </> : (
+        <div className="flex justify-center items-center h-64">
+          <span className="text-gray-300">日程を取得中...</span>
+        </div>
+      )
+      }
     </div>
   );
 };
