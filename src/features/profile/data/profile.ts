@@ -58,6 +58,14 @@ export const goalkeepers: Profile[] = [
       images: [Youdai1],
       competitionData: [
         {
+          competition: "埼玉県南部地区3部リーグ",
+          contents: [{
+            year: "2025",
+            gameCount: "1",
+            goal: "0",
+            assist: "0"
+        }]},
+        {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
         },
@@ -135,7 +143,7 @@ export const defenders: Profile[] = [
           competition: "埼玉県南部地区3部リーグ",
           contents: [{
             year: "2025",
-            gameCount: "1",
+            gameCount: "2",
             goal: "0",
             assist: "0"
         }]},
@@ -179,7 +187,7 @@ export const defenders: Profile[] = [
           competition: "埼玉県南部地区3部リーグ",
           contents: [{
             year: "2025",
-            gameCount: "1",
+            gameCount: "2",
             goal: "1",
             assist: "0"
         }]},
@@ -224,6 +232,14 @@ export const defenders: Profile[] = [
     detail: {
       images: [Koida1],
       competitionData: [
+        {
+          competition: "埼玉県南部地区3部リーグ",
+          contents: [{
+            year: "2025",
+            gameCount: "1",
+            goal: "0",
+            assist: "0"
+        }]},
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [
@@ -279,7 +295,7 @@ export const defenders: Profile[] = [
           competition: "埼玉県南部地区3部リーグ",
           contents: [{
             year: "2025",
-            gameCount: "1",
+            gameCount: "2",
             goal: "0",
             assist: "0"
         }]},
@@ -339,7 +355,7 @@ export const midfielders: Profile[] = [
           competition: "埼玉県南部地区3部リーグ",
           contents: [{
             year: "2025",
-            gameCount: "1",
+            gameCount: "2",
             goal: "0",
             assist: "0"
         }]},
@@ -412,7 +428,7 @@ export const midfielders: Profile[] = [
           competition: "埼玉県南部地区3部リーグ",
           contents: [{
             year: "2025",
-            gameCount: "1",
+            gameCount: "2",
             goal: "1",
             assist: "0"
         }]},
@@ -440,7 +456,7 @@ export const midfielders: Profile[] = [
           competition: "埼玉県南部地区3部リーグ",
           contents: [{
             year: "2025",
-            gameCount: "1",
+            gameCount: "2",
             goal: "0",
             assist: "0"
         }]},
@@ -483,9 +499,9 @@ export const midfielders: Profile[] = [
           competition: "埼玉県南部地区3部リーグ",
           contents: [{
             year: "2025",
-            gameCount: "1",
+            gameCount: "2",
             goal: "0",
-            assist: "0"
+            assist: "1"
         }]},
         {
           competition: "川口市社会人サッカーリーグ",
@@ -532,8 +548,8 @@ export const midfielders: Profile[] = [
           competition: "埼玉県南部地区3部リーグ",
           contents: [{
             year: "2025",
-            gameCount: "1",
-            goal: "0",
+            gameCount: "2",
+            goal: "1",
             assist: "1"
         }]},
         {
@@ -579,6 +595,14 @@ export const midfielders: Profile[] = [
     detail: {
       images: [AT1],
       competitionData: [
+        {
+          competition: "埼玉県南部地区3部リーグ",
+          contents: [{
+            year: "2025",
+            gameCount: "1",
+            goal: "0",
+            assist: "0"
+        }]},
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2024", gameCount: "5", goal: "0", assist: "0" }],
@@ -664,8 +688,8 @@ export const forwards: Profile[] = [
           competition: "埼玉県南部地区3部リーグ",
           contents: [{
             year: "2025",
-            gameCount: "1",
-            goal: "0",
+            gameCount: "2",
+            goal: "1",
             assist: "0"
         }]},
         {
@@ -707,8 +731,8 @@ export const forwards: Profile[] = [
           competition: "埼玉県南部地区3部リーグ",
           contents: [{
             year: "2025",
-            gameCount: "1",
-            goal: "0",
+            gameCount: "2",
+            goal: "1",
             assist: "0"
         }]},
         {
