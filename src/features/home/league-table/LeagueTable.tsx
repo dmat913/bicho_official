@@ -67,10 +67,9 @@ const LeagueTable = () => {
           {LEAGUE_DATA.league.map((row, index) => (
             <motion.tr
               key={index}
-              className={`border-b border-gray-300 text-center text-sm ${
+              className={`border-b border-gray-300 text-center text-sm  ${index % 2 === 0 && "bg-gray-100"} ${
                 row.team === "FC.BICHO"
-                  ? "text-white-1 bg-[rgba(0,96,54,0.8)]"
-                  : ""
+                  && "text-white-1 !bg-[rgba(0,96,54,0.8)]"
               }`}
               initial={{ opacity: 0, y: 20 }}
               animate={tableInView ? { opacity: 1, y: 0 } : {}}
