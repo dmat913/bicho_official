@@ -10,6 +10,7 @@ import { ScheduleData } from "@/types/schedule";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import MatchCard from "./MatchCard";
+import HomeLoading from "../loading/HomeLoading";
 
 const GameSchedule = () => {
   const schedules = useRecoilValue(scheduleState);
@@ -118,7 +119,7 @@ const GameSchedule = () => {
         </div>
       </> : (
         <div className="flex justify-center items-center h-64">
-          <span className="text-gray-300">日程を取得中...</span>
+          <HomeLoading />
         </div>
       )
       }

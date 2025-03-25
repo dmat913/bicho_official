@@ -78,29 +78,68 @@ const Header = () => {
 
             {/* モーダルの内容 */}
             <motion.div
-              className="fixed top-0 right-0 bottom-0 w-80 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white-1 shadow-xl rounded-l-3xl overflow-hidden transform z-50"
+              className="fixed top-0 right-0 bottom-0 w-80 bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 bg-noise-pattern text-white-1 shadow-xl rounded-l-xl overflow-hidden transform z-50"
               initial={{ x: "100%", scale: 0.95 }}
               animate={{ x: 0, scale: 1 }}
               exit={{ x: "100%", scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
-              <button
-                className="absolute top-6 right-6 text-white-1 text-3xl w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 active:bg-gray-600 transition duration-200"
-                onClick={toggleMenu}
-                aria-label="Close menu"
-              >
-                ×
-              </button>
-              <div className="flex flex-col items-center gap-6 p-8 mt-8">
-                {menuItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block w-full text-center p-4 bg-gray-700 text-white-1 border-2 border-transparent hover:border-gray-500 rounded-lg hover:bg-gray-600 active:bg-gray-500 transition duration-200"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              <div className="flex flex-col items-center justify-between p-8 h-full w-full">
+                <div className="flex flex-col gap-6 w-full">
+                  {menuItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="relative w-full group"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-1 to-green-3 opacity-30 rounded-xl blur-sm"></div>
+                      <div 
+                        className="relative z-10 block w-full text-center p-4 text-white-1 
+                          rounded-xl 
+                          bg-gray-800/70 
+                          backdrop-blur-md 
+                          border border-white/20
+                          transition duration-300
+                          flex items-center justify-center
+                          space-x-3
+                          active:scale-95  // 押下時に少し縮小
+                          will-change-transform  // パフォーマンス最適化"
+                      >
+                        <span className="flex-grow text-base font-medium tracking-wide">
+                          {item.label}
+                        </span>
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          width="24" 
+                          height="24" 
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          className="opacity-50 group-hover:opacity-100 transition-opacity duration-300"
+                        >
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <button
+                  onClick={toggleMenu}
+                  className="relative w-full h-12 overflow-hidden rounded-xl 
+                    bg-gradient-to-r from-green-3 to-green-1 
+                    text-white-1 
+                    flex items-center justify-center 
+                    group
+                    active:scale-95 
+                    transition-all duration-300
+                    shadow-md hover:shadow-lg"
+                >
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                  <span className="font-medium tracking-wider">閉じる</span>
+                </button>
               </div>
             </motion.div>
           </>
