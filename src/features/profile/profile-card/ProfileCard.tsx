@@ -36,7 +36,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
         {profile.number}
       </span>
       {profile.img ? (
-        <Image src={profile.img} alt="" className="h-[45svh] object-cover" />
+        <Image src={profile.img} alt="" className="h-full object-cover" />
       ) : (
         <span>Now Printing</span>
       )}
