@@ -15,6 +15,4 @@ export interface League {
   goalsFor: number;
   // 失点数
   goalsAgainst: number;
-  // 得失点
-  goalDifference: number;
 }

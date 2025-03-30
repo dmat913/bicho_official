@@ -101,7 +101,7 @@ const LeagueTable = () => {
                 {row.goalsAgainst}
               </td>
               <td className="p-2 md:table-cell text-[10px]">
-                {row.goalDifference}
+                {row.goalsFor - row.goalsAgainst}
               </td>
             </motion.tr>
           ))}

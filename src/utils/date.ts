@@ -77,8 +77,10 @@ export const getLeagueData = (
       if (b.points !== a.points) {
         return b.points - a.points;
       }
-      if (b.goalDifference !== a.goalDifference) {
-        return b.goalDifference - a.goalDifference;
+      const bDifference = b.goalsFor - b.goalsAgainst;
+      const aDifference = a.goalsFor - a.goalsAgainst;
+      if (bDifference !== aDifference) {
+        return bDifference - aDifference;
       }
      return b.goalsFor - a.goalsFor
     });
