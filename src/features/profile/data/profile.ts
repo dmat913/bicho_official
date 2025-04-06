@@ -36,8 +36,8 @@ import Youdai1 from "@/public/profile/youdai/youdai1.jpeg";
 import Takishima1 from "@/public/profile/takishima/takishima1.jpeg";
 import Koida1 from "@/public/profile/koida/koida1.jpeg";
 import Koba1 from "@/public/profile/koba/koba1.jpeg";
-import GARI1 from "@/public/profile/gari/GARI1.jpeg"
-import KAITO1 from "@/public/profile/kaito/KAITO1.jpeg"
+import GARI1 from "@/public/profile/gari/GARI1.jpeg";
+import KAITO1 from "@/public/profile/kaito/KAITO1.jpeg";
 
 // GKデータ
 export const goalkeepers: Profile[] = [
@@ -47,7 +47,7 @@ export const goalkeepers: Profile[] = [
     name: "広瀬空",
     englishName: "SORA HIROSE",
     img: null,
-    isNew: true
+    isNew: true,
   },
   {
     number: "21",
@@ -60,12 +60,15 @@ export const goalkeepers: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "2",
-            goal: "0",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "3",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
@@ -99,12 +102,15 @@ export const goalkeepers: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "1",
-            goal: "0",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "1",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2024", gameCount: "4", goal: "0", assist: "0" }],
@@ -142,12 +148,15 @@ export const defenders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "0",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2024", gameCount: "5", goal: "0", assist: "0" }],
@@ -179,12 +188,15 @@ export const defenders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "0",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
         // {
         //   competition: "川口市社会人サッカーリーグ",
         //   contents: [{ year: "2024", gameCount: "5", goal: "0", assist: "0" }],
@@ -215,12 +227,15 @@ export const defenders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "1",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "1",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [
@@ -264,12 +279,15 @@ export const defenders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "2",
-            goal: "0",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "2",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [
@@ -323,12 +341,15 @@ export const defenders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "0",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [
@@ -383,12 +404,15 @@ export const midfielders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "0",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [
@@ -456,12 +480,15 @@ export const midfielders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "1",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "1",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2023", gameCount: "2", goal: "1", assist: "0" }],
@@ -484,12 +511,15 @@ export const midfielders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "2",
-            goal: "0",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "2",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2024", gameCount: "5", goal: "1", assist: "0" }],
@@ -527,12 +557,15 @@ export const midfielders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "0",
-            assist: "1"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "0",
+              assist: "1",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [
@@ -576,12 +609,15 @@ export const midfielders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "2",
-            assist: "1"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "2",
+              assist: "1",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2024", gameCount: "5", goal: "0", assist: "0" }],
@@ -620,12 +656,15 @@ export const midfielders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "1",
-            assist: "1"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "1",
+              assist: "1",
+            },
+          ],
+        },
         // {
         //   competition: "川口市社会人サッカーリーグ",
         //   contents: [{ year: "2024", gameCount: "5", goal: "0", assist: "0" }],
@@ -656,12 +695,15 @@ export const midfielders: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "2",
-            goal: "0",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "3",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2024", gameCount: "5", goal: "0", assist: "0" }],
@@ -696,12 +738,15 @@ export const forwards: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "2",
-            goal: "0",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "3",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [
@@ -745,12 +790,15 @@ export const forwards: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "1",
-            assist: "1"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "2",
+              assist: "2",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2024", gameCount: "5", goal: "1", assist: "0" }],
@@ -788,12 +836,15 @@ export const forwards: Profile[] = [
       competitionData: [
         {
           competition: "埼玉県南部地区3部リーグ",
-          contents: [{
-            year: "2025",
-            gameCount: "3",
-            goal: "1",
-            assist: "0"
-        }]},
+          contents: [
+            {
+              year: "2025",
+              gameCount: "4",
+              goal: "3",
+              assist: "0",
+            },
+          ],
+        },
         {
           competition: "川口市社会人サッカーリーグ",
           contents: [
@@ -846,6 +897,6 @@ export const forwards: Profile[] = [
     position: "CF",
     englishName: "REON YOSHIZAWA",
     img: null,
-    isNew: true
+    isNew: true,
   },
 ];
