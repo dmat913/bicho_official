@@ -47,7 +47,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 shadow-2xl sticky top-0 z-40 h-16">
+    <nav className="bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 shadow-2xl sticky top-0 z-40 h-16 sm:hidden">
       <ul className="flex h-full">
         {navItems.map((item) => (
           <li
