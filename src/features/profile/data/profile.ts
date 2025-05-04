@@ -105,7 +105,7 @@ export const goalkeepers: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "1",
+              gameCount: "2",
               goal: "0",
               assist: "0",
             },
@@ -151,7 +151,7 @@ export const defenders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
+              gameCount: "6",
               goal: "0",
               assist: "0",
             },
@@ -191,7 +191,7 @@ export const defenders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
+              gameCount: "6",
               goal: "0",
               assist: "0",
             },
@@ -230,7 +230,7 @@ export const defenders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
+              gameCount: "6",
               goal: "1",
               assist: "0",
             },
@@ -344,7 +344,7 @@ export const defenders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
+              gameCount: "6",
               goal: "0",
               assist: "0",
             },
@@ -407,7 +407,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
+              gameCount: "6",
               goal: "0",
               assist: "0",
             },
@@ -455,6 +455,17 @@ export const midfielders: Profile[] = [
       images: [Koba1],
       competitionData: [
         {
+          competition: "埼玉県南部地区3部リーグ",
+          contents: [
+            {
+              year: "2025",
+              gameCount: "1",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
+        {
           competition: "川口市社会人サッカーリーグ",
           contents: [{ year: "2024", gameCount: "2", goal: "0", assist: "0" }],
         },
@@ -483,9 +494,9 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
+              gameCount: "6",
               goal: "1",
-              assist: "0",
+              assist: "1",
             },
           ],
         },
@@ -514,7 +525,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "3",
+              gameCount: "4",
               goal: "0",
               assist: "0",
             },
@@ -560,8 +571,8 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
-              goal: "0",
+              gameCount: "6",
+              goal: "1",
               assist: "1",
             },
           ],
@@ -612,7 +623,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
+              gameCount: "6",
               goal: "2",
               assist: "2",
             },
@@ -659,7 +670,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
+              gameCount: "6",
               goal: "1",
               assist: "1",
             },
@@ -698,7 +709,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "4",
+              gameCount: "5",
               goal: "0",
               assist: "0",
             },
@@ -839,7 +850,7 @@ export const forwards: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
+              gameCount: "6",
               goal: "3",
               assist: "0",
             },
