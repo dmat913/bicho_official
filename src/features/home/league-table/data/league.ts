@@ -191,7 +191,7 @@ export const LEAGUE_2025: { league: League[]; title: string } = {
     },
     {
       team: "ほのぼのクラブ",
-      game_count: 7,
+      game_count: 6,
       points: 6,
       wins: 2,
       losses: 4,
