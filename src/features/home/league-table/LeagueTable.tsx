@@ -56,8 +56,8 @@ const LeagueTable = () => {
             <th className="p-2 text-[10px]">試合</th>
             <th className="p-2 text-[10px]">勝点</th>
             <th className="p-2 text-[10px]">勝</th>
-            <th className="p-2 text-[10px]">負</th>
             <th className="p-2 text-[10px]">分</th>
+            <th className="p-2 text-[10px]">負</th>
             <th className="p-2 md:table-cell  text-[10px]">得点</th>
             <th className="p-2 md:table-cell  text-[10px]">失点</th>
             <th className="p-2 md:table-cell text-[10px]">差</th>
@@ -67,9 +67,11 @@ const LeagueTable = () => {
           {LEAGUE_DATA.league.map((row, index) => (
             <motion.tr
               key={index}
-              className={`border-b border-gray-300 text-center text-sm  ${index % 2 === 0 && "bg-gray-100"} ${
-                row.team === "FC.BICHO"
-                  && "text-white-1 !bg-[rgba(0,96,54,0.8)]"
+              className={`border-b border-gray-300 text-center text-sm  ${
+                index % 2 === 0 && "bg-gray-100"
+              } ${
+                row.team === "FC.BICHO" &&
+                "text-white-1 !bg-[rgba(0,96,54,0.8)]"
               }`}
               initial={{ opacity: 0, y: 20 }}
               animate={tableInView ? { opacity: 1, y: 0 } : {}}
@@ -92,11 +94,9 @@ const LeagueTable = () => {
               <td className="p-2 text-[10px]">{row.game_count}</td>
               <td className="p-2 text-[10px]">{row.points}</td>
               <td className="p-2 text-[10px]">{row.wins}</td>
-              <td className="p-2 text-[10px]">{row.losses}</td>
               <td className="p-2 text-[10px]">{row.draws}</td>
-              <td className="p-2 md:table-cell text-[10px]">
-                {row.goalsFor}
-              </td>
+              <td className="p-2 text-[10px]">{row.losses}</td>
+              <td className="p-2 md:table-cell text-[10px]">{row.goalsFor}</td>
               <td className="p-2 md:table-cell text-[10px]">
                 {row.goalsAgainst}
               </td>
