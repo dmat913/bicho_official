@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { memo, useRef } from "react";
-import BICHOLOGO from "@/public/bicho-icon.png";
-import Image from "next/image";
+// import BICHOLOGO from "@/public/bicho-icon.png";
+// import Image from "next/image";
 import backgroundImage from "@/public/background.jpeg";
 
 const AboutBicho = () => {
@@ -12,7 +12,7 @@ const AboutBicho = () => {
   return (
     <div
       ref={ref}
-      className="relative py-6 px-4 flex flex-col gap-16 items-center"
+      className="relative py-6 px-4 h-[50vh] flex items-center justify-center"
       style={{
         backgroundImage: `url(${backgroundImage.src})`,
         backgroundSize: "cover",
@@ -25,35 +25,25 @@ const AboutBicho = () => {
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       <div className="flex flex-col items-center">
         {/* アニメーションを適用する要素 */}
-        <motion.span
+        {/* <motion.span
           ref={ref}
-          className="text-gradient-3 font-bold text-2xl text-shadow"
+          className="text-gradient-3 font-bold text-3xl text-shadow"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          About BICHO
-        </motion.span>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="z-10"
-        >
-          <Image src={BICHOLOGO} alt="Bicho Logo" width={100} height={100} />
-        </motion.div>
+          ABOUT BICHO
+        </motion.span> */}
       </div>
       <motion.span
-        className="text-white-1 z-10 text-shadow"
+        className="text-white-1 font-bold z-10 text-shadow text-4xl lg:text-6xl"
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.5 }}
       >
-        FC.BICHOは、2005年に創設され、川口市を拠点に活動している社会人サッカーチームです。
+        FC BICHO
         <br />
-        埼玉県川口市社会人1部リーグでの戦いを経て、県3部リーグへの昇格を決定しました。
-        <br />
-        2025年度からは県3部リーグで新たな挑戦に挑みます。
+        SINCE 2005
       </motion.span>
     </div>
   );

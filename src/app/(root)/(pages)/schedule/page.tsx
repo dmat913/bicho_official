@@ -108,7 +108,7 @@ const SchedulePage = () => {
                       <div className="bg-gray-400 text-xs flex items-center justify-center text-white-1 w-[60px]">
                         <span>得点者</span>
                       </div>
-                      <div className="flex pl-4">
+                      <div className="pl-4">
                         {schedule.scorer.map((row, index) => (
                           <span key={index} className="text-sm text-gray-500">
                             {row}
