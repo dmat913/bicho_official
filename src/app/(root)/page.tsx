@@ -8,7 +8,7 @@ import Footer from "@/components/layout/footer/Footer";
 import { fetchFirstImage, fetchImages } from "@/utils/image";
 import { scheduleState } from "@/recoil/atom/schedule";
 import LeagueTable from "@/features/home/league-table/LeagueTable";
-import NavBar from "@/features/home/nav/NavBar";
+// import NavBar from "@/features/home/nav/NavBar";
 import GameSchedule from "@/features/home/game-schedule/GameSchedule";
 import Tournament from "@/features/home/tournament/Tournament";
 import HomeLoading from "@/features/home/loading/HomeLoading";
@@ -77,7 +77,7 @@ const HomePage: React.FC = () => {
       {!isLoading && (
         <div className="w-full h-full relative">
           <Header />
-          <NavBar />
+          {/* <NavBar /> */}
           {/* BICHOについて */}
           <AboutBicho />
           {/** 試合日程 */}
