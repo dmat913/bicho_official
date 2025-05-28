@@ -36,13 +36,19 @@ const GameSchedule = () => {
   // 表示する5つの日程
   const displaySchedules: ScheduleData[] = useMemo(() => {
     if (!schedules) return [];
+
     const arr1 = schedules.slice(closestIndex, schedules.length);
-    let arr2 = schedules.slice(0, -arr1.length);
-    arr2 = arr2.splice(arr1.length - 5);
-    if (arr1.length <= 3) {
-      return [...arr2.slice(-5)]
+    if (arr1.length === 0) {
+      return [...schedules.slice(-5)];
     }
-    return [...arr2.slice(-2), ...arr1.slice(0,3)];
+
+    const arr2 = schedules.slice(0, schedules.length - arr1.length);
+
+    if (arr1.length > 3) {
+      return arr2.slice(-2).concat(arr1.slice(0, 3));
+    }
+
+    return arr2.slice(arr1.length - 5).concat(arr1);
     // eslint-disable-next-line
   }, [schedules]);
 
@@ -53,7 +59,10 @@ const GameSchedule = () => {
     const formattedDate = today.toISOString().split("T")[0];
     const closestIndex = displaySchedules.findIndex((schedule) => {
       const scheduleDate = new Date(schedule.date);
-      return scheduleDate.toISOString().split("T")[0] === formattedDate || scheduleDate >= today;
+      return (
+        scheduleDate.toISOString().split("T")[0] === formattedDate ||
+        scheduleDate >= today
+      );
     });
     if (closestIndex !== -1) {
       setCurrentPage(closestIndex + 1);
@@ -85,44 +94,47 @@ const GameSchedule = () => {
           試合日程
         </motion.span>
       </div>
-      {schedules.length > 0 ? 
-      <>
-        <Swiper
-          spaceBetween={20}
-          slidesPerView={1}
-          onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
-          initialSlide={currentPage - 1}
-          key={swiperKey}
-          breakpoints={{
-            350: {
-              slidesPerView: 1,
-            },
-            700: {
-              slidesPerView: 2,
-            },
-            1050: {
-              slidesPerView: 3,
-            },
-          }}
-        >
-          {displaySchedules.map((schedule) => (
-            <SwiperSlide key={schedule._id}>
-              <MatchCard schedule={schedule} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div className="flex gap-1 justify-center py-3">
-          <DPagination data={displaySchedules} currentPage={currentPage - 1} />
-        </div>
-        <div className="w-full px-4 mt-4">
-          <DMoreButton path="/schedule" />
-        </div>
-      </> : (
+      {schedules.length > 0 ? (
+        <>
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={1}
+            onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
+            initialSlide={currentPage - 1}
+            key={swiperKey}
+            breakpoints={{
+              350: {
+                slidesPerView: 1,
+              },
+              700: {
+                slidesPerView: 2,
+              },
+              1050: {
+                slidesPerView: 3,
+              },
+            }}
+          >
+            {displaySchedules.map((schedule) => (
+              <SwiperSlide key={schedule._id}>
+                <MatchCard schedule={schedule} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="flex gap-1 justify-center py-3">
+            <DPagination
+              data={displaySchedules}
+              currentPage={currentPage - 1}
+            />
+          </div>
+          <div className="w-full px-4 mt-4">
+            <DMoreButton path="/schedule" />
+          </div>
+        </>
+      ) : (
         <div className="flex justify-center items-center h-64">
           <HomeLoading />
         </div>
-      )
-      }
+      )}
     </div>
   );
 };

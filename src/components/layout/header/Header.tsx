@@ -35,8 +35,8 @@ const Header = () => {
     { href: "/schedule", label: "SCHEDULE" },
     { href: "/profile", label: "MEMBER" },
     { href: "/data", label: "DATA" },
-    // { href: "/admin/photo", label: "PROFILE" },
-    // { href: "/admin/schedule", label: "試合日程管理" },
+    { href: "/admin/photo", label: "PROFILE/管理" },
+    { href: "/admin/schedule", label: "SCHEDULE/管理" },
   ];
 
   const BichoLink = () => (
