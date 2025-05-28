@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useRecoilState } from "recoil";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/layout/header/Header";
@@ -17,14 +18,19 @@ import AboutBicho from "@/features/home/about-bicho/AboutBicho";
 import PhotoSwiper from "@/features/home/photo-swiper/PhotoSwiper";
 // import SoccerGround from "@/features/home/starting-lineup/SoccerGround";
 import Article from "@/features/home/article/Article";
+import BichoLogo from "@/public/bicho-icon.png";
 
 const HomePage: React.FC = () => {
+  const footerRef = useRef<HTMLElement | null>(null);
+
   // 画像一覧
   const [images, setImages] = useRecoilState(imagesState);
   // 試合日程一覧
   const [schedules, setSchedules] = useRecoilState(scheduleState);
   // loading表示
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  // スクロールトップボタンの表示状態
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   // API呼び出し
   useEffect(() => {
@@ -67,6 +73,29 @@ const HomePage: React.FC = () => {
     // eslint-disable-next-line
   }, [setSchedules]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const isScrolled = scrollTop > 1;
+
+      if (!footerRef.current) return;
+
+      const footerRect = footerRef.current.getBoundingClientRect();
+      const isFooterVisible = footerRect.top < window.innerHeight;
+
+      setShowScrollTop(isScrolled && !isFooterVisible);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div
       className={`relative ${
@@ -94,7 +123,7 @@ const HomePage: React.FC = () => {
           {/* <SoccerGround /> */}
           {/** Youtube */}
           {/* <VideoList /> */}
-          <Footer />
+          <Footer ref={footerRef} />
         </div>
       )}
       {/* ローディング画面 */}
@@ -111,6 +140,20 @@ const HomePage: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      {showScrollTop && (
+        <div
+          className="fixed bottom-4 right-4 z-50 bg-yellow-500 p-2 rounded-full shadow-md border-2 border-green-1"
+          onClick={scrollToTop}
+        >
+          <Image
+            src={BichoLogo}
+            alt=""
+            height={40}
+            width={40}
+            className="min-w-10 min-h-10"
+          />
+        </div>
+      )}
     </div>
   );
 };
