@@ -1,13 +1,42 @@
 import { motion, useInView } from "framer-motion";
-import { memo, useRef } from "react";
-// import BICHOLOGO from "@/public/bicho-icon.png";
-// import Image from "next/image";
+import { memo, useRef, useEffect, useState } from "react";
 import backgroundImage from "@/public/background.jpeg";
 
+const rotatingTexts = [
+  <>
+    FC BICHO
+    <br />
+    SINCE 2005
+  </>,
+  <>
+    <span className="text-sm">
+      埼玉県川口市を拠点に活動しており、
+      <br />
+      埼玉県県南部地区3部リーグに所属しています。
+    </span>
+  </>,
+  <>
+    <span className="text-sm">
+      県2部リーグへの昇格を目標に、
+      <br />
+      毎週日曜日活動を行っています。
+    </span>
+  </>,
+];
+
 const AboutBicho = () => {
-  // 画面に入ったかどうかを監視するための参照
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
+  const [textIndex, setTextIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTextIndex((prev) => (prev + 1) % rotatingTexts.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div
@@ -21,29 +50,15 @@ const AboutBicho = () => {
         opacity: 0.85,
       }}
     >
-      {/* 半透明のオーバーレイ */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      <div className="flex flex-col items-center">
-        {/* アニメーションを適用する要素 */}
-        {/* <motion.span
-          ref={ref}
-          className="text-gradient-3 font-bold text-3xl text-shadow"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          ABOUT BICHO
-        </motion.span> */}
-      </div>
       <motion.span
-        className="text-white-1 font-bold z-10 text-shadow text-4xl lg:text-6xl"
+        key={textIndex} // これでアニメーションが切り替わるたびに再適用される
+        className="text-white-1 font-bold z-10 text-shadow text-4xl lg:text-6xl text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.5 }}
+        transition={{ duration: 0.6 }}
       >
-        FC BICHO
-        <br />
-        SINCE 2005
+        {rotatingTexts[textIndex]}
       </motion.span>
     </div>
   );
