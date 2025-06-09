@@ -81,12 +81,12 @@ export const LEAGUE_2025: { league: League[]; title: string } = {
   league: [
     {
       team: "川口市役所",
-      game_count: 6,
-      points: 12,
-      wins: 4,
+      game_count: 7,
+      points: 15,
+      wins: 5,
       losses: 2,
       draws: 0,
-      goalsFor: 14,
+      goalsFor: 15,
       goalsAgainst: 12,
     },
     {
@@ -191,13 +191,13 @@ export const LEAGUE_2025: { league: League[]; title: string } = {
     },
     {
       team: "ほのぼのクラブ",
-      game_count: 6,
+      game_count: 7,
       points: 6,
       wins: 2,
-      losses: 4,
+      losses: 5,
       draws: 0,
       goalsFor: 9,
-      goalsAgainst: 15,
+      goalsAgainst: 16,
     },
   ],
 };
