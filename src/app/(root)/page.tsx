@@ -67,7 +67,7 @@ const HomePage: React.FC = () => {
         console.log("日程取得エラー:", err);
       }
     };
-    if (schedules.length === 0) {
+    if (schedules?.length === 0) {
       fetchSchedules();
     }
     // eslint-disable-next-line
@@ -106,23 +106,26 @@ const HomePage: React.FC = () => {
       {!isLoading && (
         <div className="w-full h-full relative">
           <Header />
-          {/* <NavBar /> */}
-          {/* BICHOについて */}
-          <AboutBicho />
-          {/** 試合日程 */}
-          <GameSchedule />
-          {/* 写真swiper */}
-          <PhotoSwiper />
-          {/* トーナメント表 */}
-          <Tournament />
-          {/* リーグ表 */}
-          <LeagueTable />
-          {/** 記事 */}
-          <Article />
-          {/* スタメン */}
-          {/* <SoccerGround /> */}
-          {/** Youtube */}
-          {/* <VideoList /> */}
+          {/* メインコンテンツエリア - ヘッダーの高さ分のパディングを追加 */}
+          <div className="pt-20">
+            {/* <NavBar /> */}
+            {/* BICHOについて */}
+            <AboutBicho />
+            {/** 試合日程 */}
+            <GameSchedule />
+            {/* 写真swiper */}
+            <PhotoSwiper />
+            {/* トーナメント表 */}
+            <Tournament />
+            {/* リーグ表 */}
+            <LeagueTable />
+            {/** 記事 */}
+            <Article />
+            {/* スタメン */}
+            {/* <SoccerGround /> */}
+            {/** Youtube */}
+            {/* <VideoList /> */}
+          </div>
           <Footer ref={footerRef} />
         </div>
       )}

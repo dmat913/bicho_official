@@ -63,7 +63,7 @@ export const goalkeepers: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "5",
+              gameCount: "6",
               goal: "0",
               assist: "0",
             },
@@ -151,7 +151,7 @@ export const defenders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "9",
+              gameCount: "10",
               goal: "1",
               assist: "0",
             },
@@ -191,7 +191,7 @@ export const defenders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "10",
+              gameCount: "11",
               goal: "0",
               assist: "0",
             },
@@ -230,7 +230,7 @@ export const defenders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "10",
+              gameCount: "11",
               goal: "2",
               assist: "0",
             },
@@ -282,7 +282,7 @@ export const defenders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "4",
+              gameCount: "5",
               goal: "0",
               assist: "0",
             },
@@ -344,7 +344,7 @@ export const defenders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "10",
+              gameCount: "11",
               goal: "0",
               assist: "0",
             },
@@ -407,7 +407,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "10",
+              gameCount: "11",
               goal: "1",
               assist: "0",
             },
@@ -459,7 +459,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "1",
+              gameCount: "2",
               goal: "0",
               assist: "0",
             },
@@ -494,7 +494,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "10",
+              gameCount: "11",
               goal: "3",
               assist: "1",
             },
@@ -525,7 +525,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "7",
+              gameCount: "8",
               goal: "0",
               assist: "0",
             },
@@ -571,7 +571,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "10",
+              gameCount: "11",
               goal: "1",
               assist: "1",
             },
@@ -623,7 +623,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "10",
+              gameCount: "11",
               goal: "2",
               assist: "3",
             },
@@ -686,7 +686,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "10",
+              gameCount: "11",
               goal: "1",
               assist: "1",
             },
@@ -725,7 +725,7 @@ export const midfielders: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "9",
+              gameCount: "10",
               goal: "1",
               assist: "0",
             },
@@ -820,7 +820,7 @@ export const forwards: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "9",
+              gameCount: "10",
               goal: "5",
               assist: "2",
             },
@@ -866,7 +866,7 @@ export const forwards: Profile[] = [
           contents: [
             {
               year: "2025",
-              gameCount: "9",
+              gameCount: "10",
               goal: "4",
               assist: "3",
             },

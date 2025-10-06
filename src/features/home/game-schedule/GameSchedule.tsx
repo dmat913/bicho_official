@@ -73,68 +73,111 @@ const GameSchedule = () => {
   }, [displaySchedules]);
 
   return (
-    <div id="game-schedule" className="py-10 px-4 bg-noise-green-3">
-      <div className="flex flex-col items-center mb-4">
-        <motion.span
-          ref={ref}
-          className="text-gradient font-bold text-2xl"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          Game Schedule
-        </motion.span>
+    <div
+      id="game-schedule"
+      className="relative w-full px-4 py-16 bg-gradient-to-br from-neutral-50 to-green-50 overflow-hidden"
+    >
+      {/* 背景装飾 */}
+      <div className="absolute inset-0 bg-hero-pattern opacity-20" />
+      <div className="absolute top-20 right-20 w-32 h-32 bg-green-200/30 rounded-full blur-2xl" />
+      <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent-gold/20 rounded-full blur-xl" />
 
-        <motion.span
-          className="text-gradient font-semibold"
+      <div className="relative section-container max-w-6xl mx-auto">
+        {/* モダンなタイトルセクション */}
+        <motion.div
+          ref={ref}
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
-          試合日程
-        </motion.span>
-      </div>
-      {schedules.length > 0 ? (
-        <>
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={1}
-            onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
-            initialSlide={currentPage - 1}
-            key={swiperKey}
-            breakpoints={{
-              350: {
-                slidesPerView: 1,
-              },
-              700: {
-                slidesPerView: 2,
-              },
-              1050: {
-                slidesPerView: 3,
-              },
-            }}
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-accent-gold rounded-full" />
+            <span className="text-green-700 font-medium text-sm tracking-widest uppercase">
+              Upcoming Matches
+            </span>
+            <div className="w-16 h-1 bg-gradient-to-r from-accent-gold to-green-400 rounded-full" />
+          </div>
+
+          <motion.h2
+            className="text-gradient-hero font-display font-black text-2xl lg:text-3xl mb-4 tracking-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {displaySchedules.map((schedule) => (
-              <SwiperSlide key={schedule._id}>
-                <MatchCard schedule={schedule} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <div className="flex gap-1 justify-center py-3">
-            <DPagination
-              data={displaySchedules}
-              currentPage={currentPage - 1}
-            />
+            Game Schedule
+          </motion.h2>
+
+          <motion.p
+            className="text-neutral-600 font-semibold text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            試合日程
+          </motion.p>
+        </motion.div>
+        {/* スケジュールコンテンツ */}
+        {schedules?.length > 0 ? (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Swiper
+              spaceBetween={24}
+              slidesPerView={1}
+              onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
+              initialSlide={currentPage - 1}
+              key={swiperKey}
+              className="pb-8"
+              breakpoints={{
+                350: {
+                  slidesPerView: 1,
+                  spaceBetween: 16,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 24,
+                },
+              }}
+            >
+              {displaySchedules.map((schedule, index) => (
+                <SwiperSlide key={schedule._id}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <MatchCard schedule={schedule} />
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* ページネーション */}
+            <div className="flex gap-2 justify-center py-6">
+              <DPagination
+                data={displaySchedules}
+                currentPage={currentPage - 1}
+              />
+            </div>
+
+            {/* モアボタン */}
+            <div className="flex justify-center mt-8">
+              <DMoreButton path="/schedule" />
+            </div>
+          </motion.div>
+        ) : (
+          <div className="flex justify-center items-center h-64">
+            <HomeLoading />
           </div>
-          <div className="w-full px-4 mt-4">
-            <DMoreButton path="/schedule" />
-          </div>
-        </>
-      ) : (
-        <div className="flex justify-center items-center h-64">
-          <HomeLoading />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
