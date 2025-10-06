@@ -14,9 +14,11 @@ const NewsPage = () => {
   return (
     <div className="w-full">
       <Header />
-      {articleNo === "1" && <Article1 />}
-      {articleNo === "2" && <Article2 />}
-      {articleNo === "3" && <Article3 />}
+      <div className="pt-20">
+        {articleNo === "1" && <Article1 />}
+        {articleNo === "2" && <Article2 />}
+        {articleNo === "3" && <Article3 />}
+      </div>
       <Footer />
     </div>
   );

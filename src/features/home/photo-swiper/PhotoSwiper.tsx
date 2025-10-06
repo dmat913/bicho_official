@@ -1,7 +1,8 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css/effect-fade";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import DPagination from "@/components/elements/DPagination";
 import { useRecoilValue } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
@@ -18,52 +19,117 @@ const PhotoSwiper = () => {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <div id="photo" className="py-10 px-4 bg-noise-green-1">
-      <div className="flex flex-col items-center mb-4">
-        {/* アニメーションを適用する要素 */}
-        <motion.span
+    <div
+      id="photo"
+      className="relative w-full px-4 py-16 bg-gradient-to-br from-neutral-50 to-green-50 overflow-hidden"
+    >
+      {/* 背景装飾 */}
+      <div className="absolute inset-0 bg-hero-pattern opacity-20" />
+      <div className="absolute top-20 left-20 w-32 h-32 bg-green-200/30 rounded-full blur-2xl" />
+      <div className="absolute bottom-20 right-20 w-24 h-24 bg-accent-gold/20 rounded-full blur-xl" />
+
+      <div className="relative section-container max-w-6xl mx-auto">
+        {/* モダンなタイトルセクション */}
+        <motion.div
           ref={ref}
-          className="text-gradient-2 font-bold text-2xl"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Through The Lens
-        </motion.span>
-        <motion.span
-          className="text-gradient-2 font-semibold"
-          initial={{ opacity: 0, y: 50 }}
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-accent-gold rounded-full" />
+            <span className="text-green-700 font-medium text-sm tracking-widest uppercase">
+              Gallery
+            </span>
+            <div className="w-16 h-1 bg-gradient-to-r from-accent-gold to-green-400 rounded-full" />
+          </div>
+
+          <motion.h2
+            className="text-gradient-hero font-display font-black text-2xl lg:text-3xl mb-4 tracking-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Through The Lens
+          </motion.h2>
+
+          <motion.p
+            className="text-neutral-600 font-semibold text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            写真
+          </motion.p>
+        </motion.div>
+        {/* モダンなフォトギャラリー */}
+        <motion.div
+          className="relative"
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          写真
-        </motion.span>
-      </div>
-      <Swiper
-        spaceBetween={1}
-        slidesPerView={1}
-        modules={[Autoplay, Pagination]}
-        autoplay={{ delay: 4000 }}
-        pagination={{ clickable: true }}
-        loop={true}
-        onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
-      >
-        {images.map((image) => (
-          <SwiperSlide key={image._id} className="md:h-[200px]">
-            <motion.img
-              src={image.data}
-              alt="Top Image"
-              className="lg:h-[500px] md:h-[400px] h-[250px] object-cover w-full"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div className="flex gap-1 bg-noise-green-1 justify-center py-3 mt-2">
-        <DPagination data={images} currentPage={currentPage - 1} />
+          <div className="relative max-w-4xl mx-auto">
+            {/* メインフォトコンテナ */}
+            <div className="relative bg-white-1 rounded-3xl shadow-2xl overflow-hidden p-2">
+              <Swiper
+                spaceBetween={0}
+                slidesPerView={1}
+                modules={[Autoplay, Pagination, EffectFade]}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                pagination={{
+                  clickable: true,
+                  bulletClass: "swiper-pagination-bullet !bg-green-500",
+                  bulletActiveClass:
+                    "swiper-pagination-bullet-active !bg-green-600 !scale-125",
+                }}
+                loop={true}
+                effect="fade"
+                onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
+                className="rounded-2xl overflow-hidden"
+              >
+                {images.map((image, index) => (
+                  <SwiperSlide key={image._id}>
+                    <div className="relative group">
+                      <motion.img
+                        src={image.data}
+                        alt={`Gallery Image ${index + 1}`}
+                        className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                        initial={{ opacity: 0, scale: 1.1 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.8 }}
+                      />
+
+                      {/* グラデーションオーバーレイ */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black-1/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                      {/* 画像インデックス表示 */}
+                      <div className="absolute top-4 right-4 bg-black-1/50 backdrop-blur-sm text-white-1 px-3 py-1 rounded-full text-sm font-medium">
+                        {index + 1} / {images.length}
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            {/* カスタムページネーション */}
+            <motion.div
+              className="flex justify-center mt-8 gap-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <DPagination data={images} currentPage={currentPage - 1} />
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
