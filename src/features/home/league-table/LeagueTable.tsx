@@ -33,7 +33,7 @@ const LeagueTable = () => {
         {/* モダンなタイトルセクション */}
         <motion.div
           ref={textRef}
-          className="text-center mb-12"
+          className="text-center mb-6"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -48,15 +48,11 @@ const LeagueTable = () => {
 
           <h2 className="text-gradient-hero font-display font-black text-3xl lg:text-4xl mb-2 tracking-tight">
             {LEAGUE_DATA.title.split(" ").map((part, index) => (
-              <span key={index} className="block">
+              <span key={index} className="block text-lg lg:text-3xl">
                 {part}
               </span>
             ))}
           </h2>
-
-          <p className="text-neutral-600 font-medium max-w-md mx-auto">
-            現在のリーグ戦順位表です
-          </p>
         </motion.div>
         {/* モダンなリーグテーブル */}
         <motion.div
@@ -117,8 +113,8 @@ const LeagueTable = () => {
 
                   // チーム名の短縮処理（スマホ用）
                   const getShortTeamName = (teamName: string) => {
-                    if (teamName.length > 7) {
-                      return teamName.substring(0, 5) + "...";
+                    if (teamName.length > 10) {
+                      return teamName.substring(0, 10) + "...";
                     }
                     return teamName;
                   };
@@ -275,7 +271,7 @@ const LeagueTable = () => {
           {/* モバイル用の情報表示 */}
           <div className="px-4 py-3 bg-neutral-50/50 border-t border-neutral-200 md:hidden">
             <div className="flex items-center justify-between text-xs text-neutral-600">
-              <span>※チーム名は省略表示されています</span>
+              <span>※暫定</span>
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 bg-green-500 rounded"></div>

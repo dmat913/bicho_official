@@ -38,7 +38,6 @@ const HomePage: React.FC = () => {
       try {
         const firstData = await fetchFirstImage();
         setImages(firstData);
-        setIsLoading(false);
         const data = await fetchImages();
         setImages(data);
       } catch (error) {
@@ -63,6 +62,7 @@ const HomePage: React.FC = () => {
         });
         const dates = await listResponse.json();
         setSchedules(dates.schedules);
+        setIsLoading(false);
       } catch (err) {
         console.log("日程取得エラー:", err);
       }
@@ -71,7 +71,7 @@ const HomePage: React.FC = () => {
       fetchSchedules();
     }
     // eslint-disable-next-line
-  }, [setSchedules]);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {

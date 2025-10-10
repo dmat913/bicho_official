@@ -311,7 +311,7 @@ const Tournament = () => {
         {/* タイトル */}
         <motion.div
           ref={titleRef}
-          className="text-center mb-16"
+          className="text-center mb-6"
           initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -319,12 +319,9 @@ const Tournament = () => {
           <div className="inline-flex items-center gap-2 bg-green-50/50 backdrop-blur-sm border border-green-200/30 rounded-2xl px-6 py-3 mb-6">
             <span className="text-2xl">🏆</span>
             <span className="text-green-700 font-bold text-sm uppercase tracking-wider">
-              TOURNAMENT
+              {tournamentData.title}
             </span>
           </div>
-          <h2 className="text-2xl lg:text-3xl font-bold text-neutral-800 mb-4 leading-tight">
-            {tournamentData.title}
-          </h2>
         </motion.div>
 
         {/* トーナメント表 - デスクトップ表示（全チーム） */}
