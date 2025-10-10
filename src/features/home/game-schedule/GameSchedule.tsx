@@ -10,7 +10,6 @@ import { ScheduleData } from "@/types/schedule";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import MatchCard from "./MatchCard";
-import HomeLoading from "../loading/HomeLoading";
 
 const GameSchedule = () => {
   const schedules = useRecoilValue(scheduleState);
@@ -86,27 +85,18 @@ const GameSchedule = () => {
         {/* モダンなタイトルセクション */}
         <motion.div
           ref={ref}
-          className="text-center mb-16"
+          className="text-center mb-6"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <div className="inline-flex items-center gap-3 mb-6">
+          <div className="inline-flex items-center gap-3 mb-3">
             <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-accent-gold rounded-full" />
             <span className="text-green-700 font-medium text-sm tracking-widest uppercase">
               Upcoming Matches
             </span>
             <div className="w-16 h-1 bg-gradient-to-r from-accent-gold to-green-400 rounded-full" />
           </div>
-
-          <motion.h2
-            className="text-gradient-hero font-display font-black text-2xl lg:text-3xl mb-4 tracking-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Game Schedule
-          </motion.h2>
 
           <motion.p
             className="text-neutral-600 font-semibold text-lg"
@@ -118,65 +108,59 @@ const GameSchedule = () => {
           </motion.p>
         </motion.div>
         {/* スケジュールコンテンツ */}
-        {schedules?.length > 0 ? (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <Swiper
+            spaceBetween={24}
+            slidesPerView={1}
+            onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
+            initialSlide={currentPage - 1}
+            key={swiperKey}
+            className="pb-8"
+            breakpoints={{
+              350: {
+                slidesPerView: 1,
+                spaceBetween: 16,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+              },
+            }}
           >
-            <Swiper
-              spaceBetween={24}
-              slidesPerView={1}
-              onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
-              initialSlide={currentPage - 1}
-              key={swiperKey}
-              className="pb-8"
-              breakpoints={{
-                350: {
-                  slidesPerView: 1,
-                  spaceBetween: 16,
-                },
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 24,
-                },
-              }}
-            >
-              {displaySchedules.map((schedule, index) => (
-                <SwiperSlide key={schedule._id}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <MatchCard schedule={schedule} />
-                  </motion.div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            {displaySchedules.map((schedule, index) => (
+              <SwiperSlide key={schedule._id}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <MatchCard schedule={schedule} />
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-            {/* ページネーション */}
-            <div className="flex gap-2 justify-center py-6">
-              <DPagination
-                data={displaySchedules}
-                currentPage={currentPage - 1}
-              />
-            </div>
-
-            {/* モアボタン */}
-            <div className="flex justify-center mt-8">
-              <DMoreButton path="/schedule" />
-            </div>
-          </motion.div>
-        ) : (
-          <div className="flex justify-center items-center h-64">
-            <HomeLoading />
+          {/* ページネーション */}
+          <div className="flex gap-2 justify-center py-6">
+            <DPagination
+              data={displaySchedules}
+              currentPage={currentPage - 1}
+            />
           </div>
-        )}
+
+          {/* モアボタン */}
+          <div className="flex justify-center mt-8">
+            <DMoreButton path="/schedule" />
+          </div>
+        </motion.div>
       </div>
     </div>
   );

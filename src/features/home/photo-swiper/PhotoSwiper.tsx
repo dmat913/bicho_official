@@ -32,27 +32,18 @@ const PhotoSwiper = () => {
         {/* モダンなタイトルセクション */}
         <motion.div
           ref={ref}
-          className="text-center mb-16"
+          className="text-center mb-6"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <div className="inline-flex items-center gap-3 mb-6">
+          <div className="inline-flex items-center gap-3 mb-3">
             <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-accent-gold rounded-full" />
             <span className="text-green-700 font-medium text-sm tracking-widest uppercase">
-              Gallery
+              Through The Lens
             </span>
             <div className="w-16 h-1 bg-gradient-to-r from-accent-gold to-green-400 rounded-full" />
           </div>
-
-          <motion.h2
-            className="text-gradient-hero font-display font-black text-2xl lg:text-3xl mb-4 tracking-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Through The Lens
-          </motion.h2>
 
           <motion.p
             className="text-neutral-600 font-semibold text-lg"
