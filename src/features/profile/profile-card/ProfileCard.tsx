@@ -104,7 +104,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
 
             {/* NEW バッジ */}
             {profile.isNew && (
-              <div className="absolute right-4 top-4 z-10">
+              <div className="absolute right-2 top-2 z-10">
                 <span
                   className="bg-accent-red text-white-1 text-xs font-bold px-3 py-1 rounded-full 
                   shadow-md uppercase tracking-wide"

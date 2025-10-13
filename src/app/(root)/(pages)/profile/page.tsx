@@ -11,7 +11,7 @@ import ProfileCard from "@/features/profile/profile-card/ProfileCard";
 
 const ProfilePage = () => {
   return (
-    <div className="bg-white-2">
+    <div className="bg-white-2 pt-24">
       <Header />
       <div className="flex flex-col">
         <div className="flex flex-col border-b-2 border-b-green-1 border-dotted pb-4">

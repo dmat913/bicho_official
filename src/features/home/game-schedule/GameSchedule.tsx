@@ -12,7 +12,7 @@ import { useRef } from "react";
 import MatchCard from "./MatchCard";
 
 const GameSchedule = () => {
-  const schedules = useRecoilValue(scheduleState);
+  const schedulesFromState = useRecoilValue(scheduleState);
   const [currentPage, setCurrentPage] = useState<number>(1);
   // Swiperの再レンダリング用のキー
   const [swiperKey, setSwiperKey] = useState(0);
@@ -20,6 +20,14 @@ const GameSchedule = () => {
   // 画面に入ったかどうかを監視するための参照
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
+  // サーバーから降順で返されるデータを昇順に並び替え
+  const schedules = useMemo(() => {
+    if (!schedulesFromState) return [];
+    return [...schedulesFromState].sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
+  }, [schedulesFromState]);
 
   // 今日の日付から一番近い試合日程のindex
   const closestIndex = useMemo(() => {

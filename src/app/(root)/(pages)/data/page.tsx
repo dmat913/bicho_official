@@ -30,13 +30,9 @@ ChartJS.register(
 
 const DataPage = () => {
   return (
-    <div className="bg-gray-200">
+    <div className="bg-gray-200 pt-24">
       <Header />
       <div className="flex flex-col gap-6 p-4">
-        <div className="flex flex-col">
-          <span className="text-2xl font-bold text-green-1">DATA</span>
-          <span className="text-sm">数字で見るBICHO</span>
-        </div>
         <AgeGraph />
         <ActiveRatio />
         <GoalGraph />
