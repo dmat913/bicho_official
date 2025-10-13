@@ -144,18 +144,52 @@ const HomePage: React.FC = () => {
         )}
       </AnimatePresence>
       {showScrollTop && (
-        <div
-          className="fixed bottom-4 right-4 z-50 bg-yellow-500 p-2 rounded-full shadow-md border-2 border-green-1"
-          onClick={scrollToTop}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="fixed bottom-6 right-6 z-50"
         >
-          <Image
-            src={BichoLogo}
-            alt=""
-            height={40}
-            width={40}
-            className="min-w-10 min-h-10"
-          />
-        </div>
+          <motion.div
+            className="relative group cursor-pointer"
+            onClick={scrollToTop}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+          >
+            {/* グロー効果 */}
+            <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+
+            {/* メインボタン */}
+            <div className="relative bg-gradient-to-br from-green-500 via-green-600 to-emerald-700 p-3 rounded-full shadow-xl border border-green-400/30 backdrop-blur-sm group-hover:from-green-400 group-hover:to-emerald-600 transition-all duration-300">
+              {/* 内部グラデーション */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 rounded-full"></div>
+
+              {/* ロゴ */}
+              <div className="relative z-10">
+                <Image
+                  src={BichoLogo}
+                  alt="トップに戻る"
+                  height={32}
+                  width={32}
+                  className="min-w-8 min-h-8 drop-shadow-lg group-hover:scale-110 transition-transform duration-200"
+                />
+              </div>
+
+              {/* ホバー時のリップル効果 */}
+              <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-300"></div>
+            </div>
+
+            {/* ツールチップ */}
+            <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none hidden lg:block">
+              <div className="bg-neutral-900/95 backdrop-blur-sm text-white-1 text-sm font-medium px-3 py-1.5 rounded-lg shadow-xl border border-green-400/20 whitespace-nowrap">
+                トップに戻る
+                <div className="absolute top-full right-3 w-0 h-0 border-l-2 border-r-2 border-t-4 border-l-transparent border-r-transparent border-t-neutral-900/95"></div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
       )}
     </div>
   );

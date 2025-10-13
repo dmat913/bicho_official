@@ -128,7 +128,7 @@ const EditSchedulePage = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full pt-24">
       <Header />
       <div className="pl-4 mt-4 flex items-center gap-2">
         <span className="text-2xl font-bold">試合日程追加</span>

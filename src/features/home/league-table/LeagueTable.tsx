@@ -114,7 +114,7 @@ const LeagueTable = () => {
                   // チーム名の短縮処理（スマホ用）
                   const getShortTeamName = (teamName: string) => {
                     if (teamName.length > 10) {
-                      return teamName.substring(0, 10) + "...";
+                      return teamName.substring(0, 12) + "...";
                     }
                     return teamName;
                   };
@@ -158,7 +158,7 @@ const LeagueTable = () => {
                             {index + 1}
                           </div>
                           {isTop3 && (
-                            <span className="text-sm hidden sm:inline">
+                            <span className="text-sm sm:inline">
                               {index === 0 ? "🏆" : index === 1 ? "🥈" : "🥉"}
                             </span>
                           )}
