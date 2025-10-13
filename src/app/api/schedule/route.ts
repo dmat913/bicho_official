@@ -62,8 +62,8 @@ export async function GET() {
     // データベース接続を確立
     await connectDb();
 
-    // スケジュール一覧を取得して、dateフィールドで昇順に並べ替え
-    const schedules = await ScheduleModel.find().sort({ date: 1 });
+    // スケジュール一覧を取得して、dateフィールドで降順に並べ替え
+    const schedules = await ScheduleModel.find().sort({ date: -1 });
 
     // データが見つかった場合
     if (schedules.length > 0) {
