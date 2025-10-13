@@ -78,7 +78,7 @@ const SchedulePage = () => {
 
   return (
     <>
-      <div className="relative z-40">
+      <div className="relative z-40 pt-24">
         <Header />
         <div className="p-4 relative">
           <div className="flex justify-start mb-4">

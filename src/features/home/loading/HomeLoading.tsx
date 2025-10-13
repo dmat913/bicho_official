@@ -176,7 +176,7 @@ const HomeLoading = () => {
           className="mb-8"
         >
           <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-wider mb-4"
+            className="text-4xl md:text-6xl lg:text-7xl font-black text-white-1 tracking-wider mb-4"
             style={{
               textShadow: "0 0 30px rgba(74, 222, 128, 0.5)",
             }}

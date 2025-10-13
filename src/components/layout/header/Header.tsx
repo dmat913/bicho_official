@@ -158,9 +158,9 @@ const Header = () => {
               {/* 左側のアクセントライン */}
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-green-400 via-green-300 to-green-400" />
 
-              <div className="flex flex-col h-full p-6 relative">
+              <div className="flex flex-col gap-6 h-full p-6 relative">
                 {/* ヘッダー部分 */}
-                <div className="flex items-center justify-between mb-10">
+                <div className="flex items-center justify-between">
                   <BichoLink />
                   <button
                     onClick={toggleMenu}
@@ -172,7 +172,7 @@ const Header = () => {
                 </div>
 
                 {/* ナビゲーションメニュー */}
-                <nav className="flex-1 space-y-3">
+                <nav className="flex-1 overflow-y-auto overflow-x-hidden space-y-3">
                   {menuItems.map((item, index) => (
                     <motion.div
                       key={item.href}
@@ -242,7 +242,7 @@ const Header = () => {
                 </nav>
 
                 {/* フッター部分 - より目立つデザイン */}
-                <div className="mt-8 p-6 rounded-2xl bg-green-900/50 border border-green-600/30">
+                <div className="px-6 py-4 rounded-2xl bg-green-900/50 border border-green-600/30">
                   <div className="text-center">
                     <p className="text-white-2 text-lg font-bold mb-1">
                       BICHO FC

@@ -42,7 +42,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
         <div className="absolute inset-0 w-full h-full backface-hidden">
           <div
             className="relative w-full h-full overflow-hidden group transition-all duration-500
-            rounded-3xl shadow-strong hover:shadow-green-glow border border-green-400/30"
+            rounded-lg shadow-strong hover:shadow-green-glow border border-green-400/30"
             style={{
               background: `
                 linear-gradient(135deg, 
@@ -96,8 +96,8 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
             </div>
 
             {/* 背番号 */}
-            <div className="absolute top-4 left-4 z-10">
-              <span className="text-5xl font-bold text-white drop-shadow-lg opacity-90">
+            <div className="absolute top-2 left-2 z-10">
+              <span className="text-3xl font-bold text-white-1 drop-shadow-lg opacity-90">
                 {profile.number}
               </span>
             </div>
@@ -106,7 +106,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
             {profile.isNew && (
               <div className="absolute right-4 top-4 z-10">
                 <span
-                  className="bg-accent-red text-white text-xs font-bold px-3 py-1 rounded-full 
+                  className="bg-accent-red text-white-1 text-xs font-bold px-3 py-1 rounded-full 
                   shadow-md uppercase tracking-wide"
                 >
                   New
@@ -115,56 +115,77 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
             )}
 
             {/* 選手画像 */}
-            <div className="absolute inset-4 top-16 flex items-center justify-center">
+            <div className="absolute inset-4 top-12 flex items-center justify-center">
               {profile.img ? (
                 <Image
                   src={profile.img}
                   alt={profile.name}
-                  className="h-full w-auto object-contain drop-shadow-2xl 
+                  className="h-full w-auto object-cover drop-shadow-2xl 
                     group-hover:scale-105 transition-transform duration-500"
                 />
               ) : (
-                <div className="flex items-center justify-center h-full text-white/60 text-lg font-medium">
+                <div className="flex items-center justify-center h-full text-white-1 text-lg font-medium">
                   Now Printing
                 </div>
               )}
             </div>
 
             {/* 選手情報 */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+            <div className="absolute bottom-2 left-2 bg-gradient-to-t from-black/80 to-transparent">
               <div className="text-white">
-                <h3 className="text-lg font-bold drop-shadow-lg">
+                <h3 className="text-md font-bold text-white-1 drop-shadow-lg">
                   {profile.name}
                 </h3>
-                <p className="text-sm opacity-90 drop-shadow-md">
+                <p className="text-xs opacity-90 text-white-1 drop-shadow-md">
                   {profile.englishName}
-                </p>
-                <p className="text-xs opacity-75 mt-1 uppercase tracking-wide">
-                  {profile.position}
                 </p>
               </div>
             </div>
 
             {/* 詳細データがある場合のインジケーター */}
             {profile.detail && (
-              <div className="absolute bottom-4 right-4 z-10">
-                <div
-                  className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center
-                  group-hover:bg-white/30 transition-colors duration-300"
-                >
-                  <svg
-                    className="w-4 h-4 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+              <div className="absolute bottom-2 right-2 z-10">
+                <div className="relative group/indicator">
+                  {/* メイングロー効果 */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-xl blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+
+                  {/* メインボタン */}
+                  <div
+                    className="relative w-6 h-6 bg-gradient-to-br from-green-500 via-green-600 to-emerald-700 
+                    backdrop-blur-xl rounded-xl flex items-center justify-center shadow-lg 
+                    border border-green-400/20 group-hover:from-green-400 group-hover:to-emerald-500
+                    group-hover:scale-105 group-hover:shadow-green-500/30 group-hover:shadow-xl
+                    transition-all duration-300 ease-out cursor-pointer"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                    {/* 内部グラデーション */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 rounded-xl"></div>
+
+                    {/* アイコン */}
+                    <svg
+                      className="w-4 h-4 text-white-1 drop-shadow-lg relative z-10 group-hover/indicator:scale-110 transition-transform duration-200"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2.5}
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      />
+                    </svg>
+
+                    {/* ホバー時のリップル効果 */}
+                    <div className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-300"></div>
+                  </div>
+
+                  {/* ツールチップ */}
+                  <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover/indicator:opacity-100 transition-opacity duration-200 pointer-events-none">
+                    <div className="bg-neutral-900/95 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow-xl border border-green-400/20 whitespace-nowrap">
+                      詳細データを見る
+                      <div className="absolute top-full right-3 w-0 h-0 border-l-2 border-r-2 border-t-4 border-l-transparent border-r-transparent border-t-neutral-900/95"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
@@ -198,11 +219,11 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
             {/* ヘッダー */}
             <div className="relative p-4 border-b border-neutral-700/50 flex-shrink-0">
               <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-white text-lg font-bold">
+                <div className="shrink-0">
+                  <h3 className="text-white-1 text-sm font-bold">
                     {profile.name}
                   </h3>
-                  <p className="text-neutral-400 text-sm">
+                  <p className="text-neutral-100 text-xs">
                     {profile.englishName}
                   </p>
                 </div>
@@ -210,7 +231,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
                   <span className="text-green-400 text-2xl font-bold">
                     #{profile.number}
                   </span>
-                  <p className="text-neutral-400 text-xs uppercase tracking-wide">
+                  <p className="text-neutral-100 text-xs truncate w-full uppercase tracking-wide">
                     {profile.position}
                   </p>
                 </div>
@@ -220,7 +241,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
             {/* データ表示エリア */}
             <div className="flex-1 overflow-hidden z-50 flex flex-col">
               <div
-                className="p-4 overflow-y-auto flex-1 custom-scrollbar"
+                className="p-2 overflow-y-auto flex-1 custom-scrollbar"
                 style={{ maxHeight: "calc(320px - 140px)" }}
               >
                 {profile.detail?.competitionData &&
@@ -230,21 +251,21 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
                       (competition, index) => (
                         <div
                           key={index}
-                          className="bg-neutral-800/50 rounded-xl p-3 border border-neutral-700/30"
+                          className="bg-neutral-800/50 rounded-xl p-2 border border-neutral-700/30"
                         >
-                          <h4 className="text-green-400 font-semibold text-sm mb-3 uppercase tracking-wide">
+                          <h4 className="text-green-500 font-semibold text-xs mb-3 uppercase tracking-wide">
                             {competition.competition}
                           </h4>
                           <div className="space-y-2">
                             {competition.contents.map((data, dataIndex) => (
                               <div
                                 key={dataIndex}
-                                className="flex items-center justify-between text-xs"
+                                className="flex items-center gap-2 justify-between text-xs"
                               >
-                                <span className="text-neutral-300 font-medium">
+                                <span className="text-neutral-100 font-medium">
                                   {data.year}
                                 </span>
-                                <div className="flex space-x-4 text-neutral-400">
+                                <div className="flex items-center gap-1 text-neutral-100">
                                   <span>M: {data.gameCount}</span>
                                   <span className="text-green-400">
                                     G: {data.goal}
@@ -261,7 +282,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
                     )}
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center h-full text-neutral-400">
+                  <div className="flex items-center justify-center h-full text-neutral-100">
                     <div className="text-center">
                       <svg
                         className="w-12 h-12 mx-auto mb-3 opacity-50"

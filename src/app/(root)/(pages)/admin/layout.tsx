@@ -28,7 +28,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       {isAuthenticated ? (
         children
       ) : (
-        <div className="flex flex-col items-center justify-center gap-4 bg-noise-green-3 w-full h-[100svh]">
+        <div className="flex flex-col items-center justify-center gap-4 bg-green-1 w-full h-[100svh]">
           <Image src={BichoLogo} alt="Loading Icon" height={100} width={100} />
           <form onSubmit={handlePasswordSubmit} className="flex flex-col gap-2">
             <input

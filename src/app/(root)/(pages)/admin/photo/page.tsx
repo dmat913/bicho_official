@@ -58,7 +58,7 @@ const PhotoList = () => {
   };
 
   return (
-    <div>
+    <div className="pt-24">
       <Header />
       <UploadImage />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-3 bg-white-1">

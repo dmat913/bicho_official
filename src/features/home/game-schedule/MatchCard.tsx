@@ -49,7 +49,7 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
           {/* ステータスバッジ */}
           <div
             className={`
-            px-3 py-1 rounded-full text-xs font-bold
+            absolute bottom-1 right-1 px-3 py-1 rounded-full text-xs font-bold shrink-0
             ${
               isMatchPlayed
                 ? "bg-green-400/20 text-green-100 border border-green-300/30"
