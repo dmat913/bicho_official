@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import DLoading from "@/components/elements/DLoading";
 import { imagesState } from "@/recoil/atom/image";
 import { fetchImages } from "@/utils/image";
@@ -109,10 +110,13 @@ const UploadImage = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="w-[90vw] bg-white-1 p-4 rounded shadow-lg">
             <h2 className="text-lg font-bold mb-2">選択された画像</h2>
-            <img
+            <Image
               src={uploadImage}
-              alt="Uploaded Preview"
+              alt="アップロード予定の画像プレビュー"
               className="mb-4 w-full sm:max-h-[50svh] object-cover"
+              width={800}
+              height={600}
+              priority
             />
             <button
               onClick={handleUpload}
