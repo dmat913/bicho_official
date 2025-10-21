@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         url: "https://bicho-official.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "FC.Bicho Official Site - 川口市の社会人サッカーチーム",
+        alt: "FC.BICHO - 川口市の社会人サッカーチーム集合写真",
       },
     ],
   },
