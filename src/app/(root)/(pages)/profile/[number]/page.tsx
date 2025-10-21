@@ -33,7 +33,9 @@ const PlayerDetailPage = () => {
               <Image
                 key={index}
                 src={profile}
-                alt=""
+                alt={`${profileDetail?.name || "選手"}のプロフィール写真${
+                  index + 1
+                }`}
                 className="w-full h-52 object-cover rounded-md border"
               />
             ))}

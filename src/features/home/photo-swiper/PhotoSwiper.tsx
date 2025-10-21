@@ -89,12 +89,16 @@ const PhotoSwiper = () => {
                     <div className="relative group">
                       <motion.img
                         src={image.data}
-                        alt={`Gallery Image ${index + 1}`}
+                        alt={`FC.BICHOチーム写真 ${
+                          index + 1
+                        } - サッカーチームの活動の様子`}
                         className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                         initial={{ opacity: 0, scale: 1.1 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.8 }}
+                        loading={index < 2 ? "eager" : "lazy"}
+                        decoding={index < 2 ? "sync" : "async"}
                       />
 
                       {/* グラデーションオーバーレイ */}

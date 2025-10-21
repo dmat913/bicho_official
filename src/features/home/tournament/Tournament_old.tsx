@@ -86,7 +86,12 @@ const Tournament = () => {
               transition={{ duration: 0.5, delay: 0.1 * Number(team.id) }}
             >
               {team.id === "3" && (
-                <Image src={BICHOLOGO} alt="" width={30} height={30} />
+                <Image
+                  src={BICHOLOGO}
+                  alt="FC.Bichoロゴ"
+                  width={30}
+                  height={30}
+                />
               )}
               <span
                 className={`text-sm text-black-1 ${
@@ -355,7 +360,7 @@ const Tournament = () => {
             animate={tournamentInView ? { width: "100%" } : { width: "0%" }}
             transition={{ duration: 1, delay: 3.5 }}
           >
-            <Image src={BICHOLOGO} alt="" width={40} height={40} />
+            <Image src={BICHOLOGO} alt="FC.Bichoロゴ" width={40} height={40} />
           </motion.div>
         </div>
       </motion.div>

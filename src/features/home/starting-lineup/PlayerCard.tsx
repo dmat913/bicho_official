@@ -40,7 +40,7 @@ export default function PlayerCard({
 
           {/* Bottom Flags */}
           <div className="absolute top-1 right-1 flex gap-2 text-lg">
-            <Image src={BICHOLOGO} alt="" width={16} height={16} />
+            <Image src={BICHOLOGO} alt="FC.Bichoロゴ" width={16} height={16} />
           </div>
         </div>
 

@@ -16,7 +16,7 @@ const SoccerGround = () => {
     <div className="relative overflow-hidden bg-noise-green-1 pt-10 w-full">
       <Image
         src={BackgroundGround}
-        alt=""
+        alt="サッカーフィールドの背景"
         layout="fill"
         objectFit="cover"
         style={{ position: "absolute", top: 0, opacity: 0.4 }}

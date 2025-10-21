@@ -81,13 +81,13 @@ export const LEAGUE_2025: { league: League[]; title: string } = {
   league: [
     {
       team: "川口市役所",
-      game_count: 10,
+      game_count: 11,
       points: 19,
       wins: 6,
-      losses: 3,
+      losses: 4,
       draws: 1,
       goalsFor: 17,
-      goalsAgainst: 15,
+      goalsAgainst: 17,
     },
     {
       team: "TACKY'S",
@@ -141,12 +141,12 @@ export const LEAGUE_2025: { league: League[]; title: string } = {
     },
     {
       team: "FCフルゴン",
-      game_count: 10,
-      points: 15,
-      wins: 5,
+      game_count: 11,
+      points: 18,
+      wins: 6,
       losses: 5,
       draws: 0,
-      goalsFor: 15,
+      goalsFor: 17,
       goalsAgainst: 11,
     },
     {
