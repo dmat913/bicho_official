@@ -271,7 +271,7 @@ const LeagueTable = () => {
           {/* モバイル用の情報表示 */}
           <div className="px-4 py-3 bg-neutral-50/50 border-t border-neutral-200 md:hidden">
             <div className="flex items-center justify-between text-xs text-neutral-600">
-              <span>※暫定</span>
+              <span>最終順位</span>
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 bg-green-500 rounded"></div>

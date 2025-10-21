@@ -31,18 +31,50 @@ const Header = () => {
 
   // リスト化されたメニューアイテム
   const menuItems = [
-    { href: "/", label: "HOME", icon: "🏠" },
-    { href: "/schedule", label: "SCHEDULE", icon: "📅" },
-    { href: "/profile", label: "MEMBER", icon: "👥" },
-    { href: "/data", label: "DATA", icon: "📊" },
-    { href: "/admin/photo", label: "PROFILE/管理", icon: "🖼️" },
-    { href: "/admin/schedule", label: "SCHEDULE/管理", icon: "⚙️" },
+    {
+      href: "/",
+      label: "HOME",
+      icon: "🏠",
+      title: "FC.BICHOホーム - メインページ",
+    },
+    {
+      href: "/schedule",
+      label: "SCHEDULE",
+      icon: "📅",
+      title: "試合日程・結果 - FC.BICHOの試合スケジュール",
+    },
+    {
+      href: "/profile",
+      label: "MEMBER",
+      icon: "👥",
+      title: "選手プロフィール - FC.BICHOメンバー紹介",
+    },
+    {
+      href: "/data",
+      label: "DATA",
+      icon: "📊",
+      title: "チームデータ・統計 - FC.BICHOの分析データ",
+    },
+    {
+      href: "/admin/photo",
+      label: "PROFILE/管理",
+      icon: "🖼️",
+      title: "写真管理 - チーム写真アップロード",
+    },
+    {
+      href: "/admin/schedule",
+      label: "SCHEDULE/管理",
+      icon: "⚙️",
+      title: "スケジュール管理 - 試合日程管理",
+    },
   ];
 
   const BichoLink = () => (
     <Link
       href="/"
       className="group flex items-center gap-3 transition-all duration-300 hover:scale-105"
+      title="FC.BICHO Official Site - ホームページ"
+      aria-label="FC.BICHOのホームページに移動"
     >
       <div className="relative">
         {/* ロゴ背景のグロー効果 */}
@@ -89,6 +121,8 @@ const Header = () => {
                     href={item.href}
                     key={item.href}
                     className="group relative"
+                    title={item.title}
+                    aria-label={item.title}
                   >
                     <div
                       className={`
@@ -189,6 +223,8 @@ const Header = () => {
                         href={item.href}
                         onClick={toggleMenu}
                         className="group block"
+                        title={item.title}
+                        aria-label={item.title}
                       >
                         <div
                           className={`

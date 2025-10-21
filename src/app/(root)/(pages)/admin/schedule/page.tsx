@@ -118,7 +118,12 @@ const SchedulePage = () => {
                 <div className="flex items-center justify-center gap-4">
                   <div className="flex items-center gap-1 w-[100px] justify-end">
                     <span>Bicho</span>
-                    <Image src={BichoLogo} alt="" width={48} height={48} />
+                    <Image
+                      src={BichoLogo}
+                      alt="FC.Bichoロゴ"
+                      width={48}
+                      height={48}
+                    />
                   </div>
                   <div className="flex flex-col text-green-1">
                     <span className="text-3xl font-bold">
@@ -132,7 +137,7 @@ const SchedulePage = () => {
                     {getLogo(schedule.teamName) !== "" ? (
                       <Image
                         src={getLogo(schedule.teamName)}
-                        alt=""
+                        alt={`${schedule.teamName}のロゴ`}
                         width={40}
                         height={40}
                       />
