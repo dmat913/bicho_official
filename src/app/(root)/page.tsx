@@ -11,7 +11,6 @@ import { scheduleState } from "@/recoil/atom/schedule";
 import LeagueTable from "@/features/home/league-table/LeagueTable";
 // import NavBar from "@/features/home/nav/NavBar";
 import GameSchedule from "@/features/home/game-schedule/GameSchedule";
-import Tournament from "@/features/home/tournament/Tournament";
 import HomeLoading from "@/features/home/loading/HomeLoading";
 // import VideoList from "@/features/home/youtube-video-list/VideoList";
 import AboutBicho from "@/features/home/about-bicho/AboutBicho";
@@ -115,10 +114,9 @@ const HomePage: React.FC = () => {
             <GameSchedule />
             {/* 写真swiper */}
             <PhotoSwiper />
-            {/* トーナメント表 */}
-            <Tournament />
             {/* リーグ表 */}
             <LeagueTable />
+
             {/** 記事 */}
             <Article />
             {/* スタメン */}
