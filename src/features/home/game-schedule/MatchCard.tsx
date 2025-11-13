@@ -63,7 +63,7 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
 
         {/* メイン対戦カード */}
         <div className="relative flex-1 p-6">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between">
             {/* BICHO チーム */}
             <motion.div
               className="flex flex-col items-center gap-3 flex-1"
@@ -83,7 +83,6 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
               </div>
               <div className="text-center">
                 <div className="text-green-700 font-bold text-sm">FC.BICHO</div>
-                <div className="text-neutral-500 text-xs">ホーム</div>
               </div>
             </motion.div>
 
@@ -150,7 +149,6 @@ const MatchCard = ({ schedule }: { schedule: ScheduleData }) => {
                 <div className="text-neutral-700 font-bold text-sm line-clamp-1">
                   {schedule.teamName}
                 </div>
-                <div className="text-neutral-500 text-xs">アウェイ</div>
               </div>
             </motion.div>
           </div>

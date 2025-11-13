@@ -4,6 +4,7 @@ import Photo2 from "@/public/article/article3-2.jpeg";
 import Photo3 from "@/public/article/article3-3.jpeg";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Tournament from "@/features/home/tournament/Tournament";
 
 const Article3 = () => {
   const matchReports = [
@@ -106,16 +107,6 @@ const Article3 = () => {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black-1/40 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="bg-white-1/90 backdrop-blur-sm rounded-2xl p-4">
-                <h2 className="text-lg font-bold text-neutral-800 mb-2">
-                  決勝戦: FC.BICHO vs ほのぼのクラブ
-                </h2>
-                <p className="text-accent-gold font-black text-xl">
-                  0-0 (PK5-3) で優勝！
-                </p>
-              </div>
-            </div>
           </div>
         </motion.div>
 
@@ -158,6 +149,9 @@ const Article3 = () => {
             </div>
           </div>
         </motion.div>
+
+        {/* トーナメント表 */}
+        <Tournament />
 
         {/* マッチレポート */}
         <motion.div
