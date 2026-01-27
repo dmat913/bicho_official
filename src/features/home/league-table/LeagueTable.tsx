@@ -22,53 +22,46 @@ const LeagueTable = () => {
   return (
     <div
       id="league-table"
-      className="relative w-full px-4 py-16 bg-gradient-to-br from-green-50 to-green-100 overflow-hidden"
+      className="relative w-full bg-gradient-to-br from-green-50 to-green-100 overflow-hidden"
     >
       {/* 背景装飾 */}
       <div className="absolute inset-0 bg-hero-pattern opacity-30" />
       <div className="absolute top-10 right-10 w-64 h-64 bg-green-200/20 rounded-full blur-3xl" />
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-green-300/15 rounded-full blur-2xl" />
 
-      <div className="relative section-container">
+      <div className="relative">
         {/* モダンなタイトルセクション */}
         <motion.div
           ref={textRef}
-          className="text-center mb-6"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-12 h-1 bg-gradient-to-r from-green-400 to-green-600 rounded-full" />
-            <span className="text-green-700 font-medium text-sm tracking-widest uppercase">
-              League Standing
-            </span>
-            <div className="w-12 h-1 bg-gradient-to-r from-green-600 to-green-400 rounded-full" />
+          {/* スクロールするタイトル */}
+          <div className="relative overflow-hidden bg-gradient-to-r from-green-600 via-green-700 to-green-600 py-6 shadow-lg">
+            <div className="flex whitespace-nowrap">
+              <div className="flex animate-marquee">
+                {[...Array(15)].map((_, i) => (
+                  <span
+                    key={i}
+                    className="text-green-200 font-display font-black text-4xl lg:text-5xl mx-8 tracking-wider uppercase"
+                    style={{ textShadow: "0 2px 10px rgba(0,0,0,0.2)" }}
+                  >
+                    League Standing
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-
-          <h2 className="text-gradient-hero font-display font-black text-3xl lg:text-4xl mb-2 tracking-tight">
-            {LEAGUE_DATA.title.split(" ").map((part, index) => (
-              <span key={index} className="block text-lg lg:text-3xl">
-                {part}
-              </span>
-            ))}
-          </h2>
         </motion.div>
         {/* モダンなリーグテーブル */}
         <motion.div
           ref={tableRef}
-          className="bg-white-2 rounded-3xl shadow-strong overflow-hidden border border-neutral-200"
+          className="bg-white-2 shadow-strong overflow-hidden border border-neutral-200"
           initial={{ opacity: 0, y: 50 }}
           animate={tableInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {/* テーブルヘッダー */}
-          <div className="bg-gradient-to-r from-green-600 to-green-700 px-6 py-4">
-            <h3 className="text-white-2 font-display font-bold text-lg">
-              順位表
-            </h3>
-          </div>
-
           {/* テーブル本体 */}
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -86,13 +79,13 @@ const LeagueTable = () => {
                   <th className="px-1 py-4 text-center text-xs font-bold text-neutral-700 uppercase tracking-wider w-12">
                     勝点
                   </th>
-                  <th className="px-1 py-4 text-center text-xs font-bold text-neutral-700 uppercase tracking-wider hidden md:table-cell w-10">
+                  <th className="px-1 py-4 text-center text-xs font-bold text-neutral-700 uppercase tracking-wider w-10">
                     勝
                   </th>
-                  <th className="px-1 py-4 text-center text-xs font-bold text-neutral-700 uppercase tracking-wider hidden md:table-cell w-10">
+                  <th className="px-1 py-4 text-center text-xs font-bold text-neutral-700 uppercase tracking-wider w-10">
                     分
                   </th>
-                  <th className="px-1 py-4 text-center text-xs font-bold text-neutral-700 uppercase tracking-wider hidden md:table-cell w-10">
+                  <th className="px-1 py-4 text-center text-xs font-bold text-neutral-700 uppercase tracking-wider w-10">
                     負
                   </th>
                   <th className="px-1 py-4 text-center text-xs font-bold text-neutral-700 uppercase tracking-wider hidden lg:table-cell w-12">
@@ -114,7 +107,7 @@ const LeagueTable = () => {
                   // チーム名の短縮処理（スマホ用）
                   const getShortTeamName = (teamName: string) => {
                     if (teamName.length > 10) {
-                      return teamName.substring(0, 12) + "...";
+                      return teamName.substring(0, 15) + "...";
                     }
                     return teamName;
                   };
@@ -128,8 +121,8 @@ const LeagueTable = () => {
                           isBicho
                             ? "bg-gradient-to-r from-green-500/20 to-green-400/20 hover:from-green-500/30 hover:to-green-400/30"
                             : index % 2 === 0
-                            ? "bg-white-2"
-                            : "bg-neutral-50/50"
+                              ? "bg-white-2"
+                              : "bg-neutral-50/50"
                         }
                       `}
                       initial={{ opacity: 0, x: -20 }}
@@ -147,11 +140,11 @@ const LeagueTable = () => {
                                 ? index === 0
                                   ? "bg-gradient-to-r from-accent-gold to-yellow-400 text-white-2"
                                   : index === 1
-                                  ? "bg-gradient-to-r from-neutral-400 to-neutral-500 text-white-2"
-                                  : "bg-gradient-to-r from-amber-600 to-amber-700 text-white-2"
+                                    ? "bg-gradient-to-r from-neutral-400 to-neutral-500 text-white-2"
+                                    : "bg-gradient-to-r from-amber-600 to-amber-700 text-white-2"
                                 : isBicho
-                                ? "bg-gradient-to-r from-green-500 to-green-600 text-white-2"
-                                : "bg-neutral-100 text-neutral-600"
+                                  ? "bg-gradient-to-r from-green-500 to-green-600 text-white-2"
+                                  : "bg-neutral-100 text-neutral-600"
                             }
                           `}
                           >
@@ -227,13 +220,13 @@ const LeagueTable = () => {
                       </td>
 
                       {/* 勝/分/負 - タブレット以上で表示 */}
-                      <td className="px-1 py-3 text-center text-xs font-medium text-neutral-600 hidden md:table-cell">
+                      <td className="px-1 py-3 text-center text-xs font-medium text-neutral-600">
                         {row.wins}
                       </td>
-                      <td className="px-1 py-3 text-center text-xs font-medium text-neutral-600 hidden md:table-cell">
+                      <td className="px-1 py-3 text-center text-xs font-medium text-neutral-600">
                         {row.draws}
                       </td>
-                      <td className="px-1 py-3 text-center text-xs font-medium text-neutral-600 hidden md:table-cell">
+                      <td className="px-1 py-3 text-center text-xs font-medium text-neutral-600">
                         {row.losses}
                       </td>
 
@@ -252,8 +245,8 @@ const LeagueTable = () => {
                             row.goalsFor - row.goalsAgainst > 0
                               ? "bg-green-100 text-green-700"
                               : row.goalsFor - row.goalsAgainst < 0
-                              ? "bg-red-100 text-red-700"
-                              : "bg-neutral-100 text-neutral-600"
+                                ? "bg-red-100 text-red-700"
+                                : "bg-neutral-100 text-neutral-600"
                           }
                         `}
                         >
@@ -271,7 +264,7 @@ const LeagueTable = () => {
           {/* モバイル用の情報表示 */}
           <div className="px-4 py-3 bg-neutral-50/50 border-t border-neutral-200 md:hidden">
             <div className="flex items-center justify-between text-xs text-neutral-600">
-              <span>最終順位</span>
+              <span>最終順位 2025年度埼玉県南部地区3部リーグ</span>
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 bg-green-500 rounded"></div>

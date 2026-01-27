@@ -127,6 +127,8 @@ const config: Config = {
         "gradient-flow": "gradientFlow 8s linear infinite",
         float: "float 6s ease-in-out infinite",
         glow: "glow 2s ease-in-out infinite alternate",
+        marquee: "marquee 30s linear infinite",
+        "marquee-reverse": "marquee-reverse 30s linear infinite",
       },
       keyframes: {
         bounceSlow: {
@@ -182,6 +184,14 @@ const config: Config = {
             boxShadow:
               "0 0 20px rgba(34, 197, 94, 0.4), 0 0 30px rgba(34, 197, 94, 0.2)",
           },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "marquee-reverse": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
         },
       },
       backgroundImage: {
