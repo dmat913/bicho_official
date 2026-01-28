@@ -42,13 +42,9 @@ const AboutBicho = () => {
   // 暗くするオーバーレイ: コンテンツが見えるように最初から少し暗く、後半より暗く
   const bgOverlayOpacity = useTransform(smoothProgress, [0, 0.6], [0.4, 0.7]);
 
-  // Phase 1: タイトル (FC Bicho + SINCE 2005)
-  // スクロールするとフェードアウトして上に消える
   const titleY = useTransform(smoothProgress, [0, 0.4], ["0%", "-50%"]);
   const titleOpacity = useTransform(smoothProgress, [0, 0.35], [1, 0]);
 
-  // Phase 2: メインテキスト
-  // スクロールすると下から現れる
   const textY = useTransform(smoothProgress, [0.4, 0.8], ["100px", "0px"]);
   const textOpacity = useTransform(smoothProgress, [0.4, 0.7], [0, 1]);
 
@@ -57,9 +53,7 @@ const AboutBicho = () => {
       ref={containerRef}
       className={`relative h-[200vh] ${oswald.variable} ${notoSansJP.variable}`}
     >
-      {/* Sticky Container: 画面に固定される表示領域 */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
-        {/* 背景画像 */}
         <motion.div style={{ scale: bgScale }} className="absolute inset-0 z-0">
           <div
             className="w-full h-full bg-cover bg-center bg-no-repeat"
@@ -67,7 +61,6 @@ const AboutBicho = () => {
           />
         </motion.div>
 
-        {/* 背景オーバーレイ */}
         <motion.div
           style={{ opacity: bgOverlayOpacity }}
           className="absolute inset-0 z-[1] bg-black"
@@ -114,9 +107,7 @@ const AboutBicho = () => {
                   textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
                 }}
               >
-                埼玉県川口市を拠点に活動しています。 2026年シーズンから
-                <span className="text-accent-gold mx-2">埼玉県2部リーグ</span>に
-                所属し新たな目標に向かって活動しています。
+                埼玉県川口市を拠点に活動する社会人サッカークラブです。2026シーズンより埼玉県2部リーグに所属し、新たな目標に向かって活動しています。
               </p>
             </div>
           </motion.div>
