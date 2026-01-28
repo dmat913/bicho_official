@@ -47,7 +47,7 @@ const LeagueTable = () => {
                     className="text-green-200 font-display font-black text-4xl lg:text-5xl mx-8 tracking-wider uppercase"
                     style={{ textShadow: "0 2px 10px rgba(0,0,0,0.2)" }}
                   >
-                    League Standing
+                    League Standing 2025
                   </span>
                 ))}
               </div>

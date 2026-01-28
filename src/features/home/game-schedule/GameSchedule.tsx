@@ -3,33 +3,33 @@
 import { scheduleState } from "@/recoil/atom/schedule";
 import { useRecoilValue } from "recoil";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
 import DPagination from "@/components/elements/DPagination";
-import { useState, useEffect, memo, useMemo } from "react";
+import { useState, useEffect, memo, useMemo, useRef } from "react";
 import DMoreButton from "@/components/elements/DMoreButton";
 import { ScheduleData } from "@/types/schedule";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import MatchCard from "./MatchCard";
 
 const GameSchedule = () => {
   const schedulesFromState = useRecoilValue(scheduleState);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  // Swiperの再レンダリング用のキー
   const [swiperKey, setSwiperKey] = useState(0);
 
-  // 画面に入ったかどうかを監視するための参照
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // サーバーから降順で返されるデータを昇順に並び替え
   const schedules = useMemo(() => {
     if (!schedulesFromState) return [];
     return [...schedulesFromState].sort(
-      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
     );
   }, [schedulesFromState]);
 
-  // 今日の日付から一番近い試合日程のindex
   const closestIndex = useMemo(() => {
     const today = new Date();
     if (!schedules) return 0;
@@ -40,7 +40,6 @@ const GameSchedule = () => {
     return index ?? -1;
   }, [schedules]);
 
-  // 表示する5つの日程
   const displaySchedules: ScheduleData[] = useMemo(() => {
     if (!schedules) return [];
 
@@ -59,20 +58,18 @@ const GameSchedule = () => {
     // eslint-disable-next-line
   }, [schedules]);
 
-  // 画面開いた際に一番最初に表示するindexを設定
   useEffect(() => {
-    // 今日の日付を取得
     const today = new Date();
     const formattedDate = today.toISOString().split("T")[0];
-    const closestIndex = displaySchedules.findIndex((schedule) => {
+    const index = displaySchedules.findIndex((schedule) => {
       const scheduleDate = new Date(schedule.date);
       return (
         scheduleDate.toISOString().split("T")[0] === formattedDate ||
         scheduleDate >= today
       );
     });
-    if (closestIndex !== -1) {
-      setCurrentPage(closestIndex + 1);
+    if (index !== -1) {
+      setCurrentPage(index + 1);
       setSwiperKey((prevKey) => prevKey + 1);
     } else {
       setCurrentPage(1);
@@ -82,91 +79,118 @@ const GameSchedule = () => {
   return (
     <div
       id="game-schedule"
-      className="relative w-full px-4 py-16 bg-gradient-to-br from-neutral-50 to-green-50 overflow-hidden"
+      className="relative w-full py-16 overflow-hidden bg-neutral-50"
     >
-      {/* 背景装飾 */}
-      <div className="absolute inset-0 bg-hero-pattern opacity-20" />
-      <div className="absolute top-20 right-20 w-32 h-32 bg-green-200/30 rounded-full blur-2xl" />
-      <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent-gold/20 rounded-full blur-xl" />
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-green-300/20 rounded-full blur-[100px] pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.2, 0.4, 0.2],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
+        className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-emerald-400/20 rounded-full blur-[100px] pointer-events-none"
+      />
 
-      <div className="relative section-container max-w-6xl mx-auto">
-        {/* モダンなタイトルセクション */}
+      <div className="relative section-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* タイトルセクション */}
         <motion.div
           ref={ref}
-          className="text-center mb-6"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <div className="inline-flex items-center gap-3 mb-3">
-            <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-accent-gold rounded-full" />
-            <span className="text-green-700 font-medium text-sm tracking-widest uppercase">
-              Upcoming Matches
-            </span>
-            <div className="w-16 h-1 bg-gradient-to-r from-accent-gold to-green-400 rounded-full" />
-          </div>
-
-          <motion.p
-            className="text-neutral-600 font-semibold text-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            試合日程
-          </motion.p>
-        </motion.div>
-        {/* スケジュールコンテンツ */}
-        <motion.div
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
+            GAME{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-500">
+              SCHEDULE
+            </span>
+          </h2>
+        </motion.div>
+
+        {/* スケジュール Swiper */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative"
         >
           <Swiper
-            spaceBetween={24}
-            slidesPerView={1}
+            key={swiperKey}
+            modules={[EffectCoverflow, Pagination]}
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={"auto"}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+              slideShadows: false,
+            }}
             onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)}
             initialSlide={currentPage - 1}
-            key={swiperKey}
-            className="pb-8"
+            className="w-full py-10 !overflow-visible"
             breakpoints={{
-              350: {
-                slidesPerView: 1,
-                spaceBetween: 16,
-              },
-              768: {
-                slidesPerView: 2,
+              320: {
+                slidesPerView: 1.2,
                 spaceBetween: 20,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 30,
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 24,
+                spaceBetween: 40,
               },
             }}
           >
-            {displaySchedules.map((schedule, index) => (
-              <SwiperSlide key={schedule._id}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <MatchCard schedule={schedule} />
-                </motion.div>
+            {displaySchedules.map((schedule) => (
+              <SwiperSlide
+                key={schedule._id}
+                className="max-w-sm transition-transform duration-300"
+              >
+                {({ isActive }) => (
+                  <div
+                    className={`transition-all duration-500 ${isActive ? "scale-100 opacity-100 z-10" : "scale-90 opacity-60 hover:opacity-100"}`}
+                  >
+                    <MatchCard schedule={schedule} isActive={isActive} />
+                  </div>
+                )}
               </SwiperSlide>
             ))}
           </Swiper>
 
-          {/* ページネーション */}
-          <div className="flex gap-2 justify-center py-6">
-            <DPagination
-              data={displaySchedules}
-              currentPage={currentPage - 1}
-            />
-          </div>
+          {/* ページネーションインジケーター */}
+          <div className="flex flex-col items-center mt-8 gap-6">
+            <div className="hidden md:block">
+              <DPagination
+                data={displaySchedules}
+                currentPage={currentPage - 1}
+              />
+            </div>
 
-          {/* モアボタン */}
-          <div className="flex justify-center mt-8">
-            <DMoreButton path="/schedule" />
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <DMoreButton path="/schedule" />
+            </motion.div>
           </div>
         </motion.div>
       </div>

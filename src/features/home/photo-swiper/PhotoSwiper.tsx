@@ -44,15 +44,6 @@ const PhotoSwiper = () => {
             </span>
             <div className="w-16 h-1 bg-gradient-to-r from-accent-gold to-green-400 rounded-full" />
           </div>
-
-          <motion.p
-            className="text-neutral-600 font-semibold text-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            写真
-          </motion.p>
         </motion.div>
         {/* モダンなフォトギャラリー */}
         <motion.div
