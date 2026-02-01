@@ -129,6 +129,7 @@ const config: Config = {
         glow: "glow 2s ease-in-out infinite alternate",
         marquee: "marquee 30s linear infinite",
         "marquee-reverse": "marquee-reverse 30s linear infinite",
+        leagueMarquee: "leagueMarquee 10s linear infinite",
       },
       keyframes: {
         bounceSlow: {
@@ -192,6 +193,10 @@ const config: Config = {
         "marquee-reverse": {
           "0%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" },
+        },
+        leagueMarquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
       },
       backgroundImage: {

@@ -58,7 +58,7 @@ const MatchCard = ({
             className="text-xl font-black text-gray-700 leading-none"
             suppressHydrationWarning
           >
-            {day}
+            {day.replace(/^0/, "")}
           </div>
           <div
             className="text-xs font-bold text-green-700 mt-1"
@@ -72,8 +72,8 @@ const MatchCard = ({
         <div
           className={`absolute top-6 right-6 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide z-10 backdrop-blur-md border shadow-sm ${
             isMatchPlayed
-              ? "bg-gray-900/10 text-white border-white/20"
-              : "bg-amber-400 text-white border-amber-300"
+              ? "bg-gray-900/10 text-white-1 border-white/20"
+              : "bg-amber-400 text-white-1 border-amber-300"
           }`}
         >
           {isMatchPlayed ? "FINISHED" : "UPCOMING"}
@@ -170,6 +170,14 @@ const MatchCard = ({
             >
               <div className="flex items-center text-gray-500 text-sm">
                 <div className="w-8 flex justify-center">
+                  <FaTrophy className="text-green-500" />
+                </div>
+                <span className="font-medium text-gray-700 line-clamp-1">
+                  {schedule.title}
+                </span>
+              </div>
+              <div className="flex items-center text-gray-500 text-sm">
+                <div className="w-8 flex justify-center">
                   <FaClock className="text-green-500" />
                 </div>
                 <span className="font-medium text-gray-700">
@@ -182,14 +190,6 @@ const MatchCard = ({
                 </div>
                 <span className="font-medium text-gray-700 line-clamp-1">
                   {schedule.location}
-                </span>
-              </div>
-              <div className="flex items-center text-gray-500 text-sm">
-                <div className="w-8 flex justify-center">
-                  <FaTrophy className="text-green-500" />
-                </div>
-                <span className="font-medium text-gray-700 line-clamp-1">
-                  {schedule.title}
                 </span>
               </div>
             </motion.div>

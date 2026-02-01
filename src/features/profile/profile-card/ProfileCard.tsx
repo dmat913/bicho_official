@@ -28,7 +28,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="w-profile-width-default lg:w-lg-profile-width h-80 perspective-1000"
+      className="w-full h-80 perspective-1000"
       onClick={handleCardClick}
     >
       <motion.div
@@ -124,8 +124,28 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
                     group-hover:scale-105 transition-transform duration-500"
                 />
               ) : (
-                <div className="flex items-center justify-center h-full text-white-1 text-lg font-medium">
-                  Now Printing
+                <div className="flex flex-col items-center justify-center h-full w-full bg-black/10 backdrop-blur-sm rounded-lg border-2 border-dashed border-white/20 p-4">
+                  <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-3">
+                    <svg
+                      className="w-8 h-8 text-white/50"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text-white font-display font-bold tracking-widest text-sm uppercase">
+                    Now Printing
+                  </span>
+                  <span className="text-white/50 text-xs mt-1">
+                    Image Coming Soon
+                  </span>
                 </div>
               )}
             </div>
@@ -202,11 +222,11 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
         <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180">
           <div
             className="relative w-full h-full bg-gradient-to-br from-neutral-800 via-neutral-900 to-black 
-            rounded-3xl shadow-strong overflow-hidden border border-neutral-700/50 flex flex-col"
+            rounded-lg shadow-strong overflow-hidden border border-neutral-700/50 flex flex-col"
             onClick={(e) => e.stopPropagation()} // 裏面では親のクリックイベントを停止
           >
             {/* 背景パターン */}
-            <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0 opacity-5 pointer-events-none">
               <div
                 className="w-full h-full bg-green-500"
                 style={{
@@ -217,33 +237,30 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
             </div>
 
             {/* ヘッダー */}
-            <div className="relative p-4 border-b border-neutral-700/50 flex-shrink-0">
+            <div className="relative p-4 border-b border-neutral-700/50 flex-shrink-0 z-10 bg-neutral-900/50 backdrop-blur-sm">
               <div className="flex items-center justify-between">
-                <div className="shrink-0">
-                  <h3 className="text-white-1 text-sm font-bold">
+                <div className="shrink-0 max-w-[65%]">
+                  <h3 className="text-white-1 text-sm font-bold truncate">
                     {profile.name}
                   </h3>
-                  <p className="text-neutral-100 text-xs">
+                  <p className="text-neutral-300 text-[10px] truncate">
                     {profile.englishName}
                   </p>
                 </div>
-                <div className="text-right">
-                  <span className="text-green-400 text-2xl font-bold">
+                <div className="text-right flex-shrink-0">
+                  <span className="text-green-400 text-xl font-bold block leading-none">
                     #{profile.number}
                   </span>
-                  <p className="text-neutral-100 text-xs truncate w-full uppercase tracking-wide">
+                  <span className="text-neutral-400 text-[10px] uppercase tracking-wider">
                     {profile.position}
-                  </p>
+                  </span>
                 </div>
               </div>
             </div>
 
             {/* データ表示エリア */}
-            <div className="flex-1 overflow-hidden z-50 flex flex-col">
-              <div
-                className="p-2 overflow-y-auto flex-1 custom-scrollbar"
-                style={{ maxHeight: "calc(320px - 140px)" }}
-              >
+            <div className="flex-1 overflow-hidden z-0 flex flex-col relative">
+              <div className="overflow-y-auto flex-1 custom-scrollbar p-3 pb-16">
                 {profile.detail?.competitionData &&
                 profile.detail.competitionData.length > 0 ? (
                   <div className="space-y-4">
@@ -251,64 +268,73 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
                       (competition, index) => (
                         <div
                           key={index}
-                          className="bg-neutral-800/50 rounded-xl p-2 border border-neutral-700/30"
+                          className="bg-white/5 rounded-lg p-2 border border-white/10"
                         >
-                          <h4 className="text-green-500 font-semibold text-xs mb-3 uppercase tracking-wide">
+                          <h4 className="text-green-500 font-bold text-[10px] mb-2 uppercase tracking-wide border-b border-white/5 pb-1">
                             {competition.competition}
                           </h4>
-                          <div className="space-y-2">
+                          <div className="space-y-1.5">
                             {competition.contents.map((data, dataIndex) => (
                               <div
                                 key={dataIndex}
-                                className="flex items-center gap-2 justify-between text-xs"
+                                className="flex items-center justify-between text-[11px]"
                               >
-                                <span className="text-neutral-100 font-medium">
+                                <span className="text-neutral-300 font-medium">
                                   {data.year}
                                 </span>
-                                <div className="flex items-center gap-1 text-neutral-100">
-                                  <span>M: {data.gameCount}</span>
-                                  <span className="text-green-400">
-                                    G: {data.goal}
+                                <div className="flex items-center gap-2 text-neutral-200">
+                                  <span className="bg-neutral-800 px-1.5 py-0.5 rounded text-[10px]">
+                                    M:
+                                    <span className="font-bold ml-0.5">
+                                      {data.gameCount}
+                                    </span>
                                   </span>
-                                  <span className="text-blue-400">
-                                    A: {data.assist}
+                                  <span className="bg-green-900/30 text-green-400 px-1.5 py-0.5 rounded text-[10px] border border-green-500/20">
+                                    G:
+                                    <span className="font-bold ml-0.5">
+                                      {data.goal}
+                                    </span>
+                                  </span>
+                                  <span className="bg-blue-900/30 text-blue-400 px-1.5 py-0.5 rounded text-[10px] border border-blue-500/20">
+                                    A:
+                                    <span className="font-bold ml-0.5">
+                                      {data.assist}
+                                    </span>
                                   </span>
                                 </div>
                               </div>
                             ))}
                           </div>
                         </div>
-                      )
+                      ),
                     )}
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center h-full text-neutral-100">
-                    <div className="text-center">
-                      <svg
-                        className="w-12 h-12 mx-auto mb-3 opacity-50"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={1}
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                      <p className="text-sm">データ準備中</p>
-                    </div>
+                  <div className="flex flex-col items-center justify-center h-full text-neutral-500 py-8">
+                    <svg
+                      className="w-10 h-10 mb-2 opacity-30"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    <p className="text-xs">NO DATA AVAILABLE</p>
                   </div>
                 )}
               </div>
             </div>
 
             {/* 戻るボタン */}
-            <div className="absolute z-[99] bottom-4 right-4">
+            <div className="absolute z-[20] bottom-4 right-4">
               <button
                 className="w-10 h-10 bg-green-500/20 backdrop-blur-sm rounded-full flex items-center justify-center
-                hover:bg-green-500/30 transition-colors duration-300 text-green-400 hover:text-green-300"
+                hover:bg-green-500/30 transition-colors duration-300 text-green-400 hover:text-green-300 border border-green-500/30"
                 onClick={handleBackClick}
               >
                 <svg
