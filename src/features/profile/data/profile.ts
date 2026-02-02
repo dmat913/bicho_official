@@ -1,4 +1,6 @@
 import { Profile } from "@/types/profile";
+import GARI_IMG from "@/public/profile/GARI.png";
+
 // 選手詳細画像
 import Ryo1 from "@/public/profile/ryo/ryo1.jpeg";
 import Yama1 from "@/public/profile/yama/Yama1.jpeg";
@@ -489,7 +491,7 @@ export const midfielders: Profile[] = [
     position: "CM/CDM",
     name: "横山博一",
     englishName: "HIROKAZU YOKOYAMA",
-    img: null,
+    img: GARI_IMG,
     detail: {
       images: [GARI1],
       competitionData: [

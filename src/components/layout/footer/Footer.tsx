@@ -18,7 +18,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
   return (
     <footer
       ref={ref}
-      className="bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 text-white-1"
+      className="relative z-50 bg-gradient-to-r from-green-1 via-noise-green-3 to-green-3 text-white-1"
     >
       {/* ロゴとタイトル */}
       <div
@@ -83,7 +83,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
       <DHorizontalLine />
 
       <div className="w-full text-center py-3">
-        <span className="text-xs">© 2025 Bicho. All rights reserved.</span>
+        <span className="text-xs">© 2026 Bicho. All rights reserved.</span>
       </div>
     </footer>
   );
