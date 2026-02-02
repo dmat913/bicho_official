@@ -20,7 +20,7 @@ const HomeLoading = () => {
         }}
       />
 
-      <div className="relative z-10 flex flex-col items-center">
+      <div className="relative z-10 flex flex-col items-center gap-4 lg:gap-8 ">
         {/* ロゴコンテナ */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -52,12 +52,33 @@ const HomeLoading = () => {
           {/* ロゴのバックライト（グロー効果） */}
           <motion.div
             className="absolute inset-0 bg-green-500/30 blur-2xl rounded-full"
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.2, 1] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
 
+          {/* 波紋エフェクト (Ripple) */}
+          <motion.div
+            className="absolute inset-0 rounded-full border border-green-500/20"
+            animate={{ scale: [1, 1.4], opacity: [0.5, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+          />
+          <motion.div
+            className="absolute inset-0 rounded-full border border-green-400/10"
+            animate={{ scale: [1, 1.8], opacity: [0.3, 0] }}
+            transition={{
+              duration: 2,
+              delay: 0.4,
+              repeat: Infinity,
+              ease: "easeOut",
+            }}
+          />
+
           {/* ロゴ本体 */}
-          <div className="relative h-32 w-32 overflow-hidden rounded-full bg-gradient-to-b from-slate-900/80 to-slate-950/80 p-6 backdrop-blur-md ring-1 ring-white/10 shadow-2xl">
+          <motion.div
+            className="relative h-32 w-32 overflow-hidden rounded-full bg-gradient-to-b from-slate-900/80 to-slate-950/80 p-6 backdrop-blur-md ring-1 ring-white/10 shadow-2xl"
+            animate={{ y: [-5, 5, -5] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
             <div className="relative h-full w-full">
               <Image
                 src={BichoLogo}
@@ -67,7 +88,7 @@ const HomeLoading = () => {
                 priority
               />
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* テキストエリア */}
