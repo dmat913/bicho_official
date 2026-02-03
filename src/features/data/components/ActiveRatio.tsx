@@ -1,3 +1,4 @@
+"use client";
 import { memo, useRef } from "react";
 import { Pie } from "react-chartjs-2";
 import { activeRatioData, activeRatioOptions } from "../data/doughnutData";

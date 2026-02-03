@@ -1,4 +1,3 @@
-"use client";
 import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
 import ActiveRatio from "@/features/data/components/ActiveRatio";
@@ -25,7 +24,7 @@ ChartJS.register(
   Title,
   ArcElement,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const DataPage = () => {

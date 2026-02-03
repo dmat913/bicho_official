@@ -8,24 +8,13 @@ export async function POST(request: NextRequest) {
     // DB接続
     await connectDb();
 
-    // imagesコレクションのドキュメント数を取得
-    const imageCount = await ImageModel.countDocuments();
-
-    // 画像が10個以上ある場合、エラーを返す
-    if (imageCount >= 10) {
-      return NextResponse.json(
-        { message: "画像は10個未満でアップロードしてください" },
-        { status: 400 }
-      );
-    }
-
     const { uploadImage } = await request.json();
 
     // fileが存在しない場合,error
     if (!uploadImage) {
       return NextResponse.json(
         { message: "画像が不足しています" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -38,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       { message: "画像がアップロードされました" },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error("画像アップロードエラー:", error);
@@ -47,7 +36,7 @@ export async function POST(request: NextRequest) {
         message: "アップロードに失敗しました",
         error: error || "Unknown error",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -57,13 +46,14 @@ export async function GET() {
   try {
     // DB接続
     await connectDb();
-    const images = await ImageModel.find().sort({ createdAt: -1 });
+    // ランダムに10枚取得
+    const images = await ImageModel.aggregate([{ $sample: { size: 10 } }]);
     return NextResponse.json(images);
   } catch (error) {
     console.error("画像取得エラー:", error);
     return NextResponse.json(
       { message: "画像の取得に失敗しました" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -81,7 +71,7 @@ export async function DELETE(request: NextRequest) {
     if (!imageId) {
       return NextResponse.json(
         { message: "画像IDが不足しています" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -92,7 +82,7 @@ export async function DELETE(request: NextRequest) {
     if (imageCount <= 1) {
       return NextResponse.json(
         { message: "画像が1枚しかないため、削除できません" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -101,7 +91,7 @@ export async function DELETE(request: NextRequest) {
     if (!image) {
       return NextResponse.json(
         { message: "指定された画像が見つかりません" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -110,7 +100,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json(
       { message: "画像が削除されました" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("画像削除エラー:", error);
@@ -119,7 +109,7 @@ export async function DELETE(request: NextRequest) {
         message: "画像の削除に失敗しました",
         error: error || "Unknown error",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
