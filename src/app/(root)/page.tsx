@@ -21,6 +21,7 @@ import { menuItems } from "@/data/menuItems";
 import { BichoLogoLink } from "@/components/elements/BichoLogoLink";
 import Link from "next/link";
 import GameSchedule from "@/features/home/game-schedule/GameSchedule";
+import NavLinks from "@/components/layout/header/NavLinks";
 
 const HomePage: React.FC = () => {
   const footerRef = useRef<HTMLElement | null>(null);
@@ -83,7 +84,7 @@ const HomePage: React.FC = () => {
       {!isLoading && (
         <div className="w-full h-full relative">
           {/* ロゴ追加位置 - absolute配置 */}
-          <div className="fixed top-4 left-4 z-50">
+          <div className="fixed top-4 left-4 z-50 flex items-center justify-between w-full px-4">
             <Link
               href="/"
               onClick={scrollToTop}
@@ -99,8 +100,8 @@ const HomePage: React.FC = () => {
                 className="transition-transform duration-300 rotate-6"
               />
             </Link>
+            <NavLinks />
           </div>
-
           {/* ハンバーガーメニュー追加位置 - absolute配置 */}
           <div className="fixed top-4 right-4 z-50">
             <DHamburgerMenu menuItems={menuItems} logo={<BichoLogoLink />} />

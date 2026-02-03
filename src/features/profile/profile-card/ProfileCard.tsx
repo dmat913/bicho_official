@@ -82,7 +82,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
         onClick={handleCardClick}
       >
         {/* ==================== 表面 (Front) ==================== */}
-        <div
+        <motion.div
           className={`absolute inset-0 w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-neutral-900 border border-white/10 ${
             isFlipped ? "pointer-events-none" : "pointer-events-auto"
           }`}
@@ -90,6 +90,8 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
           }}
+          animate={{ opacity: isFlipped ? 0 : 1 }}
+          transition={{ duration: 0, delay: 0.2 }}
         >
           {/* 背景デザイン */}
           <div className="absolute inset-0 z-0">
@@ -236,10 +238,10 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
               filter: "brightness(1.2) contrast(1.2)",
             }}
           ></div>
-        </div>
+        </motion.div>
 
         {/* ==================== 裏面 (Back/Details) ==================== */}
-        <div
+        <motion.div
           className={`absolute inset-0 w-full h-full rounded-2xl overflow-hidden shadow-lg bg-neutral-900 border border-green-500/30 ${
             isFlipped ? "pointer-events-auto" : "pointer-events-none"
           }`}
@@ -248,6 +250,8 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
           }}
+          animate={{ opacity: isFlipped ? 1 : 0 }}
+          transition={{ duration: 0, delay: 0.2 }}
         >
           {/* 裏面背景 */}
           <div className="absolute inset-0 overflow-hidden">
@@ -397,7 +401,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </motion.div>
   );

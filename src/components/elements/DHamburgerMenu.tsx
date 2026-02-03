@@ -78,7 +78,7 @@ export const DHamburgerMenu = ({ menuItems, logo }: DHamburgerMenuProps) => {
   return (
     <>
       <motion.div
-        className="relative z-[70] flex items-center justify-center"
+        className="relative z-[120] flex items-center justify-center lg:hidden"
         initial="rest"
         whileHover="hover"
         animate="rest"
@@ -208,7 +208,7 @@ export const DHamburgerMenu = ({ menuItems, logo }: DHamburgerMenuProps) => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-[60] flex justify-end"
+            className="fixed inset-0 z-[110] flex justify-end"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { delay: 0.3 } }}
