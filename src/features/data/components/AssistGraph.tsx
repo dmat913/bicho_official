@@ -1,3 +1,4 @@
+"use client";
 import { memo, useRef } from "react";
 import { Bar } from "react-chartjs-2";
 import { motion, useInView } from "framer-motion";

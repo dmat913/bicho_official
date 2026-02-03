@@ -1,3 +1,4 @@
+"use client";
 import { memo, useRef } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { AgeData, AgeOptions } from "../data/doughnutData";
