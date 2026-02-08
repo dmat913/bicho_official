@@ -1,7 +1,10 @@
+"use client";
 import { motion, useInView } from "framer-motion";
 import React, { memo, useRef } from "react";
 import PickUpPhoto from "@/public/article/champion.jpeg";
 import PickUp2Photo from "@/public/article/league2025.jpeg";
+import PickUp3Photo from "@/public/article/league2024.jpeg";
+import PickUp4Photo from "@/public/article/ club2024.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -29,6 +32,7 @@ const articles = [
   },
   {
     id: 2,
+    image: PickUp3Photo,
     date: "2024年10月8日",
     title: "2024年度川口市リーグ,結果",
     description: "2024年度川口市リーグの結果をお知らせします。",
@@ -37,6 +41,7 @@ const articles = [
   },
   {
     id: 1,
+    image: PickUp4Photo,
     date: "2024年6月2日",
     title: "2024年度全国クラブチームサッカー選手権,結果",
     description:

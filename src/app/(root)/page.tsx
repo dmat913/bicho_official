@@ -1,19 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { useRecoilState } from "recoil";
 import { motion, AnimatePresence } from "framer-motion";
-import { imagesState } from "@/recoil/atom/image";
 import Footer from "@/components/layout/footer/Footer";
-import { fetchFirstImage, fetchImages } from "@/utils/image";
-import { scheduleState } from "@/recoil/atom/schedule";
 import LeagueTable from "@/features/home/league-table/LeagueTable";
-// import NavBar from "@/features/home/nav/NavBar";
 import HomeLoading from "@/features/home/loading/HomeLoading";
-// import VideoList from "@/features/home/youtube-video-list/VideoList";
 import AboutBicho from "@/features/home/about-bicho/AboutBicho";
 import PhotoSwiper from "@/features/home/photo-swiper/PhotoSwiper";
-// import SoccerGround from "@/features/home/starting-lineup/SoccerGround";
 import Article from "@/features/home/article/Article";
 import BichoLogo from "@/public/bicho-icon.png";
 import { DHamburgerMenu } from "@/components/elements/DHamburgerMenu";
@@ -22,61 +14,20 @@ import { BichoLogoLink } from "@/components/elements/BichoLogoLink";
 import Link from "next/link";
 import GameSchedule from "@/features/home/game-schedule/GameSchedule";
 import NavLinks from "@/components/layout/header/NavLinks";
+import { FC } from "react";
+import { useImages } from "@/hooks/useImages";
+import { useSchedules } from "@/hooks/useSchedules";
 
-const HomePage: React.FC = () => {
-  const footerRef = useRef<HTMLElement | null>(null);
-
-  // 画像一覧
-  const [images, setImages] = useRecoilState(imagesState);
-  // 試合日程一覧
-  const [schedules, setSchedules] = useRecoilState(scheduleState);
-  // loading表示
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  // API呼び出し
-  useEffect(() => {
-    const loadImages = async () => {
-      try {
-        const firstData = await fetchFirstImage();
-        setImages(firstData);
-        const data = await fetchImages();
-        setImages(data);
-      } catch (error) {
-        alert("画像取得中にエラーが発生しました:");
-        console.log(error);
-        setIsLoading(false);
-      }
-    };
-    if (images.length === 0) {
-      loadImages();
-    } else {
-      setIsLoading(false);
-    }
-    // eslint-disable-next-line
-  }, [setImages, setIsLoading]);
-
-  useEffect(() => {
-    const fetchSchedules = async () => {
-      try {
-        const listResponse = await fetch("/api/schedule", {
-          method: "GET",
-        });
-        const dates = await listResponse.json();
-        setSchedules(dates.schedules);
-        setIsLoading(false);
-      } catch (err) {
-        console.log("日程取得エラー:", err);
-      }
-    };
-    if (schedules?.length === 0) {
-      fetchSchedules();
-    }
-    // eslint-disable-next-line
-  }, []);
+const HomePage: FC = () => {
+  const { isLoading: imagesLoading } = useImages();
+  const { isLoading: schedulesLoading } = useSchedules();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  // 全体のローディング状態
+  const isLoading = imagesLoading || schedulesLoading;
 
   return (
     <div className={`relative ${isLoading ? "w-svw h-svh" : "h-full w-full"}`}>
@@ -111,7 +62,7 @@ const HomePage: React.FC = () => {
           <LeagueTable />
           <PhotoSwiper />
           <Article />
-          <Footer ref={footerRef} />
+          <Footer />
         </div>
       )}
       {/* ローディング画面 */}
