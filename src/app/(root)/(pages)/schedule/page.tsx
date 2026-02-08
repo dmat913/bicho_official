@@ -1,31 +1,33 @@
 "use client";
 import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
-import { scheduleState } from "@/recoil/atom/schedule";
+import { useSchedules } from "@/hooks/useSchedules";
 import React, { useEffect, useMemo, useRef } from "react";
-import { useRecoilValue } from "recoil";
 import BichoLogo from "@/public/bicho-icon.png";
-import { formatDate, getLogo } from "@/utils/date";
+import { getLogo } from "@/utils/date";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { MdOutlineStadium, MdAccessTime, MdSportsSoccer } from "react-icons/md";
 
 const SchedulePage = () => {
   const nextMatchRef = useRef<HTMLDivElement>(null);
 
   // 試合日程取得
-  const schedules = useRecoilValue(scheduleState);
-  const today = new Date();
+  const { schedules } = useSchedules();
 
   // 一番近い試合のindex
   const nextMatchIndex: number = useMemo(() => {
     if (schedules.length === 0) return -1;
-    // 今日の日付を取得
     const today = new Date();
-    // 未来の日程
+    today.setHours(0, 0, 0, 0); // 時間をリセットして日付のみで比較
+
+    // まだ終わっていない試合（今日以降）を探す
     const closestIndex = schedules.findIndex((schedule) => {
       const scheduleDate = new Date(schedule.date);
+      // 日付が今日以降なら対象
       return scheduleDate >= today;
     });
+
     if (closestIndex === -1) return -1;
     return closestIndex;
   }, [schedules]);
@@ -33,225 +35,214 @@ const SchedulePage = () => {
   // マウント時に次の試合の位置までスクロール
   useEffect(() => {
     if (nextMatchRef.current && nextMatchIndex !== -1) {
-      // スムーズスクロールのオプションを設定
       nextMatchRef.current.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
     }
-    // eslint-disable-next-line
   }, [nextMatchIndex]);
 
+  // 日付フォーマット関数 (YYYY.MM.DD)
+  const formatMatchDate = (dateInput: Date | string) => {
+    const date = new Date(dateInput);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    const dayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
+      date.getDay()
+    ];
+    return { full: `${year}.${month}.${day}`, dayOfWeek };
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-green-50">
+    <div className="min-h-screen bg-slate-100 font-sans text-neutral-800">
       <Header />
 
-      {/* ヘッダーセクション */}
-      <div className="pt-28 pb-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* ヒーローセクション */}
+      <section className="relative pt-32 pb-16 px-4 bg-white shadow-sm mb-10 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-30"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-8"
           >
-            <div className="inline-flex items-center gap-2 bg-green-50/50 backdrop-blur-sm border border-green-200/30 rounded-2xl px-6 py-3 mb-6">
-              <span className="text-2xl">📅</span>
-              <span className="text-green-700 font-bold text-sm uppercase tracking-wider">
-                Schedule
-              </span>
-            </div>
-            <h1 className="text-3xl lg:text-4xl font-bold text-neutral-800 mb-4">
-              試合日程・結果
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-800">
+              MATCH SCHEDULE
             </h1>
-            <p className="text-neutral-600 text-lg">
-              FC.BICHOの最新の試合スケジュールと結果をご覧いただけます
+            <p className="text-neutral-500 font-medium tracking-wide">
+              FC.BICHO 試合日程・結果
             </p>
           </motion.div>
         </div>
-      </div>
+      </section>
 
       {/* スケジュールリスト */}
-      <div className="px-4 pb-16">
-        <div className="max-w-4xl mx-auto space-y-6">
-          {schedules.map((schedule, index) => {
-            const isNextMatch = index === nextMatchIndex;
-            const isFinished = new Date(schedule.date) < today;
-            const hasResult = schedule.result !== "";
+      <section className="px-4 pb-24">
+        <div className="max-w-3xl mx-auto space-y-8">
+          {schedules.length === 0 ? (
+            <div className="text-center py-20 text-neutral-400">
+              Loading schedule...
+            </div>
+          ) : (
+            schedules.map((schedule, index) => {
+              const isNextMatch = index === nextMatchIndex;
+              const isFinished = new Date(schedule.date) < new Date();
+              const hasResult = schedule.result !== "";
+              const matchDate = formatMatchDate(schedule.date);
 
-            return (
-              <motion.div
-                key={schedule._id}
-                ref={isNextMatch ? nextMatchRef : null}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`
-                  relative overflow-hidden rounded-2xl shadow-medium border transition-all duration-300 hover:shadow-strong
-                  ${
-                    isNextMatch
-                      ? "bg-gradient-to-r from-green-50 to-green-100 border-green-300 ring-2 ring-green-400/20"
-                      : "bg-white-1 border-neutral-200 hover:border-neutral-300"
-                  }
-                `}
-              >
-                {/* Next試合のバッジ */}
-                {isNextMatch && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="absolute top-4 left-4 z-10"
-                  >
-                    <div className="bg-gradient-to-r from-green-500 to-green-600 text-white-1 px-4 py-2 rounded-xl font-bold text-sm shadow-md">
-                      <span className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-white-1 rounded-full animate-pulse"></span>
-                        NEXT MATCH
-                      </span>
+              return (
+                <motion.div
+                  key={schedule._id}
+                  ref={isNextMatch ? nextMatchRef : null}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  className={`
+                    group relative rounded-3xl overflow-hidden transition-all duration-300
+                    ${
+                      isNextMatch
+                        ? "bg-white shadow-2xl ring-4 ring-green-400/20 scale-[1.02] z-10 border-2 border-green-500"
+                        : "bg-white shadow-md hover:shadow-xl border border-slate-200"
+                    }
+                  `}
+                >
+                  {/* NEXT MATCH インジケーター */}
+                  {isNextMatch && (
+                    <div className="bg-green-600 text-white-1 text-xs font-bold tracking-widest text-center py-1.5 uppercase">
+                      Next Match
                     </div>
-                  </motion.div>
-                )}
+                  )}
 
-                {/* 結果バッジ */}
-                {isFinished && hasResult && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="absolute bottom-4 right-4 z-10"
-                  >
-                    <div className="bg-gradient-to-r from-neutral-600 to-neutral-700 text-white-1 px-3 py-1 rounded-lg font-bold text-xs shadow-md">
-                      FINISHED
-                    </div>
-                  </motion.div>
-                )}
-
-                <div className="p-6 pt-8">
-                  {/* 試合情報ヘッダー */}
-                  <div className="text-center mb-8 mt-4">
-                    <h3 className="text-lg lg:text-xl font-bold text-neutral-800 mb-2">
-                      {schedule.title}
-                    </h3>
-                    <p className="text-neutral-600 text-sm lg:text-base">
-                      {schedule.description}
-                    </p>
-                  </div>
-
-                  {/* 日時・会場情報 */}
-                  <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-8 p-4 bg-neutral-50 rounded-xl">
-                    <div className="flex items-center gap-3 mb-2 lg:mb-0">
-                      <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                        <span className="text-white-1 text-sm">📅</span>
+                  <div className="p-6 md:p-8">
+                    {/* 上部：大会名・日時 */}
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b border-neutral-100 gap-4">
+                      <div>
+                        <div className="text-sm font-bold text-green-600 mb-1">
+                          {schedule.title}
+                        </div>
+                        <div className="text-xs text-neutral-400">
+                          {schedule.description}
+                        </div>
                       </div>
-                      <span className="text-neutral-700 font-medium">
-                        {formatDate(schedule.date, schedule.kickoffTime)}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-accent-gold rounded-lg flex items-center justify-center">
-                        <span className="text-white-1 text-sm">📍</span>
+                      <div className="flex items-center gap-6 text-sm text-neutral-600 bg-neutral-50 px-4 py-2 rounded-full">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-lg font-bold text-neutral-800">
+                            {matchDate.full}
+                          </span>
+                          <span className="text-xs font-medium uppercase text-neutral-400">
+                            {matchDate.dayOfWeek}
+                          </span>
+                        </div>
+                        <div className="w-px h-4 bg-neutral-300"></div>
+                        <div className="flex items-center gap-1.5">
+                          <MdAccessTime className="text-green-500" />
+                          <span>{schedule.kickoffTime} KO</span>
+                        </div>
                       </div>
-                      <span className="text-neutral-700 font-medium">
-                        {schedule.location}
-                      </span>
                     </div>
-                  </div>
 
-                  {/* 対戦カード */}
-                  <div className="flex items-center justify-center mb-8">
-                    <div className="grid grid-cols-3 gap-6 items-center w-full max-w-lg">
-                      {/* Bichoチーム */}
-                      <div className="text-center">
-                        <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-3 bg-green-500 rounded-2xl flex items-center justify-center shadow-md">
+                    {/* メイン：対戦カード */}
+                    <div className="grid grid-cols-[1fr_auto_1fr] gap-4 items-center mb-8">
+                      {/* HOME (BICHO) */}
+                      <div className="flex flex-col items-center justify-center text-center gap-3">
+                        <div className="relative w-16 h-16 md:w-24 md:h-24 bg-white rounded-2xl p-2 shadow-sm border border-neutral-50 flex items-center justify-center">
                           <Image
                             src={BichoLogo}
                             alt="FC.BICHO"
-                            width={40}
-                            height={40}
-                            className="w-8 h-8 lg:w-10 lg:h-10"
+                            width={80}
+                            height={80}
+                            className="w-full h-full object-contain"
                           />
                         </div>
-                        <div className="font-bold text-neutral-800 text-sm lg:text-base">
+                        <span className="font-bold text-neutral-800 text-sm md:text-base">
                           FC.BICHO
-                        </div>
+                        </span>
                       </div>
 
-                      {/* VS・スコア */}
-                      <div className="text-center">
-                        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white-1 rounded-2xl py-4 px-6 shadow-md">
-                          {hasResult ? (
-                            <div className="flex flex-col items-center justify-center gap-2">
-                              <div className="text-lg lg:text-3xl font-bold">
-                                {schedule.result}
-                              </div>
-                              {schedule.pk && schedule.pk !== "" && (
-                                <div className="text-xs lg:text-sm opacity-90 whitespace-nowrap">
-                                  PK:{schedule.pk}
-                                </div>
-                              )}
+                      {/* VS / SCORE */}
+                      <div className="flex flex-col items-center justify-center px-2 md:px-8">
+                        {hasResult ? (
+                          <>
+                            <div className="text-4xl md:text-5xl font-black text-neutral-800 tracking-tighter leading-none">
+                              {schedule.result}
                             </div>
-                          ) : (
-                            <div className="text-xl lg:text-2xl font-bold">
+                            {schedule.pk && schedule.pk !== "" && (
+                              <span className="text-xs font-medium text-neutral-400 mt-2 bg-neutral-100 px-2 py-0.5 rounded">
+                                PK: {schedule.pk}
+                              </span>
+                            )}
+                            <div className="mt-2 text-xs font-bold text-neutral-400 tracking-widest uppercase">
+                              Full Time
+                            </div>
+                          </>
+                        ) : (
+                          <div className="flex flex-col items-center">
+                            <span className="text-3xl md:text-4xl font-black text-neutral-200 tracking-widest">
                               VS
-                            </div>
-                          )}
-                        </div>
+                            </span>
+                          </div>
+                        )}
                       </div>
 
-                      {/* 相手チーム */}
-                      <div className="text-center">
-                        <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-3 bg-neutral-100 rounded-2xl flex items-center justify-center shadow-md">
-                          {getLogo(schedule.teamName) !== "" ? (
+                      {/* AWAY (OPPONENT) */}
+                      <div className="flex flex-col items-center justify-center text-center gap-3">
+                        <div className="relative w-16 h-16 md:w-24 md:h-24 bg-white rounded-2xl p-2 shadow-sm border border-neutral-50 flex items-center justify-center">
+                          {getLogo(schedule.teamName) ? (
                             <Image
                               src={getLogo(schedule.teamName)}
                               alt={schedule.teamName}
-                              width={40}
-                              height={40}
-                              className="w-8 h-8 lg:w-10 lg:h-10 object-contain"
+                              width={80}
+                              height={80}
+                              className="w-full h-full object-contain"
                             />
                           ) : (
-                            <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-neutral-300" />
+                            <div className="w-10 h-10 md:w-12 md:h-12 bg-neutral-200 rounded-full flex items-center justify-center text-neutral-400 font-bold text-xl">
+                              {schedule.teamName.slice(0, 1)}
+                            </div>
                           )}
                         </div>
-                        <div className="font-bold text-neutral-800 text-sm lg:text-base">
+                        <span className="font-bold text-neutral-800 text-sm md:text-base">
                           {schedule.teamName}
-                        </div>
+                        </span>
                       </div>
                     </div>
-                  </div>
 
-                  {/* 得点者情報 */}
-                  {isFinished && schedule.scorer.length > 0 && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.5 }}
-                      className="mt-6 p-4 bg-green-50 rounded-xl border-l-4 border-green-500"
-                    >
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-green-600 text-lg">⚽</span>
-                        <h4 className="text-green-700 font-bold text-sm">
-                          得点者
-                        </h4>
+                    {/* 下部：会場・得点者 */}
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4 bg-neutral-50/50 rounded-2xl p-4">
+                      {/* 会場 */}
+                      <div className="flex items-center gap-2 text-sm text-neutral-500">
+                        <MdOutlineStadium className="text-green-500 text-lg" />
+                        <span>{schedule.location}</span>
                       </div>
-                      <div className="space-y-1">
-                        {schedule.scorer.map((scorer, scorerIndex) => (
-                          <div
-                            key={scorerIndex}
-                            className="text-green-600 text-sm lg:text-base"
-                          >
-                            {scorer}
+
+                      {/* 得点者（試合終了かつ得点がある場合） */}
+                      {isFinished && schedule.scorer.length > 0 && (
+                        <div className="flex flex-col items-start md:items-end gap-1">
+                          <div className="flex items-center gap-1.5 text-xs font-bold text-green-700 uppercase tracking-wider mb-1">
+                            <MdSportsSoccer /> Scorers
                           </div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
+                          <div className="flex flex-wrap gap-2 justify-start md:justify-end">
+                            {schedule.scorer.map((scorer, i) => (
+                              <span
+                                key={i}
+                                className="inline-flex items-center px-2 py-1 rounded bg-white border border-neutral-100 text-xs font-medium text-neutral-600 shadow-sm"
+                              >
+                                {scorer}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })
+          )}
         </div>
-      </div>
+      </section>
 
       <Footer />
     </div>

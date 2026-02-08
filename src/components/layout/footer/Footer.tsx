@@ -8,11 +8,11 @@ import {
 } from "react-icons/fa";
 import Image from "next/image";
 import BichoLogo from "@/public/bicho-icon.png";
-import { useState, forwardRef } from "react";
+import { useState } from "react";
 import YoutubeLogo from "@/public/youtube.png";
 import Link from "next/link";
 
-const Footer = forwardRef<HTMLElement>((_, ref) => {
+const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -21,10 +21,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
   const [isYoutubeActive, setYoutubeActive] = useState(false);
 
   return (
-    <footer
-      ref={ref}
-      className="relative z-50 bg-neutral-900 text-white-1 pt-12 pb-6 overflow-hidden border-t-4 border-green-600"
-    >
+    <footer className="relative z-50 bg-neutral-900 text-white-1 pt-12 pb-6 overflow-hidden border-t-4 border-green-600">
       {/* 装飾背景 */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-[-50%] right-[-10%] w-[500px] h-[500px] bg-green-500 rounded-full blur-[100px]" />
@@ -140,7 +137,6 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
       </div>
     </footer>
   );
-});
+};
 
-Footer.displayName = "Footer";
 export default Footer;
