@@ -1,3 +1,5 @@
+"use client";
+
 import PickUpPhoto from "@/public/article/ club2024.jpeg";
 import Image from "next/image";
 import { motion } from "framer-motion";
