@@ -1,3 +1,5 @@
+"use client";
+
 import PickUpPhoto from "@/public/article/champion.jpeg";
 import Photo1 from "@/public/article/article3-1.jpeg";
 import Photo2 from "@/public/article/article3-2.jpeg";

@@ -18,7 +18,7 @@ const articles = [
     description:
       "FC.BICHOが2025年度埼玉県3部リーグで見事優勝を果たしました！悲願の3部リーグ制覇！",
     details: "Details: (S4) 2025年~",
-    link: "/article?no=4",
+    link: "/news/4",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const articles = [
     description:
       "FC.BICHOが2024年度埼玉県南部地区ブロックリーグ決勝大会で優勝！",
     details: "Details: (S3) 2024年11月 - 2025年3月",
-    link: "/article?no=3",
+    link: "/news/3",
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const articles = [
     title: "2024年度川口市リーグ,結果",
     description: "2024年度川口市リーグの結果をお知らせします。",
     details: "Details: (S2) 2024年4月 - 2024年10月",
-    link: "/article?no=2",
+    link: "/news/2",
   },
   {
     id: 1,
@@ -47,7 +47,7 @@ const articles = [
     description:
       "2024年度全国クラブチームサッカー選手権の結果をお知らせします。",
     details: "Details: (S1) 2024年6月",
-    link: "/article?no=1",
+    link: "/news/1",
   },
 ];
 

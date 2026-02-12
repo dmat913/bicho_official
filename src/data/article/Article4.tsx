@@ -1,3 +1,5 @@
+"use client";
+
 import PickUpPhoto from "@/public/article/league2025.jpeg";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -230,8 +232,8 @@ const Article4 = () => {
                   match.type === "win"
                     ? "bg-green-50/50 border-green-200/50"
                     : match.type === "loss"
-                    ? "bg-red-50/50 border-red-200/50"
-                    : "bg-yellow-50/50 border-yellow-200/50"
+                      ? "bg-red-50/50 border-red-200/50"
+                      : "bg-yellow-50/50 border-yellow-200/50"
                 }`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -244,15 +246,15 @@ const Article4 = () => {
                         match.type === "win"
                           ? "bg-green-500"
                           : match.type === "loss"
-                          ? "bg-red-500"
-                          : "bg-yellow-500"
+                            ? "bg-red-500"
+                            : "bg-yellow-500"
                       }`}
                     >
                       {match.type === "win"
                         ? "🎉"
                         : match.type === "loss"
-                        ? "💔"
-                        : "⚽"}
+                          ? "💔"
+                          : "⚽"}
                     </div>
                     <div>
                       <h3
@@ -260,8 +262,8 @@ const Article4 = () => {
                           match.type === "win"
                             ? "text-green-700"
                             : match.type === "loss"
-                            ? "text-red-700"
-                            : "text-yellow-700"
+                              ? "text-red-700"
+                              : "text-yellow-700"
                         }`}
                       >
                         {match.round}
@@ -281,8 +283,8 @@ const Article4 = () => {
                         match.type === "win"
                           ? "text-green-600"
                           : match.type === "loss"
-                          ? "text-red-600"
-                          : "text-yellow-600"
+                            ? "text-red-600"
+                            : "text-yellow-600"
                       }`}
                     >
                       {match.result}
