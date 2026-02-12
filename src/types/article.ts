@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export type ArticleCategory = "match" | "news" | "event" | "column";
 
 export interface ArticleMeta {
@@ -6,10 +8,10 @@ export interface ArticleMeta {
   description: string;
   date: string;
   category: ArticleCategory;
-  thumbnail?: any; // StaticImageData type compatible
+  thumbnail?: string | StaticImageData;
   tags?: string[];
 }
 
 export interface ArticleContent extends ArticleMeta {
-  component: React.ComponentType<any>;
+  component: React.ComponentType;
 }
