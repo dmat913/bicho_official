@@ -4,14 +4,18 @@ import "./globals.css";
 
 // メタデータの設定
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bicho-official.vercel.app"),
   title: {
-    default: "FC.Bicho Official Site - 川口市の社会人サッカーチーム",
-    template: "%s | FC.Bicho Official",
+    default: "FC.BICHO Official Site - 川口市の社会人サッカーチーム",
+    template: "%s | FC.BICHO",
   },
   description:
     "FC.BICHOは、2005年に創設され、川口市を拠点に活動している社会人サッカーチームです。埼玉県社会人サッカーリーグ3部所属。試合日程、チーム情報、写真ギャラリーを掲載。",
+  applicationName: "FC.BICHO Official Site",
   keywords: [
-    "FC.Bicho",
+    "FC.BICHO",
+    "FC BICHO",
+    "ビーチョ",
     "サッカー",
     "社会人サッカー",
     "川口市",
@@ -23,27 +27,37 @@ export const metadata: Metadata = {
     "スポーツ",
     "地域スポーツ",
     "アマチュアサッカー",
+    "試合日程",
+    "リーグ戦",
+    "選手紹介",
   ],
-  authors: [{ name: "FC.Bicho" }],
-  creator: "FC.Bicho",
-  publisher: "FC.Bicho",
+  authors: [{ name: "FC.BICHO", url: "https://bicho-official.vercel.app" }],
+  creator: "FC.BICHO",
+  publisher: "FC.BICHO",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
   openGraph: {
-    title: "FC.Bicho Official Site - 川口市の社会人サッカーチーム",
+    title: "FC.BICHO Official Site - 川口市の社会人サッカーチーム",
     description:
       "FC.BICHOは、2005年に創設され、川口市を拠点に活動している社会人サッカーチームです。埼玉県社会人サッカーリーグ3部所属。試合日程、チーム情報、写真ギャラリーを掲載。",
     url: "https://bicho-official.vercel.app",
-    siteName: "FC.Bicho Official Site",
+    siteName: "FC.BICHO Official Site",
     locale: "ja_JP",
     type: "website",
     images: [
@@ -52,15 +66,17 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "FC.BICHO - 川口市の社会人サッカーチーム集合写真",
+        type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "FC.Bicho Official Site - 川口市の社会人サッカーチーム",
+    title: "FC.BICHO Official Site - 川口市の社会人サッカーチーム",
     description:
       "FC.BICHOは、2005年に創設され、川口市を拠点に活動している社会人サッカーチームです。埼玉県社会人サッカーリーグ3部所属。",
     images: ["https://bicho-official.vercel.app/og-image.jpg"],
+    creator: "@FC_BICHO",
   },
   verification: {
     google: "googlef24988d19a190633",
@@ -68,6 +84,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://bicho-official.vercel.app",
   },
+  category: "sports",
 };
 
 export default function RootLayout({

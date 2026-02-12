@@ -1,11 +1,15 @@
 import ContactForm from "@/features/contact/ContactForm";
 import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
+import { generateSEO } from "@/utils/seo";
 
-export const metadata = {
-  title: "お問い合わせ | BICHO",
-  description: "BICHOへのお問い合わせフォーム",
-};
+export const metadata = generateSEO({
+  title: "お問い合わせ",
+  description:
+    "FC.BICHOへのお問い合わせフォーム。ご質問、ご意見、取材依頼、スポンサー募集など、お気軽にお問い合わせください。",
+  path: "/contact",
+  keywords: ["お問い合わせ", "コンタクト", "連絡先", "問い合わせフォーム"],
+});
 
 export default function ContactPage() {
   return (

@@ -78,7 +78,7 @@ export const DHamburgerMenu = ({ menuItems, logo }: DHamburgerMenuProps) => {
   return (
     <>
       <motion.div
-        className="relative z-[120] flex items-center justify-center lg:hidden"
+        className="relative z-[120] flex items-center justify-center lg:hidden md:hidden"
         initial="rest"
         whileHover="hover"
         animate="rest"

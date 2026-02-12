@@ -1,6 +1,6 @@
 export interface ScheduleData {
   _id: string;
-  date: Date;
+  date: Date | string;
   title: string;
   description: string;
   teamName: string;

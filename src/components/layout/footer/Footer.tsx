@@ -114,7 +114,7 @@ const Footer = () => {
               className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white-1 px-5 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(34,197,94,0.5)] font-bold group"
             >
               <FaEnvelope size={18} />
-              <span className="text-sm">お問い合わせ</span>
+              <span className="text-sm">Contact us</span>
             </Link>
           </div>
         </div>
@@ -124,15 +124,16 @@ const Footer = () => {
 
         {/* コピーライトとトップに戻る */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-neutral-400 text-xs">
-          <p>© 2026 FC.BICHO. All rights reserved.</p>
-
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-2 hover:text-green-400 transition-colors group p-2"
-          >
-            <span>Back to Top</span>
-            <FaChevronUp className="group-hover:-translate-y-1 transition-transform" />
-          </button>
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+            <p>© 2026 FC.BICHO. All rights reserved.</p>
+            <span className="hidden md:inline text-neutral-600">|</span>
+            <Link
+              href="/privacy-policy"
+              className="hover:text-green-400 transition-colors"
+            >
+              プライバシーポリシー
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -40,10 +40,22 @@ const config = {
         priority: 0.6,
         lastmod: new Date().toISOString(),
       },
+      {
+        loc: "/contact",
+        changefreq: "monthly",
+        priority: 0.5,
+        lastmod: new Date().toISOString(),
+      },
+      {
+        loc: "/privacy-policy",
+        changefreq: "yearly",
+        priority: 0.3,
+        lastmod: new Date().toISOString(),
+      },
     ];
 
     // 記事の動的ページを追加
-    const articleNumbers = [1, 2, 3]; // 実際の記事数に応じて調整
+    const articleNumbers = [1, 2, 3, 4]; // 実際の記事数に応じて調整
     articleNumbers.forEach((num) => {
       additionalPaths.push({
         loc: `/article?no=${num}`,
@@ -73,6 +85,8 @@ const config = {
       "/profile": 0.8,
       "/data": 0.7,
       "/article": 0.6,
+      "/contact": 0.5,
+      "/privacy-policy": 0.3,
     };
 
     return {

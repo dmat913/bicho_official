@@ -16,21 +16,6 @@ export const fetchImages = async (): Promise<ImageData[]> => {
   }
 };
 
-export const fetchFirstImage = async (): Promise<ImageData[]> => {
-  try {
-    const response = await fetch("/api/image/first");
-    if (!response.ok) {
-      throw new Error("画像の取得に失敗しました");
-    }
-
-    const data: ImageData[] = await response.json();
-    return data;
-  } catch (error) {
-    console.error("画像の取得エラー:", error);
-    throw error;
-  }
-};
-
 export const fetchAllImages = async (): Promise<ImageData[]> => {
   try {
     const response = await fetch("/api/image/all");
