@@ -135,12 +135,12 @@ export default function Post3() {
 
           {/* 決勝 */}
           <article>
-            <ArticleH3>決勝 vs F.C.C.O</ArticleH3>
+            <ArticleH3>決勝 vs ほのぼのクラブ</ArticleH3>
             <div className="flex flex-col md:flex-row gap-6 mb-4">
               <div className="w-full md:w-1/2 aspect-video relative rounded-xl overflow-hidden shadow-md">
                 <Image
                   src={Photo3}
-                  alt="vs F.C.C.O"
+                  alt="vs ほのぼのクラブ"
                   fill
                   className="object-cover"
                 />
@@ -165,7 +165,7 @@ export default function Post3() {
               </div>
             </div>
             <ArticleP>
-              決勝戦の相手はF.C.C.O。お互いに県リーグ昇格を決めているものの、タイトルをかけた負けられない戦いです。
+              決勝戦の相手はほのぼのクラブ。お互いに県リーグ昇格を決めているものの、タイトルをかけた負けられない戦いです。
             </ArticleP>
             <ArticleP>
               試合は序盤から激しい球際の攻防となります。前半20分、コーナーキックの流れから18番・石川が押し込み先制に成功します。
@@ -175,7 +175,7 @@ export default function Post3() {
               試合終了のホイッスルとともに歓喜の輪が広がりました。
             </ArticleP>
             <ArticleP>
-              創設以来の悲願であった県リーグ昇格、そして南部ブロック優勝という最高の形でシーズンを締めくくることができました。
+              悲願であった県リーグ昇格、そして南部ブロック優勝という最高の形でシーズンを締めくくることができました。
             </ArticleP>
           </article>
         </div>
