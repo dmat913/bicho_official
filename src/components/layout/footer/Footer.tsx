@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  FaInstagram,
-  FaYoutube,
-  FaEnvelope,
-  FaChevronUp,
-} from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaEnvelope } from "react-icons/fa";
 import Image from "next/image";
 import BichoLogo from "@/public/bicho-icon.png";
 import { useState } from "react";

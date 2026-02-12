@@ -1,6 +1,6 @@
 import { getSchedules } from "@/lib/server-actions";
 import ScheduleClient from "./ScheduleClient";
-import { generateSEO, generateStructuredData } from "@/utils/seo";
+import { generateSEO } from "@/utils/seo";
 
 export const metadata = generateSEO({
   title: "試合日程・結果",

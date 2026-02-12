@@ -13,6 +13,7 @@ export async function getSchedules(): Promise<ScheduleData[]> {
     const schedules = await ScheduleModel.find().sort({ date: -1 }).lean();
 
     // MongoDBのオブジェクトをプレーンなJSONに変換
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return schedules.map((schedule: any) => ({
       _id: schedule._id.toString(),
       date: schedule.date,
@@ -41,6 +42,7 @@ export async function getImages(): Promise<ImageData[]> {
     const images = await ImageModel.find().sort({ createdAt: -1 }).lean();
 
     // MongoDBのオブジェクトをプレーンなJSONに変換
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return images.map((image: any) => ({
       _id: image._id.toString(),
       contentType: image.contentType || "",
@@ -58,6 +60,7 @@ export async function getImages(): Promise<ImageData[]> {
 export async function getFirstImage(): Promise<ImageData | null> {
   try {
     await connectDb();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const image: any = await ImageModel.findOne()
       .sort({ createdAt: -1 })
       .lean();
