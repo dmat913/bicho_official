@@ -8,7 +8,7 @@ export default function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav className="hidden lg:flex items-center gap-1">
+    <nav className="hidden md:flex lg:flex items-center gap-1">
       {menuItems.map((item) => {
         const isActive = pathname === item.href;
         return (

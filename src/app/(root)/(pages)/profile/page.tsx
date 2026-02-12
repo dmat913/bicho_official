@@ -1,5 +1,6 @@
 import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
+import Breadcrumb from "@/components/elements/Breadcrumb";
 import {
   defenders,
   forwards,
@@ -7,6 +8,29 @@ import {
   midfielders,
 } from "@/features/profile/data/profile";
 import ProfileCard from "@/features/profile/profile-card/ProfileCard";
+import {
+  generateSEO,
+  generateStructuredData,
+  generateBreadcrumbLD,
+} from "@/utils/seo";
+
+export const metadata = generateSEO({
+  title: "選手紹介・プロフィール",
+  description:
+    "FC.BICHOの選手プロフィール一覧。ゴールキーパー(GK)、ディフェンダー(DF)、ミッドフィルダー(MF)、フォワード(FW)のポジション別に選手情報、背番号、経歴を掲載。",
+  path: "/profile",
+  keywords: [
+    "選手紹介",
+    "プロフィール",
+    "メンバー",
+    "背番号",
+    "ゴールキーパー",
+    "ディフェンダー",
+    "ミッドフィルダー",
+    "フォワード",
+    "ポジション",
+  ],
+});
 
 // セクションヘッダーコンポーネント
 const SectionHeader = ({
@@ -48,8 +72,25 @@ const SectionHeader = ({
 );
 
 const ProfilePage = () => {
+  const structuredData = generateStructuredData({
+    type: "profile",
+  });
+
+  const breadcrumbLD = generateBreadcrumbLD([
+    { name: "ホーム", path: "/" },
+    { name: "選手紹介", path: "/profile" },
+  ]);
+
   return (
     <div className="min-h-screen bg-neutral-950 relative selection:bg-green-500/30 selection:text-green-200">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLD) }}
+      />
       {/* ページ全体の背景パターン */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-green-900/10 via-neutral-950 to-neutral-950"></div>
@@ -65,7 +106,11 @@ const ProfilePage = () => {
 
       <Header />
 
-      <main className="relative z-10 pt-[104px] pb-20 px-4 md:px-8 max-w-[1920px] mx-auto">
+      <div className="relative z-10">
+        <Breadcrumb items={[{ name: "選手紹介", path: "/profile" }]} />
+      </div>
+
+      <main className="relative z-10 pt-[40px] pb-20 px-4 md:px-8 max-w-[1920px] mx-auto">
         {/* GOALKEEPER */}
         <section className="mb-12">
           <SectionHeader

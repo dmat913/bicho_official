@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
-import { fetchFirstImage, fetchImages } from "@/utils/image";
+import { fetchImages } from "@/utils/image";
 import { ImageData } from "@/types/image";
 
 export const useImages = (initialData?: ImageData[]) => {
@@ -28,10 +28,6 @@ export const useImages = (initialData?: ImageData[]) => {
       try {
         setIsLoading(true);
         setError(null);
-
-        // 最初の画像を取得して即座に表示
-        const firstData = await fetchFirstImage();
-        setImages(firstData);
 
         // 残りの画像を取得
         const data = await fetchImages();

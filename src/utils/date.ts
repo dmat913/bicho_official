@@ -18,7 +18,7 @@ import {
 import KAWAGUCHI_SC_LOGO from "@/public/logo/KAWAGUCHI_SC_LOGO.png";
 import { League } from "@/types/league";
 
-export const formatDate = (dateString: Date, timeString: string) => {
+export const formatDate = (dateString: Date | string, timeString: string) => {
   const date = new Date(dateString);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -67,7 +67,7 @@ export const getLogo = (teamName: string) => {
 };
 
 export const getLeagueData = (
-  year: string
+  year: string,
 ): {
   league: League[];
   title: string;
@@ -82,7 +82,7 @@ export const getLeagueData = (
       if (bDifference !== aDifference) {
         return bDifference - aDifference;
       }
-     return b.goalsFor - a.goalsFor
+      return b.goalsFor - a.goalsFor;
     });
   };
 

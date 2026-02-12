@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactForm() {
   const [formState, setFormState] = useState({
@@ -9,6 +10,7 @@ export default function ContactForm() {
     subject: "",
     message: "",
   });
+  const [isAgreed, setIsAgreed] = useState(false);
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
@@ -26,6 +28,8 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!isAgreed) return;
+
     setStatus("submitting");
 
     try {
@@ -48,6 +52,7 @@ export default function ContactForm() {
           subject: "",
           message: "",
         });
+        setIsAgreed(false);
       } else {
         setStatus("error");
       }
@@ -152,9 +157,41 @@ export default function ContactForm() {
           />
         </div>
 
+        {/* プライバシーポリシー同意 */}
+        <div className="flex items-start">
+          <div className="flex items-center h-5">
+            <input
+              id="privacy-policy"
+              name="privacy-policy"
+              type="checkbox"
+              checked={isAgreed}
+              onChange={(e) => setIsAgreed(e.target.checked)}
+              className="w-4 h-4 rounded border-gray-300 text-green-600 focus:ring-green-500 cursor-pointer"
+            />
+          </div>
+          <div className="ml-3 text-sm">
+            <label
+              htmlFor="privacy-policy"
+              className="font-medium text-neutral-700 cursor-pointer"
+            >
+              <Link
+                href="/privacy-policy"
+                target="_blank"
+                className="text-green-600 hover:text-green-700 underline mr-1"
+              >
+                プライバシーポリシー
+              </Link>
+              に同意する
+            </label>
+            <p className="text-neutral-500 text-xs mt-1">
+              送信前にプライバシーポリシーをご確認ください。
+            </p>
+          </div>
+        </div>
+
         <button
           type="submit"
-          disabled={status === "submitting"}
+          disabled={status === "submitting" || !isAgreed}
           className="w-full bg-gradient-to-r from-green-600 to-green-500 text-white-1 font-semibold py-4 px-6 rounded-lg hover:from-green-700 hover:to-green-600 transition-all shadow-md hover:shadow-lg disabled:from-neutral-300 disabled:to-neutral-300 disabled:cursor-not-allowed disabled:shadow-none"
         >
           {status === "submitting" ? "送信中..." : "送信する"}
