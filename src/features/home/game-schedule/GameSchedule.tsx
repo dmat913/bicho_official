@@ -59,21 +59,19 @@ const GameSchedule = () => {
   }, [schedules]);
 
   useEffect(() => {
+    // 今日の日付（時刻を0時0分0秒にリセット）
     const today = new Date();
-    const formattedDate = today.toISOString().split("T")[0];
+    today.setHours(0, 0, 0, 0);
+
     const index = displaySchedules.findIndex((schedule) => {
       const scheduleDate = new Date(schedule.date);
-      return (
-        scheduleDate.toISOString().split("T")[0] === formattedDate ||
-        scheduleDate >= today
-      );
+      scheduleDate.setHours(0, 0, 0, 0);
+      return scheduleDate >= today;
     });
-    if (index !== -1) {
-      setCurrentPage(index + 1);
-      setSwiperKey((prevKey) => prevKey + 1);
-    } else {
-      setCurrentPage(1);
-    }
+
+    // 今日以降の試合があればその位置、なければ最後の試合
+    setCurrentPage(index !== -1 ? index + 1 : displaySchedules.length);
+    setSwiperKey((prevKey) => prevKey + 1);
   }, [displaySchedules]);
 
   return (

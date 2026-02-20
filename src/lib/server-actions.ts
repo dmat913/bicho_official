@@ -35,11 +35,13 @@ export async function getSchedules(): Promise<ScheduleData[]> {
 
 /**
  * サーバーサイドで画像データを取得
+ * @param limit 取得する画像の枚数（指定しない場合はすべて取得）
  */
-export async function getImages(): Promise<ImageData[]> {
+export async function getImages(limit?: number): Promise<ImageData[]> {
   try {
     await connectDb();
-    const images = await ImageModel.find().sort({ createdAt: -1 }).lean();
+    const query = ImageModel.find().sort({ createdAt: -1 });
+    const images = limit ? await query.limit(limit).lean() : await query.lean();
 
     // MongoDBのオブジェクトをプレーンなJSONに変換
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

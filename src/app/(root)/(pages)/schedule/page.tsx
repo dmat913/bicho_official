@@ -2,6 +2,9 @@ import { getSchedules } from "@/lib/server-actions";
 import ScheduleClient from "./ScheduleClient";
 import { generateSEO } from "@/utils/seo";
 
+// ISR: 5分ごとに再生成（バックグラウンドで自動更新）
+export const revalidate = 300;
+
 export const metadata = generateSEO({
   title: "試合日程・結果",
   description:

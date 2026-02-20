@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDb } from "@/utils/database";
 import { ScheduleModel } from "@/models/schedule";
+import { revalidatePath } from "next/cache";
 
 // 試合日程追加処理
 export async function POST(request: NextRequest) {
@@ -24,7 +25,7 @@ export async function POST(request: NextRequest) {
     if (!date || !title || !description || !teamName || !location) {
       return NextResponse.json(
         { message: "必須項目が不足しています" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -44,6 +45,10 @@ export async function POST(request: NextRequest) {
     // MongoDBに保存
     await newEvent.save();
 
+    // HOMEページと試合日程ページのキャッシュを即座に無効化
+    revalidatePath("/");
+    revalidatePath("/schedule");
+
     return NextResponse.json({
       message: "試合日程が追加されました",
       event: newEvent,
@@ -52,7 +57,7 @@ export async function POST(request: NextRequest) {
     console.error("試合日程追加エラー:", error);
     return NextResponse.json(
       { message: "試合日程追加に失敗しました" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -72,14 +77,14 @@ export async function GET() {
       // データが見つからない場合
       return NextResponse.json(
         { message: "データが見つかりませんでした" },
-        { status: 404 }
+        { status: 404 },
       );
     }
   } catch (error) {
     console.error("データ取得エラー:", error);
     return NextResponse.json(
       { message: "データ取得失敗：エラーが発生しました" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -95,14 +100,14 @@ export async function PATCH(request: NextRequest) {
     if (!_id) {
       return NextResponse.json(
         { message: "ID が不足しています" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     // `scorer` の処理: 空文字を除外
     if (updateFields.scorer) {
       updateFields.scorer = updateFields.scorer.filter(
-        (row: string) => row !== ""
+        (row: string) => row !== "",
       );
     }
 
@@ -110,16 +115,20 @@ export async function PATCH(request: NextRequest) {
     const updatedEvent = await ScheduleModel.findByIdAndUpdate(
       _id,
       updateFields,
-      { new: true } // 更新後のデータを取得
+      { new: true }, // 更新後のデータを取得
     );
 
     // 該当ドキュメントがない場合
     if (!updatedEvent) {
       return NextResponse.json(
         { message: "指定された試合日程が見つかりませんでした" },
-        { status: 404 }
+        { status: 404 },
       );
     }
+
+    // HOMEページと試合日程ページのキャッシュを即座に無効化
+    revalidatePath("/");
+    revalidatePath("/schedule");
 
     return NextResponse.json({
       message: "試合日程が更新されました",
@@ -129,7 +138,7 @@ export async function PATCH(request: NextRequest) {
     console.error("試合日程編集エラー:", error);
     return NextResponse.json(
       { message: "試合日程の更新に失敗しました" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -147,7 +156,7 @@ export async function DELETE(request: NextRequest) {
     if (!id) {
       return NextResponse.json(
         { message: "ID が不足しています" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -158,9 +167,13 @@ export async function DELETE(request: NextRequest) {
     if (!deletedEvent) {
       return NextResponse.json(
         { message: "指定された試合日程が見つかりませんでした" },
-        { status: 404 }
+        { status: 404 },
       );
     }
+
+    // HOMEページと試合日程ページのキャッシュを即座に無効化
+    revalidatePath("/");
+    revalidatePath("/schedule");
 
     return NextResponse.json({
       message: "試合日程が削除されました",
@@ -170,7 +183,7 @@ export async function DELETE(request: NextRequest) {
     console.error("試合日程削除エラー:", error);
     return NextResponse.json(
       { message: "試合日程の削除に失敗しました" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

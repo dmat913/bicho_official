@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDb } from "@/utils/database";
 import { ImageModel } from "@/models/image";
+import { revalidatePath } from "next/cache";
 
 // 追加処理
 export async function POST(request: NextRequest) {
@@ -24,6 +25,9 @@ export async function POST(request: NextRequest) {
     });
 
     await newImage.save();
+
+    // HOMEページのキャッシュを即座に無効化
+    revalidatePath("/");
 
     return NextResponse.json(
       { message: "画像がアップロードされました" },
@@ -97,6 +101,9 @@ export async function DELETE(request: NextRequest) {
 
     // 画像を削除
     await ImageModel.findByIdAndDelete(imageId);
+
+    // HOMEページのキャッシュを即座に無効化
+    revalidatePath("/");
 
     return NextResponse.json(
       { message: "画像が削除されました" },

@@ -2,6 +2,9 @@ import { getImages, getSchedules } from "@/lib/server-actions";
 import HomeClient from "./HomeClient";
 import { generateSEO } from "@/utils/seo";
 
+// ISR: 5分ごとに再生成（バックグラウンドで自動更新）
+export const revalidate = 300;
+
 export const metadata = generateSEO({
   title: "FC.BICHO Official Site - 川口市の社会人サッカーチーム",
   description:
@@ -13,7 +16,7 @@ export const metadata = generateSEO({
     "選手紹介",
     "写真ギャラリー",
     "チームニュース",
-    "埼玉県3部",
+    "埼玉県2部",
     "フットボール",
     "地域スポーツ",
   ],
@@ -22,7 +25,10 @@ export const metadata = generateSEO({
 // サーバーコンポーネントでデータを取得
 export default async function HomePage() {
   // サーバーサイドでデータを並列取得
-  const [images, schedules] = await Promise.all([getImages(), getSchedules()]);
+  const [images, schedules] = await Promise.all([
+    getImages(10),
+    getSchedules(),
+  ]);
 
   return <HomeClient initialImages={images} initialSchedules={schedules} />;
 }

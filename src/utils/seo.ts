@@ -34,13 +34,16 @@ export function generateSEO({
   const fullTitle = title.includes("FC.BICHO") ? title : `${title} | FC.BICHO`;
 
   const defaultKeywords = [
-    "FC.BICHO",
-    "サッカー",
-    "社会人サッカー",
-    "川口市",
-    "埼玉県",
-    "社会人サッカーリーグ",
+    "BICHO",
+    "埼玉県社会人サッカー",
+    "川口市社会人サッカー",
+    "FCBICHO",
     "サッカーチーム",
+    "サッカー",
+    "フットサル",
+    "社会人サッカー",
+    "募集",
+    "選手募集",
   ];
 
   return {
