@@ -41,7 +41,14 @@ const MatchCard = ({
       <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-white shadow-xl transition-all duration-300">
         {/* 上部デザイン（画像やパターン） */}
         <div className="absolute top-0 w-full h-32 bg-gradient-to-br from-green-600 via-green-500 to-emerald-400">
-          <div className="absolute inset-0 bg-[url('/bg-pattern.svg')] opacity-10 mix-blend-overlay"></div>
+          <div className="absolute inset-0 opacity-10">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)`,
+              }}
+            ></div>
+          </div>
           {/* 光のエフェクト */}
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent"></div>
         </div>

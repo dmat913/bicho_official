@@ -8,8 +8,10 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { useSetRecoilState } from "recoil";
 
 const UploadImage = () => {
-  // アップロード対象の画像（base64）
+  // アップロード対象のメディア（base64）
   const [uploadImage, setUploadImage] = useState<string>("");
+  // ファイルタイプ（image or video）
+  const [fileType, setFileType] = useState<"image" | "video">("image");
   // モーダルの表示フラグ
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   // ローディング状態
@@ -28,10 +30,34 @@ const UploadImage = () => {
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      // ファイルサイズチェック（30MB = 30 * 1024 * 1024 bytes）
+      // Base64エンコード後は約1.37倍（約41MB）になります
+      // MongoDBのドキュメントサイズ制限(16MB)も考慮が必要です
+      const maxSize = 30 * 1024 * 1024;
+      if (file.size > maxSize) {
+        alert(
+          `ファイルサイズが大きすぎます。${Math.round(maxSize / 1024 / 1024)}MB以下のファイルを選択してください。\n現在のファイルサイズ: ${Math.round(file.size / 1024 / 1024)}MB`,
+        );
+        return;
+      }
+
+      // ファイルタイプを判定
+      if (file.type.startsWith("image/")) {
+        setFileType("image");
+      } else if (file.type.startsWith("video/")) {
+        setFileType("video");
+      } else {
+        alert("画像または動画ファイルを選択してください");
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = () => {
         setUploadImage(reader.result as string);
         setIsModalOpen(true);
+      };
+      reader.onerror = () => {
+        alert("ファイルの読み込みに失敗しました");
       };
       reader.readAsDataURL(file);
     }
@@ -53,7 +79,7 @@ const UploadImage = () => {
   // 画像アップロード処理
   const handleUpload = async () => {
     if (!uploadImage) {
-      alert("画像が選択されていません");
+      alert("ファイルが選択されていません");
       return;
     }
     setIsLoading(true);
@@ -67,15 +93,22 @@ const UploadImage = () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
+        const errorData = await response.json().catch(() => ({
+          message: `サーバーエラー (${response.status})`,
+        }));
         throw new Error(errorData.message || "アップロードに失敗しました");
       }
 
-      alert("画像がアップロードされました");
+      alert(
+        `${fileType === "image" ? "画像" : "動画"}がアップロードされました`,
+      );
       handleReset();
       await loadImages();
     } catch (error) {
-      alert(error);
+      console.error("アップロードエラー:", error);
+      alert(
+        error instanceof Error ? error.message : "アップロードに失敗しました",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -85,6 +118,7 @@ const UploadImage = () => {
   const handleReset = () => {
     setIsModalOpen(false);
     setUploadImage("");
+    setFileType("image");
   };
 
   return (
@@ -93,6 +127,7 @@ const UploadImage = () => {
         type="file"
         ref={fileInputRef}
         onChange={handleImageChange}
+        accept="image/*,video/*"
         className="hidden"
       />
       <button
@@ -109,21 +144,31 @@ const UploadImage = () => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="w-[90vw] bg-white-1 p-4 rounded shadow-lg">
-            <h2 className="text-lg font-bold mb-2">選択された画像</h2>
-            <Image
-              src={uploadImage}
-              alt="アップロード予定の画像プレビュー"
-              className="mb-4 w-full sm:max-h-[50svh] object-cover"
-              width={800}
-              height={600}
-              priority
-            />
+            <h2 className="text-lg font-bold mb-2">
+              選択された{fileType === "image" ? "画像" : "動画"}
+            </h2>
+            {fileType === "image" ? (
+              <Image
+                src={uploadImage}
+                alt="アップロード予定の画像プレビュー"
+                className="mb-4 w-full sm:max-h-[50svh] object-cover"
+                width={800}
+                height={600}
+                priority
+              />
+            ) : (
+              <video
+                src={uploadImage}
+                controls
+                className="mb-4 w-full sm:max-h-[50svh] object-cover"
+              />
+            )}
             <button
               onClick={handleUpload}
               className="w-full p-2 bg-green-1 text-white-1 rounded transition duration-300 active:bg-green-2 disabled:opacity-30"
               disabled={isLoading}
             >
-              画像をアップロード
+              {fileType === "image" ? "画像" : "動画"}をアップロード
             </button>
             <button
               onClick={handleReset}
