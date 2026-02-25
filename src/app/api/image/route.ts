@@ -3,6 +3,9 @@ import { connectDb } from "@/utils/database";
 import { ImageModel } from "@/models/image";
 import { revalidatePath } from "next/cache";
 
+// ISRを無効化して動的レンダリングを強制（大容量データのため）
+export const dynamic = "force-dynamic";
+
 // APIルートの設定（動画アップロード対応のためボディサイズ制限を増やす）
 export const maxDuration = 60; // 最大実行時間（秒）
 

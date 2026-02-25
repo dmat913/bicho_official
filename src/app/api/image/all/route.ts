@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { connectDb } from "@/utils/database";
 import { ImageModel } from "@/models/image";
 
+// ISRを無効化して動的レンダリングを強制（大容量データのため）
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     // DB接続

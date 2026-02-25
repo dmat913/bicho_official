@@ -62,27 +62,3 @@ export async function getImages(limit?: number): Promise<ImageData[]> {
     return [];
   }
 }
-
-/**
- * サーバーサイドで最初の画像を取得
- */
-export async function getFirstImage(): Promise<ImageData | null> {
-  try {
-    await connectDb();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const image: any = await ImageModel.findOne()
-      .sort({ createdAt: -1 })
-      .lean();
-
-    if (!image) return null;
-
-    return {
-      _id: image._id.toString(),
-      contentType: image.contentType || "",
-      data: image.data || "",
-    };
-  } catch (error) {
-    console.error("画像取得エラー:", error);
-    return null;
-  }
-}
