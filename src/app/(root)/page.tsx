@@ -1,4 +1,4 @@
-import { getImages, getSchedules } from "@/lib/server-actions";
+import { getSchedules } from "@/lib/server-actions";
 import HomeClient from "./HomeClient";
 import { generateSEO } from "@/utils/seo";
 
@@ -24,11 +24,8 @@ export const metadata = generateSEO({
 
 // サーバーコンポーネントでデータを取得
 export default async function HomePage() {
-  // サーバーサイドでデータを並列取得
-  const [images, schedules] = await Promise.all([
-    getImages(10),
-    getSchedules(),
-  ]);
+  // 試合日程のみサーバーサイドで取得（画像はクライアントサイドで遅延読み込み）
+  const schedules = await getSchedules();
 
-  return <HomeClient initialImages={images} initialSchedules={schedules} />;
+  return <HomeClient initialSchedules={schedules} />;
 }
