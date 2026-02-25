@@ -3,18 +3,38 @@ import { connectDb } from "@/utils/database";
 import { ImageModel } from "@/models/image";
 import { revalidatePath } from "next/cache";
 
+// APIルートの設定（動画アップロード対応のためボディサイズ制限を増やす）
+export const maxDuration = 60; // 最大実行時間（秒）
+
 // 追加処理
 export async function POST(request: NextRequest) {
   try {
     // DB接続
     await connectDb();
 
+    // リクエストボディのサイズを確認
+    const contentLength = request.headers.get("content-length");
+    if (contentLength && parseInt(contentLength) > 100 * 1024 * 1024) {
+      return NextResponse.json(
+        { message: "ファイルサイズが大きすぎます（最大100MB）" },
+        { status: 413 },
+      );
+    }
+
     const { uploadImage } = await request.json();
 
     // fileが存在しない場合,error
     if (!uploadImage) {
       return NextResponse.json(
-        { message: "画像が不足しています" },
+        { message: "ファイルが不足しています" },
+        { status: 400 },
+      );
+    }
+
+    // Base64文字列の検証
+    if (!uploadImage.startsWith("data:")) {
+      return NextResponse.json(
+        { message: "無効なファイル形式です" },
         { status: 400 },
       );
     }
@@ -30,15 +50,29 @@ export async function POST(request: NextRequest) {
     revalidatePath("/");
 
     return NextResponse.json(
-      { message: "画像がアップロードされました" },
+      { message: "ファイルがアップロードされました" },
       { status: 201 },
     );
   } catch (error) {
-    console.error("画像アップロードエラー:", error);
+    console.error("ファイルアップロードエラー:", error);
+
+    // エラーの種類に応じた詳細なメッセージ
+    if (error instanceof Error) {
+      if (error.message.includes("payload")) {
+        return NextResponse.json(
+          {
+            message:
+              "ファイルサイズが大きすぎます。30MB以下のファイルを選択してください。",
+          },
+          { status: 413 },
+        );
+      }
+    }
+
     return NextResponse.json(
       {
         message: "アップロードに失敗しました",
-        error: error || "Unknown error",
+        error: error instanceof Error ? error.message : "Unknown error",
       },
       { status: 500 },
     );
@@ -50,13 +84,13 @@ export async function GET() {
   try {
     // DB接続
     await connectDb();
-    // ランダムに10枚取得
+    // ランダムに10件取得
     const images = await ImageModel.aggregate([{ $sample: { size: 10 } }]);
     return NextResponse.json(images);
   } catch (error) {
-    console.error("画像取得エラー:", error);
+    console.error("メディア取得エラー:", error);
     return NextResponse.json(
-      { message: "画像の取得に失敗しました" },
+      { message: "メディアの取得に失敗しました" },
       { status: 500 },
     );
   }
@@ -74,7 +108,7 @@ export async function DELETE(request: NextRequest) {
 
     if (!imageId) {
       return NextResponse.json(
-        { message: "画像IDが不足しています" },
+        { message: "ファイルIDが不足しています" },
         { status: 400 },
       );
     }
@@ -85,7 +119,7 @@ export async function DELETE(request: NextRequest) {
     // 画像が1枚だけの場合、削除を拒否
     if (imageCount <= 1) {
       return NextResponse.json(
-        { message: "画像が1枚しかないため、削除できません" },
+        { message: "ファイルが1つしかないため、削除できません" },
         { status: 403 },
       );
     }
@@ -94,7 +128,7 @@ export async function DELETE(request: NextRequest) {
     const image = await ImageModel.findById(imageId);
     if (!image) {
       return NextResponse.json(
-        { message: "指定された画像が見つかりません" },
+        { message: "指定されたファイルが見つかりません" },
         { status: 404 },
       );
     }
@@ -106,14 +140,14 @@ export async function DELETE(request: NextRequest) {
     revalidatePath("/");
 
     return NextResponse.json(
-      { message: "画像が削除されました" },
+      { message: "ファイルが削除されました" },
       { status: 200 },
     );
   } catch (error) {
-    console.error("画像削除エラー:", error);
+    console.error("ファイル削除エラー:", error);
     return NextResponse.json(
       {
-        message: "画像の削除に失敗しました",
+        message: "ファイルの削除に失敗しました",
         error: error || "Unknown error",
       },
       { status: 500 },

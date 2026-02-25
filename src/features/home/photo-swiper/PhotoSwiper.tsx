@@ -2,12 +2,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import { Autoplay, Pagination, EffectCoverflow } from "swiper/modules";
+import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import { useRecoilValue } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import "swiper/css/pagination";
 
 const PhotoSwiper = () => {
   // 画像一覧
@@ -131,15 +131,26 @@ const PhotoSwiper = () => {
                       {/* カードコンテナ */}
                       <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
                         <div className="relative aspect-[4/3] overflow-hidden">
-                          <img
-                            src={image.data}
-                            alt={`FC.BICHOチーム写真 ${
-                              index + 1
-                            } - サッカーチームの活動の様子`}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            loading={index < 3 ? "eager" : "lazy"}
-                            decoding={index < 3 ? "sync" : "async"}
-                          />
+                          {image.contentType?.startsWith("video/") ? (
+                            <video
+                              src={image.data}
+                              className="w-full h-full object-cover"
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                            />
+                          ) : (
+                            <img
+                              src={image.data}
+                              alt={`FC.BICHOチーム写真 ${
+                                index + 1
+                              } - サッカーチームの活動の様子`}
+                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                              loading={index < 3 ? "eager" : "lazy"}
+                              decoding={index < 3 ? "sync" : "async"}
+                            />
+                          )}
 
                           {/* グラデーションオーバーレイ */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

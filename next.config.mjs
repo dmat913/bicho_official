@@ -5,6 +5,13 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
+  // APIルートのボディサイズ制限を増やす（動画アップロード対応）
+  // 注意: Base64エンコード後は約1.37倍になるため、実際のファイルサイズはこれより小さくする必要があります
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "100mb",
+    },
+  },
   images: {
     formats: ["image/webp", "image/avif"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

@@ -32,7 +32,7 @@ const PhotoList = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || "画像の削除に失敗しました");
+        throw new Error(errorData.message || "ファイルの削除に失敗しました");
       }
 
       handleCloseModal();
@@ -72,7 +72,7 @@ const PhotoList = () => {
           <div>
             <h1 className="text-2xl font-bold text-gray-800">ギャラリー管理</h1>
             <p className="text-gray-500 text-sm mt-1">
-              写真のアップロード・削除が行えます
+              写真・動画のアップロード・削除が行えます
             </p>
           </div>
         </div>
@@ -94,13 +94,22 @@ const PhotoList = () => {
                 className="group relative aspect-square rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-100"
                 onClick={() => handleImageClick(image)}
               >
-                <Image
-                  src={image.data}
-                  alt={`Uploaded image ${image._id}`}
-                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-                  width={400}
-                  height={400}
-                />
+                {image.contentType?.startsWith("video/") ? (
+                  <video
+                    src={image.data}
+                    className="object-cover w-full h-full pointer-events-none"
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <Image
+                    src={image.data}
+                    alt={`Uploaded image ${image._id}`}
+                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                    width={400}
+                    height={400}
+                  />
+                )}
 
                 {/* オーバーレイ */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3">
@@ -141,12 +150,20 @@ const PhotoList = () => {
               className="bg-white-1 rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden relative z-10"
             >
               <div className="relative aspect-video w-full bg-gray-100">
-                <Image
-                  src={selectedImage.data}
-                  alt={`Selected image ${selectedImage._id}`}
-                  className="object-contain w-full h-full"
-                  fill
-                />
+                {selectedImage.contentType?.startsWith("video/") ? (
+                  <video
+                    src={selectedImage.data}
+                    controls
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <Image
+                    src={selectedImage.data}
+                    alt={`Selected image ${selectedImage._id}`}
+                    className="object-contain w-full h-full"
+                    fill
+                  />
+                )}
                 <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-black/50 to-transparent" />
                 <button
                   onClick={handleCloseModal}
@@ -172,7 +189,10 @@ const PhotoList = () => {
               <div className="p-6">
                 <h2 className="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
                   <MdDeleteOutline className="text-red-500" />
-                  画像を削除しますか？
+                  {selectedImage.contentType?.startsWith("video/")
+                    ? "動画"
+                    : "画像"}
+                  を削除しますか？
                 </h2>
                 <p className="text-gray-500 text-sm mb-6">
                   この操作は取り消せません。本当に削除してもよろしいですか？
