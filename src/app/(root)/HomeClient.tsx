@@ -18,29 +18,39 @@ import { FC, useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
 import { scheduleState } from "@/recoil/atom/schedule";
-import { ImageData } from "@/types/image";
 import { ScheduleData } from "@/types/schedule";
 
 interface HomeClientProps {
-  initialImages: ImageData[];
   initialSchedules: ScheduleData[];
 }
 
-const HomeClient: FC<HomeClientProps> = ({
-  initialImages,
-  initialSchedules,
-}) => {
+const HomeClient: FC<HomeClientProps> = ({ initialSchedules }) => {
   const [isLoading, setIsLoading] = useState(true);
   const setImages = useSetRecoilState(imagesState);
   const setSchedules = useSetRecoilState(scheduleState);
 
   useEffect(() => {
-    // Recoil状態を初期化
-    setImages(initialImages);
-    setSchedules(initialSchedules);
-    // ローディングを完了
-    setIsLoading(false);
-  }, [initialImages, initialSchedules, setImages, setSchedules]);
+    const initializeData = async () => {
+      // 試合日程をRecoilに設定
+      setSchedules(initialSchedules);
+
+      // 画像をクライアントサイドで取得（ランダム10枚）
+      try {
+        const response = await fetch("/api/image");
+        if (response.ok) {
+          const images = await response.json();
+          setImages(images);
+        }
+      } catch (error) {
+        console.error("画像取得エラー:", error);
+      }
+
+      // ローディングを完了
+      setIsLoading(false);
+    };
+
+    initializeData();
+  }, [initialSchedules, setImages, setSchedules]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

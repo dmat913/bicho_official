@@ -3,6 +3,9 @@ import { connectDb } from "@/utils/database";
 import { ScheduleModel } from "@/models/schedule";
 import { revalidatePath } from "next/cache";
 
+// ISRを無効化して動的レンダリングを強制
+export const dynamic = "force-dynamic";
+
 // 試合日程追加処理
 export async function POST(request: NextRequest) {
   try {
