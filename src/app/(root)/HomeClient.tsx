@@ -34,19 +34,31 @@ const HomeClient: FC<HomeClientProps> = ({ initialSchedules }) => {
       // 試合日程をRecoilに設定
       setSchedules(initialSchedules);
 
-      // 画像をクライアントサイドで取得（ランダム10枚）
+      // 【段階的読み込み】
+      // 1. まず1件だけ取得してローディング解除
       try {
-        const response = await fetch("/api/image");
-        if (response.ok) {
-          const images = await response.json();
-          setImages(images);
+        const firstResponse = await fetch("/api/image?limit=1");
+        if (firstResponse.ok) {
+          const firstImage = await firstResponse.json();
+          setImages(firstImage);
         }
       } catch (error) {
-        console.error("画像取得エラー:", error);
+        console.error("初期画像取得エラー:", error);
       }
 
-      // ローディングを完了
+      // ローディングを完了（1件取得した時点で表示開始）
       setIsLoading(false);
+
+      // 2. バックグラウンドで残りを取得
+      try {
+        const allResponse = await fetch("/api/image?limit=10");
+        if (allResponse.ok) {
+          const allImages = await allResponse.json();
+          setImages(allImages);
+        }
+      } catch (error) {
+        console.error("全画像取得エラー:", error);
+      }
     };
 
     initializeData();

@@ -83,12 +83,17 @@ export async function POST(request: NextRequest) {
 }
 
 // 取得処理
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     // DB接続
     await connectDb();
-    // ランダムに10件取得
-    const images = await ImageModel.aggregate([{ $sample: { size: 10 } }]);
+
+    // limitパラメータを取得（デフォルト: 10）
+    const { searchParams } = new URL(request.url);
+    const limit = parseInt(searchParams.get("limit") || "10", 10);
+
+    // ランダムに指定件数取得
+    const images = await ImageModel.aggregate([{ $sample: { size: limit } }]);
     return NextResponse.json(images);
   } catch (error) {
     console.error("メディア取得エラー:", error);
