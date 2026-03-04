@@ -19,12 +19,14 @@ import { useSetRecoilState } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
 import { scheduleState } from "@/recoil/atom/schedule";
 import { ScheduleData } from "@/types/schedule";
+import { LeagueData } from "@/types/league";
 
 interface HomeClientProps {
   initialSchedules: ScheduleData[];
+  leagueData: LeagueData;
 }
 
-const HomeClient: FC<HomeClientProps> = ({ initialSchedules }) => {
+const HomeClient: FC<HomeClientProps> = ({ initialSchedules, leagueData }) => {
   const [isLoading, setIsLoading] = useState(true);
   const setImages = useSetRecoilState(imagesState);
   const setSchedules = useSetRecoilState(scheduleState);
@@ -98,7 +100,7 @@ const HomeClient: FC<HomeClientProps> = ({ initialSchedules }) => {
           </div>
           <AboutBicho />
           <GameSchedule />
-          <LeagueTable />
+          <LeagueTable year={leagueData.year} leagueData={leagueData.league} />
           <PhotoSwiper />
           <Article />
           <Footer />

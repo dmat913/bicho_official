@@ -11,6 +11,12 @@ import OOYABA_LOGO from "@/public/logo/OOYABA_LOGO.png";
 import KAWAGUCHIFC_LOGO from "@/public/logo/KAWAGUCHIFC_LOGO.png";
 import HGC_LOGO from "@/public/logo/HGC_LOGO.png";
 import GRANDE_LOGO from "@/public/logo/GRANDE_LOGO.png";
+import THUKUGNU_LOGO from "@/public/logo/thukugnu.png";
+import KARIOKA_LOGO from "@/public/logo/KARIOKA.png";
+import HAPPINESS_LOGO from "@/public/logo/HAPPINESS.png";
+import OOSATO_LOGO from "@/public/logo/OOSATO.png";
+import KOSHIGAYA_LOGO from "@/public/logo/KOSHIGAYA.png";
+import YONOSHUU_LOGO from "@/public/logo/YONOSHUU.png";
 import {
   LEAGUE_2024,
   LEAGUE_2025,
@@ -31,6 +37,18 @@ export const formatDate = (dateString: Date | string, timeString: string) => {
 
 export const getLogo = (teamName: string) => {
   switch (teamName) {
+    case "トゥクヌー草加":
+      return THUKUGNU_LOGO;
+    case "大宮西カリオカ":
+      return KARIOKA_LOGO;
+    case "東京国際大学 Happiness":
+      return HAPPINESS_LOGO;
+    case "大里FC":
+      return OOSATO_LOGO;
+    case "越谷FC":
+      return KOSHIGAYA_LOGO;
+    case "与野蹴魂会":
+      return YONOSHUU_LOGO;
     case "埼玉パスポットFC":
       return PASSPOT_LOGO;
     case "川口SC":
@@ -56,6 +74,7 @@ export const getLogo = (teamName: string) => {
     case "Area大谷場":
       return OOYABA_LOGO;
     case "川口FCセカンド":
+    case "川口FC":
       return KAWAGUCHIFC_LOGO;
     case "HGC1990":
       return HGC_LOGO;
