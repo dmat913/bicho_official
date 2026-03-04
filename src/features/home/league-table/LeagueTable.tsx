@@ -3,15 +3,39 @@
 import { motion } from "framer-motion";
 import { useMemo } from "react";
 import Image from "next/image";
-import { getLeagueData, getLogo } from "@/utils/date";
+import { getLogo } from "@/utils/date";
 import { FaCrown, FaMinus, FaTrophy } from "react-icons/fa";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
+import { League } from "@/types/league";
 
-const LeagueTable = () => {
-  const LEAGUE_DATA = getLeagueData("2025");
+interface LeagueTableProps {
+  year: string;
+  leagueData: League[];
+}
 
-  // メモ化してパフォーマンス最適化
-  const sortedLeague = useMemo(() => LEAGUE_DATA.league, [LEAGUE_DATA]);
+const LeagueTable = ({ year, leagueData }: LeagueTableProps) => {
+  // ソート済みのリーグデータをメモ化
+  const sortedLeague = useMemo(() => {
+    return [...leagueData].sort((a, b) => {
+      // 勝ち点で比較
+      if (b.points !== a.points) {
+        return b.points - a.points;
+      }
+      // 得失点差で比較
+      const bDiff = b.goalsFor - b.goalsAgainst;
+      const aDiff = a.goalsFor - a.goalsAgainst;
+      if (bDiff !== aDiff) {
+        return bDiff - aDiff;
+      }
+      // 総得点で比較
+      return b.goalsFor - a.goalsFor;
+    });
+  }, [leagueData]);
+
+  // 試合が行われているかどうかを判定
+  const hasGamesPlayed = useMemo(() => {
+    return sortedLeague.some((team) => team.game_count > 0);
+  }, [sortedLeague]);
 
   return (
     <section className="relative w-full pb-12 overflow-hidden bg-black">
@@ -41,7 +65,7 @@ const LeagueTable = () => {
                   className="text-green-500/40 font-black italic text-4xl mx-8 tracking-widest uppercase font-display"
                   style={{ textShadow: "0 0 20px rgba(34,197,94,0.3)" }}
                 >
-                  LEAGUE STANDING 2025
+                  {`LEAGUE STANDING ${year.toUpperCase()}`}
                 </span>
               ))}
             </div>
@@ -56,8 +80,12 @@ const LeagueTable = () => {
           className="hidden md:grid grid-cols-12 gap-4 place-items-center text-xs text-neutral-400 font-bold tracking-wider uppercase mb-4 px-6 opacity-0 animate-fade-in-up"
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         >
-          <div className="col-span-1">Rank</div>
-          <div className="col-span-4 justify-self-start pl-4">Club</div>
+          {hasGamesPlayed && <div className="col-span-1">Rank</div>}
+          <div
+            className={`${hasGamesPlayed ? "col-span-4" : "col-span-5"} justify-self-start pl-4`}
+          >
+            Club
+          </div>
           <div className="col-span-1">Pts</div>
           <div className="col-span-1">Pld</div>
           <div className="col-span-1">W</div>
@@ -111,37 +139,43 @@ const LeagueTable = () => {
               >
                 {/* 順位バッジ */}
                 <div className="col-span-2 md:col-span-1 flex justify-center">
-                  <div
-                    className={`
-                    w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-black text-lg md:text-xl shadow-lg relative
-                    ${
-                      rank === 1
-                        ? "bg-gradient-to-br from-yellow-300 to-yellow-600 text-yellow-950 ring-2 ring-yellow-200/50"
-                        : rank === 2
-                          ? "bg-gradient-to-br from-slate-300 to-slate-500 text-slate-900 ring-2 ring-slate-200/50"
-                          : rank === 3
-                            ? "bg-gradient-to-br from-amber-600 to-amber-800 text-amber-100 ring-2 ring-amber-500/50"
-                            : isBicho
-                              ? "bg-green-600 text-white-1 ring-2 ring-green-400/50"
-                              : "bg-neutral-800/80 text-neutral-400 border border-neutral-700"
-                    }
-                  `}
-                  >
-                    {rank <= 3 && (
-                      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-sm z-20">
-                        {rank === 1 ? (
-                          <FaTrophy className="text-yellow-400 drop-shadow-md filter" />
-                        ) : (
-                          <FaCrown
-                            className={
-                              rank === 2 ? "text-slate-300" : "text-amber-500"
-                            }
-                          />
-                        )}
-                      </div>
-                    )}
-                    {rank}
-                  </div>
+                  {team.game_count > 0 ? (
+                    <div
+                      className={`
+                      w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-black text-lg md:text-xl shadow-lg relative
+                      ${
+                        rank === 1
+                          ? "bg-gradient-to-br from-yellow-300 to-yellow-600 text-yellow-950 ring-2 ring-yellow-200/50"
+                          : rank === 2
+                            ? "bg-gradient-to-br from-slate-300 to-slate-500 text-slate-900 ring-2 ring-slate-200/50"
+                            : rank === 3
+                              ? "bg-gradient-to-br from-amber-600 to-amber-800 text-amber-100 ring-2 ring-amber-500/50"
+                              : isBicho
+                                ? "bg-green-600 text-white-1 ring-2 ring-green-400/50"
+                                : "bg-neutral-800/80 text-neutral-400 border border-neutral-700"
+                      }
+                    `}
+                    >
+                      {rank <= 3 && (
+                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-sm z-20">
+                          {rank === 1 ? (
+                            <FaTrophy className="text-yellow-400 drop-shadow-md filter" />
+                          ) : (
+                            <FaCrown
+                              className={
+                                rank === 2 ? "text-slate-300" : "text-amber-500"
+                              }
+                            />
+                          )}
+                        </div>
+                      )}
+                      {rank}
+                    </div>
+                  ) : (
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-neutral-500 text-sm">
+                      -
+                    </div>
+                  )}
                 </div>
 
                 {/* チームロゴ＆名前 */}

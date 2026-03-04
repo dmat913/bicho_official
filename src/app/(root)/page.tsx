@@ -1,4 +1,4 @@
-import { getSchedules } from "@/lib/server-actions";
+import { getSchedules, getLeagueStandings } from "@/lib/server-actions";
 import HomeClient from "./HomeClient";
 import { generateSEO } from "@/utils/seo";
 
@@ -26,6 +26,7 @@ export const metadata = generateSEO({
 export default async function HomePage() {
   // 試合日程のみサーバーサイドで取得（画像はクライアントサイドで遅延読み込み）
   const schedules = await getSchedules();
+  const leagueData = await getLeagueStandings();
 
-  return <HomeClient initialSchedules={schedules} />;
+  return <HomeClient initialSchedules={schedules} leagueData={leagueData} />;
 }
