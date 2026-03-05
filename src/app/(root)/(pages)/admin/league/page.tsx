@@ -20,7 +20,6 @@ const LeaguePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [selectedLeagueId, setSelectedLeagueId] = useState<string>("all");
   const [deleteType, setDeleteType] = useState<"team" | "match" | null>(null);
 
   // データ取得
@@ -175,8 +174,6 @@ const LeaguePage = () => {
           <TeamTab
             teams={teams}
             leagues={leagues}
-            selectedLeagueId={selectedLeagueId}
-            onLeagueSelect={setSelectedLeagueId}
             onDelete={(team) => {
               setSelectedId(team._id!);
               setDeleteType("team");

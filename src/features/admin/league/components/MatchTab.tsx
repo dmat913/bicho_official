@@ -1,6 +1,12 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { MdAdd, MdEdit, MdDelete } from "react-icons/md";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  MdAdd,
+  MdEdit,
+  MdDelete,
+  MdFilterList,
+  MdSearch,
+} from "react-icons/md";
 import { LeagueInfo } from "@/types/league";
 import { LeagueTeam } from "@/types/league";
 import { MatchResult } from "@/types/league";
@@ -13,69 +19,57 @@ interface MatchTabProps {
   onDelete: (match: MatchResult) => void;
 }
 
-export const MatchTab = ({
-  leagues,
-  teams,
-  matches,
-  onDelete,
-}: MatchTabProps) => {
+export const MatchTab = ({ leagues, matches, onDelete }: MatchTabProps) => {
   const router = useRouter();
-  const [selectedLeagueId, setSelectedLeagueId] = useState<string>("all");
-  const [selectedTeamId, setSelectedTeamId] = useState<string>("all");
-  const [selectedResult, setSelectedResult] = useState<string>("all");
+  const [isMatchFilterOpen, setIsMatchFilterOpen] = useState(false);
+  const [matchFilters, setMatchFilters] = useState({
+    leagueId: "",
+    searchTerm: "",
+    startDate: "",
+    endDate: "",
+  });
 
-  // リーグでフィルタリング
-  const leagueFilteredMatches =
-    selectedLeagueId === "all"
-      ? matches
-      : matches.filter((match) => match.leagueId === selectedLeagueId);
+  // フィルタリング処理
+  const filteredMatches = matches.filter((match) => {
+    // リーグフィルター
+    if (matchFilters.leagueId && match.leagueId !== matchFilters.leagueId) {
+      return false;
+    }
+    // 検索フィルター（チーム名）
+    if (matchFilters.searchTerm) {
+      const searchTerm = matchFilters.searchTerm.toLowerCase();
+      const matchesSearch =
+        match.homeTeam.toLowerCase().includes(searchTerm) ||
+        match.awayTeam.toLowerCase().includes(searchTerm);
+      if (!matchesSearch) return false;
+    }
+    // 日付範囲フィルター（開始日）
+    if (matchFilters.startDate) {
+      const matchDate = new Date(match.matchDate);
+      const startDate = new Date(matchFilters.startDate);
+      if (matchDate < startDate) return false;
+    }
+    // 日付範囲フィルター（終了日）
+    if (matchFilters.endDate) {
+      const matchDate = new Date(match.matchDate);
+      const endDate = new Date(matchFilters.endDate);
+      if (matchDate > endDate) return false;
+    }
+    return true;
+  });
 
-  // さらにチームでフィルタリング
-  const teamFilteredMatches =
-    selectedTeamId === "all"
-      ? leagueFilteredMatches
-      : leagueFilteredMatches.filter(
-          (match) =>
-            match.homeTeam === selectedTeamId ||
-            match.awayTeam === selectedTeamId,
-        );
-
-  // さらに結果でフィルタリング
-  const filteredMatches =
-    selectedResult === "all"
-      ? teamFilteredMatches
-      : teamFilteredMatches.filter((match) => {
-          if (selectedResult === "win") {
-            return (
-              (match.homeTeam === selectedTeamId &&
-                match.homeScore > match.awayScore) ||
-              (match.awayTeam === selectedTeamId &&
-                match.awayScore > match.homeScore)
-            );
-          } else if (selectedResult === "lose") {
-            return (
-              (match.homeTeam === selectedTeamId &&
-                match.homeScore < match.awayScore) ||
-              (match.awayTeam === selectedTeamId &&
-                match.awayScore < match.homeScore)
-            );
-          } else if (selectedResult === "draw") {
-            return match.homeScore === match.awayScore;
-          }
-          return true;
-        });
+  // アクティブなフィルター数を計算
+  const activeMatchFilterCount =
+    (matchFilters.leagueId ? 1 : 0) +
+    (matchFilters.searchTerm ? 1 : 0) +
+    (matchFilters.startDate ? 1 : 0) +
+    (matchFilters.endDate ? 1 : 0);
 
   // リーグIDからタイトルを取得
   const getLeagueTitle = (leagueId: string) => {
     const league = leagues.find((l) => l._id === leagueId);
     return league?.title || "不明なリーグ";
   };
-
-  // 選択されたリーグに所属するチームのリストを取得
-  const availableTeams =
-    selectedLeagueId === "all"
-      ? teams
-      : teams.filter((team) => team.leagueId === selectedLeagueId);
 
   return (
     <div>
@@ -84,108 +78,171 @@ export const MatchTab = ({
           <h2 className="text-lg sm:text-2xl font-bold text-white-1 whitespace-nowrap">
             試合結果 ({filteredMatches.length}件)
           </h2>
-          <button
-            onClick={() => router.push("/admin/league/create-match")}
-            className="w-full sm:w-auto flex items-center justify-center gap-1.5 sm:gap-2 px-3 py-2 sm:px-6 sm:py-3 bg-green-600 text-white-1 rounded-lg hover:bg-green-700 transition-colors whitespace-nowrap"
-          >
-            <MdAdd size={20} className="sm:w-6 sm:h-6" />
-            <span className="text-xs sm:text-base">新規登録</span>
-          </button>
-        </div>
-
-        {/* フィルター */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {/* リーグ選択 */}
-          <select
-            value={selectedLeagueId}
-            onChange={(e) => {
-              setSelectedLeagueId(e.target.value);
-              setSelectedTeamId("all");
-            }}
-            className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-neutral-800 text-white-1 rounded-lg border-2 border-neutral-700 hover:border-neutral-600 focus:outline-none focus:border-green-500 transition-colors text-sm sm:text-base"
-          >
-            <option value="all">すべてのリーグ</option>
-            {leagues.map((league) => (
-              <option key={league._id} value={league._id}>
-                {league.title}
-              </option>
-            ))}
-          </select>
-
-          {/* チーム選択 */}
-          <select
-            value={selectedTeamId}
-            onChange={(e) => setSelectedTeamId(e.target.value)}
-            className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-neutral-800 text-white-1 rounded-lg border-2 border-neutral-700 hover:border-neutral-600 focus:outline-none focus:border-green-500 transition-colors text-sm sm:text-base"
-            disabled={selectedLeagueId === "all" && teams.length > 0}
-          >
-            <option value="all">すべてのチーム</option>
-            {availableTeams.map((team) => (
-              <option key={team._id} value={team.teamName}>
-                {team.teamName}
-              </option>
-            ))}
-          </select>
-
-          {/* 結果選択 */}
-          <select
-            value={selectedResult}
-            onChange={(e) => setSelectedResult(e.target.value)}
-            className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-neutral-800 text-white-1 rounded-lg border-2 border-neutral-700 hover:border-neutral-600 focus:outline-none focus:border-green-500 transition-colors text-sm sm:text-base"
-            disabled={selectedTeamId === "all"}
-          >
-            <option value="all">すべての結果</option>
-            <option value="win">勝利</option>
-            <option value="draw">引き分け</option>
-            <option value="lose">敗北</option>
-          </select>
+          <div className="flex gap-2 w-full sm:w-auto">
+            <button
+              onClick={() => setIsMatchFilterOpen(!isMatchFilterOpen)}
+              className={`relative flex items-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg transition-colors whitespace-nowrap flex-1 sm:flex-none justify-center ${
+                isMatchFilterOpen
+                  ? "bg-green-600 text-white-1"
+                  : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700"
+              }`}
+            >
+              <MdFilterList size={20} />
+              <span className="text-xs sm:text-sm">フィルター</span>
+              {activeMatchFilterCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white-1 text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {activeMatchFilterCount}
+                </span>
+              )}
+            </button>
+            <button
+              onClick={() => router.push("/admin/league/create-match")}
+              className="flex items-center gap-1.5 sm:gap-2 px-3 py-2 sm:px-6 sm:py-3 bg-green-600 text-white-1 rounded-lg hover:bg-green-700 transition-colors whitespace-nowrap flex-1 sm:flex-none justify-center"
+            >
+              <MdAdd size={20} className="sm:w-6 sm:h-6" />
+              <span className="text-xs sm:text-base">新規登録</span>
+            </button>
+          </div>
         </div>
       </div>
 
+      {/* フィルターパネル */}
+      <AnimatePresence>
+        {isMatchFilterOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden mb-4"
+          >
+            <div className="bg-neutral-800 rounded-lg p-4 space-y-3">
+              {/* リーグ選択 */}
+              <div>
+                <label className="block text-xs text-neutral-400 mb-1">
+                  リーグ
+                </label>
+                <select
+                  value={matchFilters.leagueId}
+                  onChange={(e) =>
+                    setMatchFilters({
+                      ...matchFilters,
+                      leagueId: e.target.value,
+                    })
+                  }
+                  className="w-full px-3 py-2 bg-neutral-700 text-white-1 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                >
+                  <option value="">すべてのリーグ</option>
+                  {leagues.map((league) => (
+                    <option key={league._id} value={league._id}>
+                      {league.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* チーム検索 */}
+              <div>
+                <label className="block text-xs text-neutral-400 mb-1">
+                  チーム名で検索
+                </label>
+                <div className="relative">
+                  <MdSearch
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"
+                    size={18}
+                  />
+                  <input
+                    type="text"
+                    value={matchFilters.searchTerm}
+                    onChange={(e) =>
+                      setMatchFilters({
+                        ...matchFilters,
+                        searchTerm: e.target.value,
+                      })
+                    }
+                    placeholder="チーム名を入力..."
+                    className="w-full pl-10 pr-3 py-2 bg-neutral-700 text-white-1 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  />
+                </div>
+              </div>
+
+              {/* 日付範囲 */}
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs text-neutral-400 mb-1">
+                    開始日
+                  </label>
+                  <input
+                    type="date"
+                    value={matchFilters.startDate}
+                    onChange={(e) =>
+                      setMatchFilters({
+                        ...matchFilters,
+                        startDate: e.target.value,
+                      })
+                    }
+                    className="w-full px-3 py-2 bg-neutral-700 text-white-1 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-neutral-400 mb-1">
+                    終了日
+                  </label>
+                  <input
+                    type="date"
+                    value={matchFilters.endDate}
+                    onChange={(e) =>
+                      setMatchFilters({
+                        ...matchFilters,
+                        endDate: e.target.value,
+                      })
+                    }
+                    className="w-full px-3 py-2 bg-neutral-700 text-white-1 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  />
+                </div>
+              </div>
+
+              {/* フィルタークリアボタン */}
+              {activeMatchFilterCount > 0 && (
+                <button
+                  onClick={() =>
+                    setMatchFilters({
+                      leagueId: "",
+                      searchTerm: "",
+                      startDate: "",
+                      endDate: "",
+                    })
+                  }
+                  className="w-full px-3 py-2 bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white-1 rounded-lg text-sm font-medium transition-colors"
+                >
+                  フィルターをクリア
+                </button>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {filteredMatches.length === 0 ? (
         <div className="bg-neutral-800 rounded-lg p-8 text-center text-neutral-400">
-          {selectedLeagueId === "all"
-            ? "試合結果がありません。新規登録してください。"
-            : selectedTeamId === "all"
-              ? "このリーグに登録されている試合結果はありません。"
-              : "条件に一致する試合結果がありません。"}
+          {matchFilters.leagueId ||
+          matchFilters.searchTerm ||
+          matchFilters.startDate ||
+          matchFilters.endDate
+            ? "条件に一致する試合結果がありません。"
+            : "試合結果がありません。新規登録してください。"}
         </div>
       ) : (
         <div className="grid gap-3">
           {filteredMatches.map((match) => {
             const leagueTitle = getLeagueTitle(match.leagueId);
 
-            // 選択されたチームの結果を判定
-            let resultStatus = "";
-            if (selectedTeamId !== "all") {
-              if (match.homeScore === match.awayScore) {
-                resultStatus = "draw";
-              } else if (
-                (match.homeTeam === selectedTeamId &&
-                  match.homeScore > match.awayScore) ||
-                (match.awayTeam === selectedTeamId &&
-                  match.awayScore > match.homeScore)
-              ) {
-                resultStatus = "win";
-              } else {
-                resultStatus = "lose";
-              }
-            }
-
             return (
               <motion.div
                 key={match._id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`group relative rounded-xl border-2 p-3 sm:p-5 transition-all duration-300 ${
-                  resultStatus === "win"
-                    ? "bg-green-600/10 border-green-500/30 hover:border-green-500/50"
-                    : resultStatus === "lose"
-                      ? "bg-red-600/10 border-red-500/30 hover:border-red-500/50"
-                      : resultStatus === "draw"
-                        ? "bg-neutral-700/30 border-neutral-600/30 hover:border-neutral-500/50"
-                        : "bg-neutral-800/50 border-neutral-700/50 hover:border-neutral-600"
-                }`}
+                className="group relative rounded-xl border-2 p-3 sm:p-5 transition-all duration-300 bg-neutral-800/50 border-neutral-700/50 hover:border-neutral-600"
               >
                 <div className="flex flex-col gap-3 sm:gap-4">
                   {/* リーグ名と日付 */}
@@ -205,22 +262,8 @@ export const MatchTab = ({
                   {/* 試合スコア */}
                   <div className="flex items-center justify-between gap-2 sm:gap-4">
                     {/* ホームチーム */}
-                    <div
-                      className={`flex-1 min-w-0 text-right ${
-                        match.homeTeam === selectedTeamId &&
-                        selectedTeamId !== "all"
-                          ? "font-bold"
-                          : ""
-                      }`}
-                    >
-                      <p
-                        className={`text-sm sm:text-lg md:text-xl font-bold truncate ${
-                          match.homeTeam === selectedTeamId &&
-                          selectedTeamId !== "all"
-                            ? "text-green-400"
-                            : "text-white-1"
-                        }`}
-                      >
+                    <div className="flex-1 min-w-0 text-right">
+                      <p className="text-sm sm:text-lg md:text-xl font-bold truncate text-white-1">
                         {match.homeTeam}
                       </p>
                     </div>
@@ -239,22 +282,8 @@ export const MatchTab = ({
                     </div>
 
                     {/* アウェイチーム */}
-                    <div
-                      className={`flex-1 min-w-0 text-left ${
-                        match.awayTeam === selectedTeamId &&
-                        selectedTeamId !== "all"
-                          ? "font-bold"
-                          : ""
-                      }`}
-                    >
-                      <p
-                        className={`text-sm sm:text-lg md:text-xl font-bold truncate ${
-                          match.awayTeam === selectedTeamId &&
-                          selectedTeamId !== "all"
-                            ? "text-green-400"
-                            : "text-white-1"
-                        }`}
-                      >
+                    <div className="flex-1 min-w-0 text-left">
+                      <p className="text-sm sm:text-lg md:text-xl font-bold truncate text-white-1">
                         {match.awayTeam}
                       </p>
                     </div>

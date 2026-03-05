@@ -19,7 +19,7 @@ import KOSHIGAYA_LOGO from "@/public/logo/KOSHIGAYA.png";
 import YONOSHUU_LOGO from "@/public/logo/YONOSHUU.png";
 import KAWAGUCHI_SC_LOGO from "@/public/logo/KAWAGUCHI_SC_LOGO.png";
 
-export const ç = (dateString: Date | string, timeString: string) => {
+export const formatDate = (dateString: Date | string, timeString: string) => {
   const date = new Date(dateString);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
