@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ReactNode } from "react";
 import Image from "next/image";
 import BichoLogo from "@/public/bicho-icon.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdLockOutline, MdArrowForward } from "react-icons/md";
+import HomeLoading from "@/features/home/loading/HomeLoading";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   // 入力password
@@ -13,6 +14,39 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   // エラー状態
   const [isError, setIsError] = useState<boolean>(false);
+  // 初期ロード中
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  // 7日間の有効期限（ミリ秒）
+  const AUTH_DURATION = 7 * 24 * 60 * 60 * 1000;
+
+  // 初回マウント時にlocalStorageから認証状態を確認
+  useEffect(() => {
+    const checkAuth = () => {
+      try {
+        const storedAuth = localStorage.getItem("adminAuth");
+        if (storedAuth) {
+          const authData = JSON.parse(storedAuth);
+          const now = new Date().getTime();
+
+          // 有効期限内であれば認証済みとする
+          if (authData.expiresAt && now < authData.expiresAt) {
+            setIsAuthenticated(true);
+          } else {
+            // 期限切れの場合は削除
+            localStorage.removeItem("adminAuth");
+          }
+        }
+      } catch (error) {
+        console.error("認証確認エラー:", error);
+        localStorage.removeItem("adminAuth");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
+  }, []);
 
   // 確認ボタン押下時
   const handlePasswordSubmit = (e: React.FormEvent) => {
@@ -20,12 +54,24 @@ const Layout = ({ children }: { children: ReactNode }) => {
     if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
       setIsAuthenticated(true);
       setIsError(false);
+
+      // localStorageに認証情報を保存（7日間有効）
+      const expiresAt = new Date().getTime() + AUTH_DURATION;
+      localStorage.setItem(
+        "adminAuth",
+        JSON.stringify({
+          authenticated: true,
+          expiresAt: expiresAt,
+        }),
+      );
     } else {
       setIsError(true);
       // エラー表示を一定時間後に消す
       setTimeout(() => setIsError(false), 2000);
     }
   };
+
+  if (isLoading) return <HomeLoading />;
 
   return (
     <div className="w-full h-full min-h-screen">

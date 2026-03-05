@@ -67,6 +67,14 @@ export async function PUT(
     if (division !== undefined) updateData.division = division;
     if (isActive !== undefined) updateData.isActive = isActive;
 
+    // isActiveをtrueにする場合、他のすべてのリーグをfalseにする
+    if (isActive === true) {
+      await LeagueModel.updateMany(
+        { _id: { $ne: params.id } },
+        { isActive: false, updatedAt: new Date() },
+      );
+    }
+
     const league = await LeagueModel.findByIdAndUpdate(params.id, updateData, {
       new: true,
     });
