@@ -30,35 +30,16 @@ const GameSchedule = () => {
     );
   }, [schedulesFromState]);
 
-  const closestIndex = useMemo(() => {
-    const today = new Date();
-    if (!schedules) return 0;
-    const index = schedules.findIndex((schedule) => {
-      const scheduleDate = new Date(schedule.date);
-      return scheduleDate >= today;
-    });
-    return index ?? -1;
-  }, [schedules]);
-
   const displaySchedules: ScheduleData[] = useMemo(() => {
     if (!schedules) return [];
-
-    const arr1 = schedules.slice(closestIndex, schedules.length);
-    if (arr1.length === 0) {
-      return [...schedules.slice(-5)];
-    }
-
-    const arr2 = schedules.slice(0, schedules.length - arr1.length);
-
-    if (arr1.length > 3) {
-      return arr2.slice(-2).concat(arr1.slice(0, 3));
-    }
-
-    return arr2.slice(arr1.length - 5).concat(arr1);
+    // 全件表示
+    return schedules;
     // eslint-disable-next-line
   }, [schedules]);
 
   useEffect(() => {
+    if (displaySchedules.length === 0) return;
+
     // 今日の日付（時刻を0時0分0秒にリセット）
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -70,7 +51,8 @@ const GameSchedule = () => {
     });
 
     // 今日以降の試合があればその位置、なければ最後の試合
-    setCurrentPage(index !== -1 ? index + 1 : displaySchedules.length);
+    const newPage = index !== -1 ? index + 1 : displaySchedules.length;
+    setCurrentPage(Math.max(1, newPage));
     setSwiperKey((prevKey) => prevKey + 1);
   }, [displaySchedules]);
 

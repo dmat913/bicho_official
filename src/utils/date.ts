@@ -17,14 +17,9 @@ import HAPPINESS_LOGO from "@/public/logo/HAPPINESS.png";
 import OOSATO_LOGO from "@/public/logo/OOSATO.png";
 import KOSHIGAYA_LOGO from "@/public/logo/KOSHIGAYA.png";
 import YONOSHUU_LOGO from "@/public/logo/YONOSHUU.png";
-import {
-  LEAGUE_2024,
-  LEAGUE_2025,
-} from "@/features/home/league-table/data/league";
 import KAWAGUCHI_SC_LOGO from "@/public/logo/KAWAGUCHI_SC_LOGO.png";
-import { League } from "@/types/league";
 
-export const formatDate = (dateString: Date | string, timeString: string) => {
+export const ç = (dateString: Date | string, timeString: string) => {
   const date = new Date(dateString);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -82,44 +77,5 @@ export const getLogo = (teamName: string) => {
       return GRANDE_LOGO;
     default:
       return "";
-  }
-};
-
-export const getLeagueData = (
-  year: string,
-): {
-  league: League[];
-  title: string;
-} => {
-  const sortLeague = (league: League[]): League[] => {
-    return league.sort((a, b) => {
-      if (b.points !== a.points) {
-        return b.points - a.points;
-      }
-      const bDifference = b.goalsFor - b.goalsAgainst;
-      const aDifference = a.goalsFor - a.goalsAgainst;
-      if (bDifference !== aDifference) {
-        return bDifference - aDifference;
-      }
-      return b.goalsFor - a.goalsFor;
-    });
-  };
-
-  switch (year) {
-    case "2024":
-      return {
-        title: LEAGUE_2024.title,
-        league: sortLeague(LEAGUE_2024.league),
-      };
-    case "2025":
-      return {
-        title: LEAGUE_2025.title,
-        league: sortLeague(LEAGUE_2025.league),
-      };
-    default:
-      return {
-        title: LEAGUE_2025.title,
-        league: sortLeague(LEAGUE_2025.league),
-      };
   }
 };
