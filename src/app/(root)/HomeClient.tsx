@@ -14,6 +14,7 @@ import { BichoLogoLink } from "@/components/elements/BichoLogoLink";
 import Link from "next/link";
 import GameSchedule from "@/features/home/game-schedule/GameSchedule";
 import NavLinks from "@/components/layout/header/NavLinks";
+import SponsorSection from "@/features/home/sponsor/SponsorSection";
 import { FC, useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { imagesState } from "@/recoil/atom/image";
@@ -103,6 +104,7 @@ const HomeClient: FC<HomeClientProps> = ({ initialSchedules, leagueData }) => {
           <LeagueTable year={leagueData.year} leagueData={leagueData.league} />
           <PhotoSwiper />
           <Article />
+          <SponsorSection />
           <Footer />
         </div>
       )}
