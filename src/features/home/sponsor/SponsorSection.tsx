@@ -30,22 +30,10 @@ const SponsorSection = () => {
             <div className="relative">
               <div className="absolute inset-0 blur-xl bg-gradient-to-r from-blue-500 via-emerald-500 to-blue-500 opacity-50 animate-pulse" />
               <p className="relative text-sm font-bold tracking-[0.3em] uppercase bg-gradient-to-r from-blue-400 via-emerald-400 to-blue-400 bg-clip-text text-transparent px-4 py-2">
-                Official Sponsor
+                Official Club Partner
               </p>
             </div>
           </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-5xl md:text-6xl font-bold mb-6"
-          >
-            <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-              スポンサー
-            </span>
-          </motion.h2>
 
           <motion.div
             initial={{ scaleX: 0 }}
@@ -102,7 +90,7 @@ const SponsorSection = () => {
                           sizes="(max-width: 768px) 90vw, 448px"
                         />
                       </motion.div>
-                      <div className="text-center space-y-3">
+                      <div className="text-center">
                         {/* 会社名 - モバイルは常にカラフル、株式会社で改行 */}
                         <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 via-emerald-300 to-blue-300 md:from-white md:via-blue-100 md:to-white bg-clip-text text-transparent md:group-hover:from-blue-300 md:group-hover:via-emerald-300 md:group-hover:to-blue-300 transition-all duration-500">
                           {sponsor.name.includes("株式会社") ? (
