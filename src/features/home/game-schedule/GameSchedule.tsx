@@ -1,7 +1,6 @@
 "use client";
 
-import { scheduleState } from "@/recoil/atom/schedule";
-import { useRecoilValue } from "recoil";
+import { useAppContext } from "@/contexts/AppContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -16,7 +15,7 @@ import { motion, useInView } from "framer-motion";
 import MatchCard from "./MatchCard";
 
 const GameSchedule = () => {
-  const schedulesFromState = useRecoilValue(scheduleState);
+  const { schedules: schedulesFromState } = useAppContext();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [swiperKey, setSwiperKey] = useState(0);
 

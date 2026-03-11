@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
 import { useSchedules } from "@/hooks/useSchedules";
-import { updateTargetScheduleState } from "@/recoil/atom/schedule";
-import { useSetRecoilState } from "recoil";
+import { useAppContext } from "@/contexts/AppContext";
 import BichoLogo from "@/public/bicho-icon.png";
 import { formatDate, getLogo } from "@/utils/date";
 import Image from "next/image";
@@ -33,7 +32,7 @@ const SchedulePage = () => {
   );
 
   // 日程更新対象
-  const setUpdateTargetSchedule = useSetRecoilState(updateTargetScheduleState);
+  const { setUpdateTargetSchedule } = useAppContext();
 
   const today = new Date();
 

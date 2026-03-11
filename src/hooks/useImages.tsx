@@ -1,12 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { imagesState } from "@/recoil/atom/image";
+import { useAppContext } from "@/contexts/AppContext";
 import { fetchImages } from "@/utils/image";
 import { ImageData } from "@/types/image";
 
 export const useImages = (initialData?: ImageData[]) => {
-  const [images, setImages] = useRecoilState(imagesState);
+  const { images, setImages } = useAppContext();
   const [isLoading, setIsLoading] = useState<boolean>(!initialData);
   const [error, setError] = useState<string | null>(null);
 

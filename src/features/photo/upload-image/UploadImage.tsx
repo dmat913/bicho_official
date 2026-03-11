@@ -1,11 +1,10 @@
 "use client";
 import Image from "next/image";
 import DLoading from "@/components/elements/DLoading";
-import { imagesState } from "@/recoil/atom/image";
+import { useAppContext } from "@/contexts/AppContext";
 import { fetchImages } from "@/utils/image";
 import { ChangeEvent, useRef, useState } from "react";
 import { IoCloudUploadOutline } from "react-icons/io5";
-import { useSetRecoilState } from "recoil";
 
 const UploadImage = () => {
   // アップロード対象のメディア（base64）
@@ -18,8 +17,8 @@ const UploadImage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  // 画像一覧の状態を更新するためのRecoil
-  const setImages = useSetRecoilState(imagesState);
+  // 画像一覧の状態を更新するためのContext
+  const { setImages } = useAppContext();
 
   // アップロードボタンのクリック処理
   const handleButtonClick = () => {
