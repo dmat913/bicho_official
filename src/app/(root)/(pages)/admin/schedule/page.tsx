@@ -60,9 +60,7 @@ const SchedulePage = () => {
 
       if (response.ok) {
         alert("削除しました");
-        setSchedules((schedules) =>
-          schedules.filter((row) => row._id !== selectedScheduleId),
-        );
+        setSchedules(schedules.filter((row) => row._id !== selectedScheduleId));
       } else {
         const errorData = await response.json();
         alert(`削除失敗: ${errorData.message}`);
