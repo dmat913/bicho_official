@@ -16,9 +16,7 @@ import GameSchedule from "@/features/home/game-schedule/GameSchedule";
 import NavLinks from "@/components/layout/header/NavLinks";
 import SponsorSection from "@/features/home/sponsor/SponsorSection";
 import { FC, useEffect, useState } from "react";
-import { useSetRecoilState } from "recoil";
-import { imagesState } from "@/recoil/atom/image";
-import { scheduleState } from "@/recoil/atom/schedule";
+import { useAppContext } from "@/contexts/AppContext";
 import { ScheduleData } from "@/types/schedule";
 import { LeagueData } from "@/types/league";
 
@@ -29,8 +27,7 @@ interface HomeClientProps {
 
 const HomeClient: FC<HomeClientProps> = ({ initialSchedules, leagueData }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const setImages = useSetRecoilState(imagesState);
-  const setSchedules = useSetRecoilState(scheduleState);
+  const { setImages, setSchedules } = useAppContext();
 
   useEffect(() => {
     const initializeData = async () => {

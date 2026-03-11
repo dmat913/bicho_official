@@ -1,11 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { scheduleState } from "@/recoil/atom/schedule";
+import { useAppContext } from "@/contexts/AppContext";
 import { ScheduleData } from "@/types/schedule";
 
 export const useSchedules = (initialData?: ScheduleData[]) => {
-  const [schedules, setSchedules] = useRecoilState(scheduleState);
+  const { schedules, setSchedules } = useAppContext();
   const [isLoading, setIsLoading] = useState<boolean>(!initialData);
   const [error, setError] = useState<string | null>(null);
 

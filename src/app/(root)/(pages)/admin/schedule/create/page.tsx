@@ -3,15 +3,14 @@ import { useState } from "react";
 import Header from "@/components/layout/header/Header";
 import Footer from "@/components/layout/footer/Footer";
 import { fetchSchedules } from "@/utils/image";
-import { useSetRecoilState } from "recoil";
-import { scheduleState } from "@/recoil/atom/schedule";
+import { useAppContext } from "@/contexts/AppContext";
 import { useRouter } from "next/navigation";
 
 const CreateSchedulePage = () => {
   const router = useRouter();
 
   // 試合日程setState
-  const setSchedules = useSetRecoilState(scheduleState);
+  const { setSchedules } = useAppContext();
 
   const [formData, setFormData] = useState({
     date: "",
@@ -29,7 +28,7 @@ const CreateSchedulePage = () => {
   // フォームの入力値を更新する関数
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    index?: number
+    index?: number,
   ) => {
     const { name, value } = e.target;
     if (name === "scorer") {

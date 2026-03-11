@@ -3,15 +3,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
-import { useRecoilValue } from "recoil";
-import { imagesState } from "@/recoil/atom/image";
+import { useAppContext } from "@/contexts/AppContext";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import "swiper/css/pagination";
 
 const PhotoSwiper = () => {
   // 画像一覧
-  const images = useRecoilValue(imagesState);
+  const { images } = useAppContext();
   // 画面に入ったかどうかを監視するための参照
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });

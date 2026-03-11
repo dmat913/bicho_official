@@ -1,13 +1,13 @@
 "use client";
 import { ReactNode } from "react";
-import { RecoilRoot } from "recoil";
+import { AppProvider } from "@/contexts/AppContext";
 
 const layout = ({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) => {
-  return <RecoilRoot>{children}</RecoilRoot>;
+  return <AppProvider>{children}</AppProvider>;
 };
 
 export default layout;
