@@ -34,6 +34,10 @@ export const goalkeepers: Profile[] = [
       images: [Youdai1],
       competitionData: [
         {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "4", goal: "0", assist: "0" }],
+        },
+        {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
             {
@@ -76,6 +80,10 @@ export const goalkeepers: Profile[] = [
       images: [Takishima1],
       competitionData: [
         {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "2", goal: "0", assist: "0" }],
+        },
+        {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
             {
@@ -114,6 +122,10 @@ export const defenders: Profile[] = [
     detail: {
       images: [Kagawa1, Kagawa2],
       competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "6", goal: "0", assist: "0" }],
+        },
         {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
@@ -167,6 +179,10 @@ export const defenders: Profile[] = [
       images: [Yasuto1],
       competitionData: [
         {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "6", goal: "0", assist: "0" }],
+        },
+        {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
             {
@@ -205,6 +221,10 @@ export const defenders: Profile[] = [
     detail: {
       images: [KAITO1],
       competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "6", goal: "0", assist: "0" }],
+        },
         {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
@@ -251,6 +271,10 @@ export const defenders: Profile[] = [
     detail: {
       images: [Oono2, Oono1],
       competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "6", goal: "0", assist: "0" }],
+        },
         {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
@@ -311,6 +335,10 @@ export const defenders: Profile[] = [
       images: [Koida1],
       competitionData: [
         {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "3", goal: "1", assist: "0" }],
+        },
+        {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
             {
@@ -364,6 +392,10 @@ export const midfielders: Profile[] = [
       images: [Tani1],
       competitionData: [
         {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "5", goal: "1", assist: "0" }],
+        },
+        {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
             {
@@ -404,6 +436,10 @@ export const midfielders: Profile[] = [
       images: [AT1],
       competitionData: [
         {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "5", goal: "0", assist: "2" }],
+        },
+        {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
             {
@@ -442,6 +478,10 @@ export const midfielders: Profile[] = [
     detail: {
       images: [Yudai1],
       competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "5", goal: "0", assist: "0" }],
+        },
         {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
@@ -496,6 +536,10 @@ export const midfielders: Profile[] = [
       images: [GARI1],
       competitionData: [
         {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "6", goal: "0", assist: "0" }],
+        },
+        {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
             {
@@ -526,6 +570,10 @@ export const midfielders: Profile[] = [
     detail: {
       images: [Hikaru1],
       competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "6", goal: "0", assist: "0" }],
+        },
         {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
@@ -608,6 +656,10 @@ export const midfielders: Profile[] = [
       images: [Yama1],
       competitionData: [
         {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "6", goal: "2", assist: "0" }],
+        },
+        {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
             {
@@ -656,6 +708,15 @@ export const midfielders: Profile[] = [
     name: "河口朝陽",
     englishName: "ASAHI KAWAGUCHI",
     img: null,
+    detail: {
+      images: [],
+      competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "5", goal: "0", assist: "0" }],
+        },
+      ],
+    },
   },
   {
     number: "29",
@@ -664,6 +725,15 @@ export const midfielders: Profile[] = [
     englishName: "GOU OYAMA",
     img: null,
     isNew: true,
+    detail: {
+      images: [],
+      competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "5", goal: "0", assist: "0" }],
+        },
+      ],
+    },
   },
   {
     number: "",
@@ -672,6 +742,15 @@ export const midfielders: Profile[] = [
     englishName: "YUITO HARUKAWA",
     img: null,
     isNew: true,
+    detail: {
+      images: [],
+      competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "2", goal: "0", assist: "0" }],
+        },
+      ],
+    },
   },
 ];
 
@@ -686,6 +765,10 @@ export const forwards: Profile[] = [
     detail: {
       images: [Ayumu2, Ayumu1],
       competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "4", goal: "0", assist: "0" }],
+        },
         {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
@@ -725,6 +808,10 @@ export const forwards: Profile[] = [
     detail: {
       images: [],
       competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "6", goal: "0", assist: "0" }],
+        },
         {
           competition: "埼玉県南部地区3部リーグ",
           contents: [
@@ -771,6 +858,10 @@ export const forwards: Profile[] = [
     detail: {
       images: [Ryo1],
       competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "4", goal: "0", assist: "0" }],
+        },
         {
           competition: "埼玉県南部地区3部リーグ",
           contents: [

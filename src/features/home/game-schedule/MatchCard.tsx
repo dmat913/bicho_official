@@ -5,7 +5,7 @@ import { ScheduleData } from "@/types/schedule";
 import { getLogo } from "@/utils/date";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { FaMapMarkerAlt, FaClock, FaFutbol, FaTrophy } from "react-icons/fa";
 
 const MatchCard = ({
@@ -54,7 +54,7 @@ const MatchCard = ({
         </div>
 
         {/* 日付バッジ (浮遊感) */}
-        <div className="absolute top-6 left-6 flex flex-col items-center justify-center bg-white/90 backdrop-blur-md rounded-2xl px-4 py-2 shadow-lg z-10 border border-white/50">
+        <div className="absolute top-6 left-6 flex flex-col items-center justify-center bg-white/95 rounded-2xl px-4 py-2 shadow-lg z-10 border border-white/50">
           <div
             className="text-sm font-bold text-gray-700 uppercase tracking-wider"
             suppressHydrationWarning
@@ -77,7 +77,7 @@ const MatchCard = ({
 
         {/* 試合ステータス */}
         <div
-          className={`absolute top-6 right-6 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide z-10 backdrop-blur-md border shadow-sm ${
+          className={`absolute top-6 right-6 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide z-10 border shadow-sm ${
             isMatchPlayed
               ? "bg-gray-900/10 text-white-1 border-white/20"
               : "bg-amber-400 text-white-1 border-amber-300"
@@ -104,6 +104,8 @@ const MatchCard = ({
                   src={BichoLogo}
                   alt="Bicho"
                   fill
+                  loading={isActive ? "eager" : "lazy"}
+                  sizes="64px"
                   className="object-contain"
                 />
               </motion.div>
@@ -150,6 +152,8 @@ const MatchCard = ({
                     alt={schedule.teamName}
                     width={48}
                     height={48}
+                    loading={isActive ? "eager" : "lazy"}
+                    sizes="48px"
                     className="object-contain"
                   />
                 ) : (
@@ -244,4 +248,9 @@ const MatchCard = ({
   );
 };
 
-export default MatchCard;
+export default memo(MatchCard, (prevProps, nextProps) => {
+  return (
+    prevProps.schedule._id === nextProps.schedule._id &&
+    prevProps.isActive === nextProps.isActive
+  );
+});
