@@ -30,38 +30,38 @@ const HomeClient: FC<HomeClientProps> = ({ initialSchedules, leagueData }) => {
   const { setImages, setSchedules } = useAppContext();
 
   useEffect(() => {
+    let isCancelled = false;
+
     const initializeData = async () => {
       // 試合日程をRecoilに設定
       setSchedules(initialSchedules);
 
-      // 【段階的読み込み】
-      // 1. まず1件だけ取得してローディング解除
+      // 画像を10枚取得
       try {
-        const firstResponse = await fetch("/api/image?limit=1");
-        if (firstResponse.ok) {
-          const firstImage = await firstResponse.json();
-          setImages(firstImage);
+        const response = await fetch("/api/image?limit=10");
+        if (response.ok) {
+          const images = await response.json();
+          if (!isCancelled) {
+            setImages(images);
+          }
         }
       } catch (error) {
-        console.error("初期画像取得エラー:", error);
-      }
-
-      // ローディングを完了（1件取得した時点で表示開始）
-      setIsLoading(false);
-
-      // 2. バックグラウンドで残りを取得
-      try {
-        const allResponse = await fetch("/api/image?limit=10");
-        if (allResponse.ok) {
-          const allImages = await allResponse.json();
-          setImages(allImages);
-        }
-      } catch (error) {
-        console.error("全画像取得エラー:", error);
+        console.error("画像取得エラー:", error);
       }
     };
 
     initializeData();
+
+    const timerId = window.setTimeout(() => {
+      if (!isCancelled) {
+        setIsLoading(false);
+      }
+    }, 1500);
+
+    return () => {
+      isCancelled = true;
+      window.clearTimeout(timerId);
+    };
   }, [initialSchedules, setImages, setSchedules]);
 
   const scrollToTop = () => {

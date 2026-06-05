@@ -72,98 +72,188 @@ const PhotoSwiper = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="relative">
-            <Swiper
-              modules={[Autoplay, Pagination, EffectCoverflow]}
-              effect="coverflow"
-              grabCursor={true}
-              centeredSlides={true}
-              slidesPerView="auto"
-              coverflowEffect={{
-                rotate: 0,
-                stretch: 0,
-                depth: 150,
-                modifier: 1.5,
-                slideShadows: false,
-              }}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-              }}
-              pagination={{
-                clickable: true,
-                bulletClass: "swiper-pagination-bullet !bg-green-500",
-                bulletActiveClass:
-                  "swiper-pagination-bullet-active !bg-green-600 !scale-125",
-              }}
-              loop={true}
-              className="w-full py-10 !overflow-visible"
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 15,
-                },
-                640: {
-                  slidesPerView: 1.8,
-                  spaceBetween: 30,
-                },
-                1024: {
-                  slidesPerView: 2.5,
-                  spaceBetween: 40,
-                },
-                1280: {
-                  slidesPerView: 3,
-                  spaceBetween: 50,
-                },
-              }}
-            >
-              {images.map((image, index) => (
-                <SwiperSlide key={image._id} className="max-w-2xl">
-                  {({ isActive }) => (
-                    <motion.div
-                      className={`relative group transition-all duration-500 ${
-                        isActive ? "scale-100 z-10" : "scale-90 opacity-60"
-                      }`}
-                      whileHover={{ scale: isActive ? 1.02 : 0.92 }}
-                    >
-                      {/* カードコンテナ */}
-                      <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
-                        <div className="relative aspect-[4/3] overflow-hidden">
-                          {image.contentType?.startsWith("video/") ? (
-                            <video
-                              src={image.data}
-                              className="w-full h-full object-cover"
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
+          {images.length === 0 ? (
+            /* モダンなローディング表示 */
+            <div className="relative py-10">
+              <Swiper
+                modules={[Pagination, EffectCoverflow]}
+                effect="coverflow"
+                centeredSlides={true}
+                slidesPerView="auto"
+                coverflowEffect={{
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 150,
+                  modifier: 1.5,
+                  slideShadows: false,
+                }}
+                allowTouchMove={false}
+                className="w-full py-10 !overflow-visible"
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                    spaceBetween: 15,
+                  },
+                  640: {
+                    slidesPerView: 1.8,
+                    spaceBetween: 30,
+                  },
+                  1024: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 40,
+                  },
+                  1280: {
+                    slidesPerView: 3,
+                    spaceBetween: 50,
+                  },
+                }}
+              >
+                {[0, 1, 2].map((index) => (
+                  <SwiperSlide key={index} className="max-w-2xl">
+                    {({ isActive }) => (
+                      <motion.div
+                        className={`relative transition-all duration-500 ${
+                          isActive ? "scale-100 z-10" : "scale-90 opacity-60"
+                        }`}
+                        initial={{ opacity: 0.4 }}
+                        animate={{ opacity: [0.4, 0.75, 0.4] }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: index * 0.2,
+                        }}
+                      >
+                        <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
+                          <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 overflow-hidden">
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                              animate={{ x: ["-100%", "200%"] }}
+                              transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                ease: "linear",
+                                delay: index * 0.3,
+                              }}
                             />
-                          ) : (
-                            <img
-                              src={image.data}
-                              alt={`FC.BICHOチーム写真 ${
-                                index + 1
-                              } - サッカーチームの活動の様子`}
-                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                              loading={index < 3 ? "eager" : "lazy"}
-                              decoding={index < 3 ? "sync" : "async"}
-                            />
-                          )}
-
-                          {/* グラデーションオーバーレイ */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          </div>
+                          <div className="h-2 bg-gradient-to-r from-gray-300 to-gray-200" />
                         </div>
+                      </motion.div>
+                    )}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              {/* ローディングテキスト */}
+              <motion.div
+                className="text-center mt-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <p className="text-green-700 font-medium text-sm tracking-wider">
+                  Loading Photos...
+                </p>
+              </motion.div>
+            </div>
+          ) : (
+            <div className="relative">
+              <Swiper
+                modules={[Autoplay, Pagination, EffectCoverflow]}
+                effect="coverflow"
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView="auto"
+                coverflowEffect={{
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 150,
+                  modifier: 1.5,
+                  slideShadows: false,
+                }}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                pagination={{
+                  clickable: true,
+                  bulletClass: "swiper-pagination-bullet !bg-green-500",
+                  bulletActiveClass:
+                    "swiper-pagination-bullet-active !bg-green-600 !scale-125",
+                }}
+                loop={true}
+                className="w-full py-10 !overflow-visible"
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                    spaceBetween: 15,
+                  },
+                  640: {
+                    slidesPerView: 1.8,
+                    spaceBetween: 30,
+                  },
+                  1024: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 40,
+                  },
+                  1280: {
+                    slidesPerView: 3,
+                    spaceBetween: 50,
+                  },
+                }}
+              >
+                {images.map((image, index) => (
+                  <SwiperSlide key={image._id} className="max-w-2xl">
+                    {({ isActive }) => (
+                      <motion.div
+                        className={`relative group transition-all duration-500 ${
+                          isActive ? "scale-100 z-10" : "scale-90 opacity-60"
+                        }`}
+                        whileHover={{ scale: isActive ? 1.02 : 0.92 }}
+                      >
+                        {/* カードコンテナ */}
+                        <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
+                          <div className="relative aspect-[4/3] overflow-hidden">
+                            {image.contentType?.startsWith("video/") ? (
+                              <video
+                                src={image.data}
+                                className="w-full h-full object-cover"
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                              />
+                            ) : (
+                              <img
+                                src={image.data}
+                                alt={`FC.BICHOチーム写真 ${
+                                  index + 1
+                                } - サッカーチームの活動の様子`}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                loading={index < 3 ? "eager" : "lazy"}
+                                decoding={index < 3 ? "sync" : "async"}
+                              />
+                            )}
 
-                        {/* ボトムバー */}
-                        <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-green-500 to-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                      </div>
-                    </motion.div>
-                  )}
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+                            {/* グラデーションオーバーレイ */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          </div>
+
+                          {/* ボトムバー */}
+                          <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-green-500 to-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                        </div>
+                      </motion.div>
+                    )}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>
