@@ -1,23 +1,22 @@
 import { Profile } from "@/types/profile";
 import GARI_IMG from "@/public/profile/GARI.png";
+import OONO_IMG from "@/public/profile/OONO.png";
+import SATHUKI_IMG from "@/public/profile/SATHUKI.png";
+import HIKARU_IMG from "@/public/profile/HIKARU.png";
+import TAKE_IMG from "@/public/profile/TAKE.png";
 
 // 選手詳細画像
 import Ryo1 from "@/public/profile/ryo/ryo1.jpeg";
 import Yama1 from "@/public/profile/yama/Yama1.jpeg";
 import Ayumu1 from "@/public/profile/ayumu/ayumu1.jpeg";
 import Ayumu2 from "@/public/profile/ayumu/ayumu2.jpeg";
-import Hikaru1 from "@/public/profile/hikaru/hikaru1.jpeg";
 import Kagawa1 from "@/public/profile/kagawa/kagawa1.jpeg";
 import Kagawa2 from "@/public/profile/kagawa/kagawa2.jpeg";
-import Oono1 from "@/public/profile/oono/oono1.jpeg";
-import Oono2 from "@/public/profile/oono/oono2.jpeg";
 import Yudai1 from "@/public/profile/yudai/yudai1.jpeg";
 import Yasuto1 from "@/public/profile/yasuto/yasuto1.jpeg";
 import Tani1 from "@/public/profile/tani/tani1.jpeg";
 import AT1 from "@/public/profile/AT/AT1.jpeg";
 import Youdai1 from "@/public/profile/youdai/youdai1.jpeg";
-import Takishima1 from "@/public/profile/takishima/takishima1.jpeg";
-import Koida1 from "@/public/profile/koida/koida1.jpeg";
 import Koba1 from "@/public/profile/koba/koba1.jpeg";
 import GARI1 from "@/public/profile/gari/GARI1.jpeg";
 import KAITO1 from "@/public/profile/kaito/KAITO1.jpeg";
@@ -75,9 +74,9 @@ export const goalkeepers: Profile[] = [
     position: "GK",
     name: "滝島皐",
     englishName: "SATHUKI TAKISHIMA",
-    img: null,
+    img: SATHUKI_IMG,
     detail: {
-      images: [Takishima1],
+      images: [],
       competitionData: [
         {
           competition: "埼玉県社会人サッカー2部リーグ",
@@ -267,9 +266,9 @@ export const defenders: Profile[] = [
     name: "大野莉久",
     position: "LB/RB/CB",
     englishName: "RIKU OONO",
-    img: null,
+    img: OONO_IMG,
     detail: {
-      images: [Oono2, Oono1],
+      images: [],
       competitionData: [
         {
           competition: "埼玉県社会人サッカー2部リーグ",
@@ -324,59 +323,6 @@ export const defenders: Profile[] = [
     position: "CB",
     englishName: "MION SOUMA",
     img: null,
-  },
-  {
-    number: "99",
-    name: "小飯田豪",
-    position: "CB",
-    englishName: "GOU KOIDA",
-    img: null,
-    detail: {
-      images: [Koida1],
-      competitionData: [
-        {
-          competition: "埼玉県社会人サッカー2部リーグ",
-          contents: [{ year: "2026", gameCount: "3", goal: "1", assist: "0" }],
-        },
-        {
-          competition: "埼玉県南部地区3部リーグ",
-          contents: [
-            {
-              year: "2025",
-              gameCount: "5",
-              goal: "0",
-              assist: "0",
-            },
-          ],
-        },
-        {
-          competition: "川口市社会人サッカーリーグ",
-          contents: [
-            { year: "2024", gameCount: "5", goal: "0", assist: "0" },
-            { year: "2023", gameCount: "6", goal: "0", assist: "0" },
-            { year: "2022", gameCount: "7", goal: "0", assist: "0" },
-          ],
-        },
-        {
-          competition: "全国クラブ選手権埼玉県予選",
-          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
-        },
-        {
-          competition: "南部地区ブロック決勝大会",
-          contents: [
-            { year: "2024", gameCount: "3", goal: "0", assist: "0" },
-            { year: "2022", gameCount: "1", goal: "1", assist: "0" },
-          ],
-        },
-        {
-          competition: "会長杯1次ラウンド兼彩の国カップ",
-          contents: [
-            { year: "2024", gameCount: "3", goal: "0", assist: "0" },
-            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
-          ],
-        },
-      ],
-    },
   },
 ];
 
@@ -566,9 +512,9 @@ export const midfielders: Profile[] = [
     name: "岩瀬輝",
     englishName: "HIKARU IWASE",
     position: "RW/RB/LW",
-    img: null,
+    img: HIKARU_IMG,
     detail: {
-      images: [Hikaru1],
+      images: [],
       competitionData: [
         {
           competition: "埼玉県社会人サッカー2部リーグ",
@@ -804,7 +750,7 @@ export const forwards: Profile[] = [
     name: "武田康希",
     position: "CM",
     englishName: "KOUKI TAKEDA",
-    img: null,
+    img: TAKE_IMG,
     detail: {
       images: [],
       competitionData: [
@@ -911,5 +857,58 @@ export const forwards: Profile[] = [
     position: "CF/RB/LB",
     englishName: "RYOUTA KUROIWA",
     img: null,
+  },
+  {
+    number: "99",
+    name: "小飯田豪",
+    position: "CF/CB",
+    englishName: "GOU KOIDA",
+    img: null,
+    detail: {
+      images: [],
+      competitionData: [
+        {
+          competition: "埼玉県社会人サッカー2部リーグ",
+          contents: [{ year: "2026", gameCount: "3", goal: "1", assist: "0" }],
+        },
+        {
+          competition: "埼玉県南部地区3部リーグ",
+          contents: [
+            {
+              year: "2025",
+              gameCount: "5",
+              goal: "0",
+              assist: "0",
+            },
+          ],
+        },
+        {
+          competition: "川口市社会人サッカーリーグ",
+          contents: [
+            { year: "2024", gameCount: "5", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "6", goal: "0", assist: "0" },
+            { year: "2022", gameCount: "7", goal: "0", assist: "0" },
+          ],
+        },
+        {
+          competition: "全国クラブ選手権埼玉県予選",
+          contents: [{ year: "2024", gameCount: "1", goal: "0", assist: "0" }],
+        },
+        {
+          competition: "南部地区ブロック決勝大会",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "0", assist: "0" },
+            { year: "2022", gameCount: "1", goal: "1", assist: "0" },
+          ],
+        },
+        {
+          competition: "会長杯1次ラウンド兼彩の国カップ",
+          contents: [
+            { year: "2024", gameCount: "3", goal: "0", assist: "0" },
+            { year: "2023", gameCount: "1", goal: "0", assist: "0" },
+          ],
+        },
+      ],
+    },
   },
 ];
